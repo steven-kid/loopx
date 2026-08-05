@@ -1,0 +1,3231 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://huangruiteng.github.io/loopx/docs/research/long-horizon-agent-benchmarks/roadmap/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/loopx-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Long-Horizon Agent Benchmark Roadmap - LoopX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#long-horizon-agent-benchmark-roadmap" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="LoopX" class="md-header__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../../../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LoopX
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Long-Horizon Agent Benchmark Roadmap
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 2c-1.82 0-3.53.5-5 1.35C8 5.08 10 8.3 10 12s-2 6.92-5 8.65C6.47 21.5 8.18 22 10 22a10 10 0 0 0 10-10A10 10 0 0 0 10 2"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../guides/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../concepts/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../operations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Operations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../capabilities/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Capabilities
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../integrations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Integrations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../development/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../product/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Product
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../showcases/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Showcases
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="LoopX" class="md-nav__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../../../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    LoopX
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../guides/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/newcomer-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Newcomer Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/custom-agent-runner-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Runner Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/auto-research-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto Research Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../concepts/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concepts/interaction-pattern-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interaction Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../state-interaction-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    State Interaction Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quota-allocation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quota Allocation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../operations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operations/attention-queue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attention Queue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operations/long-task-cadence-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Long Task Cadence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operations/authority-source-registration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority Sources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../capabilities/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capabilities
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Capabilities
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/issue-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Issue Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/change-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Change Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/explore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Explore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/material-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Material Lifecycle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/value-connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Value Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../integrations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integrations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integrations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/worker-bridge-install-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Worker Bridge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/lark-kanban-control-plane-adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lark Kanban
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/runtime-connector-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Connector Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../reference/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/benchmark-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../development/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/testing-and-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing And Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/documentation-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Layout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/benchmark-developer-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/control-plane-course/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control Plane Course
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../product/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Product
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/release-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/surfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Surfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/runtimes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtimes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../showcases/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Showcases
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Showcases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/frontend-surface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend Surface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/cases/0617-blocked-p0-safe-rotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blocked P0 Safe Rotation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/cases/0619-loopx-self-iteration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LoopX Self Iteration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/cases/0624-pr-issue-auto-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PR Issue Auto Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#thesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thesis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benchmark-shortlist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Benchmark Shortlist
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Benchmark Shortlist">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#universal-baseline-failure-case-mining" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Universal: Baseline Failure-Case Mining
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#primary-long-horizon-engineering-leaderboards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Primary: Long-Horizon Engineering Leaderboards
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secondary-tau-style-simulator-research-track" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secondary: Tau-Style Simulator Research Track
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#watchlist-additional-long-horizon-swe-benchmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Watchlist: Additional Long-Horizon SWE Benchmarks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#later-browser-and-desktop-benchmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Later: Browser and Desktop Benchmarks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loopx-operator-simulator-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LoopX Operator Simulator Program
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passive-baseline-hypotheses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passive Baseline Hypotheses
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autonomous-planning-triggers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Autonomous Planning Triggers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loopx-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LoopX Integration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#milestones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Milestones
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Milestones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#p0-selection-dossier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P0: Selection Dossier
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p1-official-long-horizon-engineering-pilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P1: Official Long-Horizon Engineering Pilot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p1-passive-loopx-baseline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P1: Passive LoopX Baseline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p1-planning-trigger-regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P1: Planning-Trigger Regression
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p1-operator-simulator-overlay-pilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P1: Operator-Simulator Overlay Pilot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p2-tau-simulator-research-pilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P2: Tau Simulator Research Pilot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p1-user-simulator-ablation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P1: User-Simulator Ablation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p1-codex-goal-engineering-baseline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P1: Codex Goal Engineering Baseline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p1p2-cross-benchmark-failure-case-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P1/P2: Cross-Benchmark Failure-Case Gate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p2-reproducible-benchmark-pack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P2: Reproducible Benchmark Pack
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p2-publication-readiness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P2: Publication Readiness
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#active-agent-todo-seed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Active Agent Todo Seed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-Goals
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/huangruiteng/loopx/edit/main/docs/research/long-horizon-agent-benchmarks/roadmap.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="long-horizon-agent-benchmark-roadmap">Long-Horizon Agent Benchmark Roadmap<a class="headerlink" href="#long-horizon-agent-benchmark-roadmap" title="Permanent link">&para;</a></h1>
+<p>LoopX needs an external validity track beyond local regression smokes. The
+long-term target is to run, improve, and eventually publish on public
+long-horizon agent benchmarks while preserving the product thesis: agents should
+work through durable state, gates, evidence, and recovery rather than through
+prompt bloat or raw chat history. When human-agent collaboration is evaluated,
+LoopX should supply its own bounded operator simulator as an overlay,
+not require the benchmark itself to provide a user simulator.</p>
+<h2 id="thesis">Thesis<a class="headerlink" href="#thesis" title="Permanent link">&para;</a></h2>
+<p>LoopX should be evaluated as an agent control plane, not merely as a
+project dashboard. A credible benchmark result should show whether the harness
+improves:</p>
+<ul>
+<li>task success over long horizons;</li>
+<li>recovery after stale state, failed workers, or interrupted sessions;</li>
+<li>autonomous continuation from a durable backlog instead of waiting for the user
+  to restate strategy;</li>
+<li>operator-simulator coordination quality in assisted-mode runs;</li>
+<li>policy and tool-use correctness;</li>
+<li>public-safe evidence and writeback discipline;</li>
+<li>overhead in time, tokens, and extra steps.</li>
+</ul>
+<p>The goal is not to game a leaderboard. The goal is to produce reproducible
+evidence that durable control-plane structure improves real agent work, then use
+that evidence to guide product design and, if strong enough, a paper.</p>
+<h2 id="benchmark-shortlist">Benchmark Shortlist<a class="headerlink" href="#benchmark-shortlist" title="Permanent link">&para;</a></h2>
+<p>Before choosing a benchmark, maintain a paper-and-runner dossier. The dossier
+should answer:</p>
+<ul>
+<li>Which recent SOTA long-horizon agent papers use this benchmark?</li>
+<li>Does the benchmark report Codex CLI, Claude Code, Gemini CLI, OpenHands,
+  Mini-SWE-Agent, Terminus, OpenClaw, or another reproducible executor?</li>
+<li>Is the implementation open-source and runnable from a clean checkout?</li>
+<li>Does the official protocol allow a custom wrapper around the agent, or only a
+  fixed agent submission?</li>
+<li>Are there hidden tests, exploit scans, or anti-reward-hacking safeguards?</li>
+<li>Can LoopX add event-ledger/restartability instrumentation without
+  changing the scoring protocol?</li>
+<li>Can a separate assisted-mode study add a bounded operator simulator without
+  confusing the result with the official leaderboard protocol?</li>
+<li>What Codex goal-mode baseline failures are observable before any LoopX
+  treatment, and which of those failures are plausibly addressable by
+  control-plane state, todo, checkpoint, replan, validation, writeback, or
+  failure attribution?</li>
+</ul>
+<p>Initial paper and benchmark scan:</p>
+<table>
+<thead>
+<tr>
+<th>Candidate</th>
+<th>Why it matters</th>
+<th>Codex / executor signal</th>
+<th>Current posture</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SWE-Marathon</td>
+<td>Ultra-long-horizon SWE tasks, multi-hour wall-clock horizon, hidden tests, exploit scans, open benchmark code.</td>
+<td>Public leaderboard includes GPT/Codex CLI entries.</td>
+<td>Strong primary candidate; verify runner setup and allowed wrapper boundary first.</td>
+</tr>
+<tr>
+<td>Terminal-Bench 2.0</td>
+<td>Hard realistic CLI tasks; measures terminal operation, recovery, and state management.</td>
+<td>Paper/leaderboards report Codex CLI, Claude Code, Gemini CLI, OpenHands, Mini-SWE-Agent, Terminus/Goose-style agents.</td>
+<td>Strong primary candidate; likely easiest Codex CLI baseline path.</td>
+</tr>
+<tr>
+<td>LongCLI-Bench</td>
+<td>Long-horizon command-line programming tasks with fine-grained failure analysis and human-agent collaboration findings.</td>
+<td>Reports Codex-family model results; executor openness must be verified.</td>
+<td>Candidate for research comparison after primary lane.</td>
+</tr>
+<tr>
+<td>RoadmapBench</td>
+<td>Long-horizon software evolution across version upgrades; large multi-file change targets.</td>
+<td>Codex executor support not yet verified.</td>
+<td>Watchlist; high fit if runner and baseline are reproducible.</td>
+</tr>
+<tr>
+<td>WildClawBench</td>
+<td>Real-world long-horizon tasks in reproducible containers with actual CLI agent harnesses.</td>
+<td>Search results indicate Codex / Claude Code / OpenClaw / Hermes style executors.</td>
+<td>Promising but new; verify paper, code, and scoring before adoption.</td>
+</tr>
+<tr>
+<td>Tau2/Tau3</td>
+<td>User-agent-policy interaction with simulator and tools.</td>
+<td>Useful for simulator research, not headline long-horizon evidence.</td>
+<td>Secondary simulator research track only.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="universal-baseline-failure-case-mining">Universal: Baseline Failure-Case Mining<a class="headerlink" href="#universal-baseline-failure-case-mining" title="Permanent link">&para;</a></h3>
+<p>Every benchmark lane must pass the same selection gate before LoopX
+treatment runs. The goal is not to spend on benchmarks where the base agent only
+fails because of raw model capability, hidden-test ambiguity, missing domain
+knowledge, flaky infrastructure, or an unobservable evaluator.</p>
+<p>For each candidate, first gather public-safe Codex goal-mode baseline failure
+evidence:</p>
+<ul>
+<li>stable task or case handle, redacted when needed;</li>
+<li>runner/scaffold, dataset revision, repository commit, model, timeout, seed,
+  resource envelope, and allowed tools;</li>
+<li>terminal phase: setup, task understanding, planning, tool use, environment
+  triage, artifact production, validation, verifier, timeout, or writeback;</li>
+<li>failure class: stale assumption, lost state, duplicated work, missing
+  validation, premature stop, over-broad edit/action, poor evidence trail,
+  source/coverage drift, skill/tool routing miss, artifact provenance gap,
+  policy/gate miss, failure-attribution gap, or ordinary model miss;</li>
+<li>control-plane leverage: whether LoopX could plausibly change the
+  outcome through state truth, todo continuity, checkpoint/restart, bounded
+  replan, validation discipline, policy/gate handling, public-safe writeback, or
+  compact failure attribution.</li>
+</ul>
+<p>Only control-plane-addressable failures advance to paired treatment. The paired
+repeat must preserve the benchmark task, prompt, tests, scorer, image, timeout,
+model, runner source, Codex goal-mode invocation surface, and publication
+boundary. If the goal-mode baseline failure is not control-plane-addressable,
+record it as negative selection evidence and choose a different case rather
+than forcing a treatment run.</p>
+<p>This gate applies to all benchmark families:</p>
+<table>
+<thead>
+<tr>
+<th>Family</th>
+<th>Baseline failure to mine first</th>
+<th>LoopX leverage if present</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Terminal / CLI / SWE</td>
+<td>Long validation loops, dependency triage, stale state, repeated failed fixes, timeout after drift</td>
+<td>checkpoint/replan, validation discipline, compact run ledger, failure attribution</td>
+</tr>
+<tr>
+<td>Skill benchmarks</td>
+<td>Wrong skill chosen, missing skill provenance, unsafe skill reuse, negative transfer</td>
+<td>skill-state review, provenance gates, routed-skill exposure trace</td>
+</tr>
+<tr>
+<td>Search / research</td>
+<td>Coverage gaps, lost source checklist, weak citation trail, stale source reuse</td>
+<td>evidence map, source checklist recovery, citation/writeback discipline</td>
+</tr>
+<tr>
+<td>Spreadsheet / data / DS</td>
+<td>Lost notebook/file state, unverified transformations, artifact mismatch, weak provenance</td>
+<td>artifact registry, validation checklist, restartable data pipeline trace</td>
+</tr>
+<tr>
+<td>Simulator / policy tasks</td>
+<td>Policy ambiguity, simulator-induced failure, tool-state mismatch</td>
+<td>separated agent/simulator attribution, policy gate, assisted-mode boundary</td>
+</tr>
+<tr>
+<td>GUI / desktop</td>
+<td>Unobservable side effects, flaky UI state, screenshot/action trace gaps</td>
+<td>only after trace publicness and side-effect audit are reliable</td>
+</tr>
+</tbody>
+</table>
+<h3 id="primary-long-horizon-engineering-leaderboards">Primary: Long-Horizon Engineering Leaderboards<a class="headerlink" href="#primary-long-horizon-engineering-leaderboards" title="Permanent link">&para;</a></h3>
+<p>Use Terminal-Bench 2.0, SWE-Marathon, and HORIZON/METR-style software
+engineering leaderboards as the main external target. These are closer to the
+hard long-horizon claim: sustained CLI or software-engineering work, many tool
+steps, real validation, restartability pressure, and visible comparison against
+native agent surfaces such as Codex CLI.</p>
+<p>Sources:</p>
+<ul>
+<li>Terminal-Bench 2.0 paper: https://arxiv.org/abs/2601.11868</li>
+<li>Epoch Terminal-Bench page: https://epoch.ai/benchmarks/terminal-bench/</li>
+<li>SWE-Marathon: https://www.swe-marathon.org/</li>
+<li>HORIZON leaderboard: https://horizonbench.org/</li>
+</ul>
+<p>Initial fit:</p>
+<ul>
+<li>Terminal-Bench evaluates agents in terminal environments and includes Codex
+  CLI as a relevant agent surface.</li>
+<li>SWE-Marathon and HORIZON-style benchmarks are closer to the target claim:
+  ultra-long-horizon software work rather than short interaction episodes.</li>
+<li>These benchmarks can support a leaderboard-oriented track where LoopX
+  wraps the worker without changing the official task, scoring, or allowed
+  tools.</li>
+<li>They directly test the control-plane value proposition: state truth,
+  validation discipline, restartability, bounded context, and recovery after
+  failed or interrupted worker steps.</li>
+</ul>
+<h3 id="secondary-tau-style-simulator-research-track">Secondary: Tau-Style Simulator Research Track<a class="headerlink" href="#secondary-tau-style-simulator-research-track" title="Permanent link">&para;</a></h3>
+<p>Use tau-bench / tau2-bench / tau3-bench as simulator and collaboration research
+material, not as the primary long-horizon leaderboard target. Tau-style
+benchmarks are useful because they explicitly contain a language agent,
+simulated user, policy constraints, domain tools, and multi-turn task
+completion, but the typical task horizon is shorter than the engineering
+benchmarks above, and their built-in simulator is not a substitute for a Goal
+Harness operator-simulator overlay on engineering benchmarks.</p>
+<p>Sources:</p>
+<ul>
+<li>tau-bench paper: https://arxiv.org/abs/2406.12045</li>
+<li>tau-bench site and leaderboard: https://taubench.com/</li>
+<li>tau2 / tau3 repository: https://github.com/sierra-research/tau2-bench</li>
+<li>tau2-bench paper: https://arxiv.org/abs/2506.07982</li>
+</ul>
+<p>Initial fit:</p>
+<ul>
+<li>The user simulator is first-class, so LoopX can learn simulator
+  evaluation patterns before applying its own operator simulator to engineering
+  benchmarks.</li>
+<li>Airline/retail/banking-style domains resemble enterprise project workflows:
+  policy adherence, tool updates, multi-turn clarification, and final state
+  verification.</li>
+<li>The benchmark can support an A/B study: stock agent versus LoopX
+  wrapped agent, with identical task/user-simulator settings.</li>
+<li>It is a good substrate for a paper section on user-simulator fidelity, but it
+  should not be used as the headline evidence for long-horizon engineering
+  ability.</li>
+</ul>
+<h3 id="watchlist-additional-long-horizon-swe-benchmarks">Watchlist: Additional Long-Horizon SWE Benchmarks<a class="headerlink" href="#watchlist-additional-long-horizon-swe-benchmarks" title="Permanent link">&para;</a></h3>
+<p>Track other long-horizon coding benchmarks as candidates once the primary
+engineering lane is running. The selection dossier should decide whether any of
+these have enough reproducibility, Codex CLI support, and public scoring
+credibility to become a second official target.</p>
+<p>Sources:</p>
+<ul>
+<li>LongCLI-Bench paper: https://arxiv.org/abs/2602.14337</li>
+<li>RoadmapBench paper: https://arxiv.org/abs/2605.15846</li>
+<li>WildClawBench paper: https://arxiv.org/abs/2605.10912</li>
+<li>SWE-EVO paper: https://arxiv.org/abs/2512.18470</li>
+<li>RALPHBench: https://www.ralphbench.org/</li>
+</ul>
+<p>Initial fit:</p>
+<ul>
+<li>These may be useful for paper breadth, but each needs contamination,
+  reproducibility, scoring, and setup-cost review before adoption.</li>
+</ul>
+<h3 id="later-browser-and-desktop-benchmarks">Later: Browser and Desktop Benchmarks<a class="headerlink" href="#later-browser-and-desktop-benchmarks" title="Permanent link">&para;</a></h3>
+<p>WebArena, VisualWebArena, and OSWorld are useful later-stage benchmarks for
+browser/computer-use agents. They are lower priority for the first integration
+because LoopX currently has stronger leverage on state, quota, gates,
+and user-agent coordination than on visual desktop control.</p>
+<p>Sources:</p>
+<ul>
+<li>WebArena paper: https://arxiv.org/abs/2307.13854</li>
+<li>OSWorld paper: https://arxiv.org/abs/2404.07972</li>
+</ul>
+<h2 id="loopx-operator-simulator-program">LoopX Operator Simulator Program<a class="headerlink" href="#loopx-operator-simulator-program" title="Permanent link">&para;</a></h2>
+<p>LoopX needs its own operator simulator for assisted long-horizon
+benchmark studies. This is different from choosing benchmarks that already have
+a user simulator. The benchmark selection should optimize for hard long-horizon
+engineering work and Codex/executor compatibility; the operator simulator is a
+LoopX overlay used to study supervised execution.</p>
+<p>There are three result modes:</p>
+<ul>
+<li><strong>Official leaderboard mode:</strong> run the benchmark exactly as prescribed. Goal
+  Harness may only wrap the worker for logging, restartability, event ledger,
+  evidence, and cost/state accounting. No operator-simulator hinting,
+  approvals, or extra task guidance is allowed.</li>
+<li><strong>Passive control-plane mode:</strong> keep the same autonomous worker decisions, but
+  record richer LoopX state, Goal Tick phases, validation, and restart
+  artifacts. This measures whether the control plane improves auditability and
+  recovery without changing task policy. It is also the first test of whether
+  LoopX helps without any operator simulator: if passive mode cannot
+  improve restartability, stale-state avoidance, continuation quality, or
+  failure attribution over Codex CLI goal mode, the operator-simulator work is not
+  yet grounded.</li>
+<li><strong>Assisted operator-simulator mode:</strong> add a bounded simulated operator that
+  can approve plans, ask for scope clarification, decide whether to continue
+  after failed validation, and correct obvious process drift under a fixed
+  intervention budget. This mode measures human-agent collaboration and must be
+  reported separately from official leaderboard scores.</li>
+<li><strong>Rubric-derived user-simulator mode:</strong> generate a compact rubric from public
+  task design before the worker starts, then let a bounded simulator give
+  user-style feedback against that rubric. It must not consume official verifier
+  reward, pass/fail status, verifier errors, hidden tests, gold answers, or
+  benchmark answer keys.</li>
+</ul>
+<p>The first operator-simulator matrix should compare:</p>
+<ul>
+<li>same-family simulator and agent;</li>
+<li>stronger simulator with weaker agent;</li>
+<li>weaker simulator with stronger agent;</li>
+<li>Codex CLI worker with a non-Codex simulator;</li>
+<li>Doubao 2.0 style simulator or worker where available;</li>
+<li>deterministic scripted user for reproducibility checks.</li>
+<li>rubric-derived user simulator for non-oracle task-design feedback.</li>
+</ul>
+<p>The simulator contract should record:</p>
+<ul>
+<li>model or simulator identity;</li>
+<li>whether the simulator can see only public task state and worker artifacts;</li>
+<li>the rubric generation source and no-oracle audit result;</li>
+<li>cooperation level;</li>
+<li>ambiguity and correction behavior;</li>
+<li>tool/state grounding;</li>
+<li>conversation length;</li>
+<li>simulator-induced failure labels.</li>
+</ul>
+<p>The operator simulator must not act as an oracle. It must not see hidden tests,
+expected solutions, benchmark answer keys, private project data, or any state
+that the benchmark protocol would forbid the agent from using. A LoopX
+result must not claim official long-horizon benchmark improvement if the gain
+comes from assisted operator-simulator intervention.</p>
+<h2 id="passive-baseline-hypotheses">Passive Baseline Hypotheses<a class="headerlink" href="#passive-baseline-hypotheses" title="Permanent link">&para;</a></h2>
+<p>Before using an operator simulator, LoopX should prove or falsify a
+passive-control-plane benefit against Codex CLI goal mode. The benchmark program
+should track these hypotheses:</p>
+<ul>
+<li><strong>H1: Restartability.</strong> A killed or timed-out worker can resume from the
+  public run ledger and active state with less duplicated work than Codex CLI
+  goal mode alone.</li>
+<li><strong>H2: Stale-state avoidance.</strong> The worker trusts current authority and
+  validation state over stale plans, stale latest-run text, or old todos more
+  often than Codex CLI goal mode alone.</li>
+<li><strong>H3: Continuation quality.</strong> After a completed slice, the next autonomous
+  turn selects a high-value follow-up from durable backlog/state instead of
+  waiting for the human to re-prompt the same strategic objective.</li>
+<li><strong>H4: Evidence discipline.</strong> Work steps produce decision-ready validation,
+  blocker, or failure-attribution events rather than transcript-only claims.</li>
+<li><strong>H5: Bounded overhead.</strong> Extra state reads, Goal Tick rows, and writebacks do
+  not erase the reliability gain through excessive wall time or token cost.</li>
+</ul>
+<p>The assisted operator-simulator track should start only after the passive
+baseline has at least one credible result or a documented negative result that
+explains why supervision is needed.</p>
+<h2 id="autonomous-planning-triggers">Autonomous Planning Triggers<a class="headerlink" href="#autonomous-planning-triggers" title="Permanent link">&para;</a></h2>
+<p>Long-horizon research cannot rely on the user to notice every stagnation point.
+LoopX should trigger a planning refresh when the current control plane
+shows that execution is no longer converting intent into evidence.</p>
+<p>Planning refresh is not a license to expand scope every turn. It is a bounded
+meta-step that re-reads authority, run history, benchmark evidence, open todos,
+and recent failures, then decides whether to keep the current todo, split it,
+add a new todo, retire stale work, or request an operator decision.</p>
+<p>This is control-plane planning, not task-policy planning. The refresh may
+repair the execution track when the project stops converting intent into
+evidence, but the worker model still owns belief synthesis and the concrete
+implementation/debug strategy inside the authorized boundary. LoopX can
+say "this todo is stale; split it and validate the next slice with command X."
+It should not silently decide the semantic solution to the task or rewrite
+project direction as if a dreaming or replan proposal were already approved.</p>
+<p>Initial trigger conditions:</p>
+<ul>
+<li><strong>Periodic research review:</strong> every 20-30 visible turns or durable run events
+  in the same long-horizon research topic.</li>
+<li><strong>No-progress streak:</strong> three consecutive eligible turns with no committed
+  artifact, no benchmark evidence, no validated blocker, and no state-changing
+  writeback.</li>
+<li><strong>Repeated-action loop:</strong> the same recommended action appears across three or
+  more latest runs without a new validation result or blocker.</li>
+<li><strong>Phase transition:</strong> the project moves from roadmap to setup, setup to pilot,
+  pilot to A/B result, or result to paper/readiness.</li>
+<li><strong>Backlog mismatch:</strong> status shows no open agent todo, or only broad/open-ended
+  todos, while run history still contains unresolved benchmark or planning work.</li>
+<li><strong>Evidence contradiction:</strong> benchmark output, paper survey, or executor
+  compatibility evidence contradicts the current roadmap assumption.</li>
+</ul>
+<p>The planning refresh output should be public-safe and structured:</p>
+<ul>
+<li>keep / split / add / retire / ask-decision action;</li>
+<li>affected todo ids or titles;</li>
+<li>reason for trigger;</li>
+<li>evidence references;</li>
+<li>next bounded validation command;</li>
+<li>stop condition;</li>
+<li>whether the next turn is implementation, setup, paper survey, or observation.</li>
+</ul>
+<p>This mechanism is part of the benchmark program itself: one result dimension is
+whether LoopX can autonomously maintain a useful research agenda over
+many turns without drifting into prompt-only planning or waiting for the user to
+restate the strategy.</p>
+<p>Planning outputs should carry their authority level:</p>
+<table>
+<thead>
+<tr>
+<th>Authority level</th>
+<th>Meaning</th>
+<th>Default consumer behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>control_signal</code></td>
+<td>A guard, quota, freshness, or safety fact that constrains the next run.</td>
+<td>Obey before delivery or ask the user/controller if blocked.</td>
+</tr>
+<tr>
+<td><code>bounded_replan_obligation</code></td>
+<td>A required control-plane repair slice, such as todo split, blocker writeback, or state rebase.</td>
+<td>Execute one validated repair slice, then write back or record why blocked.</td>
+</tr>
+<tr>
+<td><code>proposal</code></td>
+<td>A dreaming/exploration/research suggestion that may improve future work.</td>
+<td>Route to operator/controller review before making it active project truth.</td>
+</tr>
+<tr>
+<td><code>agent_policy_choice</code></td>
+<td>A concrete task-solving strategy chosen from current belief.</td>
+<td>Belongs to the worker inside the current authorized boundary.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="loopx-integration">LoopX Integration<a class="headerlink" href="#loopx-integration" title="Permanent link">&para;</a></h2>
+<p>The benchmark adapter should add control-plane structure without changing the
+benchmark's scoring rules:</p>
+<ul>
+<li>register each benchmark suite as a public-safe authority source;</li>
+<li>record <code>benchmark_run_v0</code> events with benchmark id, task split, mode, agent,
+  optional operator simulator, seed, score, wall time, token/cost estimate, and
+  artifacts;</li>
+<li>write Goal Tick phases for read_state, propose_step, execute, validate,
+  critic, and writeback;</li>
+<li>keep a restartable run ledger so interrupted workers can resume from current
+  state instead of chat history;</li>
+<li>compare native, passive control-plane, and assisted operator-simulator modes
+  using identical benchmark tasks and model settings where the protocol allows;</li>
+<li>forbid private project data, internal sessions, credentials, and benchmark
+  answer leakage.</li>
+</ul>
+<h2 id="milestones">Milestones<a class="headerlink" href="#milestones" title="Permanent link">&para;</a></h2>
+<h3 id="p0-selection-dossier">P0: Selection Dossier<a class="headerlink" href="#p0-selection-dossier" title="Permanent link">&para;</a></h3>
+<p>Produce a public-safe benchmark selection dossier that ranks Terminal-Bench,
+SWE-Marathon, HORIZON/METR-style leaderboards, LongCLI-Bench, SWE-EVO,
+RALPHBench, tau3/tau2, WebArena, and OSWorld by fit, setup cost, Codex CLI
+relevance, true horizon length, scoring credibility, leaderboard compliance,
+user-simulator relevance, baseline failure observability, control-plane
+addressability, and publishability.</p>
+<p>The dossier must read the SOTA papers or official benchmark reports first. It
+should not select a benchmark only because it sounds aligned with LoopX.
+The first recommendation must explicitly name the expected executor path:
+Codex CLI goal mode, a benchmark-provided Codex adapter with an equivalent goal
+surface, or a small public-safe LoopX passive wrapper around an official
+executor.</p>
+<h3 id="p1-official-long-horizon-engineering-pilot">P1: Official Long-Horizon Engineering Pilot<a class="headerlink" href="#p1-official-long-horizon-engineering-pilot" title="Permanent link">&para;</a></h3>
+<p>Run the first small official-protocol pilot on Terminal-Bench, SWE-Marathon, or
+another selected long-horizon engineering benchmark:</p>
+<ul>
+<li>stock/native agent path;</li>
+<li>LoopX wrapped worker path;</li>
+<li>identical task, model, allowed tools, environment, and scoring;</li>
+<li>no user-simulator overlay if the official benchmark protocol does not allow
+  it;</li>
+<li>event ledger and restartability instrumentation around the worker rather than
+  benchmark-internal scoring changes.</li>
+</ul>
+<p>The pilot is successful when it produces comparable official metrics and a
+restartable LoopX event ledger without changing task answers, tests, or
+benchmark policy.</p>
+<p>The first pilot must begin with a baseline failure record or a documented
+hard-case prior. LoopX treatment is justified only when that baseline
+evidence names a control-plane-addressable failure class.</p>
+<h3 id="p1-passive-loopx-baseline">P1: Passive LoopX Baseline<a class="headerlink" href="#p1-passive-loopx-baseline" title="Permanent link">&para;</a></h3>
+<p>Run the same selected engineering slice in at least two autonomous modes:</p>
+<ul>
+<li>Codex CLI goal mode without LoopX state;</li>
+<li>Codex CLI goal mode with a passive LoopX wrapper.</li>
+</ul>
+<p>No operator-simulator intervention is allowed. Compare task success,
+restartability, stale-state errors, duplicated work after interruption,
+validation quality, failure attribution, and overhead. This is the first proof
+point for whether LoopX helps by itself.</p>
+<h3 id="p1-planning-trigger-regression">P1: Planning-Trigger Regression<a class="headerlink" href="#p1-planning-trigger-regression" title="Permanent link">&para;</a></h3>
+<p>Add a synthetic long-horizon research fixture that simulates repeated eligible
+turns, a no-progress streak, and a repeated recommended action. The fixture
+should prove that LoopX emits a bounded planning-refresh todo instead of
+quietly looping or relying on the user to re-plan.</p>
+<h3 id="p1-operator-simulator-overlay-pilot">P1: Operator-Simulator Overlay Pilot<a class="headerlink" href="#p1-operator-simulator-overlay-pilot" title="Permanent link">&para;</a></h3>
+<p>After the first official-protocol engineering pilot, run an assisted overlay on
+the same or similar long-horizon task slice:</p>
+<ul>
+<li>fixed operator-simulator model and intervention budget;</li>
+<li>no access to hidden tests, expected solutions, or benchmark answer keys;</li>
+<li>allowed interventions may be proactive user-style injections, including
+  directive strategy redirects, validation triage, continue/stop decisions, and
+  process-drift correction, as long as every message passes the no-oracle
+  visibility audit and stays within frequency and token budgets;</li>
+<li>separate reporting from official leaderboard metrics;</li>
+<li>comparison against native and passive control-plane modes.</li>
+</ul>
+<p>This pilot answers whether LoopX can model supervised long-horizon work,
+not whether the base agent is autonomous SOTA. The first deterministic
+active-user assisted pilot remains a deterministic active-user assisted pilot
+fixture: it uses a previously failed compact Terminal-Bench case to validate
+intervention budgets, no-oracle audits, and score-claim separation before any
+model-backed simulator or real assisted runner path.</p>
+<h3 id="p2-tau-simulator-research-pilot">P2: Tau Simulator Research Pilot<a class="headerlink" href="#p2-tau-simulator-research-pilot" title="Permanent link">&para;</a></h3>
+<p>Run a small tau-style pilot as a user-simulator research slice:</p>
+<ul>
+<li>one domain first;</li>
+<li>one public split or a small representative subset;</li>
+<li>fixed simulator model and seed policy;</li>
+<li>baseline stock agent;</li>
+<li>LoopX wrapped agent;</li>
+<li>identical scoring harness.</li>
+</ul>
+<p>This pilot should be labeled as collaboration/user-simulator evidence, not as
+the headline long-horizon leaderboard result.</p>
+<h3 id="p1-user-simulator-ablation">P1: User-Simulator Ablation<a class="headerlink" href="#p1-user-simulator-ablation" title="Permanent link">&para;</a></h3>
+<p>Run the same task slice under at least two user-simulator settings. Record
+whether failures are caused by the agent, the simulator, policy ambiguity,
+tool-state mismatch, or orchestration overhead.</p>
+<h3 id="p1-codex-goal-engineering-baseline">P1: Codex Goal Engineering Baseline<a class="headerlink" href="#p1-codex-goal-engineering-baseline" title="Permanent link">&para;</a></h3>
+<p>Run the selected engineering pilot against real Codex Goal mode and a Goal
+Harness wrapped Codex worker. The baseline is not a Codex CLI polling loop and
+not a prompt that merely begins with <code>/goal</code>; it must show that Codex entered a
+persistent goal state through a supported surface. If no stable benchmark-runner
+trigger exists yet, park the A/B comparison and keep only runner readiness,
+task-data, or trigger-validation work active. Measure completion, validation,
+restartability, stale-state errors, overhead, and evidence quality only after
+that baseline is proven.</p>
+<h3 id="p1p2-cross-benchmark-failure-case-gate">P1/P2: Cross-Benchmark Failure-Case Gate<a class="headerlink" href="#p1p2-cross-benchmark-failure-case-gate" title="Permanent link">&para;</a></h3>
+<p>For every new benchmark family, run a small baseline failure-mining pass before
+any LoopX treatment. The output should be a public-safe failure taxonomy,
+a short list of control-plane-addressable cases, and an explicit negative list
+of cases rejected because their failures are model-only, environment-only,
+oracle/hidden-test ambiguous, or not observable enough. Do not spend treatment
+runs until the baseline evidence explains why state, todo, checkpoint, replan,
+validation discipline, policy gates, writeback, or failure attribution could
+change the result.</p>
+<h3 id="p2-reproducible-benchmark-pack">P2: Reproducible Benchmark Pack<a class="headerlink" href="#p2-reproducible-benchmark-pack" title="Permanent link">&para;</a></h3>
+<p>Create a benchmark pack that can be rerun from a clean checkout with explicit
+model/provider configuration, no private data, and deterministic public-safe
+artifact paths.</p>
+<h3 id="p2-publication-readiness">P2: Publication Readiness<a class="headerlink" href="#p2-publication-readiness" title="Permanent link">&para;</a></h3>
+<p>Prepare a paper-style report once the A/B results show a real signal. The report
+should include negative results, overhead, failure taxonomy, user-simulator
+limitations, and benchmark-integrity safeguards. Use
+<code>benchmark-experiment-report-template-v0.md</code> to keep official leaderboard
+scores, passive control-plane metrics, assisted operator-simulator ablations,
+cost/latency overhead, failure taxonomy, reproducibility artifacts, claim
+boundaries, negative results, and next decisions in separate sections.
+Use <code>benchmark-report-chain-map-v0.md</code> as the reviewer-facing consolidation
+point before larger pilots: it lists the fixture-backed order from
+<code>benchmark_run_v0</code> through <code>benchmark_experiment_report_replay_decision_v0</code>,
+the fields a worker may trust, and the boundary that keeps chain repair
+separate from external benchmark execution.</p>
+<h2 id="active-agent-todo-seed">Active Agent Todo Seed<a class="headerlink" href="#active-agent-todo-seed" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] [P0] Prove the Terminal-Bench 2.0 private/no-upload baseline trigger for
+  real Codex Goal mode before any paired treatment: identify the supported
+  runner invocation surface, show persistent goal-state evidence, and only then
+  run the selected first case (<code>fix-code-vulnerability</code> unless the runner
+  blocker forces a backup). If the trigger is not stable, record the precise
+  trigger gap and do not treat a slash-prefix prompt or polling loop as the
+  baseline.</li>
+<li>[ ] [P0] If the Terminal-Bench goal-mode baseline failure is
+  control-plane-addressable, run the matched <code>codex-loopx</code> treatment on
+  the same case with task, prompt, tests, scorer, image, timeout, model, runner
+  source, and publication boundary unchanged. If it is not addressable, record
+  the negative selection and move to the next selected case.</li>
+<li>[ ] [P0] Promote the baseline-failure gate into the benchmark event/report
+  contract: every future benchmark run should expose baseline failure class,
+  control-plane addressability, treatment eligibility, and negative-selection
+  reason without adding benchmark-specific prompt branches.</li>
+<li>[ ] [P1] Build the WildClawBench adapter dossier under the same failure-first
+  gate: identify runner entry, task schema, scoring, baseline failure signals,
+  side-effect audit shape, trace publicness, and one possible canary only if the
+  failure is control-plane-addressable.</li>
+<li>[ ] [P1] Keep SkillsBench on the AgentLoop / skill-runtime lane. Mine only
+  skill-routing, skill-provenance, unsafe-reuse, or negative-transfer failures;
+  do not spend LoopX long-horizon treatment unless the failure requires
+  skill-state review, provenance gates, or exposure/writeback tracing.</li>
+<li>[ ] [P1/P2] Put WideSearch / DeepWideSearch, SpreadsheetBench, DSBench, and
+  tau-style simulator tasks behind the same baseline-failure gate. For each,
+  define the family-specific failure classes before any paired LoopX
+  treatment.</li>
+<li>[ ] [P1] Keep the autonomous planning-trigger regression in the product track:
+  after repeated no-progress, phase transition, backlog mismatch, or evidence
+  contradiction, LoopX should split/add/retire todos and emit the next
+  bounded validation command.</li>
+<li>[ ] [P2] Triage Agents' Last Exam only after the first Terminal-Bench paired
+  pilot or a documented Terminal-Bench blocker. Build an adapter dossier before
+  any cloud sandbox, GUI, model API, paid compute, or leaderboard path.</li>
+</ul>
+<h2 id="non-goals">Non-Goals<a class="headerlink" href="#non-goals" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Do not use private user sessions or internal project history as benchmark
+  tasks.</li>
+<li>Do not alter benchmark scoring, leak expected answers, or prompt around task
+  labels.</li>
+<li>Do not make recurring heartbeat prompts benchmark-specific.</li>
+<li>Do not optimize only for leaderboard rank while losing state truth, user
+  coordination, safety, or reproducibility.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.action.edit", "content.code.copy", "content.tabs.link", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.path", "search.highlight", "search.share", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

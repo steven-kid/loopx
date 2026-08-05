@@ -1,0 +1,2965 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://huangruiteng.github.io/loopx/docs/reference/protocols/reward-memory-architecture-v0.zh-CN/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/loopx-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Reward Memory Architecture v0（中文版） - LoopX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#reward-memory-architecture-v0" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="LoopX" class="md-header__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../../../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LoopX
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Reward Memory Architecture v0（中文版）
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 2c-1.82 0-3.53.5-5 1.35C8 5.08 10 8.3 10 12s-2 6.92-5 8.65C6.47 21.5 8.18 22 10 22a10 10 0 0 0 10-10A10 10 0 0 0 10 2"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../guides/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../concepts/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../operations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Operations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../capabilities/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Capabilities
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../integrations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Integrations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../development/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../product/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Product
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../showcases/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Showcases
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="LoopX" class="md-nav__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../../../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    LoopX
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../guides/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/newcomer-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Newcomer Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/custom-agent-runner-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Runner Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/auto-research-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto Research Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../concepts/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concepts/interaction-pattern-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interaction Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../state-interaction-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    State Interaction Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quota-allocation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quota Allocation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../operations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operations/attention-queue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attention Queue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operations/long-task-cadence-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Long Task Cadence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operations/authority-source-registration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority Sources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../capabilities/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capabilities
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Capabilities
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/issue-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Issue Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/change-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Change Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/explore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Explore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/material-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Material Lifecycle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/value-connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Value Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../integrations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integrations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integrations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/worker-bridge-install-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Worker Bridge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/lark-kanban-control-plane-adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lark Kanban
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/runtime-connector-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Connector Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../benchmark-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../development/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/testing-and-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing And Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/documentation-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Layout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/benchmark-developer-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/control-plane-course/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control Plane Course
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../product/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Product
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/release-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/surfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Surfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/runtimes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtimes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../showcases/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Showcases
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Showcases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/frontend-surface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend Surface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/cases/0617-blocked-p0-safe-rotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blocked P0 Safe Rotation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/cases/0619-loopx-self-iteration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LoopX Self Iteration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/cases/0624-pr-issue-auto-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PR Issue Auto Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实验能力的开启方式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五类一等记忆
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authority" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        策略内容与 authority
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        带护栏的优先级与模型推理
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        架构分层与能力复用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="架构分层与能力复用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#issue-fix-adapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issue Fix 是首个 adapter
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stage-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        已实现的 Stage 2 薄缝
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最简写入闭环
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openviking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        与 OpenViking 的对齐关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pilotmeta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pilot/meta 分工
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pr-3237" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PR #3237 回归样例
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分阶段职责
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stage-3-recall-application-seam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 3 recall 与 application seam
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stage-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 4 评估与发布门禁
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stage-5-dogfood-receipt-operator-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 5 dogfood receipt 与 operator control
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/huangruiteng/loopx/edit/main/docs/reference/protocols/reward-memory-architecture-v0.zh-CN.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="reward-memory-architecture-v0">Reward Memory Architecture v0（中文版）<a class="headerlink" href="#reward-memory-architecture-v0" title="Permanent link">&para;</a></h1>
+<p><a href="../reward-memory-architecture-v0/">English</a></p>
+<p>Reward Memory 的核心边界是把反馈证据、策略内容和动作 authority 分开。一条有价值的
+判断可以沉淀成后续策略，但不能因此变成跨场景的个人画像，也不能创造反馈者原本没有的
+权限。经过验证的仓库 owner 或核心贡献者反馈，可以在其独立验证过的仓库作用域内推导出
+持久策略。这里需要区分的是“贡献者希望系统怎么做”和“贡献者有权允许系统做什么”。</p>
+<p>这份合同定义五类一等记忆、带护栏的优先级和 pilot/meta 分工；Stage 1 增加 corpus
+registry 与健康状态 read model；Stage 2 增加无状态 candidate/review 薄缝；Stage 3 增加
+显式 recall/application。最简 ingest 闭环只把这些既有薄缝串成一次 corpus-owner 授权的
+provider 写入与精确读回；它不新增第二套 memory store、候选调度器、后台 recall、
+语义路由器、评测框架或 rollout。可选 runtime hook 只在模块自有边界复用这些薄缝，
+不会变成后台学习器。</p>
+<p>机器可读合同通过下面的命令查看：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>loopx<span class="w"> </span>reward-memory<span class="w"> </span>architecture<span class="w"> </span>--format<span class="w"> </span>json
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>loopx<span class="w"> </span>reward-memory<span class="w"> </span>candidate-review<span class="w"> </span>--case<span class="w"> </span>issue-fix-verified-contributor<span class="w"> </span>--decision<span class="w"> </span>accept<span class="w"> </span>--format<span class="w"> </span>json
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>loopx<span class="w"> </span>reward-memory<span class="w"> </span>ingest-event<span class="w"> </span>--input<span class="w"> </span>full-public-fixture.json<span class="w"> </span>--format<span class="w"> </span>json
+</span></code></pre></div>
+<h2 id="_1">实验能力的开启方式<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>Reward Memory 是 provider-neutral、默认关闭的 goal 级实验能力。它按已登记 agent lane
+显式开启，而不是对整套 LoopX 全局开启：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 先 preview；确认边界变化后再追加 --execute。</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>loopx<span class="w"> </span>configure-goal<span class="w"> </span>--goal-id<span class="w"> </span>&lt;goal&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>--reward-memory-config<span class="w"> </span>.loopx/config/reward-memory/experiment.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span>--reward-memory-agent<span class="w"> </span>&lt;registered-agent&gt;
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>loopx<span class="w"> </span>reward-memory<span class="w"> </span>experiment-status<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal&gt;<span class="w"> </span>--agent-id<span class="w"> </span>&lt;registered-agent&gt;<span class="w"> </span>--format<span class="w"> </span>json
+</span></code></pre></div>
+<p>Registry 只保存 <code>enabled</code>、<code>experimental</code>、一个指向 repo 内 ignored config 的相对路径，
+以及显式 agent allowlist，因此 provider 选择留在本地私有配置里。OpenViking 是 Issue Fix
+pilot 当前使用的首个 provider，但不是 LoopX 的全局 feature flag 或强制依赖；任何满足
+同一 binding contract 的 provider 都可以替换它。</p>
+<p>Config v1 只登记一次 <code>project_provider_binding</code>，同时列出每个 corpus 的精确 provider
+scope、项目 corpus 集合、模块自有 surface 和 automation policy。每个 surface 显式列出
+兼容的 <code>corpus_ids</code>，指定唯一 <code>ingest_corpus_id</code>，并拥有自己的 <code>recall_profile</code>。LoopX
+不会通过扫描全部 corpus 猜路由。同一 surface 下的 corpus 必须具有相同 memory class、
+authority、privacy、freshness 和 lifecycle；每个 corpus 的 scope digest、provider identity
+和 corpus identity 仍逐一精确校验。</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&quot;schema_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;reward_memory_experiment_config_v1&quot;</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">&quot;project_provider_binding&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nt">&quot;provider_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openviking&quot;</span><span class="p">,</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nt">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;reward_memory&quot;</span><span class="p">,</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nt">&quot;corpus_scopes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">      </span><span class="p">{</span><span class="nt">&quot;corpus_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;review_policy&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;scope_ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;viking://.../review-policy&quot;</span><span class="p">}</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="nt">&quot;corpora&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="p">{</span><span class="nt">&quot;corpus&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;corpus_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;review_policy&quot;</span><span class="p">},</span><span class="w"> </span><span class="nt">&quot;standing_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}}</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">  </span><span class="p">],</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">  </span><span class="nt">&quot;surfaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">      </span><span class="nt">&quot;surface_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;reviewer_artifact.summary&quot;</span><span class="p">,</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">      </span><span class="nt">&quot;adapter&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;scoped_feedback&quot;</span><span class="p">,</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">      </span><span class="nt">&quot;corpus_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;review_policy&quot;</span><span class="p">],</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">      </span><span class="nt">&quot;ingest_corpus_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;review_policy&quot;</span><span class="p">,</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">      </span><span class="nt">&quot;recall_profile&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">        </span><span class="nt">&quot;profile_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;review_summary_v1&quot;</span><span class="p">,</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">        </span><span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;function_boundary&quot;</span><span class="p">,</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">        </span><span class="nt">&quot;max_queries&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">        </span><span class="nt">&quot;limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">      </span><span class="p">}</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">  </span><span class="p">],</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">  </span><span class="nt">&quot;automation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">    </span><span class="nt">&quot;automatic_recall&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">    </span><span class="nt">&quot;automatic_ingest&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">    </span><span class="nt">&quot;fail_open&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>上例省略的 corpus 和 standing policy 字段仍使用既有完整记录 contract。
+<code>experiment-status</code> 会报告 v1 config schema、corpus/surface 数量、recall profile id 和生效的
+automatic policy，但不会泄露 scope ref。Agent-scoped <code>quota should-run</code> 与
+<code>status --agent-id</code> 使用同一个 invoked registry 和 config reader 解析该 policy，不会把
+automation flag 手工复制进 registry summary。它们输出的紧凑 <code>config_runtime_route</code> 只说明
+registry role、project/shared runtime scope 和精确配置读回状态，不暴露本地路径。运行时只接受
+<code>reward_memory_experiment_config_v1</code>；本地 ignored config 必须在 rollout 前显式迁移。打开
+flag 只授权兼容的 runtime hook；它不会新建 scheduler、替模型推导 query、扩大 authority
+或绕过精确 surface/corpus guard。</p>
+<p><code>automatic_recall=true</code> 允许已声明的模块边界调用通用 runtime hook。Surface query、当前
+artifact 校验和推理回调仍由模块提供。Hook 按配置的 corpus 顺序读取，遇到第一个精确
+读回命中即停止；<code>function_boundary</code> 必须只有一个 query，bounded-agentic 边界最多三个，
+并输出 provider call telemetry 与 application receipt。Provider 或 application 失败时保留
+模块原始输出，而且永远不形成 user gate。</p>
+<p><code>automatic_ingest=true</code> 允许模块把一条已经提炼好的紧凑事件交给已配置 adapter 与 ingest
+corpus。精确 actor/project/surface/action scope 仍由 adapter 和 standing policy 校验；通用
+hook 只复用确定性的 candidate identity、activation、provider sync、精确读回与 ingest
+receipt。它不采集聊天、不解析 tool log、不保存 raw content，也不推导新 authority；重复
+事件保持幂等。两个 flag 默认都是 false；显式 <code>ingest-event</code> 命令继续是调用方主动路径，
+不是旧配置兼容 fallback。</p>
+<p>Allowlist 内的 agent 在运行时只提交紧凑事件：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>loopx<span class="w"> </span>reward-memory<span class="w"> </span>ingest-event<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal&gt;<span class="w"> </span>--agent-id<span class="w"> </span>&lt;registered-agent&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>--input<span class="w"> </span>compact-event.json<span class="w"> </span>--execute<span class="w"> </span>--format<span class="w"> </span>json
+</span></code></pre></div>
+<p>真实 provider 写入必须经过这条 goal + agent 配置路由。原有 full-packet 形式只保留为
+no-write 评测夹具。仅加载配置不会采集反馈或代替 provider 认证；只有 flag 已开且存在经过
+验证的模块真实调用点时，automatic hook 才运行。Issue Fix 当前有两个彼此独立配置的
+recall 调用点：<code>reviewer_artifact.summary</code> 应用简短 reviewer-facing 摘要；
+<code>reviewer_notification.before_send</code> 在现有二级 sink 即将执行前，只允许应用一条经过验证的
+结构化 hard-policy 发送时窗。后者复用 sink 的 queue、去重和读回路径；召回策略与显式 sink
+策略都不存在时默认不限制时间，也不是通用路由器。其他 surface 在分别接线和验证前仍走
+显式调用。实验关闭、provider 不可用、guard 拒绝或精确读回失败时，Issue Fix 都继续正常
+工作。非 v1 或无效配置会以 unavailable fail-open，并把两个 automatic flag 置为 false。</p>
+<h2 id="_2">五类一等记忆<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>来源与作用域</th>
+<th>Authority 与用途</th>
+<th>生命周期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>run_bound_reward</code></td>
+<td>人对某个精确 goal/run 给出的显式评价。</td>
+<td>只描述该次结果。若要影响后续行为，必须先形成紧凑候选并经过 activation policy；reward overlay 本身不是长期指令。</td>
+<td>Overlay 只追加；修正和撤销通过引用追加，不回写被评价的原始 run。</td>
+</tr>
+<tr>
+<td><code>hard_policy</code></td>
+<td>显式的用户、仓库或 operator authority，或者从已验证的 owner/核心贡献者证据中推导、并绑定到既有 project/action authority scope 的策略内容。</td>
+<td>在已验证作用域内形成约束或否决。模型可以从 reward、preference、经过当前 artifact 验证的 experience、选项选择、接受/拒绝结果和 maintainer correction 中推导策略含义；不能推导 credential、新的 publish/production scope 或跨用户、跨仓库 authority。</td>
+<td>Active record 保留 actor、evidence、scope 和 derivation provenance，直到被 supersede、revoke 或 expire。临时或证据较弱的推导应当过期或回到 review。</td>
+</tr>
+<tr>
+<td><code>soft_preference</code></td>
+<td>显式反馈、用户选择，或者后续经过 review 的候选；作用域绑定到 workspace/project 和模块自有 surface。</td>
+<td>只用于 advisory ranking 或 rewrite，不能授予 publish、merge、write、credential 或 production authority。</td>
+<td>只有经过显式 review 才能持久化；支持 edit、reject、supersede、revoke 和 retire。</td>
+</tr>
+<tr>
+<td><code>procedural_experience</code></td>
+<td>带 revision 的 trajectory、distilled experience、maintainer correction、接受/拒绝变更和经过 review 的架构经验；同时带 repository/module/revision/applicability scope。</td>
+<td>只有经过当前 artifact 验证，才能作为诊断、范围判断、路由或验证建议。训练/评测 case 是证据，不是可执行指令；单次 retrieval 对 patch 没有 authority。</td>
+<td>Trajectory 可以只追加；distilled 或 architectural experience 支持 supersede。新的 source truth 可以把旧经验标记为 stale、quarantine、refute 或 retire。</td>
+</tr>
+<tr>
+<td><code>working_context</code></td>
+<td>包含 fresh execution state（<code>fresh_execution_context</code>）和带 revision 的 session continuation 摘要（<code>session_working_memory</code>）。</td>
+<td>只服务当前执行或 session 延续，不能自动升级成可复用 policy，也不能授予动作 authority。当前 source-of-truth 读取始终高于 recall 内容。</td>
+<td><code>fresh_execution_context</code> 已存在于 LoopX 的 registry/state/todo/quota/checkout observation 中，本设计直接复用。Session context 继续绑定对应 session/archive revision。</td>
+</tr>
+</tbody>
+</table>
+<p>每条持久记录除了类别，还必须包含 <code>source</code>、<code>scope</code>、<code>authority</code>、<code>confidence</code>、
+<code>lifecycle_state</code>、<code>supersession</code>、<code>revocation</code>、<code>expiry</code> 和 <code>privacy</code>。
+<code>confidence</code> 只表示证据质量，不会提高 authority。它取 <code>low</code>、<code>medium</code> 或 <code>high</code>，
+并附带判断依据。<code>source</code> 记录 kind/ref/actor/time；<code>scope</code> 记录 user/workspace、
+project/repository、module/surface 和 revision/time 边界；lifecycle 记录当前状态及
+supersession、revocation、expiry、retirement 引用；privacy 记录可见范围、保留类别和
+是否捕获 raw content。</p>
+<h2 id="authority">策略内容与 authority<a class="headerlink" href="#authority" title="Permanent link">&para;</a></h2>
+<p>Hard policy 包含两个相互独立的问题：</p>
+<ol>
+<li><strong>策略内容是什么？</strong> LoopX 可以从显式反馈、经过 review 的 preference、经过当前
+   artifact 验证的 experience、选项选择、重复的接受/拒绝结果和 maintainer
+   correction 中推导紧凑策略。</li>
+<li><strong>策略在哪个范围内生效？</strong> Actor identity 和 repository/action authority 必须来自
+   独立验证的来源。Memory confidence 不能创造或扩大作用域。</li>
+</ol>
+<p>当仓库 owner 或核心贡献者身份已经验证，一条含义明确的推导策略可以直接进入 active，
+无需在每次 run 后重复询问，但需要同时满足以下条件：actor 与 authority scope 已验证；
+provenance 紧凑且可检查；不存在更高 authority 的冲突来源；记录可以通过 edit、
+supersede、revoke、retire 或 expiry 逆转。含义含糊、作用域不清、身份不确定或存在冲突
+时，候选回到 review。推导过程不能创造 credential、external-write capability、
+production permission、cross-agent authority，也不能扩展到另一个仓库。</p>
+<p>系统可以推导可复用的边界或 gate policy，但不能编造某个具体 operator gate 或
+authority checkpoint 的当前状态迁移。一次 approve、reject 或 consume receipt 仍然必须
+来自该 gate 自己的 source of truth。</p>
+<h2 id="_3">带护栏的优先级与模型推理<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>下面的顺序定义安全与注意力边界，不是一张穷举式决策表：</p>
+<ol>
+<li>显式 action authority 与 privacy boundary；</li>
+<li>当前有效、作用域匹配的 hard policy；</li>
+<li>fresh working context 与当前 source of truth；</li>
+<li>经过当前 artifact 验证的 procedural experience；</li>
+<li>当前有效、作用域匹配的 soft preference；</li>
+<li>只作为证据的 run-bound reward。</li>
+</ol>
+<p>确定性代码负责拒绝非法状态：authority 未验证、project/surface 不匹配、材料已
+revoked/expired、privacy 违规、同级 authority 冲突未解决，或者缺少当前 artifact
+验证。进入合法动作集合后，模型继续负责理解反馈含义、判断相关性与证据充分性、权衡
+取舍，并决定 apply、ignore 或 seek more evidence。紧凑 receipt 需要记录 reasoning
+summary、memory reference、artifact verification 和 authority/scope check。</p>
+<p>当证据质量接近时，优先使用 provenance 更明确的记录；这条偏好不能演化成压制有效
+推理的 hard-coded router。Raw chat、transcript、tool log、credential 和本地路径都不是
+Reward Memory record。</p>
+<p><code>loopx reward-memory route-check</code> 是确定性回归夹具，用于覆盖 PR #3237 一类明显的
+安全或升级条件。它不是线上 Issue Fix 决策引擎，也不替代模型推理。</p>
+<h2 id="_4">架构分层与能力复用<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>flowchart TD
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  OV[&quot;OpenViking memory 底座&lt;br/&gt;AGFS source truth、索引、作用域检索、&lt;br/&gt;preference、trajectory、experience、session memory&quot;]
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  CTX[&quot;现有 LoopX fresh execution context&lt;br/&gt;registry、active state、todo/quota、checkout、受限 observation&quot;]
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>  CORE[&quot;LoopX Reward Memory core&lt;br/&gt;类别、scope/authority、corpus health、&lt;br/&gt;candidate 与 activation decision&quot;]
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>  IF[&quot;Issue Fix adapter&lt;br/&gt;输入 run outcome 与 maintainer feedback；&lt;br/&gt;输出 routing/validation influence receipt&quot;]
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>  OTHER[&quot;后续模块 adapter&lt;br/&gt;复用同一 core contract，保留模块自有 surface&quot;]
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>  OV --&gt; CORE
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>  CTX --&gt; CORE
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>  CORE --&gt; IF
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>  CORE --&gt; OTHER
+</span></code></pre></div>
+<p>OpenViking 负责 memory storage、index、scoped retrieval 和 session-memory 基础能力。
+LoopX 负责动作语义：class、scope、authority、lifecycle、candidate derivation、
+activation 和 application receipt。Issue Fix adapter 把 issue/PR evidence 映射到共享
+core，再消费 core 返回的决策；它不能新增平行的 memory store、policy schema 或 ranking
+pipeline。其他模块只在这条复用路径被证明后接入。</p>
+<h3 id="issue-fix-adapter">Issue Fix 是首个 adapter<a class="headerlink" href="#issue-fix-adapter" title="Permanent link">&para;</a></h3>
+<p>Issue Fix 只增加领域映射：</p>
+<ul>
+<li>精确 run reward、maintainer correction、选定的修复方向和持久 issue/PR outcome，
+  转成共享 candidate contract 的紧凑输入；</li>
+<li>repository identity、contributor role、当前 checkout、issue/PR state 和 active LoopX
+  gate，提供当前 authority 与 execution context；</li>
+<li>模块显式请求时，由 OpenViking 提供作用域匹配的 preference 或 experience retrieval；</li>
+<li>共享 core 返回 apply、ignore、seek-evidence 或 review，并附带紧凑 influence receipt；</li>
+<li>recalled technical claim 仍需在当前代码与测试中验证，才能影响 patch。</li>
+</ul>
+<p>Candidate lifecycle、contributor-policy semantics、retrieval health 和 provider
+persistence 归共享 core 所有，不由 adapter 重复实现。Issue Fix 可以充分发挥场景价值，
+但不会反过来把整个 memory 产品做成 Issue Fix 特化方案。</p>
+<h2 id="stage-2">已实现的 Stage 2 薄缝<a class="headerlink" href="#stage-2" title="Permanent link">&para;</a></h2>
+<p>Stage 2 接收模型提出的紧凑候选：target class、content summary、source actor 与 evidence
+reference、workspace/project/surface scope、reasoning summary、confidence，以及请求影响的
+action scopes。候选的含义、策略内容和权衡继续由模型推理；确定性代码只检查公共安全
+shape、scope binding、raw-content boundary、source freshness、未解决冲突、必要的当前
+artifact proof 和 authority checkpoint。</p>
+<p>对于 <code>hard_policy</code>，checkpoint 必须独立绑定同一个 actor、role、project 和 action
+scopes。因此，经过验证的核心贡献者 correction 可以直接形成 activation-ready policy
+candidate，但只能约束 checkpoint 已有 action scope 的子集。checkpoint 未验证、actor 或
+project 不一致、或者候选要求更大 scope 时，候选仍可检视，但状态为 <code>guard_blocked</code>；此时
+即使请求 <code>accept</code> 或 <code>edit</code>，有效决策也会收敛为 <code>no_write</code>，不会扩大 authority。
+Advisory preference 与 experience candidate 不允许请求 action authority。</p>
+<p>Review contract 暴露五个一等决策：</p>
+<ul>
+<li><code>accept</code>：产出 active record；</li>
+<li><code>edit</code>：产出带 prior-candidate lineage 的修订候选；</li>
+<li><code>reject</code>：关闭并拒绝候选；</li>
+<li><code>retire</code>：关闭一个已经 active 的 reviewed record；</li>
+<li><code>no_write</code>：明确记录本次不应写 provider。</li>
+</ul>
+<p>这些只是 decision record，不是 persistence 操作。<code>accept</code> 与 <code>retire</code> 只返回下一步提示：
+调用方必须使用 corpus 声明的 write authority，再完成 readback 验证。薄缝自身不写 LoopX
+state、OpenViking corpus、index、receipt 或外部系统，也不摄取 raw chat 或 tool transcript。</p>
+<p><code>issue_fix_reward_memory_candidate_adapter_v0</code> 刻意保持为字段映射 adapter：把紧凑 issue
+reference、repository revision、模块自有 surface、contributor evidence 和模型 reasoning
+映射到 <code>reward_memory_candidate_v0</code>。所有 guard 与 lifecycle decision 仍由共享 core 所有。
+这是第一条复用证据，不是 Issue Fix 专用 memory 实现。</p>
+<h2 id="_5">最简写入闭环<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p><code>loopx reward-memory ingest-event</code> 是一条薄的原子编排，而不是新的 memory 产品层。配置好的
+实验显式选择 adapter。<code>issue_fix_maintainer_feedback</code> 继续作为 Issue Fix 兼容适配器；
+<code>scoped_feedback</code> 则接受通用的 <code>scoped_feedback_reward_memory_event_v0</code>，可用于任意模块限定
+surface。两者都只把严格、紧凑的字段映射到同一个 <code>reward_memory_candidate_v0</code>，不拥有第二套
+lifecycle、store、scheduler、recall path 或 semantic router。LoopX 不读取或保存原始 feedback
+body，也不会根据关键词自动判断“哪条反馈值得记忆”。模型或调用模块先把材料压缩成只包含
+source ref、已验证 actor/role、精确 workspace/project/surface/revision、内容摘要、reasoning
+和当前 artifact 证据的 event。</p>
+<p>一个 <code>reward_memory_standing_policy_v0</code> 预先声明 corpus owner、reviewer、authority source、
+精确 project/surface、唯一 memory class、允许的 source kind、已验证 actor role 和 action
+scope。它把“每条 comment 重复审批”收敛成“一次批准精确边界”；它不能创造 credential、
+仓库写权限、publish/production scope 或跨项目 authority。任何越界、冲突、非 current source
+或 raw/unmodelled 字段都会在 provider 调用前 <code>guard_blocked</code>。</p>
+<p>同一命令按顺序执行：确定性 <code>candidate_ref</code> 去重、standing-policy accept、active envelope、
+声明 provider 的 <code>sync</code>、同一 exact corpus/surface 的 function-boundary recall，以及
+resource ref、candidate ref、canonical content digest 三重读回校验。只有三项都一致时，
+<code>reward_memory_ingest_receipt_v0</code> 才返回 <code>activated</code> 和
+<code>memory_available_for_recall=true</code>。Provider 不可用、commit pending 或读回不一致都 fail open，
+不阻塞调用方的正常工作。<code>observed_at</code> 是事件第一次被观察到的不可变时间，retry 必须复用它；
+provider target 同时绑定 standing-policy 与 candidate digest，避免策略换版误复用旧激活。
+<code>--execute</code> 缺省关闭，dry-run 只返回 <code>planned</code>。Execute 还必须同时提供 goal id 和 allowlist
+内 agent id，调用方不能通过直接传 provider binding 绕过默认关闭的实验策略。</p>
+<p>调用方仍然显式调用自己现有的 Stage 3 function-boundary recall hook。Issue Fix 保留
+<code>run_issue_fix_patch_planning_reward_memory</code>，其他模块使用各自 surface 所有的 hook。模型决定
+apply、ignore 或 refute，并复用共享 application receipt；ingest seam 不增加确定性语义路由
+或后台 scheduler。</p>
+<h2 id="openviking">与 OpenViking 的对齐关系<a class="headerlink" href="#openviking" title="Permanent link">&para;</a></h2>
+<p>五类记忆保持 provider-neutral；Stage 0 的边界已经结合 OpenViking 当前公开架构和代码
+进行校验：</p>
+<ul>
+<li>OpenViking 是 context database，不是 action-authority system。AGFS content 是
+  source of truth，vector index 保存 retrieval reference。</li>
+<li>OpenViking <code>preferences</code> 可以提供经过 review 的 <code>soft_preference</code> 候选，但不会转成
+  permission。</li>
+<li>OpenViking <code>trajectories</code> 是从一次执行中提炼的只追加 operation contract；
+  <code>experiences</code> 是支持 upsert、看起来可以执行的泛化经验，也可以显式 <code>supersede</code> 旧
+  experience。两者都映射成 advisory <code>procedural_experience</code>，使用前需要验证当前
+  revision。</li>
+<li>OpenViking <code>cases</code> 显式定义训练或评测任务与 rubric，不是 experience instruction，
+  也不能作为 policy 注入。</li>
+<li>OpenViking Working Memory 是用于 session continuation 的七段式 archive overview，
+  映射到 <code>working_context/session_working_memory</code>，不属于长期 policy。LoopX 当前的
+  registry/todo/checkout observation 映射到另一个 subtype：
+  <code>fresh_execution_context</code>。</li>
+<li>OpenViking <code>soul.md</code> 或其他 provider record 可以包含 policy evidence；只有 actor 与
+  repository/action authority scope 被独立验证后，内容才能成为 LoopX <code>hard_policy</code>。
+  内容可以推导，authority 不能推导。</li>
+<li>Account、user、peer、session 和 repository-revision boundary 始终属于 scope 与
+  privacy。Peer label 不授予 cross-user 或 cross-agent authority。</li>
+</ul>
+<p>Provider health 拆成 <code>corpus_present</code>、<code>index_present</code>、
+<code>retrieval_query_succeeded</code>、<code>result_readback_verified</code> 和
+<code>memory_applied_with_receipt</code>，这些状态不能合并。当前 OpenViking Codex auto-recall path
+把 <code>experiences</code> quota 配置为 0，因此 experience corpus 可以存在，但不会自动 recall。
+Stage 1 负责 inventory 与 health proof；Stage 0 不声明这项能力已经可用。</p>
+<p>公开依据包括 OpenViking
+<a href="https://docs.openviking.ai/en/concepts/01-architecture">架构</a>、
+<a href="https://docs.openviking.ai/en/concepts/08-session">Session Management</a>、
+<a href="https://docs.openviking.ai/en/concepts/11-multi-tenant">Multi-Tenant and Peer Isolation</a>，
+以及源码 revision
+<a href="https://github.com/volcengine/OpenViking/tree/ba46491af0a79467ea268ef370e35b68f86abf73"><code>ba46491</code></a>。</p>
+<h2 id="pilotmeta">Pilot/meta 分工<a class="headerlink" href="#pilotmeta" title="Permanent link">&para;</a></h2>
+<p>Pilot 只有在以下条件同时成立时才能直接接手 fix：行为已经确认是 bug；范围限定在一个
+surface；变更不会修改 semantic contract，也不会把产品特定 policy 放进通用边界；
+reproduction 与 validation 已明确；edge-case complexity 为 low 或 medium；相关证据
+完整。以下情况需要 meta design review：by-design 或语义不确定；semantic-contract
+change；跨 surface 变更；generic-boundary leakage；edge-case complexity 为 high。</p>
+<p>证据要求按照相关性启用，不使用笼统的“core-component”规则：effect evidence 始终必需；
+用户可见行为变化需要 UX evidence；hot path 或 storage behavior 变化需要 performance
+evidence；只有声明 retrieval 或 memory quality 时才需要 benchmark evidence。缺少必需
+证据、同时又没有 meta trigger 时，结果是 <code>hold_for_evidence</code>。这样既允许 core module
+内部的受限 bug 保持 pilot scope，也能升级那些表面很小、实际修改公开或存储合同的变更。</p>
+<p>这是一套 guarded routing，不产生 cross-agent authority。Live agent 继续在护栏内推理
+语义与证据。Meta lane 不编辑或认领 pilot todo，pilot 也不能凭一次 memory hit 绕过
+design gate。</p>
+<h2 id="pr-3237">PR #3237 回归样例<a class="headerlink" href="#pr-3237" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/volcengine/OpenViking/pull/3237">OpenViking PR #3237</a> 是当前的负向回归
+样例。它尝试让通用 directory listing 跨 backend 与 Web Studio surface 反映
+session-specific activity，但维护中的 directory-mtime 行为原本就是 by design。该 patch
+为了一个产品特定 edge case 修改通用 filesystem/session contract，跨越 backend 与 Web
+Studio，并在 listing/storage path 增加 metadata read；同时缺少 product-effect、UX 和
+performance evidence。因为它没有声明 retrieval 或 memory-quality 收益，所以不需要
+benchmark evidence。</p>
+<p>稳定预期是 <code>meta_design_gate</code>，不是 <code>pilot_fix</code>。Meta 可以把产品行为收窄到
+session-specific presentation boundary，也可以关闭这项变更；已有 memory result 不能
+授权 generic-layer patch。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>loopx<span class="w"> </span>reward-memory<span class="w"> </span>route-check<span class="w"> </span>--case<span class="w"> </span>pr-3237<span class="w"> </span>--format<span class="w"> </span>json
+</span></code></pre></div>
+<h2 id="_6">分阶段职责<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Stage 0：五类记忆、优先级和分工合同。</li>
+<li>Stage 1：已实现的 provider-neutral
+  <a href="../reward-memory-corpus-registry-v0/">corpus registry 与 health contract</a>，覆盖 ownership、
+  authority、freshness、retirement、scope isolation 和 retrieval-health 区分。其中的
+  <code>fresh_execution_context</code> 描述 LoopX 已有能力，不要求建设另一套 context system。</li>
+<li>Stage 2：已实现的无状态 candidate 与 activation-decision seam，建立在现有
+  LoopX/OpenViking evidence 之上。不新增第二套 store、scheduler、automatic recall 或
+  raw-content retention；Issue Fix 是首个 adapter，复用通用 record/decision shape。</li>
+<li>Stage 3：已实现 opt-in cross-module recall/application seam。模型在确定性的
+  scope、authority、privacy、freshness 和 conflict guard 内推理；Issue Fix 的
+  patch planning 与非 Issue-Fix 的 semantic preference 模块复用同一核心和紧凑
+  application receipt。最简 ingest seam 复用 Stage 2/3 与声明 provider，把 standing-policy
+  范围内的紧凑事件原子写入并精确读回；不自动选择事件、corpus 或模块。</li>
+<li>Stage 4：evaluation harness 与 release gate。</li>
+<li>Stage 5：受限的 cross-module dogfood，以及 operator edit/retire control。</li>
+</ul>
+<p>后续阶段必须在这份合同上扩展，不能合并五类记忆、重复建设 context/provider 能力，也
+不能把 provider availability 变成 user gate。Stage 1 继续保持 stateless read model，
+不执行 provider 或 external write。</p>
+<h2 id="stage-3-recall-application-seam">Stage 3 recall 与 application seam<a class="headerlink" href="#stage-3-recall-application-seam" title="Permanent link">&para;</a></h2>
+<p>Stage 3 只接受显式的 <code>reward_memory_recall_request_v0</code>：调用方必须准确指定一个已登记
+corpus 和一个 module-owned surface，同时提供匹配的 read-authority checkpoint、当前
+freshness 与 conflict observation。project、surface、authority、revision、lifecycle 或
+provider binding 任一不匹配，都会在调用 provider 前停止。这里是确定性安全校验，不是
+确定性语义路由器。</p>
+<p>查询与解释仍由调用模块/模型负责。<code>function_boundary</code> 只允许在命名函数边界执行一次
+查询；<code>bounded_agentic_search</code> 最多允许三次由调用方/模型给出的查询。LoopX 不会按
+similarity 自行选择模块或 corpus，也不会扫描全部 corpus、调度后续 recall，或从命中
+结果推导新的 action authority。</p>
+<p>通过 review 的 <code>reward_memory_candidate_review_v0</code> 可以封装成
+<code>reward_memory_active_record_v0</code>，但只有 corpus 声明的 owner 可以执行持久化。Recall
+只接受准确 corpus 与 surface 下的 active envelope。私有 summary 仅在进程内交给模型；
+公共 packet 只保留 opaque provider ref 与紧凑 lineage。Application receipt 保存哈希
+memory ref、模型给出的 reasoning summary 和 current-artifact verification，不保存原始
+provider content。</p>
+<p>Provider 不可用时，seam 返回 setup guidance 并保留原输出；这是 agent/runtime 条件，
+不会自动变成 user gate。模型 application 无效或异常也 fail open。只有同时归因到本次
+召回项并验证当前 artifact，才能产生 <code>applied</code> receipt。Issue Fix 使用固定的
+<code>issue_fix.patch_planning</code> surface；<code>semantic_preference</code> 是第二个非 Issue-Fix consumer。
+当 OpenViking binding 的 scope 位于 <code>/peers/&lt;peer&gt;/</code> 下时，必须显式携带完全一致的
+<code>actor_peer_id</code>。LoopX 只将它传给 scoped provider 操作，不会从任意目标 URI 推导或冒用
+actor 身份。</p>
+<h2 id="stage-4">Stage 4 评估与发布门禁<a class="headerlink" href="#stage-4" title="Permanent link">&para;</a></h2>
+<p>Stage 4 只在现有共享核心之上增加一套受限 contract suite，不新增另一套 evaluator、
+store、provider、scheduler 或 semantic router：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>loopx<span class="w"> </span>reward-memory<span class="w"> </span>evaluate<span class="w"> </span>--format<span class="w"> </span>json
+</span></code></pre></div>
+<p>Runner 会直接执行真实的 candidate、recall、application、Issue Fix adapter 与 route guard
+代码，覆盖八类 case：compact/restart 后存活；project/module scope isolation；
+supersede/revoke 拒绝；stale source 拒绝；多人 authority 匹配；gate 不被覆盖；在验证当前
+artifact 后影响 candidate ranking；以及避免为 PR #3237 这类 edge case 生成大 patch。</p>
+<p><code>evaluation.py</code> 只负责 case 编排、断言、指标与 release gate。可复用的 setup 和 provider
+double 放在 <code>evaluation_fixtures.py</code>，并使用中性的 fixture identity；OpenViking 只出现在
+显式命名的 PR #3237 Issue Fix 回归 fixture 中。项目身份属于 fixture data，不属于
+evaluator policy。</p>
+<p><code>reward_memory_evaluation_v0</code> 同时汇报 task outcome、真实本地 runner latency、公共证据
+字节数、model token 数、provider/storage write、false application、maintainer interruption
+与 user gate。model token 为零表示这套确定性 contract suite 没有调用模型，不代表后续
+dogfood 的 token 成本估算。只有全部 case 通过，且 write、false application、
+interruption 和 user gate 计数均为零，release gate 才能通过。</p>
+<p>通过后的状态是 <code>ready_for_bounded_dogfood</code>，不是 production release。它只证明 core
+contract invariant，不声明 semantic uplift，也不授权 production rollout。Stage 5 必须
+使用经 corpus owner 批准的 record、精确 provider readback 和真实模块结果，才能讨论收益。</p>
+<h2 id="stage-5-dogfood-receipt-operator-control">Stage 5 dogfood receipt 与 operator control<a class="headerlink" href="#stage-5-dogfood-receipt-operator-control" title="Permanent link">&para;</a></h2>
+<p>Stage 5 只在 Stage 3 application receipt 上增加一层薄的证据合同，不新增 store、scheduler、
+语义路由器、automatic recall 或第二套 evaluator。调用方传入紧凑的真实模块 observation，
+其中 artifact reference 必须与 application receipt 一致：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>loopx<span class="w"> </span>reward-memory<span class="w"> </span>dogfood-evaluate<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span>--input<span class="w"> </span>compact-observations.json<span class="w"> </span>--format<span class="w"> </span>json
+</span></code></pre></div>
+<p><code>reward_memory_dogfood_receipt_v0</code> 根据已有 application outcome 推导 <code>hit</code>、<code>miss</code> 或
+<code>refute</code>，不接受调用方自行声明结果类型。<code>hit</code> 或 <code>refute</code> 必须同时满足精确 provider
+result readback 与 current-artifact verification。Receipt 只保留 opaque/hashed memory ref、
+紧凑的已验证结果摘要、latency、model token、provider call、intervention count，以及可选的
+紧凑 bot feedback；不保留 raw provider content，也不授予新的 action authority。</p>
+<p>只有 Stage 4 gate 仍然通过，并且受限 batch 同时包含至少一个 Issue Fix 结果、两个不同的
+LoopX domain 结果、hit/miss/refute 三类结果，以及 edit/retire 两类 operator control，
+<code>reward_memory_dogfood_batch_v0</code> 才会进入 <code>ready_for_bounded_issue_fix_pilot</code>。这只是
+试用就绪声明，semantic uplift 与 production rollout 仍然为 false。</p>
+<p>Edit/retire control 同样保持克制：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>loopx<span class="w"> </span>reward-memory<span class="w"> </span>operator-control<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span>--input<span class="w"> </span>reviewed-record.json<span class="w"> </span>--action<span class="w"> </span>retire<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span>--control-ref<span class="w"> </span>control:example:retire<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span>--reasoning-summary<span class="w"> </span><span class="s1">&#39;Current source truth supersedes this record.&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span>--format<span class="w"> </span>json
+</span></code></pre></div>
+<p>Edit checkpoint 必须匹配 corpus owner；retire checkpoint 必须匹配
+<code>maintenance.retirement_authority</code>；两者还必须绑定到准确的 corpus、project 与 action。
+Edit 生成一个引用旧 active record 的 replacement
+candidate，retire 生成 retired decision。两个命令都不写 provider state；真正的 write 与
+精确 readback 仍由声明的 corpus owner 执行，因此 operator control 不会悄悄扩大成
+publish、production 或跨项目 authority。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.action.edit", "content.code.copy", "content.tabs.link", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.path", "search.highlight", "search.share", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,47 @@
+{
+  "schema_version": "loopx_frontstage_share_bundle_v0",
+  "base": "/loopx/",
+  "site_dir": "site",
+  "status_fixture": "site/status.frontstage-share.json",
+  "homepage_entry": "site/index.html",
+  "frontstage_entry": "site/frontstage/index.html",
+  "content_sources": {
+    "public_homepage": "apps/presentation/site",
+    "homepage_evidence_assets": [
+      "docs/assets/long-running-loop-openviking-trajectory.png",
+      "docs/assets/long-running-loop-ml-experiment-trajectory.png"
+    ],
+    "primary_public_story": "docs/showcases/showcase-catalog.json",
+    "interactive_case_pages": [
+      "docs/showcases/cases/0617-blocked-p0-safe-rotation.en.html",
+      "docs/showcases/cases/0617-blocked-p0-safe-rotation.html",
+      "docs/showcases/cases/0619-dynamic-workflow-hardware-agent.en.html",
+      "docs/showcases/cases/0619-dynamic-workflow-hardware-agent.html",
+      "docs/showcases/cases/0619-loopx-self-iteration.en.html",
+      "docs/showcases/cases/0619-loopx-self-iteration.html",
+      "docs/showcases/cases/0620-creator-operator-case-spec.en.html",
+      "docs/showcases/cases/0620-creator-operator-case-spec.html",
+      "docs/showcases/cases/0623-agent-to-agent-pr-comments.en.html",
+      "docs/showcases/cases/0623-agent-to-agent-pr-comments.html",
+      "docs/showcases/cases/0623-overnight-project-refactor.en.html",
+      "docs/showcases/cases/0623-overnight-project-refactor.html",
+      "docs/showcases/cases/0624-pr-issue-auto-fix.en.html",
+      "docs/showcases/cases/0624-pr-issue-auto-fix.html",
+      "docs/showcases/cases/0627-overnight-pr-batch.en.html",
+      "docs/showcases/cases/0627-overnight-pr-batch.html",
+      "docs/showcases/index.en.html",
+      "docs/showcases/index.html"
+    ],
+    "read_only_control_plane_shell": "examples/goal-channel-frontstage-fixture.py",
+    "live_status_feed": false
+  },
+  "public_boundary": {
+    "primary_content_is_showcase_catalog": true,
+    "interactive_pages_from_showcase_catalog": true,
+    "live_registry_state": false,
+    "write_api": false,
+    "raw_logs": false,
+    "local_paths": false,
+    "credentials": false
+  }
+}

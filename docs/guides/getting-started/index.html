@@ -1,0 +1,3750 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://huangruiteng.github.io/loopx/docs/guides/getting-started/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../newcomer-command-path/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/loopx-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Quick Start - LoopX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#getting-started-with-loopx" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="LoopX" class="md-header__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LoopX
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quick Start
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 2c-1.82 0-3.53.5-5 1.35C8 5.08 10 8.3 10 12s-2 6.92-5 8.65C6.47 21.5 8.18 22 10 22a10 10 0 0 0 10-10A10 10 0 0 0 10 2"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../concepts/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../operations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Operations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../capabilities/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Capabilities
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../integrations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Integrations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../development/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../product/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Product
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../showcases/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Showcases
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="LoopX" class="md-nav__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    LoopX
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#codex-app-and-other-agent-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codex App And Other Agent Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-skill-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command Skill Registration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-state-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local State Backup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codex-cli-tui-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codex CLI TUI Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-clone-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No-Clone Install
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributor-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contributor Install
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-skill-install-update-repair-and-cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global Skill Install, Update, Repair, And Cleanup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect-a-project-manually" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connect A Project Manually
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagnose-from-your-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagnose From Your Agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#daily-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Daily Workflow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Daily Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recover-history-index-collisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recover History Index Collisions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#heartbeats-and-quota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Heartbeats And Quota
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dashboard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-private-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Public / Private Boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Development
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation Map
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command Reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repository-quality-guard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repository Quality Guard
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../newcomer-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Newcomer Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom-agent-runner-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Runner Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auto-research-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto Research Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../concepts/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/interaction-pattern-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interaction Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../state-interaction-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    State Interaction Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quota-allocation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quota Allocation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../operations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/attention-queue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attention Queue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/long-task-cadence-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Long Task Cadence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/authority-source-registration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority Sources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../capabilities/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capabilities
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Capabilities
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capabilities/issue-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Issue Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capabilities/change-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Change Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capabilities/explore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Explore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capabilities/material-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Material Lifecycle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capabilities/value-connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Value Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../integrations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integrations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integrations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/worker-bridge-install-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Worker Bridge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/lark-kanban-control-plane-adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lark Kanban
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/runtime-connector-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Connector Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/benchmark-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../development/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/testing-and-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing And Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/documentation-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Layout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/benchmark-developer-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/control-plane-course/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control Plane Course
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../product/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Product
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product/vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product/release-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product/surfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Surfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product/runtimes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtimes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product/foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../showcases/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Showcases
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Showcases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcases/frontend-surface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend Surface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcases/cases/0617-blocked-p0-safe-rotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blocked P0 Safe Rotation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcases/cases/0619-loopx-self-iteration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LoopX Self Iteration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcases/cases/0624-pr-issue-auto-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PR Issue Auto Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#codex-app-and-other-agent-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codex App And Other Agent Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-skill-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command Skill Registration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-state-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local State Backup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codex-cli-tui-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codex CLI TUI Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-clone-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No-Clone Install
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributor-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contributor Install
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-skill-install-update-repair-and-cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global Skill Install, Update, Repair, And Cleanup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect-a-project-manually" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connect A Project Manually
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagnose-from-your-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagnose From Your Agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#daily-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Daily Workflow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Daily Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recover-history-index-collisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recover History Index Collisions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#heartbeats-and-quota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Heartbeats And Quota
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dashboard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-private-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Public / Private Boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Development
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation Map
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command Reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repository-quality-guard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repository Quality Guard
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/huangruiteng/loopx/edit/main/docs/guides/getting-started.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="getting-started-with-loopx">Getting Started With LoopX<a class="headerlink" href="#getting-started-with-loopx" title="Permanent link">&para;</a></h1>
+<p>This guide carries the operational detail that used to live in the root
+README. The root README is now the short product landing page; this page is the
+hands-on path for installation, project connection, diagnosis, heartbeats,
+dashboard use, development checks, and command discovery.</p>
+<p>If you are new to LoopX, start with the shorter
+<a href="../newcomer-command-path/">Newcomer command path</a>: it reduces the product
+surface to the host LoopX task entry, project connection, and one manual CLI
+quickstart. This page keeps the full operator and contributor detail.</p>
+<h2 id="codex-app-and-other-agent-setup">Codex App And Other Agent Setup<a class="headerlink" href="#codex-app-and-other-agent-setup" title="Permanent link">&para;</a></h2>
+<p>If you already use Codex, Claude Code, Cursor, or another terminal agent, paste
+this into the agent while it is already operating in the project root:</p>
+<p>Compatibility check for non-Codex agents: the agent surface needs at least one
+control hook for LoopX to drive it, such as shell/CLI execution, a goal/task
+command, an automation or heartbeat hook, or its own loop/scheduler. Without
+one of those, use the manual shell commands instead; LoopX can preserve project
+state, but it cannot make an agent continue automatically.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Connect the current project to LoopX.
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Do not clone the LoopX repository for ordinary use. If `loopx` is not on PATH,
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>install or repair it with the official no-clone installer:
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>curl -fsSL https://raw.githubusercontent.com/huangruiteng/loopx/main/scripts/install-from-github.sh | bash
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>export PATH=&quot;$HOME/.local/bin:$PATH&quot;
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Then run `loopx doctor`. Work only from the current project root:
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>1. If LoopX state already exists, reuse it and do not create or overwrite a
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>   goal or the active objective.
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>2. If the project is not connected, prefer `loopx connect`; use
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>   `loopx bootstrap` only when project state clearly needs initialization.
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>3. Ensure `.loopx/`, `.codex/goals/`, and `.local/` are ignored.
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>4. Set up the thin LoopX heartbeat for this surface. For Codex App, start the
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>   recurring automation at 3 minutes, then follow
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>   `quota should-run.scheduler_hint` for backoff and self-stop behavior.
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>5. Stop after setup and report the active state id, current user gate, top
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>   agent todo, and next safe action.
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>Do not commit `.loopx/`, `.codex/goals/`, `.local/`, live ACTIVE_GOAL_STATE
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>files, runtime registries, raw logs, credentials, or private local paths. Do
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>not start longer delivery work in this setup turn.
+</span></code></pre></div>
+<p>For a longer generated handoff prompt, install once and run:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>loopx<span class="w"> </span>new-project-prompt<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span>--project<span class="w"> </span>/path/to/your-project<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>--goal-doc<span class="w"> </span>/path/to/your-project/GOAL.md
+</span></code></pre></div>
+<p>The command output is meant to be pasted into Codex or Claude Code. It contains
+the full guard, quota, todo, and heartbeat protocol for a new project.</p>
+<p>Success looks like this:</p>
+<ul>
+<li><code>loopx doctor</code> passes;</li>
+<li>the project has <code>.loopx/registry.json</code>;</li>
+<li>the project has <code>.codex/goals/&lt;goal-id&gt;/ACTIVE_GOAL_STATE.md</code>;</li>
+<li><code>loopx status</code> shows the goal and who should act next;</li>
+<li>local runtime state is ignored, not committed.</li>
+</ul>
+<h2 id="command-skill-registration">Command Skill Registration<a class="headerlink" href="#command-skill-registration" title="Permanent link">&para;</a></h2>
+<p>The installer also registers the LoopX command family for host surfaces that
+can discover user-installed skills:</p>
+<ul>
+<li>Codex CLI / IDE / App: explicit LoopX command-facade skills under
+  <code>~/.codex/skills/loopx*</code>. Codex does not currently support user-defined
+  native top-level <code>/loopx</code> slash commands, so invoke the project command
+  through <code>$loopx</code> or <code>/skills</code>. The primary <code>LoopX</code> command facade and
+  <code>LoopX Project</code> workflow skill are separate entries: command facades set
+  <code>allow_implicit_invocation: false</code>, while richer workflow skills such as
+  <code>loopx-project</code> and <code>loopx-pr-review</code> keep their normal implicit behavior.</li>
+<li>Claude Code: lightweight user skills under <code>~/.claude/skills/loopx*</code>, so the
+  command family can appear as Claude Code slash commands without enabling the
+  opt-in MCP/hook adapter.</li>
+<li>OpenCode: static command files under <code>~/.config/opencode/commands/</code> expose
+  native <code>/loopx</code> slash commands after restart. The executable goal bridge
+  (timer-based idle continuation gated by LoopX quota) requires an explicit
+  <code>--with-goal-bridge</code> install. The wrapped goal runtime keeps private restart
+  state under each project's <code>.opencode/goals/</code>; add that directory to project
+  ignore rules before using the persistent bridge.</li>
+</ul>
+<p>The command family is the same across surfaces, even when the host-specific
+entry point is different:</p>
+<table>
+<thead>
+<tr>
+<th>Command family</th>
+<th>Host entry</th>
+<th>CLI fallback</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Project goal start</td>
+<td><code>/loopx &lt;goal text&gt;</code> where the host exposes native slash commands; <code>$loopx &lt;goal text&gt;</code> or the <code>LoopX</code> command skill in Codex surfaces that use explicit skills.</td>
+<td><code>loopx start-goal --guided --project . --goal-text "&lt;goal text&gt;" --host-surface &lt;exact-host&gt;</code></td>
+</tr>
+<tr>
+<td>Global manager views</td>
+<td><code>/loopx-global-summary</code>, <code>/loopx-global-gates</code>, <code>/loopx-global-todos</code>, <code>/loopx-global-risks</code>.</td>
+<td><code>loopx slash-commands</code>, then run the listed global manager command for the view you need.</td>
+</tr>
+<tr>
+<td>PR review queue</td>
+<td><code>/loopx-pr-review</code>.</td>
+<td><code>loopx pr-review</code></td>
+</tr>
+</tbody>
+</table>
+<p>Treat the slash or skill entry as a UI convenience. The CLI remains the source
+of truth, and recovery should use the CLI instead of inventing a second state
+path. If a command disappears after an upgrade, first inspect and refresh the
+registered command files:</p>
+<p>To refresh those files after an upgrade, run:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>loopx<span class="w"> </span>slash-commands
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>loopx<span class="w"> </span>slash-commands<span class="w"> </span>--install
+</span></code></pre></div>
+<p>The command updates files that LoopX owns, including older LoopX-generated
+files with known legacy signatures. If a same-name file has no LoopX managed
+marker or legacy signature, LoopX leaves it untouched and reports
+<code>skipped_user_file</code>.</p>
+<p>If a project-local goal command still cannot be invoked through the host, run
+the equivalent guided start preview from the project root:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>loopx<span class="w"> </span>start-goal<span class="w"> </span>--guided<span class="w"> </span>--project<span class="w"> </span>.<span class="w"> </span>--goal-text<span class="w"> </span><span class="s2">&quot;&lt;goal text&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span>--host-surface<span class="w"> </span>codex-cli-tui
+</span></code></pre></div>
+<p>That preserves the <code>/loopx &lt;goal text&gt;</code> semantics while keeping mutation under
+the agent's control: preserve the exact task text, inspect or connect state,
+plan before todo writeback, refresh state, activate the correct host loop, run
+<code>quota should-run</code>, and continue only when the guard allows. Host and plugin
+integrations that need the lower-level handoff packet can use
+<code>loopx bootstrap-command-pack --project . --goal-text "&lt;goal text&gt;"</code>. For global
+manager or PR review commands, use <code>loopx slash-commands</code> to print the current
+canonical command list and fallback CLI shapes.</p>
+<p>Use <code>codex-app</code>, <code>codex-app-ssh</code>, <code>codex-ide-plugin</code>, <code>codex-cli-tui</code>, or
+<code>opencode</code> for the corresponding host. Use <code>codex-app-ssh</code> when the desktop app
+is attached to a remote workspace over SSH and its automation tools are
+unavailable; LoopX will generate a visible <code>/goal</code> task instead. Select
+<code>codex-ide-plugin</code> only when LoopX is running through the installed IDE plugin;
+using Codex beside an editor does not make the host an IDE plugin. If the exact
+host is not known, omit <code>--host-surface</code> once: LoopX
+returns a read-only selection gate with exact rerun commands and does not write
+project state. The legacy <code>codex-ide</code> value remains an accepted compatibility
+alias but is no longer advertised. This prevents an upgrade from silently
+routing an IDE plugin or terminal start to a desktop-app heartbeat.</p>
+<h2 id="local-state-backup">Local State Backup<a class="headerlink" href="#local-state-backup" title="Permanent link">&para;</a></h2>
+<p>Before risky migrations, local scheduler changes, or release-install repair,
+preview the state archive:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>loopx<span class="w"> </span>backup-state<span class="w"> </span>--project<span class="w"> </span>.
+</span></code></pre></div>
+<p>Write the archive only when the preview looks right:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>loopx<span class="w"> </span>backup-state<span class="w"> </span>--project<span class="w"> </span>.<span class="w"> </span>--execute
+</span></code></pre></div>
+<p>The backup is written under <code>~/.codex/loopx/backups</code> by default. It captures the
+shared LoopX runtime root, Codex App automations, installed <code>loopx-*</code> skills,
+the current project's state, and every reachable project's <code>.loopx</code>,
+<code>.codex/goals</code>, <code>.claude/goals</code>, <code>.local/goals</code>, registry-declared active state,
+and source registry discovered from the global registry. Missing or stale
+project routes remain visible in the manifest. Use <code>--current-project-only</code>
+only when a deliberately narrow archive is sufficient. Treat the archive and
+manifest as private local recovery material; do not commit them or publish
+their contents.</p>
+<p>The preview reports <strong>logical source bytes before compression</strong>, not the final
+archive footprint. Full runtime history and project-local goal evidence are
+included intentionally so the archive can support a faithful rollback. The
+category breakdown shows which surface contributes the bytes, while contained
+target overlap identifies exact recovery targets such as active-state or
+source-registry files that are also covered by a parent project directory.
+After <code>--execute</code>, use <code>archive_size_bytes</code> and the archive/logical ratio to
+judge the actual storage cost.</p>
+<h2 id="codex-cli-tui-setup">Codex CLI TUI Setup<a class="headerlink" href="#codex-cli-tui-setup" title="Permanent link">&para;</a></h2>
+<p>For Codex CLI users, the product target is: start in the Codex TUI, send one
+LoopX setup message, and let the agent install or reuse LoopX,
+connect the project, and stop with the current gate/todo/next-action report.
+As part of that setup, the agent sets the current Codex goal to the thin
+heartbeat prompt so the user immediately feels the loop is live. Later
+automation should stay visible and interruptible in that TUI whenever the CLI
+exposes a safe session-attachment primitive. The first-run path should not
+require you to understand registry paths, runtime roots, JSON payloads, session
+files, or heartbeat prompt syntax.</p>
+<p>First-run path:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Connect this repo to LoopX from this visible Codex CLI TUI. Do not clone the
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>LoopX repository for ordinary use. If `loopx` is not on PATH, install or repair
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>it with the official no-clone installer:
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>curl -fsSL https://raw.githubusercontent.com/huangruiteng/loopx/main/scripts/install-from-github.sh | bash
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>Then run `loopx doctor`. Work only from this project root: if LoopX state
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>already exists, reuse it and do not create or overwrite a goal or the active objective; if the project
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>is not connected, prefer `loopx connect`, and use `loopx bootstrap` only when
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>project state clearly needs initialization. Ensure `.loopx/`, `.codex/goals/`,
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>and `.local/` are ignored. Keep me in this TUI, do not use hidden headless
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>execution. After the project is connected, generate the thin heartbeat prompt
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>and set the current Codex CLI task body with `/goal &lt;thin task_body&gt;`. Then
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>stop and report the active state id, current user gate, top agent todo, and
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>next safe action.
+</span></code></pre></div>
+<p>The generated paste block is a setup-first rewrite of the App onboarding
+experience, not the heartbeat body itself. The first useful response should
+show the current state id, concrete user gate if one exists, top user todo if
+any, top agent todo, and next safe action before longer delivery work. The
+setup turn should not spend quota for delivery unless the user explicitly asks
+it to do delivery in the setup turn. The agent should still generate
+<code>heartbeat-prompt --thin</code> and install that body into the surface during setup:
+Codex CLI gets <code>/goal &lt;thin task_body&gt;</code>, while Codex App gets a heartbeat
+automation body that starts at 3 minutes and then follows
+<code>scheduler_hint</code>.</p>
+<p>Once <code>loopx</code> is installed, generate a stricter repo-specific setup
+message:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>loopx<span class="w"> </span>codex-cli-bootstrap-message<span class="w"> </span>--project<span class="w"> </span>.<span class="w"> </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;
+</span></code></pre></div>
+<p>Keep that as the preferred interactive path: the human watches and steers in
+Codex CLI TUI, while LoopX owns quota/status/todos/gates/writeback. The
+generated packet also shows the no-clone install-repair command, the
+post-bootstrap thin prompt generation command, and a transcript-free validation
+checklist, so a fresh repo path can be reviewed without touching raw Codex
+session data.</p>
+<p>If the user only wants the pasteable TUI text, omit the wrapper:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>loopx<span class="w"> </span>codex-cli-bootstrap-message<span class="w"> </span>--project<span class="w"> </span>.<span class="w"> </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span>--message-only
+</span></code></pre></div>
+<p>To review the whole one-message loop contract without running Codex, generate a
+pilot packet:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>loopx<span class="w"> </span>codex-cli-one-message-loop-pilot<span class="w"> </span>--project<span class="w"> </span>.<span class="w"> </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span>--agent-id<span class="w"> </span>&lt;agent-id&gt;
+</span></code></pre></div>
+<p>The pilot ties the first TUI paste message to the later
+<code>codex-cli-local-scheduler-exec</code> bridge. It stays dry-run by default and is for
+operators/contributors validating the path, not a prerequisite for first-time
+users.</p>
+<p>To review the returning-user local-driver loop without touching a real Codex
+session, generate the visible local-driver pilot packet:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>loopx<span class="w"> </span>codex-cli-visible-local-driver-pilot<span class="w"> </span>--project<span class="w"> </span>.<span class="w"> </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span>--agent-id<span class="w"> </span>&lt;agent-id&gt;
+</span></code></pre></div>
+<p>This keeps the first-message TUI start primary, then models later scheduler
+ticks, visible proof, idle guard, guarded execution, blocker writeback, and
+no-transcript boundaries as public-safe metadata.</p>
+<p>The later-turn rule is intentionally stricter than the first message: LoopX may
+add a visible steering turn only after public-safe visible proof,
+runtime idle evidence, a fresh guard, and explicit execution bounds. Without
+that proof, the driver should write a compact blocker or keep the one-message
+setup bootstrap as the product path.</p>
+<p>The commands below are optional automation checks after the setup path
+works. To evaluate future same-session automation support without touching
+transcripts or session files, run:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>loopx<span class="w"> </span>codex-cli-session-probe
+</span></code></pre></div>
+<p>To turn that probe into a dry-run driver decision without mutating a Codex
+session, run:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>loopx<span class="w"> </span>codex-cli-visible-driver-plan<span class="w"> </span>--project<span class="w"> </span>.<span class="w"> </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;
+</span></code></pre></div>
+<p>To see the full local automation setup plan in one packet, including quota
+guard, visible-driver decision, TUI bootstrap command, the headless-disabled
+boundary, and idle-guard requirement, run:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>loopx<span class="w"> </span>codex-cli-local-driver-plan<span class="w"> </span>--project<span class="w"> </span>.<span class="w"> </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span>--agent-id<span class="w"> </span>&lt;agent-id&gt;
+</span></code></pre></div>
+<p>This is still dry-run-only. It does not run Codex, read transcripts, read
+session files, mutate a session, or spend quota.</p>
+<p>When the driver plan says <code>resume [PROMPT]</code> or <code>remote-control</code> might support a
+visible same-session path, validate a public-safe proof fixture before treating
+that path as automation:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>loopx<span class="w"> </span>codex-cli-visible-session-proof<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">  </span>--project<span class="w"> </span>.<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">  </span>--agent-id<span class="w"> </span>&lt;agent-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">  </span>--proof-fixture<span class="w"> </span>visible-proof.public.json
+</span></code></pre></div>
+<p>The fixture should contain only booleans and public-safe labels proving user
+opt-in, quota guard, idle guard, visible turn, interruptibility, no transcript
+or session-file reads, and compact writeback planning.</p>
+<p>The default Codex CLI setup-then-<code>/goal</code> product path does not offer a headless fallback.
+For compatibility, the old handoff command only reports the disabled boundary
+and points back to the message-only TUI bootstrap:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>loopx<span class="w"> </span>codex-cli-exec-handoff<span class="w"> </span>--project<span class="w"> </span>.<span class="w"> </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;
+</span></code></pre></div>
+<p>See the <a href="../../product/runtimes/codex-cli/codex-cli-tui-loop/">Codex CLI TUI-first loop</a> contract
+for the bootstrap, session-attached automation, and headless-disabled boundary.
+The <a href="../../product/runtimes/codex-cli/codex-cli-first-run-rehearsal/">Codex CLI first-run rehearsal</a>
+keeps the shortest user-facing route in one place: no-clone install,
+one-message setup bootstrap, and proof-capture fixtures for later automation.
+For current product scheduling, the
+<a href="../../product/runtimes/codex-cli/codex-cli-tui-continuation-priority/">Codex CLI TUI continuation priority</a>
+keeps same-open-TUI continuation ahead of frontstage or showcase polish when
+both are runnable.</p>
+<p>Maintainers can validate the public fresh-clone path with:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>python3<span class="w"> </span>examples/fresh-clone-quickstart-smoke.py
+</span></code></pre></div>
+<h2 id="no-clone-install">No-Clone Install<a class="headerlink" href="#no-clone-install" title="Permanent link">&para;</a></h2>
+<p>Install or update LoopX without cloning the repository:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/huangruiteng/loopx/main/scripts/install-from-github.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.local/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>loopx<span class="w"> </span>doctor
+</span></code></pre></div>
+<p>The installer downloads a GitHub archive, writes a stable local release snapshot
+under <code>~/.local/share/loopx/releases/</code>, installs the CLI wrapper under
+<code>~/.local/bin</code>, installs the <code>man loopx</code> page under
+<code>~/.local/share/man</code>, and installs the reusable LoopX skills under
+<code>~/.codex/skills</code>.</p>
+<p><code>loopx doctor</code> reports <code>install_freshness</code>. For a productized upgrade path, use
+the explicit self-update interface:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>loopx<span class="w"> </span>update<span class="w"> </span>--check
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>loopx<span class="w"> </span>update<span class="w"> </span>--dry-run
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>loopx<span class="w"> </span>update<span class="w"> </span>--execute
+</span></code></pre></div>
+<p><code>--check</code> and <code>--dry-run</code> are read-only. For a GitHub repo/ref source,
+<code>--check</code> also performs a bounded version read from that exact ref. If the
+network is unavailable, it keeps the local health result and says that the
+latest source version could not be confirmed; a custom archive URL skips the
+comparison because LoopX cannot assume it matches the configured repo/ref.
+<code>--execute</code> reruns the no-clone installer, reports the source archive, keeps the
+previous release snapshot as a rollback target when possible, and validates the
+result with <code>loopx doctor</code>.</p>
+<p>This is the recommended install repair path for Codex CLI users because an
+agent can run it from inside the TUI without asking the user to clone this
+repository first.</p>
+<h2 id="contributor-install">Contributor Install<a class="headerlink" href="#contributor-install" title="Permanent link">&para;</a></h2>
+<p>Install one shared local checkout when you want to develop LoopX itself
+or test a live canary wrapper:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/huangruiteng/loopx<span class="w"> </span>~/loopx
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>~/loopx/scripts/install-local.sh
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>loopx<span class="w"> </span>doctor
+</span></code></pre></div>
+<p>The checkout installer creates:</p>
+<ul>
+<li><code>~/.local/bin/loopx</code>, pointing at a stable local release snapshot;</li>
+<li><code>~/.local/bin/loopx-canary</code>, pointing at the live checkout;</li>
+<li><code>~/.local/share/man/man1/loopx.1.gz</code>, so <code>man loopx</code> opens the short
+  operator manual after the shell profile reloads;</li>
+<li>reusable global LoopX Codex skills under <code>~/.codex/skills</code>;</li>
+<li>canonical sources for project-scoped skills, which are not installed globally.</li>
+</ul>
+<p>Those global skills are the intended product surface for reusable LoopX
+connection and control-plane behavior. Capability workflows that should only
+exist in selected repositories use managed project skills instead.
+Project-specific state and private decisions stay in the local registry and
+active goal files.</p>
+<p>Use the canary wrapper for one or two selected controllers before promoting a
+checkout to the default local release.</p>
+<h2 id="global-skill-install-update-repair-and-cleanup">Global Skill Install, Update, Repair, And Cleanup<a class="headerlink" href="#global-skill-install-update-repair-and-cleanup" title="Permanent link">&para;</a></h2>
+<p><code>scripts/install-local.sh</code> manages three reusable local surfaces:</p>
+<ul>
+<li>the CLI wrappers under <code>~/.local/bin</code>;</li>
+<li>the local manual page under <code>~/.local/share/man</code>;</li>
+<li>the LoopX Codex skills under <code>~/.codex/skills</code>.</li>
+</ul>
+<p>For a no-clone install, use <code>loopx update</code> to refresh the release snapshot and
+skills:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>loopx<span class="w"> </span>update<span class="w"> </span>--check
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>loopx<span class="w"> </span>update<span class="w"> </span>--execute
+</span></code></pre></div>
+<p>For a contributor checkout, re-run the installer to update both surfaces from
+the current clean <code>origin/main</code> checkout:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nb">cd</span><span class="w"> </span>~/loopx
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>git<span class="w"> </span>pull<span class="w"> </span>--ff-only
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>./scripts/install-local.sh
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>loopx<span class="w"> </span>doctor
+</span></code></pre></div>
+<p>The installer treats default promotion as a release boundary. A clean checkout
+at <code>origin/main</code> promotes automatically. A dirty checkout or another branch
+updates only <code>loopx-canary</code> and leaves the default CLI, installed skills, and
+manual untouched. After validating that checkout, promote it explicitly:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nv">LOOPX_PROMOTE_DEFAULT</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>./scripts/install-local.sh
+</span></code></pre></div>
+<p>The release manifest and <code>loopx doctor</code> record whether promotion came from the
+trusted-main path, a trusted GitHub archive, or an explicit override.</p>
+<p>Use <code>loopx-canary</code> when you want to test the live checkout before making
+it the default release snapshot. <code>loopx doctor</code> reports whether the
+default wrapper points at a release snapshot, whether the canary wrapper points
+at the live checkout, and whether the required skills are installed.</p>
+<p>If an agent says it cannot find LoopX, repair in this order:</p>
+<ol>
+<li>Ensure <code>~/.local/bin</code> is on <code>PATH</code>.</li>
+<li>On a clean <code>origin/main</code>, re-run <code>~/loopx/scripts/install-local.sh</code>; from any
+   other checkout, use <code>loopx-canary</code> until explicitly promoting it.</li>
+<li>Run <code>loopx doctor</code>.</li>
+<li>If a recurring automation is stale, regenerate it with
+   <code>loopx heartbeat-prompt --thin --goal-id &lt;goal-id&gt; --agent-id &lt;agent-id&gt; --agent-scope "&lt;scope&gt;"</code>.</li>
+</ol>
+<p>The reusable skills have intentionally narrow jobs:</p>
+<table>
+<thead>
+<tr>
+<th>Skill</th>
+<th>Use it for</th>
+<th>Do not use it for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>loopx-project</code></td>
+<td>Connecting projects, reading status/quota/history, diagnosing LoopX, generating heartbeat/review packets, and refreshing state.</td>
+<td>Reading private project documents by default or replacing the CLI as source of truth.</td>
+</tr>
+<tr>
+<td><code>loopx-pr-review</code></td>
+<td>Running <code>/loopx-pr-review</code>, preserving the <code>loopx pr-review</code> packet, and guiding per-PR five-block reviews.</td>
+<td>Approving, commenting on, merging, self-merging, or admin-bypassing a PR.</td>
+</tr>
+<tr>
+<td><code>loopx-doc-registry</code></td>
+<td>Registering durable project material and redacted authority-source metadata.</td>
+<td>Copying raw doc bodies, internal URLs, or private comments into public repo docs.</td>
+</tr>
+<tr>
+<td><code>loopx-material</code></td>
+<td>Operating an explicitly activated project's lossless material inventory, lifecycle, ranked-entry rebuild, bounded rerank, owner-gated apply, and rollback.</td>
+<td>Ordinary one-off reading, project-specific source discovery, or mutating a material store merely because the project skill is discoverable.</td>
+</tr>
+<tr>
+<td><code>loopx-change-quality</code></td>
+<td>Reviewing one exact final diff, optionally applying one bounded safe fix, and recording a policy-enforced receipt.</td>
+<td>Acting when the goal policy is disabled, recursively reviewing reviewers, or replacing project-native validators.</td>
+</tr>
+<tr>
+<td><code>loopx-self-repair</code></td>
+<td>Repairing surprising control-plane behavior, stale projection, tiny turns, or contradictory guard payloads.</td>
+<td>Lowering gates, guessing around missing authority, or committing private runtime state.</td>
+</tr>
+</tbody>
+</table>
+<p>Auto-research role guidance is worker-local: the visible worker launcher owns
+the <code>loopx-auto-research</code> playbook after it has projected a role profile,
+quota packet, and frontier item. It is not installed as a global LoopX skill.</p>
+<p>Keep three layers separate:</p>
+<ul>
+<li><strong>Global skill behavior</strong> belongs in <code>skills/</code> and is installed under
+  <code>~/.codex/skills</code>.</li>
+<li><strong>Project state</strong> belongs in <code>.loopx/</code>, <code>.codex/goals/</code>, and
+  <code>~/.codex/loopx</code>; keep it local unless a sanitized fixture is
+  intentionally committed.</li>
+<li><strong>Repository rules</strong> belong in <code>AGENTS.md</code>, <code>CONTRIBUTING.md</code>, and public
+  docs. They can constrain contributors and agents in this repository, but they
+  should not silently become global skill policy for every project.</li>
+</ul>
+<p><code>loopx-material</code> and <code>loopx-change-quality</code> follow <strong>release-owned source,
+project-managed delivery, and goal-scoped activation</strong>. The global installer
+keeps their canonical source in the LoopX release but does not publish either
+skill under <code>~/.codex/skills</code>. The generic lifecycle and host-surface contract is documented in
+<a href="../../reference/project-skill-delivery/">Project Skill Delivery</a>. Enable discovery only
+for a connected project:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>loopx<span class="w"> </span>project-skill<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">  </span>--project<span class="w"> </span>.<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">  </span>--skill<span class="w"> </span>loopx-material<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">  </span>--surface<span class="w"> </span>codex<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">  </span>--execute
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>loopx<span class="w"> </span>project-skill<span class="w"> </span>status<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="w">  </span>--project<span class="w"> </span>.<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="w">  </span>--skill<span class="w"> </span>loopx-material<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="w">  </span>--surface<span class="w"> </span>codex
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>
+</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="c1"># Install only when the goal enables change_quality_qualification.</span>
+</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>loopx<span class="w"> </span>project-skill<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a><span class="w">  </span>--project<span class="w"> </span>.<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-14"><a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a><span class="w">  </span>--skill<span class="w"> </span>loopx-change-quality<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-15"><a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a><span class="w">  </span>--surface<span class="w"> </span>codex<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-16"><a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a><span class="w">  </span>--execute
+</span></code></pre></div>
+<p>Host-native project roots are:</p>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>Managed project root</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Codex</td>
+<td><code>.agents/skills/</code></td>
+</tr>
+<tr>
+<td>Claude Code</td>
+<td><code>.claude/skills/</code></td>
+</tr>
+<tr>
+<td>OpenCode</td>
+<td><code>.opencode/skills/</code></td>
+</tr>
+</tbody>
+</table>
+<p>Repeat <code>--surface</code> to install the same skill for multiple hosts in one
+transaction. The locations follow the host discovery contracts documented by
+<a href="https://developers.openai.com/codex/skills">Codex</a>,
+<a href="https://code.claude.com/docs/en/slash-commands#where-skills-live">Claude Code</a>,
+and <a href="https://opencode.ai/docs/skills/#place-files">OpenCode</a>.</p>
+<p>Installing a project skill does not grant domain write authority; the current
+goal/profile/todo must still activate the capability. Use
+<code>loopx project-skill uninstall --project . --skill &lt;skill-id&gt; --surface codex
+--execute</code> to remove a managed copy. Unmanaged or locally modified copies fail
+closed.</p>
+<p>To disconnect only the current project from LoopX, use the project-local
+uninstall command from that project root. It defaults to a dry-run preview and
+refuses to operate directly on the shared global registry:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>loopx<span class="w"> </span>uninstall-project
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>loopx<span class="w"> </span>uninstall-project<span class="w"> </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span>--archive-state<span class="w"> </span>--execute
+</span></code></pre></div>
+<p><code>uninstall-project</code> removes the selected goal from <code>.loopx/registry.json</code> and
+from the shared global registry only when the global entry's <code>source_registry</code>
+points back to this project. It does not uninstall the LoopX CLI and does not
+delete other projects' runtime history. Pass <code>--archive-state</code> to move this
+project's <code>.codex/goals/&lt;goal-id&gt;/</code> directory under
+<code>.loopx/archived-project-state/</code> instead of leaving it in place.</p>
+<p>For manual cleanup of the reusable LoopX CLI and skill surfaces, remove only
+the pieces you intend to drop:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>rm<span class="w"> </span>-f<span class="w"> </span>~/.local/bin/loopx<span class="w"> </span>~/.local/bin/loopx-canary
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>rm<span class="w"> </span>-rf<span class="w"> </span>~/.codex/skills/loopx-project<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="w">       </span>~/.codex/skills/loopx-pr-review<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="w">       </span>~/.codex/skills/loopx-doc-registry<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="w">       </span>~/.codex/skills/loopx-self-repair
+</span></code></pre></div>
+<p>This does not archive connected project state or runtime history. Archive or
+remove <code>.loopx/</code>, <code>.codex/goals/</code>, and <code>~/.codex/loopx</code> only when
+you intentionally want to retire those local project records.</p>
+<h2 id="connect-a-project-manually">Connect A Project Manually<a class="headerlink" href="#connect-a-project-manually" title="Permanent link">&para;</a></h2>
+<p>From the project repository:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nb">cd</span><span class="w"> </span>/path/to/your-project
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>loopx<span class="w"> </span>bootstrap<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">  </span>--goal-id<span class="w"> </span>your-project-goal<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">  </span>--objective<span class="w"> </span><span class="s2">&quot;Improve this project through bounded, verified goal segments.&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="w">  </span>--goal-doc<span class="w"> </span>GOAL.md
+</span></code></pre></div>
+<p><code>connect</code> is an alias for <code>bootstrap</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>loopx<span class="w"> </span>connect<span class="w"> </span>--goal-id<span class="w"> </span>your-project-goal
+</span></code></pre></div>
+<p>This creates or connects:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>your-project/
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>  .loopx/registry.json
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>  .codex/goals/your-project-goal/ACTIVE_GOAL_STATE.md
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>~/.codex/loopx/
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>  goals/&lt;goal-id&gt;/runs/
+</span></code></pre></div>
+<p>Treat live objective state and registries as local runtime data. Add these paths to
+the connected project <code>.gitignore</code> before committing:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>.loopx/
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>.codex/goals/
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>.opencode/goals/
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>goals/**/ACTIVE_GOAL_STATE.md
+</span></code></pre></div>
+<p>Commit only sanitized templates or examples, not a controller's live
+<code>ACTIVE_GOAL_STATE.md</code>.</p>
+<h2 id="diagnose-from-your-agent">Diagnose From Your Agent<a class="headerlink" href="#diagnose-from-your-agent" title="Permanent link">&para;</a></h2>
+<p>Users should not need to run diagnostic commands by hand. Ask your Codex,
+Claude Code, Cursor, or terminal agent:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>Diagnose LoopX for this project end to end. Do not ask me to run shell
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>commands.
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>If `loopx` is missing, install or repair it first. Then run
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>`loopx diagnose` yourself, read the diagnostic packet, and use your own
+</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>reasoning to tell me:
+</span><span id="__span-30-7"><a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>- whether this project can currently self-drive;
+</span><span id="__span-30-8"><a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>- what evidence supports that answer;
+</span><span id="__span-30-9"><a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a>- what is blocking it, if anything;
+</span><span id="__span-30-10"><a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a>- the exact question I need to answer, if a user/controller gate exists;
+</span><span id="__span-30-11"><a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a>- what you will do next.
+</span><span id="__span-30-12"><a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a>
+</span><span id="__span-30-13"><a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a>Do not treat LoopX machine signals as the final verdict. They are
+</span><span id="__span-30-14"><a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a>evidence for your diagnosis.
+</span></code></pre></div>
+<p><code>loopx diagnose</code> is intentionally an agent-facing evidence packet. It
+collects compact <code>status</code>, <code>quota should-run</code>, todo, interaction-contract, and
+boundary signals, then gives the agent a reasoning checklist. The agent makes
+the diagnosis in natural language.</p>
+<p>If you want to try LoopX before connecting a real repo, create a
+disposable demo goal:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.local/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>loopx<span class="w"> </span>demo
+</span></code></pre></div>
+<p>Expected first-run signals:</p>
+<ul>
+<li>the output contains <code>ok: True</code>;</li>
+<li>a project-local registry and active objective state were created under
+  <code>/tmp/loopx-demo</code>;</li>
+<li>one user todo and one agent todo are visible;</li>
+<li><code>refresh-state</code> appended a compact run;</li>
+<li><code>quota should-run</code> returns <code>should_run=True</code> and <code>state=eligible</code>.</li>
+</ul>
+<p>Inspect the demo:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="nb">cd</span><span class="w"> </span>/tmp/loopx-demo
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>loopx<span class="w"> </span>status
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>loopx<span class="w"> </span>quota<span class="w"> </span>should-run<span class="w"> </span>--goal-id<span class="w"> </span>demo-goal
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>loopx<span class="w"> </span><span class="nb">history</span><span class="w"> </span>--goal-id<span class="w"> </span>demo-goal
+</span></code></pre></div>
+<h2 id="daily-workflow">Daily Workflow<a class="headerlink" href="#daily-workflow" title="Permanent link">&para;</a></h2>
+<p>Inspect installation and registry health:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>loopx<span class="w"> </span>doctor
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>loopx<span class="w"> </span>registry
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>loopx<span class="w"> </span>check<span class="w"> </span>--scan-root<span class="w"> </span>.
+</span></code></pre></div>
+<p>Read status and history:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>loopx<span class="w"> </span>status
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>loopx<span class="w"> </span><span class="nb">history</span><span class="w"> </span>--goal-id<span class="w"> </span>your-project-goal
+</span></code></pre></div>
+<p>Add explicit work:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span>add<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>your-project-goal<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="w">  </span>--role<span class="w"> </span>user<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="w">  </span>--text<span class="w"> </span><span class="s2">&quot;Review the owner checklist.&quot;</span>
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>loopx<span class="w"> </span>todo<span class="w"> </span>add<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a><span class="w">  </span>--goal-id<span class="w"> </span>your-project-goal<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-35-8"><a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a><span class="w">  </span>--role<span class="w"> </span>agent<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-35-9"><a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a><span class="w">  </span>--text<span class="w"> </span><span class="s2">&quot;Summarize the safe read-only evidence.&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-35-10"><a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a><span class="w">  </span>--task-class<span class="w"> </span>advancement_task<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-35-11"><a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a><span class="w">  </span>--action-kind<span class="w"> </span>evidence_summary
+</span></code></pre></div>
+<p>Complete an agent todo and atomically add the next executable item:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span><span class="nb">complete</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>your-project-goal<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="w">  </span>--todo-id<span class="w"> </span>todo_ab12cd34ef56<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="w">  </span>--evidence<span class="w"> </span><span class="s2">&quot;Validated with examples/demo-cli-smoke.py&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="w">  </span>--next-agent-todo<span class="w"> </span><span class="s2">&quot;Run the next bounded validation slice.&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a><span class="w">  </span>--next-task-class<span class="w"> </span>advancement_task<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a><span class="w">  </span>--next-action-kind<span class="w"> </span>validation<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-36-8"><a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a><span class="w">  </span>--execute
+</span></code></pre></div>
+<p>Append a state-only refresh after local state or docs change:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>loopx<span class="w"> </span>refresh-state<span class="w"> </span>--goal-id<span class="w"> </span>your-project-goal
+</span></code></pre></div>
+<p>Generate a compact handoff packet for an agent:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>loopx<span class="w"> </span>review-packet<span class="w"> </span>--goal-id<span class="w"> </span>your-project-goal
+</span></code></pre></div>
+<p>Record an operator gate decision or run-bound reward:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>loopx<span class="w"> </span>operator-gate<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>your-project-goal<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="w">  </span>--decision<span class="w"> </span>approve<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-39-4"><a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a><span class="w">  </span>--reason-summary<span class="w"> </span><span class="s2">&quot;Approve read-only map opt-in&quot;</span>
+</span><span id="__span-39-5"><a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a>
+</span><span id="__span-39-6"><a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a>loopx<span class="w"> </span>reward<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-39-7"><a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a><span class="w">  </span>--goal-id<span class="w"> </span>your-project-goal<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-39-8"><a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a><span class="w">  </span>--decision<span class="w"> </span>continue_route<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-39-9"><a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a><span class="w">  </span>--reward<span class="w"> </span>positive<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-39-10"><a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a><span class="w">  </span>--reason-summary<span class="w"> </span><span class="s2">&quot;validation improved and the route is worth extending&quot;</span>
+</span></code></pre></div>
+<h3 id="recover-history-index-collisions">Recover History Index Collisions<a class="headerlink" href="#recover-history-index-collisions" title="Permanent link">&para;</a></h3>
+<p>History writers reserve their JSON/Markdown artifact pair atomically. If an
+older runtime reports legacy index identity collisions, review a complete
+rebuild plan before changing the index:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>loopx<span class="w"> </span>--format<span class="w"> </span>json<span class="w"> </span><span class="nb">history</span><span class="w"> </span>rebuild-index-collisions<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>your-project-goal<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.review_plan&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>reviewed-plan.json
+</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>loopx<span class="w"> </span><span class="nb">history</span><span class="w"> </span>rebuild-index-collisions<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-40-4"><a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a><span class="w">  </span>--goal-id<span class="w"> </span>your-project-goal<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-40-5"><a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a><span class="w">  </span>--review-plan-json<span class="w"> </span>reviewed-plan.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-40-6"><a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a><span class="w">  </span>--execute
+</span></code></pre></div>
+<p>The execute path requires the exact reviewed plan, keeps a pre-rebuild index
+backup, and preserves ambiguous legacy artifacts rather than guessing their
+owner. Truncated plans are not executable; raise <code>--limit</code> and review the
+complete digest first.</p>
+<h2 id="heartbeats-and-quota">Heartbeats And Quota<a class="headerlink" href="#heartbeats-and-quota" title="Permanent link">&para;</a></h2>
+<p>Quota is compute eligibility, not strategy. It answers whether an automatic
+turn may run now, and what kind of turn is allowed.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>loopx<span class="w"> </span>quota<span class="w"> </span>status
+</span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>loopx<span class="w"> </span>quota<span class="w"> </span>plan
+</span><span id="__span-41-3"><a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>loopx<span class="w"> </span>quota<span class="w"> </span>should-run<span class="w"> </span>--goal-id<span class="w"> </span>your-project-goal
+</span></code></pre></div>
+<p>The <code>next_automatic_turn</code> reported by <code>quota plan</code> is only an advisory
+scheduling hint: it chooses the highest-compute eligible goal, while
+operator-gated, focus-waiting, waiting, throttled, paused, and health-blocked
+goals stay out of the eligible lane.</p>
+<p><code>quota should-run</code> returns the machine contract a heartbeat should obey:</p>
+<ul>
+<li><code>should_run</code>: whether delivery work may run now;</li>
+<li><code>waiting_on</code>: user, controller, Codex, external evidence, health, or quota;</li>
+<li><code>work_lane_contract</code>: the next executable lane or monitor/blocker lane;</li>
+<li><code>execution_obligation</code>: whether the agent must attempt a bounded segment;</li>
+<li>user and agent todo summaries;</li>
+<li>safe-bypass or self-repair hints, when enabled;</li>
+<li>the exact spend policy.</li>
+</ul>
+<p>Agent todo summaries separate <code>first_executable_items</code> from
+<code>monitor_open_items</code>: executable items drive the selected goal's primary
+action, while monitor items stay visible as supplemental observation context
+and only spend compute when they produce a material transition or blocker.</p>
+<p>Registry entries can expose per-goal <code>control_plane</code> policy. For example,
+<code>control_plane.self_repair.enabled=true</code> lets <code>quota should-run</code> return a
+bounded <code>decision=self_repair</code> contract for repairable control-plane stalls;
+missing policy defaults off, so other goals keep their normal skip or wait
+behavior.</p>
+<p>If <code>quota should-run</code> returns a <code>gate_prompt</code> or <code>operator_question</code>, the
+target heartbeat should proactively ask that concrete user/controller gate. If
+open user todos are present, do not call the turn "no new user action" while
+they remain open; its report still has to list existing open user todos.</p>
+<p>When <code>safe_bypass_allowed=true</code>, the heartbeat may still do one bounded
+read-only steering or analysis step that is independent of the blocked gate.
+See <a href="../../quota-allocation/">quota allocation</a> for the full allocation
+contract.</p>
+<p>After an automatic turn actually spends delivery compute, append one spend
+event:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>loopx<span class="w"> </span>quota<span class="w"> </span>spend-slot<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>your-project-goal<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a><span class="w">  </span>--slots<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-42-4"><a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a><span class="w">  </span>--source<span class="w"> </span>heartbeat<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-42-5"><a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a><span class="w">  </span>--execute
+</span></code></pre></div>
+<p>Do not append spend for quiet <code>should_run=false</code> skips, preflight failures, or
+pure dry-run previews.</p>
+<p>Generate a guarded Codex App heartbeat body. First-run Codex App onboarding
+should install this body on a 3-minute bootstrap cadence unless the user
+explicitly asks for a different interval; later waits should follow
+<code>quota should-run.scheduler_hint</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>loopx<span class="w"> </span>heartbeat-prompt<span class="w"> </span>--thin<span class="w"> </span>--goal-id<span class="w"> </span>your-project-goal
+</span></code></pre></div>
+<p>For shared-control-plane agents, pass identity and scope in the automation
+prompt, then let the agent soft-claim matching todos with a registered
+<code>--claimed-by</code> id:</p>
+<p>New onboarding defaults to a new identity. When <code>agent-onboard</code> or an
+argument-bearing <code>start-goal --guided</code> call has no <code>--agent-id</code>, follow its
+fresh-agent registration preview/apply commands before writing todos. An
+existing id is reused only when the user explicitly asks to take over that
+exact agent; the presence of a single registered agent is not takeover intent.
+The fresh path uses <code>--require-new</code>; its preview is advisory. Continue only
+after the execute result reports <code>ok=true</code>, <code>changed=true</code>, <code>written=true</code>,
+successful global sync, and verified source/global registration readback, so a
+stale preview or id collision cannot become implicit takeover.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>loopx<span class="w"> </span>register-agent<span class="w"> </span>--goal-id<span class="w"> </span>your-project-goal<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="w">  </span>--agent-id<span class="w"> </span>codex-main-control<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-44-3"><a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a><span class="w">  </span>--agent-id<span class="w"> </span>codex-side-bypass<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-44-4"><a id="__codelineno-44-4" name="__codelineno-44-4" href="#__codelineno-44-4"></a><span class="w">  </span>--execute
+</span><span id="__span-44-5"><a id="__codelineno-44-5" name="__codelineno-44-5" href="#__codelineno-44-5"></a>
+</span><span id="__span-44-6"><a id="__codelineno-44-6" name="__codelineno-44-6" href="#__codelineno-44-6"></a>loopx<span class="w"> </span>heartbeat-prompt<span class="w"> </span>--compact<span class="w"> </span>--goal-id<span class="w"> </span>your-project-goal<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-44-7"><a id="__codelineno-44-7" name="__codelineno-44-7" href="#__codelineno-44-7"></a><span class="w">  </span>--agent-id<span class="w"> </span>codex-side-bypass<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-44-8"><a id="__codelineno-44-8" name="__codelineno-44-8" href="#__codelineno-44-8"></a><span class="w">  </span>--agent-scope<span class="w"> </span><span class="s2">&quot;control-plane coordination&quot;</span>
+</span></code></pre></div>
+<p>Once <code>coordination.registered_agents</code> is set, <code>heartbeat-prompt</code> fails closed
+when called without <code>--agent-id</code>; this makes stale Codex App automations
+surface an upgrade error instead of silently running without identity or
+scope. Old goal registries without <code>coordination.registered_agents</code> also fail
+closed when a scoped heartbeat or todo claim names an agent; register the agent
+identity first instead of letting workers invent claim ids.
+For a hierarchy-era registry, the next <code>quota should-run</code> and <code>upgrade-plan</code>
+return a stable peer-runtime migration id, one heartbeat command per registered
+peer, and a completion command. Update installed automations idempotently with
+that migration id, then run the completion command once. Repeating the same
+completion acknowledgement is a no-op, and later quota checks do not project
+the completed migration again.</p>
+<p><code>register-agent</code> resolves the existing global entry's <code>source_registry</code>, writes
+the project-local source of truth, and then syncs the shared global projection.
+If <code>~/.codex/loopx/registry.global.json</code> is not writable, the command fails
+before changing the source registry and reports a <code>global_registry_write_denied</code>
+health error. Fix the shared runtime permission or run from a host that can
+write the LoopX runtime root, then rerun the command. Use <code>--no-global-sync</code>
+only when you intentionally want an explicit local-only connection.</p>
+<p>Registered agents use <code>agent_model=peer_v1</code>: no identity is the durable leader.
+Todo claims or task leases select the current owner. A repository-writing peer
+uses an independent worktree when task or goal policy requires it, and
+<code>workspace_guard</code> fails closed when that isolation is missing. Small
+AGENTS-eligible validated changes may be self-merged with explicit LoopX
+evidence. Higher-risk work should create an independent successor or an
+ordinary <code>independent_handoff</code> with <code>action_kind=review</code>; use
+<code>excluded_agents</code> only when executor separation must be enforced.</p>
+<p>See <a href="../../heartbeat-automation-prompt/">heartbeat automation prompt</a> and
+<a href="../../project-agent-todo-contract/">project agent todo contract</a>.</p>
+<h2 id="dashboard">Dashboard<a class="headerlink" href="#dashboard" title="Permanent link">&para;</a></h2>
+<p>Dashboard status is an experimental operator preview. The CLI and
+<code>loopx status</code> remain the canonical daily workflow; the React dashboard
+is useful for demos, public-safe fixtures, and local inspection.</p>
+<p>Serve status JSON:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>loopx<span class="w"> </span>serve-status<span class="w"> </span>--port<span class="w"> </span><span class="m">8765</span>
+</span></code></pre></div>
+<p>Run the dashboard:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="nb">cd</span><span class="w"> </span>~/loopx/apps/presentation/dashboard
+</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>npm<span class="w"> </span>install
+</span><span id="__span-46-3"><a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a>npm<span class="w"> </span>run<span class="w"> </span>dev
+</span></code></pre></div>
+<p>For the shared multi-project view:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>loopx<span class="w"> </span>serve-status<span class="w"> </span>--global-registry<span class="w"> </span>--port<span class="w"> </span><span class="m">8766</span><span class="w"> </span>--limit<span class="w"> </span><span class="m">80</span>
+</span></code></pre></div>
+<p>On macOS, keep the global feed and built dashboard running after login:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>~/loopx/scripts/macos-dashboard-launchagent.sh<span class="w"> </span>install
+</span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a>~/loopx/scripts/macos-dashboard-launchagent.sh<span class="w"> </span>status
+</span></code></pre></div>
+<p>The dashboard should answer, before raw log drill-down:</p>
+<ul>
+<li>what the human needs to judge;</li>
+<li>what Codex can do next;</li>
+<li>what is waiting on evidence;</li>
+<li>what boundary cannot be crossed yet.</li>
+</ul>
+<p>See <a href="../../apps/presentation/dashboard/README.md">apps/presentation/dashboard/README.md</a>.</p>
+<h2 id="public-private-boundary">Public / Private Boundary<a class="headerlink" href="#public-private-boundary" title="Permanent link">&para;</a></h2>
+<p>Safe to publish:</p>
+<ul>
+<li>registry schema and runtime layout;</li>
+<li>adapter lifecycle and generic control-plane contracts;</li>
+<li>sanitized examples and smoke fixtures;</li>
+<li>generic validation commands.</li>
+</ul>
+<p>Keep private:</p>
+<ul>
+<li>real local paths;</li>
+<li>task ids and internal document links;</li>
+<li>production logs and raw experiment metrics;</li>
+<li>credentials and auth material;</li>
+<li>user-specific active objective state and local registries;</li>
+<li>raw agent sessions or benchmark traces.</li>
+</ul>
+<p>Run the public/private scan before publishing docs or examples:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>loopx<span class="w"> </span>check<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-49-2"><a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a><span class="w">  </span>--scan-path<span class="w"> </span>README.md<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-49-3"><a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a><span class="w">  </span>--scan-path<span class="w"> </span>docs/<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-49-4"><a id="__codelineno-49-4" name="__codelineno-49-4" href="#__codelineno-49-4"></a><span class="w">  </span>--scan-path<span class="w"> </span>examples/
+</span></code></pre></div>
+<p>See <a href="../../public-private-boundary/">public/private boundary</a>.</p>
+<h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
+<p>Run the focused CLI and contract smokes from the repository root:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>python3<span class="w"> </span>-m<span class="w"> </span>py_compile<span class="w"> </span>loopx/*.py
+</span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>python3<span class="w"> </span>examples/demo-cli-smoke.py
+</span><span id="__span-50-3"><a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a>python3<span class="w"> </span>examples/control_plane/todo-cli-smoke.py
+</span><span id="__span-50-4"><a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a>python3<span class="w"> </span>examples/control_plane/todo-lifecycle-cli-smoke.py
+</span><span id="__span-50-5"><a id="__codelineno-50-5" name="__codelineno-50-5" href="#__codelineno-50-5"></a>python3<span class="w"> </span>examples/control_plane/quota-contract-smoke.py
+</span><span id="__span-50-6"><a id="__codelineno-50-6" name="__codelineno-50-6" href="#__codelineno-50-6"></a>python3<span class="w"> </span>examples/control_plane/review-packet-cli-smoke.py
+</span><span id="__span-50-7"><a id="__codelineno-50-7" name="__codelineno-50-7" href="#__codelineno-50-7"></a>python3<span class="w"> </span>examples/benchmark-run-v0-append-cli-smoke.py
+</span><span id="__span-50-8"><a id="__codelineno-50-8" name="__codelineno-50-8" href="#__codelineno-50-8"></a>git<span class="w"> </span>diff<span class="w"> </span>--check
+</span></code></pre></div>
+<p>For dashboard work:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="nb">cd</span><span class="w"> </span>apps/presentation/dashboard
+</span><span id="__span-51-2"><a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>npm<span class="w"> </span>install
+</span><span id="__span-51-3"><a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a>npm<span class="w"> </span>run<span class="w"> </span>build
+</span><span id="__span-51-4"><a id="__codelineno-51-4" name="__codelineno-51-4" href="#__codelineno-51-4"></a>npm<span class="w"> </span>run<span class="w"> </span>smoke:demo-readiness
+</span></code></pre></div>
+<p>For release-promotion readiness:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>python3<span class="w"> </span>examples/canary/canary-promotion-readiness-smoke.py
+</span><span id="__span-52-2"><a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a>loopx<span class="w"> </span>promotion-gate<span class="w"> </span>--format<span class="w"> </span>json
+</span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a>loopx<span class="w"> </span>upgrade-plan<span class="w"> </span>--format<span class="w"> </span>json
+</span></code></pre></div>
+<p>When the dashboard source is present, the readiness smoke requires its npm
+dependencies so a dependency skip cannot be recorded as a pass. Use
+<code>--dashboard-mode=skip</code> only when intentionally qualifying a release boundary
+that omits dashboard validation; the runtime evidence records that skip.</p>
+<h2 id="documentation-map">Documentation Map<a class="headerlink" href="#documentation-map" title="Permanent link">&para;</a></h2>
+<p>Start here:</p>
+<ul>
+<li><a href="../README.md">Documentation index</a></li>
+<li><a href="../../showcases/">Showcase catalog</a></li>
+<li><a href="../../state-interaction-model/">State interaction model</a></li>
+<li><a href="../../concepts/interaction-pattern-catalog/">Interaction pattern catalog</a></li>
+<li><a href="../../integration/">Integration guide</a></li>
+<li><a href="../../operations/attention-queue/">Attention queue</a></li>
+<li><a href="../../project-agent-todo-contract/">Project agent todo contract</a></li>
+<li><a href="../../quota-allocation/">Quota allocation</a></li>
+<li><a href="../../heartbeat-automation-prompt/">Heartbeat automation prompt</a></li>
+<li><a href="../../operations/long-task-cadence-policy/">Long-task cadence hint</a></li>
+<li><a href="../../public-private-boundary/">Public/private boundary</a></li>
+<li><a href="../../development/benchmark-developer-workflow/">Benchmark developer workflow</a></li>
+<li><a href="../../outreach/public-launch-narrative-draft/">Public launch narrative draft</a></li>
+<li><a href="../../outreach/xiaohongshu-launch-draft/">Xiaohongshu launch draft</a></li>
+<li><a href="../../status-data-contract/">Dashboard status contract</a></li>
+<li><a href="../../integrations/codex-subagent-orchestration/">Codex peer task orchestration</a></li>
+<li><a href="../../research/long-horizon-agent-benchmarks/codex-cli-long-run-benchmark-design/">Benchmark long-run design</a></li>
+</ul>
+<h2 id="command-reference">Command Reference<a class="headerlink" href="#command-reference" title="Permanent link">&para;</a></h2>
+<p>New users should start with the
+<a href="../newcomer-command-path/">Newcomer command path</a>. The catalog below is
+reference material for operators and contributors who already know which path
+they are debugging or extending.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>bootstrap / connect     connect a project-local goal
+</span><span id="__span-53-2"><a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a>new-project-prompt      generate a Codex prompt for project connection
+</span><span id="__span-53-3"><a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a>demo                    create a disposable local demo goal
+</span><span id="__span-53-4"><a id="__codelineno-53-4" name="__codelineno-53-4" href="#__codelineno-53-4"></a>doctor                  diagnose installation and import health
+</span><span id="__span-53-5"><a id="__codelineno-53-5" name="__codelineno-53-5" href="#__codelineno-53-5"></a>update                  check or execute a no-clone LoopX self-update
+</span><span id="__span-53-6"><a id="__codelineno-53-6" name="__codelineno-53-6" href="#__codelineno-53-6"></a>registry                inspect registered goals
+</span><span id="__span-53-7"><a id="__codelineno-53-7" name="__codelineno-53-7" href="#__codelineno-53-7"></a>registry-boundary       classify registry local/public boundary and push policy
+</span><span id="__span-53-8"><a id="__codelineno-53-8" name="__codelineno-53-8" href="#__codelineno-53-8"></a>status                  show first-screen operator status
+</span><span id="__span-53-9"><a id="__codelineno-53-9" name="__codelineno-53-9" href="#__codelineno-53-9"></a>diagnose                build an agent-facing diagnostic evidence packet
+</span><span id="__span-53-10"><a id="__codelineno-53-10" name="__codelineno-53-10" href="#__codelineno-53-10"></a>history                 read run history
+</span><span id="__span-53-11"><a id="__codelineno-53-11" name="__codelineno-53-11" href="#__codelineno-53-11"></a>refresh-state           append a state-only run
+</span><span id="__span-53-12"><a id="__codelineno-53-12" name="__codelineno-53-12" href="#__codelineno-53-12"></a>read-only-map           map a project without mutating files
+</span><span id="__span-53-13"><a id="__codelineno-53-13" name="__codelineno-53-13" href="#__codelineno-53-13"></a>operator-gate           record a human gate decision
+</span><span id="__span-53-14"><a id="__codelineno-53-14" name="__codelineno-53-14" href="#__codelineno-53-14"></a>reward                  append run-bound human reward
+</span><span id="__span-53-15"><a id="__codelineno-53-15" name="__codelineno-53-15" href="#__codelineno-53-15"></a>todo                    add, claim, complete, update, supersede, or archive todos
+</span><span id="__span-53-16"><a id="__codelineno-53-16" name="__codelineno-53-16" href="#__codelineno-53-16"></a>quota                   inspect or account for automatic agent turns
+</span><span id="__span-53-17"><a id="__codelineno-53-17" name="__codelineno-53-17" href="#__codelineno-53-17"></a>heartbeat-prompt        generate Codex App heartbeat task bodies
+</span><span id="__span-53-18"><a id="__codelineno-53-18" name="__codelineno-53-18" href="#__codelineno-53-18"></a>upgrade-plan            plan local default-upgrade heartbeat propagation
+</span><span id="__span-53-19"><a id="__codelineno-53-19" name="__codelineno-53-19" href="#__codelineno-53-19"></a>review-packet           package a CLI-visible handoff packet
+</span><span id="__span-53-20"><a id="__codelineno-53-20" name="__codelineno-53-20" href="#__codelineno-53-20"></a>serve-status            serve local status JSON for the dashboard
+</span><span id="__span-53-21"><a id="__codelineno-53-21" name="__codelineno-53-21" href="#__codelineno-53-21"></a>archive-runtime         archive obsolete runtime-only goal history
+</span><span id="__span-53-22"><a id="__codelineno-53-22" name="__codelineno-53-22" href="#__codelineno-53-22"></a>uninstall-project       disconnect the current project without removing other projects
+</span><span id="__span-53-23"><a id="__codelineno-53-23" name="__codelineno-53-23" href="#__codelineno-53-23"></a>sync-global             merge project registry into the global registry
+</span><span id="__span-53-24"><a id="__codelineno-53-24" name="__codelineno-53-24" href="#__codelineno-53-24"></a>check                   run contract and public/private boundary checks
+</span></code></pre></div>
+<p>Use <code>loopx commands</code> for the grouped CLI reference, <code>loopx &lt;command&gt; --help</code>
+for command-specific flags, or <code>man loopx</code> for the installed operator manual.</p>
+<h2 id="repository-quality-guard">Repository Quality Guard<a class="headerlink" href="#repository-quality-guard" title="Permanent link">&para;</a></h2>
+<p>This repository should stay readable to a new contributor. Treat these as
+periodic maintainer checks:</p>
+<ul>
+<li>the README first screen explains the product before internal operations;</li>
+<li>quick start commands still run on a clean checkout;</li>
+<li>live local state is not committed;</li>
+<li>public/private scan is clean before docs or examples are published;</li>
+<li>docs linked from the README still exist and describe current CLI behavior;</li>
+<li>smoke commands cover the highest-risk control-plane contracts.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.action.edit", "content.code.copy", "content.tabs.link", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.path", "search.highlight", "search.share", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

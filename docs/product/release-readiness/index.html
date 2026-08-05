@@ -1,0 +1,3354 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://huangruiteng.github.io/loopx/docs/product/release-readiness/">
+      
+      
+        <link rel="prev" href="../vision/">
+      
+      
+        <link rel="next" href="../surfaces/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/loopx-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Release Readiness - LoopX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#release-readiness" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="LoopX" class="md-header__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LoopX
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Release Readiness
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 2c-1.82 0-3.53.5-5 1.35C8 5.08 10 8.3 10 12s-2 6.92-5 8.65C6.47 21.5 8.18 22 10 22a10 10 0 0 0 10-10A10 10 0 0 0 10 2"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../concepts/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../operations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Operations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../capabilities/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Capabilities
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../integrations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Integrations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../development/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Product
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../showcases/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Showcases
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="LoopX" class="md-nav__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    LoopX
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../guides/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/newcomer-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Newcomer Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/custom-agent-runner-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Runner Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/auto-research-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto Research Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../concepts/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/interaction-pattern-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interaction Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../state-interaction-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    State Interaction Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quota-allocation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quota Allocation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../operations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/attention-queue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attention Queue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/long-task-cadence-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Long Task Cadence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/authority-source-registration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority Sources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../capabilities/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capabilities
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Capabilities
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capabilities/issue-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Issue Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capabilities/change-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Change Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capabilities/explore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Explore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capabilities/material-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Material Lifecycle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capabilities/value-connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Value Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../integrations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integrations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integrations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/worker-bridge-install-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Worker Bridge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/lark-kanban-control-plane-adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lark Kanban
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/runtime-connector-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Connector Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/benchmark-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../development/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/testing-and-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing And Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/documentation-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Layout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/benchmark-developer-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/control-plane-course/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control Plane Course
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Product
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Readiness
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#supported-install-and-update-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported Install And Update Paths
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#merged-is-not-runtime-active" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Merged Is Not Runtime-Active
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#named-version-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Named Version Contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-release-timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Public Release Timeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compatibility-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compatibility Gate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#canary-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canary Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-safe-to-depend-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Is Safe To Depend On
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release-note-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Release Note Checklist
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Release Note Checklist">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#final-release-body-usage-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final Release Body Usage Gate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capability-narrative-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capability Narrative Gate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-docs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Docs
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../surfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Surfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../runtimes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtimes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../showcases/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Showcases
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Showcases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcases/frontend-surface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend Surface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcases/cases/0617-blocked-p0-safe-rotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blocked P0 Safe Rotation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcases/cases/0619-loopx-self-iteration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LoopX Self Iteration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcases/cases/0624-pr-issue-auto-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PR Issue Auto Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#supported-install-and-update-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported Install And Update Paths
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#merged-is-not-runtime-active" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Merged Is Not Runtime-Active
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#named-version-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Named Version Contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-release-timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Public Release Timeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compatibility-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compatibility Gate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#canary-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canary Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-safe-to-depend-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Is Safe To Depend On
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release-note-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Release Note Checklist
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Release Note Checklist">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#final-release-body-usage-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final Release Body Usage Gate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capability-narrative-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capability Narrative Gate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-docs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Docs
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Product
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/huangruiteng/loopx/edit/main/docs/product/release-readiness.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="release-readiness">Release Readiness<a class="headerlink" href="#release-readiness" title="Permanent link">&para;</a></h1>
+<p>Status: v0.x maintainer contract.</p>
+<p>LoopX can move quickly without making every merged PR feel like a product
+release. This note defines the small mental model maintainers should use before
+promoting a release snapshot, recommending an install path, or telling users
+which control-plane surfaces are safe to build on.</p>
+<h2 id="supported-install-and-update-paths">Supported Install And Update Paths<a class="headerlink" href="#supported-install-and-update-paths" title="Permanent link">&para;</a></h2>
+<p>For a first-time user, prefer the no-clone archive installer:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/huangruiteng/loopx/main/scripts/install-from-github.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.local/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>loopx<span class="w"> </span>doctor
+</span></code></pre></div>
+<p>The installer and <code>loopx update</code> use the public <code>stable</code> ref by default. Use
+<code>LOOPX_REF=main</code> or <code>loopx update --ref main</code> only for maintainer/dev repair
+when you intentionally want the current repository head instead of the stable
+channel.</p>
+<p>For a user who already installed from the archive, update through the explicit
+CLI flow:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>loopx<span class="w"> </span>update<span class="w"> </span>--check
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>loopx<span class="w"> </span>update<span class="w"> </span>--dry-run
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>loopx<span class="w"> </span>update<span class="w"> </span>--execute
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>loopx<span class="w"> </span>doctor
+</span></code></pre></div>
+<p>Re-running the curl installer remains a repair/fallback path when the wrapper
+or local release snapshot is broken. It is not the primary update path for a
+healthy archive install.</p>
+<p>For contributors, keep the clone-plus-canary path:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/huangruiteng/loopx<span class="w"> </span>~/loopx
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>~/loopx/scripts/install-local.sh
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>loopx<span class="w"> </span>doctor
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>loopx-canary<span class="w"> </span>doctor
+</span></code></pre></div>
+<p>The no-clone path is the user default. The clone-plus-canary path is the
+maintainer validation path.</p>
+<p>Before promoting a stable install/update recommendation, maintainers must move
+the public <code>stable</code> ref to the release commit that passed this gate. Do not
+claim stable-channel readiness while <code>stable</code> is missing or stale.</p>
+<h2 id="merged-is-not-runtime-active">Merged Is Not Runtime-Active<a class="headerlink" href="#merged-is-not-runtime-active" title="Permanent link">&para;</a></h2>
+<p>A post-merge check proves behavior on the tested source commit. It does not
+prove that an installed LoopX runtime contains that commit. This distinction
+matters when a fix reaches <code>main</code> after the latest named release: package
+versions may still match while the installed source commit is behind.</p>
+<p>Use <code>loopx update --check --ref main</code> for maintainer qualification. Its
+<code>runtime_activation_qualification</code> result compares the release-manifest source
+commit with the trusted source lineage reported by <code>loopx doctor</code>:</p>
+<ul>
+<li><code>runtime_active</code> means the installed commit is the target commit or contains it;</li>
+<li><code>release_or_install_successor_required</code> means the installed commit is behind
+  or diverged, so a release/install successor must remain explicit;</li>
+<li><code>activation_qualification_required</code> means commit lineage is unavailable or
+  belongs to a different <code>repo/ref</code>; the runtime-active claim must fail closed
+  until identity is refreshed.</li>
+</ul>
+<p>Closing a PR monitor after latest-<code>main</code> validation is valid, but the closeout
+must not say the fix is active in the installed runtime unless this receipt is
+<code>runtime_active</code>. Publishing a release remains a separate maintainer action.
+When the qualification command itself runs from newer source code, pass a local
+snapshot from the older installed CLI with <code>--installed-doctor-json</code>; this
+option is read-only and accepted only by <code>update --check</code>.</p>
+<h2 id="named-version-contract">Named Version Contract<a class="headerlink" href="#named-version-contract" title="Permanent link">&para;</a></h2>
+<p>LoopX v0.x is distributed from GitHub, but each stable promotion still needs a
+package version name. The version source is <code>loopx.__version__</code>, mirrored by
+<code>pyproject.toml</code>; the expected public tag is <code>vX.Y.Z</code> for that version.</p>
+<p>Before moving <code>stable</code>, maintainers should:</p>
+<ul>
+<li>bump <code>loopx.__version__</code> and <code>pyproject.toml</code> together when user-visible
+  release behavior changes;</li>
+<li>create or verify the matching Git tag, for example <code>v0.1.3</code>;</li>
+<li>fast-forward <code>stable</code> to that tagged commit after the release canary passes;</li>
+<li>confirm <code>release.json</code>, <code>loopx doctor</code>, and <code>loopx update --check</code> report the
+  same package version and tag;</li>
+<li>tell existing users to run <code>loopx update --check</code>, then
+  <code>loopx update --execute</code> when the check recommends or when they want to
+  refresh to the named stable release.</li>
+</ul>
+<p>This is a lightweight GitHub release contract, not a PyPI publishing
+requirement. A future package registry can reuse the same version/tag contract
+instead of inventing a second release identity.</p>
+<h2 id="public-release-timeline">Public Release Timeline<a class="headerlink" href="#public-release-timeline" title="Permanent link">&para;</a></h2>
+<p>The public GitHub release timeline starts at <code>v0.1.3</code>. Earlier work should be
+treated as pre-public bootstrap for the local control plane, installer, update
+path, and canary route rather than as a user-facing release baseline.</p>
+<ul>
+<li><code>v0.1.3</code> on 2026-07-02 14:45 +08:00: initial public stable-channel release
+  at commit <code>10509b06</code>. This release made LoopX explainable as a no-clone,
+  local-first control plane for long-running AI agents: install, update,
+  doctor, named version reporting, and the first public status/quota/todo/gate
+  surfaces were ready to recommend together.</li>
+<li><code>v0.1.4</code> on 2026-07-03 00:24 +08:00: fast-follow release at commit
+  <code>07d0a753</code>. This release tightened product-capability monitor projection,
+  release-readiness checks, and canary evidence so the first public baseline
+  was easier to diagnose and refresh.</li>
+<li><code>v0.1.5</code> on 2026-07-03 13:28 +08:00: long-horizon execution hardening at
+  commit <code>c036d60e</code>. This release improved quota/status/runtime routing,
+  monitor and scheduler projection, release packaging coverage, and
+  outcome-floor recovery for stuck or low-progress loops.</li>
+<li><code>v0.1.6</code> on 2026-07-03 17:07 +08:00: visible multi-agent startup hardening
+  at commit <code>1e3df9df</code>. This release made auto-research startup easier to see
+  and trigger, clarified decentralized pane routing, tightened monitor and
+  scheduler projection, and expanded the Codex CLI first-run release checks.</li>
+<li><code>v0.1.7</code> on 2026-07-04 12:52 +08:00: command-entry integration release at
+  the matching <code>v0.1.7</code> tag. This release made the supported entry layer
+  explicit: Codex installs LoopX command-facade skills such as <code>$loopx</code>, Claude
+  Code gets matching skill entries, legacy prompt shims are retired, and the
+  rich workflow skills remain available for implicit LoopX behavior.</li>
+<li><code>v0.1.8</code> on 2026-07-04 16:53 +08:00: deterministic host-loop activation
+  release at the matching <code>v0.1.8</code> tag. This release gives new agent hosts an explicit
+  <code>agent-onboard</code> contract for choosing <code>codex-app</code>, <code>codex-cli</code>,
+  <code>claude-code</code>, <code>opencode</code>, <code>manual</code>, or <code>other-agent</code>, rejects ambiguous inputs such as
+  <code>codex</code>, and makes <code>/loopx &lt;task&gt;</code> activate or gate the correct host loop
+  after todo writeback.</li>
+<li><code>v0.1.9</code> on 2026-07-05 21:45 +08:00: real auto-research and agent-scoped
+  evidence release at the matching <code>v0.1.9</code> tag. This release removes fake
+  auto-research demo metrics, makes the KNN preset use a real benchmark
+  workspace with public-safe evidence writeback, exposes role-named visible
+  research panes, wires agent-scoped evidence read hints into replan, and
+  hardens successor/frontier recovery when completed advancement has no next
+  executable todo.</li>
+<li><code>v0.1.10</code> on 2026-07-06 11:50 +08:00: scoped user-gate and agent-management
+  release at the matching <code>v0.1.10</code> tag. This release makes blocking owner
+  todos explicitly typed as <code>user_gate</code> or non-blocking <code>user_action</code>, scopes
+  per-agent gates with <code>blocks_agent</code>, adds read-only live agent-management
+  status projections, and continues moving quota, todo, scheduler, review
+  packet, and handoff rules into bounded control-plane contexts with focused
+  canary coverage.</li>
+<li><code>v0.1.11</code> on 2026-07-06 19:38 +08:00: vision-replan and recovery-routing
+  release at the matching <code>v0.1.11</code> tag. This release makes goal-vision gaps
+  participate in the quota/replan decision plane, preserves continuation audits
+  in quota and interaction contracts, supersedes stale vision checkpoint gaps
+  when newer evidence closes them, and adds judge guidance for when a vision
+  gap is real work versus stale state. It also promotes the latest control-plane
+  bounded-context cleanup, auto-research successor/evidence fixes, connector
+  source-map packets, structured run-index classification, and Codex CLI/TUI
+  recovery fixes.</li>
+<li><code>v0.1.12</code> on 2026-07-08 02:05 +08:00: presentation/read-model and frontier
+  recovery release at the matching <code>v0.1.12</code> tag. This release moves large
+  status, goal-channel, dashboard, and Lark rendering paths into bounded
+  presentation/read-model modules, fixes monitor-only plus open-vision frontier
+  replan gaps, makes installer reruns overwrite stale wrappers/files safely,
+  exposes premerge canary progress earlier, and promotes auto-research visible
+  worker/successor routing plus selected public benchmark route/profile and
+  SkillsBench helper hardening.</li>
+<li><code>v0.1.13</code> on 2026-07-08 18:15 +08:00: guided onboarding and multi-agent
+  control-plane release at the matching <code>v0.1.13</code> tag. This release makes new
+  project setup more repairable with guided start-goal previews (#1631, #1633),
+  non-destructive write-scope migration (#1636), delivery-scale aliases, and
+  clearer refresh-state diagnostics (#1641); routes primary controllers toward
+  subagent orchestration (#1622) behind an explicit default-off feature switch
+  (#1643); improves scheduler ACK/backoff recovery and heartbeat migration
+  (#1626, #1639); splits quota/status fixture hot paths, Lark projection row
+  helpers, and content-ops markdown renderers into narrower modules (#1640,
+  #1642, #1644, #1646); adds public-safe external ML task ledgers (#1627);
+  hardens SkillsBench source/countability/launcher evidence (#1612, #1620,
+  #1621, #1625); and relaxes local <code>next_action</code> / <code>recommended_action</code> text to
+  allow local project routing references while still rejecting inline
+  credentials (#1645).</li>
+<li><code>v0.1.14</code> on 2026-07-09 11:49 +08:00: developer-contributed exploration
+  topology and monitor/quota recovery release at the matching <code>v0.1.14</code> tag.
+  This release promotes the software exploration result layer (#1546): public
+  explore node/edge/finding records, Lark presentation mapping, graph exports,
+  router/load-profile planning primitives, and deny-by-default
+  <code>explore_harness</code> worker/todo branch planners gated by each goal's
+  <code>spawn_policy</code>. It also ships the monitor scheduler cadence repairs that
+  keep quiet monitor polls from collapsing back to short intervals (#1699 and
+  related scheduler fixes), plus quota/status/todo read-model hardening for
+  user-gate counts, completed-todo successors, evidence-log counts, delivery
+  lineage, and compact agent-lane status summaries (#1707-#1716).</li>
+<li><code>v0.1.15</code> on 2026-07-10: actionable routing and long-run reliability release
+  at the matching <code>v0.1.15</code> tag. This release makes the agent-facing current
+  action and quota-selected todo more explicit, centralizes primary-action
+  resolution, and preserves replan acknowledgements, filtered resumes, vision
+  lifecycle state, and due monitors across bounded progress (#1720, #1731,
+  #1751, #1757, #1764-#1766, #1769-#1770). It hardens external monitor and
+  multi-agent continuation through quiet-timeout handling, identity/capability
+  gates, no-handoff lane fidelity, and typed continuation policies (#1722-#1724,
+  #1745, #1747, #1754, #1773). Experimental issue-fix and SkillsBench routes
+  gain feasibility, lifecycle, evidence, failure-attribution, cache/proxy,
+  prewarm, and ledger-closeout improvements (#1726, #1734, #1738-#1744,
+  #1748-#1750, #1753, #1756, #1759-#1763, #1767-#1768, #1771-#1772). The
+  release also adds and repairs the parallel full-public smoke sweep, fixes
+  direct-install doctor behavior, clarifies Explore's measurable-metric fit,
+  and closes the todo CLI ownership-budget regression (#1721, #1725, #1727-#1730,
+  #1735, #1743, #1752, #1774).</li>
+<li><code>v0.1.16</code> on 2026-07-10: archive-install provenance hotfix at the matching
+  <code>v0.1.16</code> tag. This release isolates release-manifest generation from the
+  caller's working directory and inherited Python path, so running an update
+  from an older LoopX checkout cannot stamp that checkout's package version
+  into the new stable snapshot. The no-clone release gate now covers this
+  stale-checkout invocation directly (#1776). No product capability or state
+  migration changes in this hotfix.</li>
+<li><code>v0.2.0</code> on 2026-07-11: peer-agent runtime and issue-fix control-plane
+  release at the matching <code>v0.2.0</code> tag. This release completes the v0.2
+  runtime cutover from hierarchical agent ownership toward equal peer agents:
+  task claims are soft routing signals, independent handoff uses
+  <code>continuation_policy=independent_handoff</code> plus <code>excluded_agents</code>, and stale
+  legacy review continuation paths are rejected or migrated. It also promotes
+  the issue-fix capability from feasibility planning into a fuller public
+  maintainer loop with caller-repo branch preparation, acceptance artifacts,
+  reviewer request fallback, PR lifecycle observation, and domain-state
+  writeback. Explore Harness and long-run benchmark projections gain stronger
+  public result contracts, while install/update, release provenance, quota,
+  todo, scheduler, and protocol-action smokes were swept under the full-public
+  suite for the 0.2 release cut.</li>
+<li><code>v0.2.1</code> on 2026-07-12: agent-facing quality and long-run reliability
+  fast-follow at the matching <code>v0.2.1</code> tag. This release makes bounded turn
+  context explicit through TurnEnvelope contracts, adds trajectory-hygiene
+  and packet-duplication measurements, and preserves action contracts while
+  trimming repeated hot-path material. Issue-Fix gains repository snapshots,
+  decision-useful memory, Explore projection, reviewer/CI receipts, impact
+  metrics, and guarded promotion of newly discovered public defects. Optional
+  Explore planning now preserves independent experiment lanes and supports
+  resource-aware portfolio decisions. Peer routing is hardened across task
+  lease validity, advisory agent profiles, deferred successor exclusions, and
+  non-blocking user actions. The repository also establishes parallel pytest,
+  Ruff, strict typing, import-boundary, coverage-floor, and release-promotion
+  concurrency checks so these broader capabilities remain maintainable.</li>
+<li><code>v0.2.2</code> on 2026-07-12: visible execution and projection reliability
+  fast-follow at the matching <code>v0.2.2</code> tag. Explore gains recoverable execution
+  episodes and ReplayPoint-based counterfactual branches, plus an optional
+  owner-facing visual sink and real graph examples in the public entry
+  surfaces (#1892, #1962, #1965-#1966, #1971). Visible multi-agent runs now
+  wake only lanes whose runnable state changed and freeze the newest compatible
+  host Codex CLI before launch (#1967, #1973). Diagnose capability projection,
+  terminal PR-gate reconciliation, and vision replanning under monitor load are
+  repaired (#1963-#1964, #1969). Benchmark comparison, report, learning-ledger,
+  and result read models move into their control-plane runtime owner while
+  preserving compatibility imports and restoring the full-public smoke shard
+  (#1961, #1968, #1970, #1972). No persisted-state migration is required;
+  Explore execution and visual sinks remain explicit opt-ins.</li>
+<li><code>v0.2.3</code> on 2026-07-13: control-plane truthfulness and maintainer-surface
+  release at the matching <code>v0.2.3</code> tag. LoopX adds a provider-neutral
+  model-behavior qualification contract with public-safe corpus and decision
+  receipts plus an optional direct provider actor (#1994, #1998-#1999, #2001,
+  #2003). Optional capability discovery and the Lark event inbox/collector
+  become clearer product surfaces without adding mandatory first-run
+  configuration (#1978, #1986, #1997, #2000). Monitor, todo, quota, and vision
+  routing now preserve capabilities and attribution, prefer advancement over
+  stale monitor pressure, keep future waits quiet, and correlate material
+  transition receipts (#1989-#1993, #2008, #2011, #2013-#2015). Explore graph
+  activation now respects run-scoped sink authority (#1995, #2016), while
+  deterministic update notes and project governance make the public repository
+  easier to maintain (#1983, #1996, #2012). No persisted-state migration is
+  required; optional provider, Lark, semantic-preference, and Explore surfaces
+  remain opt-in.</li>
+<li><code>v0.2.4</code> on 2026-07-14: Explore presentation and delivery-reliability
+  release at the matching <code>v0.2.4</code> tag. Explore board layout is now a
+  first-class <code>board_style</code> product parameter with two supported values:
+  <code>auto_flow</code> uses Mermaid's automatic graph layout for topology-oriented
+  views, while <code>semantic_lane_columns</code> emits deterministic stage SVGs for
+  operator boards with meaningful parallel lanes (#2062). The Lark visual
+  sink can publish one managed board per evidence stage, project the selected
+  style into every stage, keep labels inside lane nodes, retry eventual visual
+  readback, and reconcile generated document sections so stale or duplicate
+  stages do not accumulate (#2051, #2063, #2065-#2066, #2068). The same
+  canonical Explore result graph remains authoritative for both styles, and
+  existing Mermaid-only configs continue to resolve as <code>auto_flow</code>. This
+  release also includes same-source canonical/executive views, explicit
+  issue-fix semantic-preference call sites, provider diagnostics, and further
+  monitor, scheduler, installer, onboarding, and public-smoke hardening
+  (#2002, #2005-#2006, #2018-#2021, #2027-#2028, #2032, #2036, #2052-#2061).
+  No persisted-state migration is required; Explore and its Lark visual sinks
+  remain opt-in.</li>
+<li><code>v0.2.5</code> on 2026-07-15: reward-memory and cross-runtime reliability release
+  at the matching <code>v0.2.5</code> tag. LoopX now ships a provider-neutral Reward
+  Memory path from reviewed corpus and health contracts through candidate
+  review, opt-in recall/application, evaluation, dogfood controls, and explicit
+  actor-peer routing at the Issue-Fix planning boundary (#2076-#2085, #2096,
+  #2100, #2103, #2128). Runtime projection routes become a first-class source
+  of truth for material events, refreshes, and Explore commands across shared
+  runtimes, with source-mirror ambiguity and compact diagnostics repaired
+  (#2091, #2094, #2097, #2099, #2102, #2129). Issue-Fix gains stronger commit
+  evidence, evidence-backed close counts, candidate dedupe, reviewer fallback,
+  and delivery-window queuing (#2071, #2087, #2098, #2105, #2107, #2111).
+  Monitor, scheduler, peer-replan, Lark inbox, Explore readback, and long-running
+  SkillsBench paths are hardened against repeated host failures, scoped gates,
+  transport loss, setup drift, and countability ambiguity (#2101, #2104,
+  #2108-#2127, #2130-#2131). No persisted-state migration is required; Reward
+  Memory and advanced fixer execution remain explicitly activated and bounded.</li>
+<li><code>v0.2.6</code> on 2026-07-16: typed interaction authority and isolated Turn runtime
+  release at the matching <code>v0.2.6</code> tag. Scheduler decisions now follow the
+  typed interaction contract, exact blocked successors can trigger bounded
+  autonomous replanning, and user gates no longer deadlock unrelated agent
+  lanes (<a href="https://github.com/huangruiteng/loopx/pull/2136">#2136</a>,
+  <a href="https://github.com/huangruiteng/loopx/pull/2177">#2177</a>,
+  <a href="https://github.com/huangruiteng/loopx/pull/2187">#2187</a>,
+  <a href="https://github.com/huangruiteng/loopx/pull/2188">#2188</a>,
+  <a href="https://github.com/huangruiteng/loopx/pull/2198">#2198</a>,
+  <a href="https://github.com/huangruiteng/loopx/pull/2203">#2203</a>,
+  <a href="https://github.com/huangruiteng/loopx/pull/2204">#2204</a>). LoopX Turn becomes
+  a shipped isolated-headless route with executable envelopes, session
+  recovery, independent validation, real CLI qualification, and a SkillsBench
+  integration (<a href="https://github.com/huangruiteng/loopx/pull/2158">#2158</a>,
+  <a href="https://github.com/huangruiteng/loopx/pull/2166">#2166</a>,
+  <a href="https://github.com/huangruiteng/loopx/pull/2169">#2169</a>,
+  <a href="https://github.com/huangruiteng/loopx/pull/2171">#2171</a>,
+  <a href="https://github.com/huangruiteng/loopx/pull/2173">#2173</a>,
+  <a href="https://github.com/huangruiteng/loopx/pull/2193">#2193</a>,
+  <a href="https://github.com/huangruiteng/loopx/pull/2199">#2199</a>,
+  <a href="https://github.com/huangruiteng/loopx/pull/2202">#2202</a>). New-user
+  onboarding is protected by deterministic lifecycle canaries and repeated
+  one-arm Doubao qualification of the actual default packet, while CLI output
+  budgets and release outcome contracts make semantic regressions visible
+  before promotion (<a href="https://github.com/huangruiteng/loopx/pull/2144">#2144</a>,
+  <a href="https://github.com/huangruiteng/loopx/pull/2148">#2148</a>,
+  <a href="https://github.com/huangruiteng/loopx/pull/2153">#2153</a>,
+  <a href="https://github.com/huangruiteng/loopx/pull/2157">#2157</a>,
+  <a href="https://github.com/huangruiteng/loopx/pull/2159">#2159</a>,
+  <a href="https://github.com/huangruiteng/loopx/pull/2167">#2167</a>,
+  <a href="https://github.com/huangruiteng/loopx/pull/2168">#2168</a>,
+  <a href="https://github.com/huangruiteng/loopx/pull/2201">#2201</a>). Explore source
+  reconciliation, optional Reward Memory experiments and reviewer gates, and
+  Lark delivery are also hardened without making them first-run requirements
+  (<a href="https://github.com/huangruiteng/loopx/pull/2200">#2200</a>). No persisted-state
+  migration is required; advanced capabilities remain explicitly activated.</li>
+</ul>
+<p>When a new public release is promoted, add it here only after the matching tag,
+release note, stable ref, update path, and focused release canary agree.</p>
+<h2 id="compatibility-gate">Compatibility Gate<a class="headerlink" href="#compatibility-gate" title="Permanent link">&para;</a></h2>
+<p>Before a release snapshot is promoted or a public guide tells users to depend
+on a new surface, run the smallest gate that covers the touched surface:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python3<span class="w"> </span>-m<span class="w"> </span>py_compile<span class="w"> </span>loopx/*.py
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>python3<span class="w"> </span>examples/release/codex-cli-no-clone-release-verification-smoke.py
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>python3<span class="w"> </span>examples/fresh-clone-quickstart-smoke.py
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>python3<span class="w"> </span>examples/loopx-update-smoke.py
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>python3<span class="w"> </span>examples/release/release-version-contract-smoke.py
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>python3<span class="w"> </span>examples/release/release-readiness-doc-smoke.py
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>git<span class="w"> </span>diff<span class="w"> </span>--check
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>loopx<span class="w"> </span>check<span class="w"> </span>--scan-path<span class="w"> </span>README.md<span class="w"> </span>--scan-path<span class="w"> </span>docs/<span class="w"> </span>--scan-path<span class="w"> </span>examples/
+</span></code></pre></div>
+<p>This is not a universal full suite. Add focused smokes for the changed command,
+projection, or workflow. Do not require benchmark raw logs, raw task text,
+trajectories, verifier output, credentials, or local private artifact paths as
+release evidence.</p>
+<p>After the individual lanes pass, bind their compact receipts to the exact clean
+release checkout before tagging or moving <code>stable</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>loopx<span class="w"> </span>canary<span class="w"> </span>release-qualification<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span>--manifest-json<span class="w"> </span>release-qualification.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span>--repo-root<span class="w"> </span>.
+</span></code></pre></div>
+<p>The <code>exact_release_commit_qualification_manifest_v0</code> contract requires the
+same Git commit, Git tree id, package version, and version tag across pytest,
+Ruff, mypy, risk-based canary, full-public, install/upgrade/host,
+public-boundary, and actual-default one-arm Doubao receipts. The command also
+checks the current checkout and rejects dirty or rebased source. It only
+reduces existing bounded receipts: it does not execute tests, call a provider,
+move refs, create tags, or publish a release.</p>
+<p>Matched stable/candidate outcome evidence is required only when the release
+claims benchmark or long-horizon outcome uplift. A normal release without that
+claim must record the pair as not required, not keep a retired second product
+arm alive or imply that the expensive comparison ran.</p>
+<h2 id="canary-model">Canary Model<a class="headerlink" href="#canary-model" title="Permanent link">&para;</a></h2>
+<p>A release canary is a catalog-informed readiness slice. It is near-E2E in the
+sense that it follows a real promotion or operator path across several seams,
+but it is intentionally smaller than a full end-to-end test suite. Its job is
+to answer "can the touched public surfaces be promoted under this declared
+boundary?" rather than "is every LoopX path correct?"</p>
+<p>Choose the canary group from existing interaction pattern families; do not add
+new IPs solely to describe a validation bundle:</p>
+<ul>
+<li>status/quota/scheduler changes should include Work Routing checks such as
+  <code>quota should-run</code>, scheduler hints, and hot-path interface budget;</li>
+<li>state projection or public/private changes should include State And Boundary
+  checks such as <code>loopx check</code>, task graph or todo detail cold-path contracts;</li>
+<li>dashboard/frontstage changes should include catalog or fixture route checks,
+  with browser smokes only when the visual surface itself is being promoted;</li>
+<li>release/install changes should include installer, update, wrapper, doctor,
+  and public-boundary checks;</li>
+<li>benchmark or external-evidence changes should use compact lifecycle
+  evidence only, never raw task text, raw logs, trajectories, or verifier tails.</li>
+</ul>
+<p>The default promotion canary is:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python3<span class="w"> </span>examples/canary/canary-promotion-readiness-smoke.py<span class="w"> </span>--no-write-evidence
+</span></code></pre></div>
+<p>The default dashboard policy is <code>--dashboard-mode=auto</code>: source checkouts run
+dashboard demo-readiness when <code>apps/presentation/dashboard</code> is present, while installed
+release snapshots that omit the dashboard app skip that optional surface and
+keep the omission visible in the canary output. Use <code>--dashboard-mode=require</code>
+when the dashboard/frontstage itself is being promoted, and
+<code>--dashboard-mode=skip</code> only when the release boundary intentionally excludes
+the dashboard app.</p>
+<p>Use the writeback form only when you intentionally want to append fresh
+promotion-readiness evidence:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python3<span class="w"> </span>examples/canary/canary-promotion-readiness-smoke.py
+</span></code></pre></div>
+<p>For broader source-checkout regressions, keep <code>loopx canary smoke-suite</code> as the
+source of truth. Local and LoopX automation should continue to use the runner
+payload directly:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>python3<span class="w"> </span>examples/run-smokes.py<span class="w"> </span>--suite<span class="w"> </span>default-public<span class="w"> </span>--module<span class="w"> </span>canary
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>loopx<span class="w"> </span>canary<span class="w"> </span>smoke-suite<span class="w"> </span>--suite<span class="w"> </span>default-public<span class="w"> </span>--module<span class="w"> </span>canary
+</span></code></pre></div>
+<p>For larger source-checkout sweeps, use the runner's bounded parallelism instead
+of moving smoke semantics into a second test framework. <code>--jobs</code> keeps the
+LoopX runner payload as the source of truth while preserving serial execution
+for smokes that declare a scheduling-sensitive surface:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>python3<span class="w"> </span>-m<span class="w"> </span>loopx.cli<span class="w"> </span>canary<span class="w"> </span>smoke-suite<span class="w"> </span>--profile<span class="w"> </span>public-smoke-watch<span class="w"> </span>--jobs<span class="w"> </span><span class="m">4</span><span class="w"> </span>--timeout-seconds<span class="w"> </span><span class="m">60</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>python3<span class="w"> </span>examples/run-smokes.py<span class="w"> </span>--suite<span class="w"> </span>full-public<span class="w"> </span>--jobs<span class="w"> </span><span class="m">4</span><span class="w"> </span>--timeout-seconds<span class="w"> </span><span class="m">60</span>
+</span></code></pre></div>
+<p>For repeatable canary/refactor batches, prefer named smoke-suite profiles over
+hand-curated script lists. Profiles expand to the same runner payload as
+<code>--module</code>, <code>--script</code>, catalog selectors, and the pytest facade:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>loopx<span class="w"> </span>canary<span class="w"> </span>smoke-profiles
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>loopx<span class="w"> </span>canary<span class="w"> </span>smoke-suite<span class="w"> </span>--profile<span class="w"> </span>core-control-plane<span class="w"> </span>--no-execute
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>loopx<span class="w"> </span>canary<span class="w"> </span>smoke-suite<span class="w"> </span>--profile<span class="w"> </span>core-control-plane<span class="w"> </span>--offset<span class="w"> </span><span class="m">20</span><span class="w"> </span>--limit<span class="w"> </span><span class="m">20</span><span class="w"> </span>--timeout-seconds<span class="w"> </span><span class="m">60</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>loopx<span class="w"> </span>canary<span class="w"> </span>smoke-suite<span class="w"> </span>--profile<span class="w"> </span>canary-runner<span class="w"> </span>--timeout-seconds<span class="w"> </span><span class="m">60</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>python3<span class="w"> </span>examples/run-smokes.py<span class="w"> </span>--profile<span class="w"> </span>public-entry-install-release<span class="w"> </span>--no-execute
+</span></code></pre></div>
+<p>Use <code>--offset</code> with <code>--limit</code> to sweep large profiles in stable windows without
+rerunning the same prefix batch on every heartbeat.</p>
+<p>Default <code>pytest</code> is the fast unit and contract lane. The smoke-suite facade is
+explicitly opt-in so a normal PR test run does not silently expand into the
+canary matrix. CI may wrap an explicit runner selection in pytest when JUnit
+reporting is useful. The facade still executes each selected
+<code>examples/**/*-smoke.py</code> through a subprocess; it is not a migration of legacy
+smokes into pytest unit tests:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>python3<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>tests/test_smoke_suite.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span>--loopx-smoke-suite<span class="w"> </span>default-public<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span>--loopx-smoke-profile<span class="w"> </span>canary-runner<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span>--loopx-smoke-offset<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">  </span>--junitxml<span class="w"> </span>smoke-suite.xml
+</span></code></pre></div>
+<p>The required Python test workflow keeps <code>tests/**</code>, <code>canary/**</code>,
+<code>control_plane/**</code>, <code>domain_packs/**</code>, and <code>presentation/**</code> Ruff-clean. It also
+enforces an initial 19.6% package coverage floor.
+The floor is intentionally a regression guard, not a claim that 19.6% is
+sufficient; raise it as durable behavior moves from subprocess smokes into
+focused tests. An architecture test also prevents new control-plane dependencies
+on presentation, CLI, capability, or benchmark-adapter layers while preserving
+one explicit quota-Markdown migration debt edge. Existing source-wide lint debt
+is characterized separately. Strict mypy checking covers twelve characterized
+kernel and runtime contracts and should expand only as each next boundary
+becomes clean;
+expand the protected namespace list only after a bounded cleanup, rather than
+mass-fixing unrelated code merely to make a broad gate green.</p>
+<p>If the source checkout has optional frontend dependencies installed, dashboard
+readiness can be included in the same canary. If a release snapshot omits the
+dashboard app, the canary should degrade gracefully and record that boundary
+rather than failing unrelated CLI/install promotion or silently treating the
+dashboard path as covered.</p>
+<h2 id="what-is-safe-to-depend-on">What Is Safe To Depend On<a class="headerlink" href="#what-is-safe-to-depend-on" title="Permanent link">&para;</a></h2>
+<p>Treat these v0.x surfaces as stable enough for user guides, examples, and
+host integrations when their focused smokes pass:</p>
+<ul>
+<li><code>loopx doctor</code>, <code>loopx update</code>, <code>loopx check</code>, and the no-clone installer;</li>
+<li>project lifecycle commands: <code>bootstrap</code>, <code>connect</code>, <code>status</code>,
+  <code>refresh-state</code>, <code>registry</code>, and <code>sync-global</code>;</li>
+<li>todo lifecycle commands: <code>todo add</code>, <code>todo claim</code>, <code>todo update</code>,
+  <code>todo complete</code>, <code>todo list</code>, <code>todo supersede</code>, and <code>todo archive</code>;</li>
+<li>control-plane read paths: <code>quota should-run</code>, <code>quota spend-slot</code>,
+  <code>review-packet</code>, <code>heartbeat-prompt --thin</code>, task graph projection, and cold
+  todo detail references;</li>
+<li>public slash command names: <code>/loopx</code>, <code>/loopx &lt;goal&gt;</code>,
+  <code>/loopx-global-summary</code>, <code>/loopx-global-gates</code>, <code>/loopx-global-todos</code>, and
+  <code>/loopx-global-risks</code>;</li>
+<li>ignored local state boundaries under <code>~/.codex/loopx</code>, project-local registry
+  files, and project-local active-state workbench files recognized by
+  <code>loopx doctor</code>, <code>loopx status</code>, and <code>loopx check</code>.</li>
+</ul>
+<p>Treat these as experimental until their contract docs say otherwise:</p>
+<ul>
+<li>benchmark runner behavior, scoring, upload, and raw task execution routes;</li>
+<li>host-plugin command registry implementations beyond the published protocol
+  contract;</li>
+<li>frontstage/dashboard presentation details that are not part of the public
+  status data contract;</li>
+<li>monitor scheduler cadence fields while they are still rolling out across
+  todo creation, quota projection, writeback, and migration.</li>
+</ul>
+<h2 id="release-note-checklist">Release Note Checklist<a class="headerlink" href="#release-note-checklist" title="Permanent link">&para;</a></h2>
+<p>Keep user-visible product changes first. When merged pull requests between the
+previous and current tags include community contributors other than project
+founder <code>@huangruiteng</code>, add a prominent <code>## Community Contributors</code> section
+after the English product groups and before compatibility, validation, or
+update material. Link each eligible GitHub handle and relevant pull requests,
+summarize the concrete contribution, and explicitly call out external or
+first-time contributors when applicable.</p>
+<p>Do not list or thank <code>@huangruiteng</code> in this section; founder stewardship is
+implicit in each LoopX release. Omit the section when the tag range contains no
+eligible community contribution. Contributor recognition must complement the
+release narrative, not replace or precede its product highlights.</p>
+<p>Build the list from the tag-to-tag Git range and merged pull-request metadata,
+not commit display names or an unreviewed generated changelog. Attribution is
+part of the release contract even when the same pull request is linked again
+under a product group.</p>
+<p>Organize the remaining release note into the following stable groups. Omit an
+empty product group instead of inventing filler:</p>
+<ol>
+<li><strong>State Kernel &amp; Control Plane</strong> for state, todo, quota, scheduler, gate,
+   peer-routing, and runtime authority changes.</li>
+<li><strong>Capabilities &amp; Workflows</strong> for shipped user workflows such as Issue-Fix,
+   Explore, Reward Memory, onboarding, and LoopX Turn.</li>
+<li><strong>Quality &amp; Testing</strong> for deterministic tests, canaries, output budgets,
+   model-behavior qualification, and release gates.</li>
+<li><strong>Benchmarks &amp; Integrations</strong> for benchmark adapters, Lark, host runtimes,
+   and other external boundaries.</li>
+<li><strong>Documentation &amp; Compatibility</strong> for public contracts, install/update
+   guidance, migrations, defaults, and intentional exclusions.</li>
+</ol>
+<p>Bilingual releases with eligible community contributions must add
+<code>### 社区贡献者</code> after the Chinese product groups and before Chinese
+compatibility or validation material, with the same people, pull-request
+links, and concrete contribution scope as the English section. Omit both
+language sections together when no eligible contributor exists. Bilingual
+releases must preserve these same group boundaries in both languages. Use the
+matching headings <strong>状态内核与控制面</strong>, <strong>能力与工作流</strong>, <strong>质量与测试</strong>,
+<strong>基准与集成</strong>, and <strong>文档与兼容性</strong>. The Chinese copy may be shorter, but it
+must not collapse several groups into a generic highlights list, omit a
+non-empty English group, or weaken contributor attribution.</p>
+<p>Within each non-empty group, every material claim must carry one or more direct
+GitHub pull-request links such as
+<code>[#2051](https://github.com/huangruiteng/loopx/pull/2051)</code>. A compare link is
+still useful at the end, but it does not replace per-claim PR attribution.
+Avoid bare PR ranges as the only evidence because ranges can hide omitted or
+unrelated changes.</p>
+<p>Every public release note or update note should also answer:</p>
+<ul>
+<li>What user-visible capability became more dependable?</li>
+<li>What package version and public tag name this stable release uses?</li>
+<li>Which install/update path should a new user follow?</li>
+<li>Which commands, docs, or smokes prove the claim?</li>
+<li>Are there compatibility or migration notes for existing local state?</li>
+<li>Which surfaces are still experimental or intentionally excluded?</li>
+<li>For every new or materially changed experimental, default-off, or opt-in
+  capability, include an <strong>Optional capability activation</strong> entry in both
+  languages: name its scope, read-only preview, exact enable and disable
+  commands, prerequisites or safety gates, and canonical docs. If no persistent
+  switch exists, say that opt-in is per command or preset instead.</li>
+<li>Did the public/private scan run on the changed docs, examples, and workflow
+  files?</li>
+<li>Did full <code>pytest</code>, focused release/install contracts, risk-based canary, and
+  promotion-readiness/public-boundary checks pass on the exact release commit?</li>
+<li>Did <code>loopx canary release-qualification</code> confirm that every required compact
+  receipt matches the same clean commit, Git tree, package version, and tag?</li>
+<li>Did the low-frequency live model gate run against the actual default
+  agent-facing packet with at least two repeats? Record the model id, behavior
+  decisions checked, call count, failures, and skips, but never retain raw
+  prompts, packets, responses, credentials, or local paths. This remains a
+  local/manual release gate rather than ordinary CI.</li>
+<li>If the release claims benchmark or long-horizon outcome improvement, did a
+  matched stable-versus-candidate outcome baseline pass? If no outcome claim is
+  made, state that this expensive gate was not required rather than implying it
+  ran.</li>
+<li>For Chinese-speaking operators, include a compact <code>## 中文摘要</code> section that
+  mirrors the English group structure and material claims in neutral product
+  language. Keep each group shorter than its English counterpart while
+  preserving direct PR attribution and compatibility boundaries.</li>
+</ul>
+<h3 id="final-release-body-usage-gate">Final Release Body Usage Gate<a class="headerlink" href="#final-release-body-usage-gate" title="Permanent link">&para;</a></h3>
+<p>The release-note PR is not sufficient evidence. Before publishing, save the
+complete final GitHub release body to an ignored or temporary Markdown file and
+validate that exact file:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>python3<span class="w"> </span>examples/release/release-readiness-doc-smoke.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span>--release-notes<span class="w"> </span>&lt;final-release-body.md&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span>--surface<span class="w"> </span><span class="s2">&quot;&lt;new-or-materially-changed-surface&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">  </span>--surface<span class="w"> </span><span class="s2">&quot;&lt;another-surface&gt;&quot;</span>
+</span></code></pre></div>
+<p>Derive the repeated <code>--surface</code> values from the tag diff, merged PR inventory,
+and release claims. Each named surface must have a dedicated English
+<code>### &lt;surface&gt;</code> entry under <code>## Optional Capability Activation &amp; Use</code> and a
+matching Chinese <code>#### &lt;surface&gt;</code> entry under <code>### 可选能力启用与使用</code>. Both
+entries must include these explicit fields:</p>
+<table>
+<thead>
+<tr>
+<th>English</th>
+<th>Chinese</th>
+<th>Required content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>**Activation:**</code></td>
+<td><code>**启用：**</code></td>
+<td>Exact install/enable command, or the exact per-command/profile opt-in when no persistent switch exists.</td>
+</tr>
+<tr>
+<td><code>**Validation:**</code></td>
+<td><code>**验证：**</code></td>
+<td>Minimum runnable status, readback, or verification command.</td>
+</tr>
+<tr>
+<td><code>**Disable / rollback:**</code></td>
+<td><code>**停用 / 回退：**</code></td>
+<td>Exact disable, uninstall, envelope removal, or rollback path.</td>
+</tr>
+<tr>
+<td><code>**Authority boundary:**</code></td>
+<td><code>**权限边界：**</code></td>
+<td>Write, merge, provider, privacy, and host limits that activation does not grant.</td>
+</tr>
+<tr>
+<td><code>**Docs:**</code></td>
+<td><code>**文档：**</code></td>
+<td>Canonical versioned documentation link.</td>
+</tr>
+</tbody>
+</table>
+<p>Every entry needs at least one runnable <code>bash</code> block. A release with no new or
+materially changed optional capability, workflow, or host surface must instead
+run the gate with <code>--expect-no-optional-capability-changes</code> and include the
+exact bilingual declarations required by the validator. Omitting both a
+surface list and the explicit no-change decision fails closed.</p>
+<p>After publishing, read the complete remote body back with <code>jq -rj</code>, compare its
+hash with the reviewed local file, and run the same validator against the
+readback. Do not validate a draft and then publish a different body.</p>
+<h3 id="capability-narrative-gate">Capability Narrative Gate<a class="headerlink" href="#capability-narrative-gate" title="Permanent link">&para;</a></h3>
+<p>For every new or materially changed capability, write the release claim in
+three explicit layers:</p>
+<ol>
+<li><strong>User outcome</strong>: say what a user can now accomplish in product language,
+   before naming protocols, providers, renderers, or other implementation
+   mechanisms.</li>
+<li><strong>Shipped layer</strong>: identify whether the release provides a control-plane or
+   protocol kernel, a built-in adapter or presentation layer, or a complete
+   end-to-end workflow. Name the commands, docs, or smokes that prove that
+   layer.</li>
+<li><strong>Last-mile boundary</strong>: name any default profile, collector, scheduler,
+   destination, credential setup, or publication step that is still absent or
+   explicitly opt-in. Do not overclaim a complete workflow, but do not hide a
+   shipped core behind mechanism-only wording either.</li>
+</ol>
+<p>A built-in capability is not an optional extension merely because some of its
+collectors, renderers, sinks, or providers are optional. Describe the built-in
+outcome and its lifecycle separately from provider activation. When a release
+ships successive layers of one outcome, such as a report kernel followed by an
+HTML presentation layer, attribute and explain each layer instead of folding
+both into a generic integrations bullet.</p>
+<p>The Chinese summary must preserve the same user outcome, shipped layer, and
+last-mile boundary. Translation may be shorter, but it must not replace the
+user-facing outcome with architecture-only terminology.</p>
+<p>The release PR and final GitHub release body must use the same grouping and
+contributor attribution, plus the same validation receipt. Re-run the gates
+after rebasing or merging any additional runtime change; results from an
+earlier commit do not qualify a later tag. Public git history, merged PR
+metadata, and shipped CLI behavior remain the source of truth.</p>
+<h2 id="related-docs">Related Docs<a class="headerlink" href="#related-docs" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../runtimes/codex-cli/codex-cli-packaged-install/">Codex CLI packaged install path</a></li>
+<li><a href="../runtimes/codex-cli/codex-cli-no-clone-release-verification/">Codex CLI no-clone release verification</a></li>
+<li><a href="../../guides/getting-started/">Getting started</a></li>
+<li><a href="../../update-notes/">Update notes</a></li>
+<li><a href="../../public-private-boundary/">Public/private boundary</a></li>
+<li><a href="../../concepts/interaction-pattern-catalog/">Interaction pattern catalog</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.action.edit", "content.code.copy", "content.tabs.link", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.path", "search.highlight", "search.share", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

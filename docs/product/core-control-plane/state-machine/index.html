@@ -1,0 +1,3258 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://huangruiteng.github.io/loopx/docs/product/core-control-plane/state-machine/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/loopx-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>State Machines - LoopX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#state-machines" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="LoopX" class="md-header__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../../../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LoopX
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              State Machines
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 2c-1.82 0-3.53.5-5 1.35C8 5.08 10 8.3 10 12s-2 6.92-5 8.65C6.47 21.5 8.18 22 10 22a10 10 0 0 0 10-10A10 10 0 0 0 10 2"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../guides/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../concepts/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../operations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Operations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../capabilities/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Capabilities
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../integrations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Integrations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../development/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Product
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../showcases/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Showcases
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="LoopX" class="md-nav__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../../../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    LoopX
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../guides/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/newcomer-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Newcomer Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/custom-agent-runner-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Runner Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/auto-research-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto Research Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../concepts/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concepts/interaction-pattern-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interaction Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../state-interaction-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    State Interaction Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quota-allocation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quota Allocation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../operations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operations/attention-queue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attention Queue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operations/long-task-cadence-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Long Task Cadence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operations/authority-source-registration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority Sources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../capabilities/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capabilities
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Capabilities
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/issue-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Issue Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/change-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Change Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/explore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Explore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/material-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Material Lifecycle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/value-connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Value Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../integrations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integrations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integrations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/worker-bridge-install-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Worker Bridge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/lark-kanban-control-plane-adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lark Kanban
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/runtime-connector-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Connector Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../reference/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/benchmark-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../development/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/testing-and-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing And Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/documentation-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Layout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/benchmark-developer-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/control-plane-course/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control Plane Course
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Product
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../surfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Surfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtimes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtimes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../showcases/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Showcases
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Showcases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/frontend-surface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend Surface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/cases/0617-blocked-p0-safe-rotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blocked P0 Safe Rotation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/cases/0619-loopx-self-iteration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LoopX Self Iteration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/cases/0624-pr-issue-auto-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PR Issue Auto Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-machines-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How The Machines Compose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-todo-lifecycle-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Todo Lifecycle Machine
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-quota-runtime-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Quota / Runtime Machine
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-gate-decision-scope-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Gate Decision Scope Machine
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-owner-route-multi-agent-handoff-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Owner Route / Multi-Agent Handoff Machine
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-evidence-rollout-rollback-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Evidence / Rollout / Rollback Machine
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-scheduler-heartbeat-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Scheduler / Heartbeat Machine
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-projection-sink-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Projection Sink Machine
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-agent-onboarding-automation-enablement-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Agent Onboarding / Automation Enablement Machine
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-agent-vision-replan-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Agent Vision / Replan Machine
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#catalog-linkage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Catalog Linkage
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/huangruiteng/loopx/edit/main/docs/product/core-control-plane/state-machine.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="state-machines">State Machines<a class="headerlink" href="#state-machines" title="Permanent link">&para;</a></h1>
+<p>LoopX does not have one giant state machine. It has a small set of
+cooperating machines that are projected from the same canonical state bodies:
+registry entries, active state, todo metadata, run history, quota events,
+operator gates, scheduler acknowledgements, and projection sinks.</p>
+<p>This document is not a new store and not a private incident narrative. It is a
+public-safe map over the current repository contracts, especially:</p>
+<ul>
+<li><a href="../state-definitions/"><code>state-definitions.md</code></a> for source state bodies and
+  derived runtime names;</li>
+<li><a href="../interaction-catalog/"><code>interaction-catalog.md</code></a> for reusable interaction
+  patterns;</li>
+<li><a href="../../../loopx/control_plane/todos/contract.py"><code>loopx/control_plane/todos/contract.py</code></a> for todo status,
+  task class, decision scope, resume, claim, and monitor metadata fields;</li>
+<li><a href="../../../loopx/quota.py"><code>loopx/quota.py</code></a> for <code>quota should-run</code>, runtime
+  states, <code>effective_action</code>, <code>interaction_contract</code>, spend, and monitor poll
+  contracts;</li>
+<li><a href="../../../loopx/control_plane/scheduler/scheduler_hint.py"><code>loopx/control_plane/scheduler/scheduler_hint.py</code></a>
+  for cadence/backoff/reset-token behavior;</li>
+<li><a href="../../../reference/protocols/goal-vision-replan-contract-v0/"><code>goal_vision_replan_contract_v0</code></a>
+  for bounded per-agent vision, replan transitions, and goal-route projection;</li>
+<li>cross-agent handoff gate states in
+  <a href="../../../loopx/control_plane/todos/handoff_gate.py"><code>loopx/control_plane/todos/handoff_gate.py</code></a>;</li>
+<li><a href="../../../loopx/project_map.py"><code>loopx/project_map.py</code></a> and
+  <a href="../../../loopx/bootstrap.py"><code>loopx/bootstrap.py</code></a> for project registration,
+  read-only-map opt-in, global sync, and host-loop activation.</li>
+</ul>
+<h2 id="how-the-machines-compose">How The Machines Compose<a class="headerlink" href="#how-the-machines-compose" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>flowchart LR
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  Registry[&quot;Registry / active state&quot;] --&gt; Todo[&quot;Todo lifecycle&quot;]
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  Todo --&gt; Quota[&quot;Quota runtime&quot;]
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  Gate[&quot;Gate scope&quot;] --&gt; Quota
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  Owner[&quot;Owner route / handoff&quot;] --&gt; Quota
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  Evidence[&quot;Evidence / rollout&quot;] --&gt; Todo
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  Quota --&gt; Scheduler[&quot;Scheduler / heartbeat&quot;]
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  Quota --&gt; Vision[&quot;Agent vision / replan&quot;]
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>  Vision --&gt; Todo
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>  Quota --&gt; Projection[&quot;Projection sinks&quot;]
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>  Projection --&gt; WriteAPI[&quot;LoopX write APIs&quot;]
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>  WriteAPI --&gt; Registry
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>  Onboard[&quot;Agent onboarding&quot;] --&gt; Registry
+</span></code></pre></div>
+<p>The top-level loop is simple:</p>
+<ol>
+<li>Resolve registry and active state.</li>
+<li>Project todos, gates, evidence, and current agent identity.</li>
+<li>Ask <code>quota should-run</code>.</li>
+<li>Either run exactly one bounded segment, ask a concrete gate, observe a
+   waiting handle, repair the control plane, or quiet no-op according to the
+   projected machine state.</li>
+<li>State changes return through LoopX write APIs, not through dashboard text or
+   chat memory.</li>
+</ol>
+<h2 id="1-todo-lifecycle-machine">1. Todo Lifecycle Machine<a class="headerlink" href="#1-todo-lifecycle-machine" title="Permanent link">&para;</a></h2>
+<p>Todo is the smallest executable or waiting unit. Current source fields include
+<code>status</code>, <code>task_class</code>, <code>action_kind</code>, <code>claimed_by</code>, <code>blocks_agent</code>,
+<code>global_gate</code>, <code>decision_scope</code>, <code>required_decision_scopes</code>,
+<code>required_capabilities</code>, <code>unblocks_todo_id</code>, <code>resume_when</code>, <code>no_followup</code>,
+<code>superseded_by</code>, monitor metadata, and evidence/reason fields.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>stateDiagram-v2
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  [*] --&gt; Suggested
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  Suggested --&gt; Open: promoted / todo add
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  Open --&gt; Claimed: claimed_by set
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  Claimed --&gt; Running: quota selects this todo
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>  Running --&gt; Done: validated evidence or blocker accepted
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>  Done --&gt; SuccessorOpen: successor or unblock relation exists
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>  Done --&gt; Archived: no follow-up or archive policy
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>  Open --&gt; Blocked: status=blocked / blocker reason
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>  Open --&gt; Deferred: status=deferred or resume_when
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>  Deferred --&gt; ResumeReady: resume condition satisfied
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>  ResumeReady --&gt; SuccessorReplan: no stable successor yet
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>  Open --&gt; Superseded: superseded_by
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>  Superseded --&gt; ReplacementOpen
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Source Fields</th>
+<th>Runtime Meaning</th>
+<th>Legal Exit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Suggested</code></td>
+<td>Suggestion output or planning prompt</td>
+<td>Candidate work that has not entered the durable todo list.</td>
+<td>Promote to <code>Open</code> or drop it.</td>
+</tr>
+<tr>
+<td><code>Open</code></td>
+<td><code>status=open</code> or unchecked Markdown item</td>
+<td>Durable backlog item.</td>
+<td>Claim, block, defer, supersede, or complete.</td>
+</tr>
+<tr>
+<td><code>Claimed</code></td>
+<td><code>claimed_by=&lt;agent_id&gt;</code></td>
+<td>Soft ownership/routing signal. It is not a lock.</td>
+<td>Run if quota selects it, reassign, block, or complete.</td>
+</tr>
+<tr>
+<td><code>Running</code></td>
+<td>Derived from <code>quota should-run</code> plus run history</td>
+<td>A bounded turn is currently attempting this item.</td>
+<td>Write evidence/blocker, then complete or reopen.</td>
+</tr>
+<tr>
+<td><code>Done</code></td>
+<td><code>status=done</code> or checked item plus evidence</td>
+<td>The item has a terminal outcome.</td>
+<td>Archive, create successor, or expose handoff clearance.</td>
+</tr>
+<tr>
+<td><code>Blocked</code></td>
+<td><code>status=blocked</code>, <code>reason</code>, capability/gate fields</td>
+<td>Known blocker, not vague waiting.</td>
+<td>Repair, ask owner, supersede, or reopen.</td>
+</tr>
+<tr>
+<td><code>Deferred</code></td>
+<td><code>status=deferred</code>, <code>resume_when</code></td>
+<td>Waiting for a concrete condition.</td>
+<td><code>ResumeReady</code> when the condition is satisfied.</td>
+</tr>
+<tr>
+<td><code>Superseded</code></td>
+<td><code>superseded_by</code></td>
+<td>Replaced without deleting history.</td>
+<td>Follow <code>ReplacementOpen</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><code>Running</code> is deliberately derived. Adding a persistent todo status for it would
+duplicate quota/run-history truth.</p>
+<h2 id="2-quota-runtime-machine">2. Quota / Runtime Machine<a class="headerlink" href="#2-quota-runtime-machine" title="Permanent link">&para;</a></h2>
+<p><code>quota should-run</code> is the compute gate. It decides whether the next automatic
+tick should spend compute, but it does not grant protected permissions. The
+current state order in <code>loopx/quota.py</code> is:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>blocked_health -&gt; operator_gate -&gt; focus_wait -&gt; eligible -&gt; waiting -&gt; throttled -&gt; paused
+</span></code></pre></div>
+<p>Additional fields such as <code>effective_action</code>, <code>safe_bypass_allowed</code>,
+<code>capability_gate</code>, <code>workspace_guard</code>, <code>agent_scope_frontier</code>,
+<code>heartbeat_recommendation</code>, <code>execution_obligation</code>, and
+<code>interaction_contract</code> refine what the agent and host must do next.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>stateDiagram-v2
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  [*] --&gt; QuotaCheck
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  QuotaCheck --&gt; Eligible: healthy + runnable or repairable
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>  QuotaCheck --&gt; OperatorGate: gate covers selected action
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>  QuotaCheck --&gt; FocusWait: outcome or fresh-evidence floor
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>  QuotaCheck --&gt; Waiting: external evidence or monitor handle pending
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>  QuotaCheck --&gt; BlockedHealth: registry/projection/boundary health broken
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>  QuotaCheck --&gt; Throttled: quota exhausted
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>  QuotaCheck --&gt; Paused: explicit pause
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>  Eligible --&gt; BoundedRun: effective_action=run or repair
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>  Eligible --&gt; ScopedFallback: scoped user gate + independent todo
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>  Eligible --&gt; MonitorQuiet: effective_action=monitor_quiet_skip
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>  Eligible --&gt; AgentScopeWait: no current-agent candidate
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>  Eligible --&gt; SuccessorReplan: cleared handoff lacks successor/no-follow-up
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>  BoundedRun --&gt; WritebackSpend: validated output
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>  ScopedFallback --&gt; WritebackSpend: independent fallback validated
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>  SuccessorReplan --&gt; WritebackSpend: successor/reopen/no-follow-up recorded
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>  MonitorQuiet --&gt; NoSpend
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>  AgentScopeWait --&gt; NoSpend
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>  OperatorGate --&gt; NoSpend
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>  FocusWait --&gt; WritebackSpend: recovery evidence validated
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>  FocusWait --&gt; NoSpend: no safe recovery
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>  Waiting --&gt; NoSpend: unchanged observation
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>  BlockedHealth --&gt; WritebackSpend: repair validated
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>  BlockedHealth --&gt; NoSpend: unsafe to repair
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>  Throttled --&gt; NoSpend
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>  Paused --&gt; NoSpend
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Runtime State / Action</th>
+<th>Agent Behavior</th>
+<th>Spend Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>eligible</code> + runnable action</td>
+<td>Attempt one bounded delivery, recovery, or repair.</td>
+<td>Spend only after validated writeback.</td>
+</tr>
+<tr>
+<td><code>operator_gate</code> / user gate</td>
+<td>Ask or surface the concrete payload.</td>
+<td>No spend for asking.</td>
+</tr>
+<tr>
+<td><code>scoped_user_gate_fallback</code></td>
+<td>Surface the gate and run only an independent fallback.</td>
+<td>Spend after fallback writeback.</td>
+</tr>
+<tr>
+<td><code>focus_wait</code></td>
+<td>Produce the named outcome/fresh-evidence recovery or write a blocker.</td>
+<td>Recovery can spend after validation; passive waiting cannot.</td>
+</tr>
+<tr>
+<td><code>waiting</code> / <code>external_evidence_observe</code></td>
+<td>Observe a public-safe handle or write a compact blocker.</td>
+<td>Follow the observation contract; unchanged waiting is usually no-spend.</td>
+</tr>
+<tr>
+<td><code>monitor_quiet_skip</code></td>
+<td>Preserve liveness, optionally append one no-spend monitor poll.</td>
+<td>No spend.</td>
+</tr>
+<tr>
+<td><code>agent_scope_wait</code></td>
+<td>Stay active but quiet until reassignment, unblock, or scoped todo appears.</td>
+<td>No spend.</td>
+</tr>
+<tr>
+<td><code>blocked_health</code></td>
+<td>Repair registry/projection/boundary/workspace/capability if allowed.</td>
+<td>Spend only after validated repair writeback.</td>
+</tr>
+<tr>
+<td><code>throttled</code> / <code>paused</code></td>
+<td>Do not deliver.</td>
+<td>No spend.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-gate-decision-scope-machine">3. Gate Decision Scope Machine<a class="headerlink" href="#3-gate-decision-scope-machine" title="Permanent link">&para;</a></h2>
+<p>Gates are scoped authority, not a universal boolean. A gate blocks a selected
+action only when its scope covers that action or agent. Current source fields
+include <code>task_class=user_gate</code>, <code>global_gate</code>, <code>blocks_agent</code>,
+<code>decision_scope</code>, <code>required_decision_scopes</code>, <code>operator_gate</code>, and
+<code>interaction_contract.user_channel</code>.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>flowchart TD
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  Open[&quot;Gate open&quot;] --&gt; Scope{&quot;scope covers selected action?&quot;}
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  Scope --&gt;|&quot;yes&quot;| Ask[&quot;ask concrete user/controller question&quot;]
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>  Scope --&gt;|&quot;no&quot;| Fallback[&quot;keep gate visible; run independent fallback&quot;]
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>  Scope --&gt;|&quot;ambiguous&quot;| Repair[&quot;repair projection or ask controller&quot;]
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>  Ask --&gt;|&quot;approve&quot;| Consume[&quot;consume covered required scopes&quot;]
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>  Consume --&gt; Unblock[&quot;unblock gated todo when otherwise ready&quot;]
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>  Ask --&gt;|&quot;reject&quot;| Supersede[&quot;supersede or compensation todo&quot;]
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>  Ask --&gt;|&quot;defer&quot;| Defer[&quot;deferred resume_when&quot;]
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>  Fallback --&gt; Write[&quot;write fallback evidence&quot;]
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>  Repair --&gt; Recheck[&quot;rerun quota&quot;]
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Transition</th>
+<th>Required Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Open gate -&gt; Ask</td>
+<td>Concrete payload todo/question, not only "owner gate".</td>
+</tr>
+<tr>
+<td>Open gate -&gt; Fallback</td>
+<td>Proof that selected fallback is independent of the gate scope.</td>
+</tr>
+<tr>
+<td>Open gate -&gt; Repair</td>
+<td>Explanation of missing or contradictory scope fields.</td>
+</tr>
+<tr>
+<td>Approve</td>
+<td>Completed, exactly linked <code>user_gate</code>; consume only covered target scopes and preserve the rest.</td>
+</tr>
+<tr>
+<td>Reject</td>
+<td>Supersede or compensation record; never consume decision authority.</td>
+</tr>
+<tr>
+<td>Defer</td>
+<td>Decision event with a supported <code>resume_when</code>.</td>
+</tr>
+<tr>
+<td>Fallback complete</td>
+<td>Artifact/blocker/evidence linked to the independent todo.</td>
+</tr>
+</tbody>
+</table>
+<p>This machine is why user and agent channels can intentionally disagree:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>user_channel.action_required = true
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>agent_channel.must_attempt = true
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>selected_action = independent_fallback
+</span></code></pre></div>
+<h2 id="4-owner-route-multi-agent-handoff-machine">4. Owner Route / Multi-Agent Handoff Machine<a class="headerlink" href="#4-owner-route-multi-agent-handoff-machine" title="Permanent link">&para;</a></h2>
+<p>Multi-agent routing is modeled with todo ownership and handoff gates. Review is
+not a separate kernel state. It is a todo/gate relation that can block a named
+agent until an owner route completes, reassigns, or records no follow-up.</p>
+<p><code>loopx/control_plane/todos/handoff_gate.py</code> currently projects <code>blocks_agent</code>
+todos into:
+<code>blocking</code>, <code>cleared_without_successor</code>, <code>cleared_with_successor</code>,
+<code>cleared_no_followup</code>, <code>superseded</code>, and <code>deferred</code>.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>stateDiagram-v2
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  [*] --&gt; OpenWork
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>  OpenWork --&gt; ClaimedByAgent: claimed_by
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>  ClaimedByAgent --&gt; WorkspaceGuard: quota --agent-id
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>  WorkspaceGuard --&gt; AgentDelivery: correct worktree / capability
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>  WorkspaceGuard --&gt; Reassigned: wrong owner or workspace
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>  AgentDelivery --&gt; SelfMerged: small validated eligible change
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>  AgentDelivery --&gt; OwnerRouteWait: broad / high-risk / owner-held change
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>  OwnerRouteWait --&gt; Blocking: gate_state=blocking
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>  Blocking --&gt; ClearedWithSuccessor: owner todo done + successor
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>  Blocking --&gt; ClearedWithoutSuccessor: owner todo done + no successor
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>  Blocking --&gt; ClearedNoFollowup: no_followup=true
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>  Blocking --&gt; Superseded: superseded_by
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>  Blocking --&gt; Deferred: resume_when
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>  ClearedWithoutSuccessor --&gt; SuccessorReplan
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>  ClearedWithSuccessor --&gt; SuccessorRun
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>  ClearedNoFollowup --&gt; Done
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>  Superseded --&gt; SuccessorRun
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>  Deferred --&gt; OwnerRouteWait
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>  SelfMerged --&gt; Done
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Handoff State</th>
+<th>Meaning</th>
+<th>Next Legal Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>blocking</code></td>
+<td>Another owner route blocks this agent.</td>
+<td>Wait quietly or surface concrete gate.</td>
+</tr>
+<tr>
+<td><code>cleared_with_successor</code></td>
+<td>The blocker is done and a successor exists.</td>
+<td>Route to successor.</td>
+</tr>
+<tr>
+<td><code>cleared_without_successor</code></td>
+<td>The blocker is done but no successor/no-follow-up is projected.</td>
+<td>Enter successor replan before ordinary delivery.</td>
+</tr>
+<tr>
+<td><code>cleared_no_followup</code></td>
+<td>Owner explicitly says no follow-up.</td>
+<td>Archive or continue unrelated work.</td>
+</tr>
+<tr>
+<td><code>superseded</code></td>
+<td>A replacement todo exists.</td>
+<td>Follow replacement.</td>
+</tr>
+<tr>
+<td><code>deferred</code></td>
+<td>Resume condition is not yet satisfied.</td>
+<td>Wait or observe condition.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-evidence-rollout-rollback-machine">5. Evidence / Rollout / Rollback Machine<a class="headerlink" href="#5-evidence-rollout-rollback-machine" title="Permanent link">&para;</a></h2>
+<p>Evidence determines whether a state transition is trustworthy. Agent-declared
+"done" is not enough. A transition should be backed by artifact refs, source
+refs, validation results, blocker evidence, commit/PR/doc revision anchors, or
+compact external observations.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>flowchart LR
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>  Hypothesis[&quot;Hypothesis / intended action&quot;] --&gt; Evidence[&quot;Evidence bundle&quot;]
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>  Evidence --&gt;|&quot;validation passed&quot;| Snapshot[&quot;Validated run snapshot&quot;]
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>  Evidence --&gt;|&quot;validation failed&quot;| Blocker[&quot;Blocker evidence&quot;]
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>  Snapshot --&gt;|&quot;state changed&quot;| Event[&quot;Rollout event&quot;]
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>  Event --&gt; Anchor[&quot;Mutation anchor&quot;]
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>  Anchor --&gt;|&quot;needs compensation&quot;| Rollback[&quot;Rollback / compensation event&quot;]
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>  Blocker --&gt; Successor[&quot;Successor todo&quot;]
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>  Rollback --&gt; Successor
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Evidence State</th>
+<th>Can Change Control-Plane State?</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hypothesis</td>
+<td>No</td>
+<td>Explains direction only.</td>
+</tr>
+<tr>
+<td>Evidence bundle</td>
+<td>Maybe</td>
+<td>Must include enough refs and validation shape.</td>
+</tr>
+<tr>
+<td>Validated run snapshot</td>
+<td>Yes</td>
+<td>Can drive todo completion, spend, or status projection.</td>
+</tr>
+<tr>
+<td>Blocker evidence</td>
+<td>Yes</td>
+<td>Can justify blocked/deferred/successor states.</td>
+</tr>
+<tr>
+<td>Rollout event</td>
+<td>Yes</td>
+<td>Append-only lifecycle fact.</td>
+</tr>
+<tr>
+<td>Mutation anchor</td>
+<td>Yes</td>
+<td>Commit, PR, doc revision, Base row, automation version, or equivalent.</td>
+</tr>
+<tr>
+<td>Rollback / compensation</td>
+<td>Yes</td>
+<td>Fix-forward and rollback remain part of history.</td>
+</tr>
+</tbody>
+</table>
+<p>Rollback should never mean deleting the evidence chain. It appends a new
+compensating fact and usually creates or unblocks a successor todo.</p>
+<h2 id="6-scheduler-heartbeat-machine">6. Scheduler / Heartbeat Machine<a class="headerlink" href="#6-scheduler-heartbeat-machine" title="Permanent link">&para;</a></h2>
+<p><code>scheduler_hint</code> is waiting policy, not execution permission. It is derived
+from quota payload fields such as <code>should_run</code>, <code>effective_action</code>,
+<code>heartbeat_recommendation</code>, <code>execution_obligation</code>,
+<code>automation_liveness</code>, and <code>interaction_contract</code>.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>stateDiagram-v2
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>  [*] --&gt; Tick
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>  Tick --&gt; RunNow: action=run_now
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>  Tick --&gt; WaitUser: action=backoff_waiting_for_user
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>  Tick --&gt; WaitReassign: action=backoff_until_reassigned
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>  Tick --&gt; WaitMaterial: action=backoff_until_material_transition
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>  Tick --&gt; WaitEvidence: action=backoff_until_fresh_evidence
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>  Tick --&gt; QuietWait: action=backoff_until_state_change
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>  Tick --&gt; TerminalStop: action=stop_until_explicit_resume
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>  Tick --&gt; DefaultCadence: action=keep_default_cadence
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>  RunNow --&gt; ActiveCadence
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>  WaitUser --&gt; WiderCadence
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>  WaitReassign --&gt; ConservativeWiden
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>  WaitMaterial --&gt; MonitorCadence
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>  WaitEvidence --&gt; EvidenceCadence
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>  QuietWait --&gt; WiderCadence
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>  TerminalStop --&gt; [*]
+</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>  DefaultCadence --&gt; Tick
+</span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>
+</span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>  WiderCadence --&gt; FinalCheck: unchanged limit reached
+</span><span id="__span-8-22"><a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>  ConservativeWiden --&gt; FinalCheck: unchanged limit reached
+</span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a>  MonitorCadence --&gt; FinalCheck: unchanged limit reached
+</span><span id="__span-8-24"><a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a>  EvidenceCadence --&gt; FinalCheck: unchanged limit reached
+</span><span id="__span-8-25"><a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a>  FinalCheck --&gt; RunNow: quota changed
+</span><span id="__span-8-26"><a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a>  FinalCheck --&gt; StopOrKeepAlive: unchanged
+</span><span id="__span-8-27"><a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a>
+</span><span id="__span-8-28"><a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a>  Tick --&gt; ResetToInitial: reset_token changed
+</span><span id="__span-8-29"><a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a>  ResetToInitial --&gt; ActiveCadence
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Scheduler Action</th>
+<th>Current Cadence Class</th>
+<th>Typical Codex App Initial / Max</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>run_now</code></td>
+<td><code>active_work</code></td>
+<td>3 / 10 minutes</td>
+<td>Work or repair must be attempted.</td>
+</tr>
+<tr>
+<td><code>backoff_waiting_for_user</code></td>
+<td><code>human_gate</code></td>
+<td>30 / 120 minutes</td>
+<td>Concrete user/controller action is next.</td>
+</tr>
+<tr>
+<td><code>backoff_until_reassigned</code></td>
+<td><code>agent_scope_wait</code></td>
+<td>10 / 60 minutes, progression 10/20/30/60</td>
+<td>Handoff owner or reassignment may unblock this agent.</td>
+</tr>
+<tr>
+<td><code>backoff_until_material_transition</code></td>
+<td><code>monitor_wait</code></td>
+<td>15 / 60 minutes</td>
+<td>Monitor-only liveness without compute spend.</td>
+</tr>
+<tr>
+<td><code>backoff_until_fresh_evidence</code></td>
+<td><code>unchanged_noop</code></td>
+<td>60 / 240 minutes</td>
+<td>Wait for fresh mapped or post-handoff evidence.</td>
+</tr>
+<tr>
+<td><code>backoff_until_state_change</code></td>
+<td><code>quiet_wait</code></td>
+<td>30 / 120 minutes</td>
+<td>No specific user/monitor path is projected.</td>
+</tr>
+<tr>
+<td><code>stop_until_explicit_resume</code></td>
+<td><code>terminal_no_followup</code></td>
+<td>stopped</td>
+<td>LoopX-derived closure from complete todo sources, no-follow-up evidence, and an empty frontier stops recurring automation until resume or new work.</td>
+</tr>
+<tr>
+<td><code>keep_default_cadence</code></td>
+<td><code>default</code></td>
+<td>3 / 30 minutes</td>
+<td>No backoff condition is projected.</td>
+</tr>
+</tbody>
+</table>
+<p>The reset token is part of the machine. When identity, selected action,
+recommended mode, user feedback, gate resolution, reassignment, material
+evidence, or active work changes the token, hosts should return to the profile
+initial cadence and acknowledge the scheduler state. Cadence changes do not
+spend quota.</p>
+<h2 id="7-projection-sink-machine">7. Projection Sink Machine<a class="headerlink" href="#7-projection-sink-machine" title="Permanent link">&para;</a></h2>
+<p>Status, review packet, frontstage, manager summary, Lark Kanban, and dashboard
+rows are projection sinks. They make state readable; they do not own state.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>flowchart LR
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>  Source[&quot;Canonical stores&quot;] --&gt; Builder[&quot;Projection builder&quot;]
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>  Builder --&gt;|&quot;complete + fresh&quot;| View[&quot;Read-only view&quot;]
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>  Builder --&gt;|&quot;missing / stale / conflicting&quot;| Gap[&quot;Projection gap&quot;]
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>  Gap --&gt; Repair[&quot;repair source or builder&quot;]
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>  Repair --&gt; Builder
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>  View --&gt;|&quot;user action&quot;| WriteAPI[&quot;LoopX write API&quot;]
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>  WriteAPI --&gt; Source
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Projection State</th>
+<th>Meaning</th>
+<th>Required Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Read-only view</code></td>
+<td>The sink matches current source fields closely enough to display.</td>
+<td>It may guide a user/agent, but writes go through LoopX APIs.</td>
+</tr>
+<tr>
+<td><code>Projection gap</code></td>
+<td>Missing concrete todo, stale route, conflicting source, or collapsed user/agent channel.</td>
+<td>Repair the source or projection builder before relying on it.</td>
+</tr>
+<tr>
+<td><code>Write API</code></td>
+<td>Todo update, gate decision, refresh-state, monitor poll, spend, scheduler ack, or event append.</td>
+<td>Append durable facts; do not mutate the sink as truth.</td>
+</tr>
+</tbody>
+</table>
+<p>This machine protects the public/private boundary: a projection may render
+public-safe summaries and evidence refs, but it must not become a dependency on
+private raw docs, transcripts, credentials, local paths, benchmark logs, or
+unredacted connector payloads.</p>
+<h2 id="8-agent-onboarding-automation-enablement-machine">8. Agent Onboarding / Automation Enablement Machine<a class="headerlink" href="#8-agent-onboarding-automation-enablement-machine" title="Permanent link">&para;</a></h2>
+<p>Connecting a project is not the same as enabling long-running automation. The
+current code separates project registration, global sync, quota visibility,
+heartbeat opt-in, host-loop installation, and first tick verification.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>stateDiagram-v2
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>  [*] --&gt; Unregistered
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>  Unregistered --&gt; ProjectRegistered: bootstrap / connect
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>  ProjectRegistered --&gt; GlobalSyncPending: sync-global requested
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>  GlobalSyncPending --&gt; GlobalRegistered: global sync wrote
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>  GlobalSyncPending --&gt; GlobalWriteBlocked: registry write failed
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>  GlobalWriteBlocked --&gt; RepairNeeded
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>  ProjectRegistered --&gt; QuotaVisible: project registry mode
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>  GlobalRegistered --&gt; QuotaVisible: global quota recognizes goal/agent
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>  QuotaVisible --&gt; HeartbeatConsentRequired: codex_app_heartbeat=ask
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>  QuotaVisible --&gt; HeartbeatPreauthorized: codex_app_heartbeat=yes
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>  QuotaVisible --&gt; ManualLoopOnly: codex_app_heartbeat=no or unsupported host
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>  HeartbeatConsentRequired --&gt; HeartbeatEnabled: user confirms + host installed
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>  HeartbeatPreauthorized --&gt; HeartbeatEnabled: host installed
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>  HeartbeatEnabled --&gt; FirstTickVerified: heartbeat fires + quota checked
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>  ManualLoopOnly --&gt; FirstTickVerified: manual/TUI/Claude tick checked quota
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>  RepairNeeded --&gt; ProjectRegistered: repair validated
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>  FirstTickVerified --&gt; [*]
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Source Fields / Commands</th>
+<th>Product Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ProjectRegistered</code></td>
+<td>Registry goal, adapter kind/status, active state path</td>
+<td>LoopX knows the project. Automation is not implied.</td>
+</tr>
+<tr>
+<td><code>GlobalSyncPending</code> / <code>GlobalRegistered</code></td>
+<td><code>global_sync</code> payload</td>
+<td>Shared status/quota can discover the goal.</td>
+</tr>
+<tr>
+<td><code>GlobalWriteBlocked</code> / <code>RepairNeeded</code></td>
+<td>Registry writability probe or sync error</td>
+<td>Produce a concrete repair/gate; do not silently downgrade.</td>
+</tr>
+<tr>
+<td><code>QuotaVisible</code></td>
+<td><code>quota should-run</code> can resolve goal and agent</td>
+<td>The scheduler can reason about the target.</td>
+</tr>
+<tr>
+<td><code>HeartbeatConsentRequired</code></td>
+<td><code>codex_app_heartbeat=ask</code></td>
+<td>Ask before installing a recurring Codex App automation.</td>
+</tr>
+<tr>
+<td><code>HeartbeatPreauthorized</code></td>
+<td><code>codex_app_heartbeat=yes</code></td>
+<td>Install/update the host loop before claiming automation is active.</td>
+</tr>
+<tr>
+<td><code>ManualLoopOnly</code></td>
+<td><code>codex_app_heartbeat=no</code> or host unsupported</td>
+<td>Manual, TUI, Claude, or on-demand loops remain valid.</td>
+</tr>
+<tr>
+<td><code>FirstTickVerified</code></td>
+<td>Run history or quota evidence from a real tick</td>
+<td>The operating loop has actually been exercised.</td>
+</tr>
+</tbody>
+</table>
+<p>For read-only project maps, <code>adapter.status=planned</code> permits only a dry-run
+preview until the <code>read_only_map_opt_in</code> operator gate approves it. Connected
+read-only states such as <code>connected</code>, <code>connected-read-only</code>, and
+<code>read-only-map-ready</code> can append a real read-only map.</p>
+<h2 id="9-agent-vision-replan-machine">9. Agent Vision / Replan Machine<a class="headerlink" href="#9-agent-vision-replan-machine" title="Permanent link">&para;</a></h2>
+<p>Agent vision is compact executable routing state, not a scratchpad. Each agent
+may have a bounded vision packet that describes its current role direction,
+scope, acceptance summary, replan trigger, dreaming policy, and latest patch.
+The CLI/write API must enforce those budgets before quota or status consumes
+the projection.</p>
+<p>Vision is per <code>agent_id</code>, including closeout checks. A material
+<code>refresh-state</code> emits <code>vision_checkpoint_v0</code> for the current agent: patched,
+unchanged with reason, retired/superseded, missing required, or not required.
+Missing required checkpoints are preserved in compact run history, filtered by
+the current agent, and can become goal-frontier acceptance gaps before local
+quiet/wait decisions.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>stateDiagram-v2
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>  [*] --&gt; Unset
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>  Unset --&gt; DraftVision: goal configured or preset seeded
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>  DraftVision --&gt; ActiveVision: budget + acceptance validated
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>  ActiveVision --&gt; VisionDriftDetected: frontier exhausted or objective shifted
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>  ActiveVision --&gt; DreamProposal: advisory patch proposed
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>  VisionDriftDetected --&gt; ReplanRequired: goal-level trigger accepted
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>  DreamProposal --&gt; ReplanRequired: delivery route needed
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>  ReplanRequired --&gt; ReplanDrafted: bounded plan + todo delta
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>  ReplanDrafted --&gt; VisionPatchProposed: bounded vision patch
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>  VisionPatchProposed --&gt; ActiveVision: write correctness validated
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>  ActiveVision --&gt; Superseded: successor route replaces it
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>  ActiveVision --&gt; Retired: acceptance or no-follow-up recorded
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Product Meaning</th>
+<th>Legal Exit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DraftVision</code></td>
+<td>A compact packet is being seeded or rewritten.</td>
+<td>Validate budget and acceptance.</td>
+</tr>
+<tr>
+<td><code>ActiveVision</code></td>
+<td>The role may use the packet for lane-local work.</td>
+<td>Evidence, drift, dreaming proposal, supersession, or retirement.</td>
+</tr>
+<tr>
+<td><code>ReplanRequired</code></td>
+<td>Goal-level progress requires replan before quiet/wait.</td>
+<td>Write a bounded vision/todo/acceptance delta.</td>
+</tr>
+<tr>
+<td><code>VisionPatchProposed</code></td>
+<td>Replan produced a bounded patch.</td>
+<td>Apply through LoopX write APIs or reject as over budget.</td>
+</tr>
+</tbody>
+</table>
+<p>The important ordering is goal-level first: required replan is evaluated before
+monitor quiet skip, scoped gate wait, or an individual agent's no-candidate
+state. Those local states may remain visible, but they cannot clear a required
+replan. An acknowledgement without a vision, todo, acceptance, or no-follow-up
+delta is <code>replan_noop</code>. A future monitor <code>next_due_at</code> is scheduler metadata,
+not a frontier delta, and cannot by itself suppress a monitor-only empty-frontier
+replan.</p>
+<p>The same ordering applies when an agent records a bounded
+<code>replan_trigger_summary</code> in its vision packet. Status/quota exposes that trigger
+as a goal-frontier <code>acceptance_gaps[]</code> entry. If no advancement frontier remains,
+the gap becomes a replan trigger before the lane can quietly back off.</p>
+<p>Long runnable lanes also pass through this machine. When the current agent can
+select about 15 advancement todos, or about 20 open todos with advancement work
+still present, quota should trigger a bounded vision replan before continuing
+linearly. The replan reads the agent-scoped evidence log, uses bounded public
+research when local evidence is insufficient for a public claim, then groups,
+prunes, or reprioritizes the chain into the next high-value runnable slice.</p>
+<p>The same ordering also applies to <code>vision_checkpoint_v0</code>: if a role records
+material progress but omits both a vision patch and an unchanged/no-follow-up
+decision, quota should project that role's <code>vision_checkpoint_missing</code> gap and
+route that role back through replan.</p>
+<p>See
+<a href="../../../reference/protocols/goal-vision-replan-contract-v0/"><code>goal_vision_replan_contract_v0</code></a>
+for the field budgets and projection contract.</p>
+<h2 id="catalog-linkage">Catalog Linkage<a class="headerlink" href="#catalog-linkage" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Machine</th>
+<th>Representative Patterns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Todo lifecycle</td>
+<td>IP-001 Bounded Delivery, IP-029 Handoff Todo Gate State</td>
+</tr>
+<tr>
+<td>Quota / runtime</td>
+<td>IP-001, IP-007 Outcome Floor Recovery, IP-008 Monitor Quiet Skip</td>
+</tr>
+<tr>
+<td>Gate decision scope</td>
+<td>IP-002 Blocked Priority With Safe Fallback, IP-003 Scoped Gate With Safe Fallback, IP-004 Concrete User Todo Projection</td>
+</tr>
+<tr>
+<td>Owner route / handoff</td>
+<td>IP-026 Agent-Scoped No-Candidate Gap, IP-029 Handoff Todo Gate State</td>
+</tr>
+<tr>
+<td>Evidence / rollout</td>
+<td>IP-001 Bounded Delivery, IP-007 Outcome Floor Recovery</td>
+</tr>
+<tr>
+<td>Scheduler / heartbeat</td>
+<td>IP-008 Monitor Quiet Skip, IP-026 Agent-Scoped No-Candidate Gap</td>
+</tr>
+<tr>
+<td>Projection sink</td>
+<td>IP-005 State Projection Gap</td>
+</tr>
+<tr>
+<td>Agent onboarding</td>
+<td>Project bootstrap/connect and read-only-map opt-in flows</td>
+</tr>
+<tr>
+<td>Agent vision / replan</td>
+<td>Autonomous replan, dreaming proposal promotion, successor replan</td>
+</tr>
+</tbody>
+</table>
+<p>If a new interaction pattern cannot be placed in one of these machines, first
+check whether it is a UI variant, wording variant, or private incident label.
+Only add a new machine when a source field, legal transition, owner, and
+validation path are all observable from public-safe LoopX state.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.action.edit", "content.code.copy", "content.tabs.link", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.path", "search.highlight", "search.share", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

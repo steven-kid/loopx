@@ -1,0 +1,3158 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://huangruiteng.github.io/loopx/docs/development/testing-and-quality/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../documentation-layout/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/loopx-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Testing And Quality - LoopX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#testing-and-quality" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="LoopX" class="md-header__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LoopX
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Testing And Quality
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 2c-1.82 0-3.53.5-5 1.35C8 5.08 10 8.3 10 12s-2 6.92-5 8.65C6.47 21.5 8.18 22 10 22a10 10 0 0 0 10-10A10 10 0 0 0 10 2"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../concepts/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../operations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Operations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../capabilities/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Capabilities
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../integrations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Integrations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../product/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Product
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../showcases/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Showcases
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="LoopX" class="md-nav__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    LoopX
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../guides/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/newcomer-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Newcomer Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/custom-agent-runner-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Runner Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/auto-research-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto Research Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../concepts/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/interaction-pattern-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interaction Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../state-interaction-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    State Interaction Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quota-allocation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quota Allocation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../operations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/attention-queue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attention Queue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/long-task-cadence-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Long Task Cadence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/authority-source-registration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority Sources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../capabilities/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capabilities
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Capabilities
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capabilities/issue-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Issue Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capabilities/change-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Change Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capabilities/explore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Explore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capabilities/material-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Material Lifecycle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capabilities/value-connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Value Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../integrations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integrations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integrations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/worker-bridge-install-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Worker Bridge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/lark-kanban-control-plane-adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lark Kanban
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/runtime-connector-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Connector Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/benchmark-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing And Quality
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing And Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quality-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quality Layers / 质量分层
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pull-request-baseline-pr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pull-Request Baseline / PR 基线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smokes-and-canary-smoke-canary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Smokes And Canary / Smoke 与 Canary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Smokes And Canary / Smoke 与 Canary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#smoke-fleet-health-smoke" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Smoke Fleet Health / Smoke 集群健康
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-facing-output-budgets-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent-Facing Output Budgets / Agent 输出预算
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decision-replay-and-issue-2191-2191" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decision Replay And Issue #2191 / 决策回放与 #2191
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#doubao-model-behavior-gate-doubao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Doubao Model-Behavior Gate / Doubao 模型行为门
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exact-release-commit-gate-commit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exact Release Commit Gate / 精确发布 Commit 门
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release-outcome-baseline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Release Outcome Baseline / 发布结果基线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#risk-based-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Risk-Based Review / 按风险审阅
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evidence-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evidence Boundary / 证据边界
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documentation-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Layout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../benchmark-developer-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../control-plane-course/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control Plane Course
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../product/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Product
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product/vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product/release-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product/surfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Surfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product/runtimes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtimes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product/foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../showcases/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Showcases
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Showcases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcases/frontend-surface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend Surface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcases/cases/0617-blocked-p0-safe-rotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blocked P0 Safe Rotation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcases/cases/0619-loopx-self-iteration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LoopX Self Iteration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcases/cases/0624-pr-issue-auto-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PR Issue Auto Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quality-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quality Layers / 质量分层
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pull-request-baseline-pr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pull-Request Baseline / PR 基线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smokes-and-canary-smoke-canary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Smokes And Canary / Smoke 与 Canary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Smokes And Canary / Smoke 与 Canary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#smoke-fleet-health-smoke" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Smoke Fleet Health / Smoke 集群健康
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-facing-output-budgets-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent-Facing Output Budgets / Agent 输出预算
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decision-replay-and-issue-2191-2191" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decision Replay And Issue #2191 / 决策回放与 #2191
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#doubao-model-behavior-gate-doubao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Doubao Model-Behavior Gate / Doubao 模型行为门
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exact-release-commit-gate-commit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exact Release Commit Gate / 精确发布 Commit 门
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release-outcome-baseline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Release Outcome Baseline / 发布结果基线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#risk-based-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Risk-Based Review / 按风险审阅
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evidence-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evidence Boundary / 证据边界
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Development
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/huangruiteng/loopx/edit/main/docs/development/testing-and-quality.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="testing-and-quality">Testing And Quality / 测试与质量体系<a class="headerlink" href="#testing-and-quality" title="Permanent link">&para;</a></h1>
+<p>LoopX coordinates long-running agents, so a change can be locally correct yet
+still alter which work an agent selects, whether it asks a user, or whether a
+host keeps running. The quality system therefore tests one shipped behavior at
+several distances. Fast deterministic checks protect pull requests; broader
+and more expensive checks run only when their signal justifies the cost.</p>
+<p>LoopX 协调长程 agent。一个局部正确的改动，仍可能改变 agent 选择哪项工作、是否
+向用户提问，或 host 是否继续运行。因此质量体系从不同距离验证同一套已交付行为：
+快速、确定性的检查保护每个 PR；更广、更昂贵的检查只在信号值得成本时运行。</p>
+<h2 id="quality-layers">Quality Layers / 质量分层<a class="headerlink" href="#quality-layers" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Layer / 层</th>
+<th>What it proves / 证明什么</th>
+<th>Normal cadence / 常规频率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unit and contract tests / 单元与合同测试</td>
+<td>Pure rules, schemas, transition tables, invalid-state rejection / 纯规则、schema、状态转换和非法状态拒绝</td>
+<td>Every relevant PR in <code>python-tests.yml</code> / 相关 PR 必跑</td>
+</tr>
+<tr>
+<td>Durable public smokes / 稳定公开 smoke</td>
+<td>Shipped CLI and cross-module behavior through public-safe fixtures / CLI 与跨模块交付行为</td>
+<td>Focused locally; full-public on <code>main</code>, daily, or manual / 本地聚焦；主干、每日或手动全量</td>
+</tr>
+<tr>
+<td>Catalog-informed canary / Catalog 驱动 canary</td>
+<td>The smallest risk-based slice spanning every changed public surface / 覆盖所有变更面的最小风险切片</td>
+<td>Before sensitive merge or release / 敏感合并与发布前</td>
+</tr>
+<tr>
+<td>CLI output budgets / CLI 输出预算</td>
+<td>Agent-facing output stays bounded and base-to-head growth is visible / 输出有界且能发现相对增长</td>
+<td>Relevant PR CI and premerge / 相关 PR CI 与 premerge</td>
+</tr>
+<tr>
+<td>Public-safe decision replay / 公开安全决策回放</td>
+<td>Reviewed source-state invariants replay through the real quota-to-scheduler path / 经审阅的源状态不变量重放真实 quota-to-scheduler 链路</td>
+<td>Regression and control-plane changes / 回归与控制面变更</td>
+</tr>
+<tr>
+<td>Model-behavior qualification / 模型行为验证</td>
+<td>A real model correctly interprets the actual default packet and safety contract / 真实模型能正确理解当前默认载荷与安全合同</td>
+<td>Low-frequency local/manual shadow gate / 低频本地或手动影子门</td>
+</tr>
+<tr>
+<td>Release outcome baseline / 发布结果基线</td>
+<td>Stable release and candidate outcomes are comparable under matched semantics / 稳定版与候选版在匹配语义下可比较</td>
+<td>Release qualification or scheduled observation / 发布验证或周期观察</td>
+</tr>
+</tbody>
+</table>
+<p>These layers are complementary. A model pass cannot override a deterministic
+contract failure, and a large smoke sweep cannot replace a focused regression
+that names the broken rule.</p>
+<p>这些层次互补：模型通过不能覆盖确定性合同失败；大规模 smoke 也不能代替明确指出
+错误规则的聚焦回归测试。</p>
+<p>High-risk shipped surfaces are registered in the machine-audited quality
+surface catalog. Each row names an independent semantic oracle and classifies
+every layer as <code>covered</code>, <code>not_applicable</code> with a reason, or <code>deferred</code> with an
+owner. This avoids both silent gaps and meaningless requirements such as using
+a model to judge deterministic scheduler precedence.</p>
+<p>高风险交付面需要进入可机器审计的质量 surface catalog。每一行都要指明独立语义
+oracle，并把每一层明确分类为 <code>covered</code>、有理由的 <code>not_applicable</code>，或有 owner 的
+<code>deferred</code>。这样既不会静默漏测，也不会强迫模型去判断确定性的 scheduler 优先级。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>loopx<span class="w"> </span>canary<span class="w"> </span>quality-audit
+</span></code></pre></div>
+<p>Run it from a source checkout to validate that referenced product, test, and
+documentation paths still exist; packaged installs retain the classification
+audit but report that repository-reference validation is unavailable.</p>
+<p>在源码 checkout 中运行时，命令还会验证引用的产品、测试和文档路径仍然存在；打包
+安装仍可审计分类，但会明确报告仓库引用校验不可用。</p>
+<p>The audit fails on an unclassified high-risk canary profile, an oracle that
+reuses product source as expected truth, a missing deterministic minimum, or
+an unexplained exception. Valid deferred rows remain visible as backlog gaps
+without pretending that the repository is fully qualified.</p>
+<p>如果新增高风险 canary profile 却未分类、oracle 直接复用产品实现作为期望值、缺少
+确定性最小门禁，或例外没有理由，审计会失败。合法的 deferred 行仍作为 backlog
+缺口显式展示，不会伪装成仓库已经完全就绪。</p>
+<p>Tests first judge whether the state and rule are correct, then whether the
+implementation conforms. Expected outcomes come from an independently reviewed
+invariant, never the implementation under test or its current output.
+Characterization fixtures document legacy behavior but do not authorize it;
+contradictions require rule repair and negative or mutation coverage, not a
+refreshed golden.</p>
+<p>测试先判断状态和规则是否正确，再验证实现是否符合。预期结果必须来自独立审阅的
+不变量，不能由被测实现或当前输出生成。Characterization fixture 只记录历史
+行为，不授予其正确性；发现矛盾时应修复规则并增加反例或 mutation 覆盖，不得刷新
+golden 来让测试通过。</p>
+<h2 id="pull-request-baseline-pr">Pull-Request Baseline / PR 基线<a class="headerlink" href="#pull-request-baseline-pr" title="Permanent link">&para;</a></h2>
+<p>Install the test dependencies once:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[test]&quot;</span>
+</span></code></pre></div>
+<p>Run the fast repository gate:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>-m<span class="w"> </span>ruff<span class="w"> </span>check<span class="w"> </span>tests<span class="w"> </span>loopx/canary<span class="w"> </span>loopx/control_plane<span class="w"> </span>loopx/domain_packs<span class="w"> </span>loopx/presentation
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>python<span class="w"> </span>-m<span class="w"> </span>mypy
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>python<span class="w"> </span>examples/control_plane/cli-output-budget-regression-smoke.py
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>-q
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>git<span class="w"> </span>diff<span class="w"> </span>--check
+</span></code></pre></div>
+<p><code>.github/workflows/python-tests.yml</code> runs this fast lane for relevant Python
+pull requests. It intentionally excludes provider-backed evaluation and the
+full smoke catalog, so ordinary iteration does not depend on credentials,
+network latency, provider availability, or a two-hour matrix.</p>
+<p><code>.github/workflows/python-tests.yml</code> 会在相关 Python PR 上运行这条快速通道。
+它刻意不包含真实模型调用和 full smoke catalog，因此普通迭代不依赖凭证、网络
+时延、模型服务可用性或两小时级测试矩阵。</p>
+<h2 id="smokes-and-canary-smoke-canary">Smokes And Canary / Smoke 与 Canary<a class="headerlink" href="#smokes-and-canary-smoke-canary" title="Permanent link">&para;</a></h2>
+<p>A durable smoke should protect shipped behavior, a reusable contract, a
+public/private boundary, or a regression that previously stranded automation.
+It should not preserve dated research prose or raw execution evidence.</p>
+<p>Durable smoke 应保护已交付行为、可复用合同、公开/私有边界，或曾让自动化卡死的
+回归；不应固化某次研究文案或原始执行证据。</p>
+<p>Run one focused smoke while developing, then let the canary planner select the
+smallest cross-surface set from the Git diff:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>examples/control_plane/interaction-scheduler-authority-smoke.py
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>loopx<span class="w"> </span>canary<span class="w"> </span>premerge<span class="w"> </span>--from-git-diff
+</span></code></pre></div>
+<p><code>premerge</code> resolves the caller's Git root for diff hygiene, changed-Python
+compilation, and public-boundary scanning, while LoopX's installed canary
+catalog continues to run from its own trusted release root. This also supports
+running the command from another repository or one of its subdirectories.</p>
+<p><code>premerge</code> 会把调用方 Git 根目录用于 diff 卫生检查、变更 Python 编译和公开边界扫描；
+LoopX 已安装的 canary catalog 仍从自身可信 release root 运行。因此该命令也可从其他
+仓库或其子目录执行。</p>
+<p>The complete public sweep remains explicit and bounded:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>loopx<span class="w"> </span>canary<span class="w"> </span>smoke-suite<span class="w"> </span>--suite<span class="w"> </span>full-public<span class="w"> </span>--jobs<span class="w"> </span><span class="m">4</span><span class="w"> </span>--timeout-seconds<span class="w"> </span><span class="m">120</span>
+</span></code></pre></div>
+<p><code>full-public-smokes.yml</code> runs on <code>main</code>, daily, and by manual dispatch. It is
+not a required PR check. This separation protects repository quality without
+making every small patch wait for the broadest suite.</p>
+<p><code>full-public-smokes.yml</code> 在主干、每日定时和手动触发时运行，不是 PR 必须门禁。
+这种分层既保护质量，也避免每个小 patch 都等待最宽测试集。</p>
+<h3 id="smoke-fleet-health-smoke">Smoke Fleet Health / Smoke 集群健康<a class="headerlink" href="#smoke-fleet-health-smoke" title="Permanent link">&para;</a></h3>
+<p>The full-public workflow also merges its shard receipts into one compact health
+artifact. The report separates four cadences instead of treating every smoke as
+an equal PR requirement: the explicit PR-fast smoke, catalog-selected canaries,
+the daily full-public sweep, and high-risk release profiles. It aggregates
+duration, failures, timeouts, current-inventory coverage, and targeted profile
+ownership without copying stdout/stderr tails or repository-local paths.</p>
+<p>full-public workflow 还会把各 shard 回执聚合成一个紧凑健康产物。报告区分四种频率，
+而不是把每个 smoke 都变成 PR 必跑项：显式 PR 快速 smoke、catalog 选择的 canary、
+每日 full-public 全量，以及高风险 release profile。它会统计耗时、失败、超时、当前
+清单覆盖率和定向 profile owner，同时不会复制 stdout/stderr tail 或仓库本地路径。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>loopx<span class="w"> </span>canary<span class="w"> </span>smoke-health<span class="w"> </span>--receipt<span class="w"> </span>smoke-results
+</span></code></pre></div>
+<p>The default output is a bounded review summary. Use <code>--include-inventory</code> only
+for the explicit diagnostic cold path. Exact-content duplicates and direct
+nested execution are review candidates; similar names or shared profile
+membership are not enough to declare two semantic contracts equivalent. The
+health audit never deletes or migrates a smoke automatically. A daily-only row
+without a targeted profile is an ownership backlog signal, not proof that the
+test is valueless.</p>
+<p>默认输出是有界的审阅摘要；只有显式诊断冷路径才使用 <code>--include-inventory</code>。内容完全
+相同或直接嵌套执行只会成为审阅候选；名称相似、共同属于某个 profile，不足以证明两个
+语义合同等价。健康审计不会自动删除或迁移 smoke。只有 daily 全量覆盖、没有定向
+profile 的条目表示 owner 待澄清，并不等于该测试没有价值。</p>
+<h2 id="agent-facing-output-budgets-agent">Agent-Facing Output Budgets / Agent 输出预算<a class="headerlink" href="#agent-facing-output-budgets-agent" title="Permanent link">&para;</a></h2>
+<p>The interface budget gate measures stable command scenarios and compares the
+candidate checkout with its base. It catches accidental payload growth,
+duplicated diagnostics, and hot-path fields that silently return after a
+refactor. Budget changes are contract changes: update the implementation and
+the expectation together, explain every added or removed semantic field, and
+request owner review when the default agent-facing projection changes.</p>
+<p>接口预算门会测量稳定命令场景，并比较 candidate 与 base，捕获意外膨胀、重复诊断
+以及重构后悄悄回到热路径的字段。预算变化就是合同变化：实现与期望必须一起修改，
+逐项解释新增或删除的语义字段；默认 agent-facing 投影变化时需要 owner review。</p>
+<p>The full diagnostic packet remains an explicit drill-down surface. Moving a
+field off the default path is acceptable only when the default still tells the
+agent what to do and how to request the omitted detail.</p>
+<p>完整诊断包保留为显式 drill-down。只有默认路径仍能告诉 agent 下一步做什么、以及
+如何请求被省略细节时，字段才能移出默认热路径。</p>
+<h2 id="decision-replay-and-issue-2191-2191">Decision Replay And Issue #2191 / 决策回放与 #2191<a class="headerlink" href="#decision-replay-and-issue-2191-2191" title="Permanent link">&para;</a></h2>
+<p>Issue #2191 is the reference pattern for a cross-layer control-plane
+regression. The final <code>interaction_contract</code> is scheduler authority; raw
+<code>should_run</code> and lower-level compatibility fields may not override it. A
+non-blocking <code>user_action</code> also cannot satisfy an agent todo's blocking
+<code>required_decision_scopes</code>.</p>
+<p>Issue #2191 是跨层控制面回归的参考模式：最终 <code>interaction_contract</code> 是调度权威，
+原始 <code>should_run</code> 和底层兼容字段不能越权；非阻塞 <code>user_action</code> 也不能满足 agent
+todo 的阻塞 <code>required_decision_scopes</code>。</p>
+<p>The regression is protected at four deterministic levels:</p>
+<ol>
+<li>a data-driven scheduler decision table checks human gate, active work,
+   repair, mapped no-op, and successor-replan cases;</li>
+<li>todo-scope tests distinguish a compatible blocking gate from a notice, an
+   unrelated agent gate, and a dangling scope;</li>
+<li>the real quota builder must turn a scope collision into bounded
+   control-plane self-repair while disabling normal delivery;</li>
+<li>a public-safe fixture stores source todo facts plus an independently reviewed
+   invariant and expected outcome; the replay smoke and catalog canary rerun the
+   real quota-to-scheduler path without raw state, logs, prompts, trajectories,
+   or local paths.</li>
+</ol>
+<p>该回归由四层确定性测试保护：数据驱动调度决策表；todo scope 所有权测试；真实 quota
+builder 的 fail-closed 集成测试；以及从源 todo 事实重新执行真实链路、再与独立审阅
+不变量比对的公开安全回放与 catalog canary。</p>
+<p>The expected replay outcome must never be generated by the implementation under
+test. Reducer shape checks remain useful for redaction and compatibility, but
+they are separate from the semantic oracle. Metamorphic cases also assert that
+adding an unrelated agent gate or mutating lower-level compatibility fields
+cannot change the current agent's final decision.</p>
+<p>回放期望值绝不能由被测实现生成。Reducer shape 测试仍可验证脱敏和兼容性，但必须
+与语义 oracle 分开；变形测试还会验证，新增其他 agent 的无关 gate 或修改底层兼容
+字段，都不能改变当前 agent 的最终决策。</p>
+<p>The narrow mutation check deliberately flips lower-level signals and proves
+they cannot preempt a final human gate. This is stronger than asserting one
+expected JSON snapshot because it exercises the precedence rule directly.</p>
+<p>窄 mutation 检查会主动翻转底层信号，证明它们不能抢占最终 human gate。这比只比对
+一份 JSON snapshot 更强，因为它直接验证优先级规则。</p>
+<h2 id="doubao-model-behavior-gate-doubao">Doubao Model-Behavior Gate / Doubao 模型行为门<a class="headerlink" href="#doubao-model-behavior-gate-doubao" title="Permanent link">&para;</a></h2>
+<p>The provider-neutral behavior contract and optional Doubao 2.1 actor live in
+<code>loopx.control_plane.testing</code>. The regular onboarding profile is one-arm: it
+tests the actual default packet from the candidate checkout. When the product
+default changes, implementation and qualification input change together; no
+retired second product path is kept as a permanent baseline.</p>
+<p>provider-neutral 行为合同和可选 Doubao 2.1 actor 位于
+<code>loopx.control_plane.testing</code>。常规 onboarding profile 是 one-arm：直接测试
+candidate checkout 的当前默认载荷。产品默认行为变化时，实现与验证输入一起切换，
+不会长期保留一条退休产品路径作为第二臂。</p>
+<p>Use this gate for semantic risks that deterministic tests cannot fully answer,
+such as whether the model identifies the selected todo, respects a human gate,
+continues after a healthy onboarding transition, or repairs a known projection
+gap. The composition group also checks decisions where several individually
+reasonable signals conflict: a monitor lane says wait while a vision contract
+requires replan; a user notice remains open while an independent successor must
+run; or capability-blocked advancement yields to monitor-schedule repair. Keep
+schema validity, cold-path restoration, exact field presence, and the underlying
+state transition table in deterministic tests.</p>
+<p>它适合验证模型是否识别 selected todo、尊重人类门禁、在健康 onboarding transition
+后继续、或识别已知 projection gap。组合场景还会验证多个单独看来都合理、合在一起
+却存在优先级冲突的信号：monitor lane 要求等待但 vision 合同要求 replan；user notice
+仍打开但独立 successor 必须运行；advancement 被 capability 阻塞时应转而修复 monitor
+schedule。schema、冷路径恢复、精确字段存在性和底层状态转移表仍由确定性测试负责。</p>
+<p>Live Doubao calls are a low-frequency local/manual gate, not ordinary CI.
+<code>ARK_API_KEY</code> is injected only through the process environment. Packets,
+prompts, raw responses, credentials, and conversations are never durable
+repository evidence; only bounded receipts and mismatch codes may be retained.
+Fake transports test only adapter serialization, sanitization, and fail-closed
+handling; they never qualify Doubao behavior. Run the real gate with:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python3<span class="w"> </span>scripts/qualify-doubao-model-behavior-live.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span>--qualification-id<span class="w"> </span>&lt;public-safe-run-id&gt;
+</span></code></pre></div>
+<p>The command requires a clean candidate checkout, fails when <code>ARK_API_KEY</code> is
+absent, binds its receipt to that checkout's Git source identity, and exits
+nonzero unless every real provider call passes. See
+<a href="../../reference/protocols/model-behavior-qualification-v0/">Model behavior qualification v0</a>
+for the actor and promotion contract.</p>
+<p>真实 Doubao 调用是低频本地/手动门，不进入普通 CI。<code>ARK_API_KEY</code> 只通过进程环境
+注入；packet、prompt、原始响应、凭证和对话都不能成为仓库证据，只保留有界 receipt
+与 mismatch code。fake transport 只能验证 adapter 的序列化、脱敏与 fail-closed，不能
+作为 Doubao 行为通过证据。真实入口缺少密钥时直接失败，且任一真实调用不通过都会以
+非零状态退出。</p>
+<p>The regular live suite is
+<code>actual_default_model_behavior_portfolio_v0</code>: fifteen one-arm scenarios, two
+attempts each, and at most 30 provider calls. Nine core scenarios check normal
+onboarding, agent identity and goal selection, selected todo, peer identity
+routing, same-agent continuation, final human gate, healthy continuation, and
+projection repair. Three composition scenarios check vision/monitor/peer replan
+precedence, non-blocking user notice plus ready-successor execution, and
+capability fallback into monitor-schedule repair. Three compaction scenarios
+check the JSON budget and source-derived semantic parity, then repeat clean
+selected-work and blocking-gate contracts under over-budget omitted diagnostics.
+Four contrast groups require the clean/noisy cases to remain invariant while
+blocking gate versus non-blocking notice and selected work versus required
+vision replan remain distinguishable. Each
+scenario has an independent deterministic source oracle derived before CLI
+projection; every repeat must pass and hard actor errors are not retried. The
+live turn actor consumes the default CLI hot-path
+<code>quota should-run</code> projection used by Codex App automation and returns
+runtime-facing decisions rather than echoing the testing-only nine-field
+semantic contract.
+Exact scheduler, vision, writeback, and warning fields stay in deterministic
+action-signature coverage; pair mode keeps TurnEnvelope semantic extraction for
+explicit packet differentials or outcome claims.</p>
+<p>常规 live suite 是 <code>actual_default_model_behavior_portfolio_v0</code>：15 个 one-arm
+场景，每个重复 2 次，最多 30 次模型调用。9 个核心场景覆盖正常接入、agent 身份与
+goal 选择、selected todo、peer 身份路由、same-agent 续接、最终 human gate、健康继续
+和 projection repair；3 个组合场景覆盖 vision/monitor/peer replan 优先级、非阻塞
+user notice 与 ready successor 并存，以及 capability fallback 转入 monitor schedule
+修复；3 个 compaction 场景覆盖 JSON 预算与 source-derived 语义一致，并分别让正常
+selected work 和阻塞 gate 在超预算省略诊断下重复运行。4 个 contrast group 要求
+clean/noisy 场景保持不变，同时要求 blocking gate 与 non-blocking notice、selected
+work 与 required vision replan 仍然可区分。每个
+场景都有在 CLI projection 前推导的独立确定性 source oracle，所有重复都必须通过；
+actor 硬错误不自动重试。live turn actor 直接读取 Codex App automation 使用的默认 CLI hot-path
+<code>quota should-run</code> projection 并返回运行时决策，不再回显测试专用的九字段 semantic
+contract。scheduler、vision、writeback 与 warning 的精确字段继续由 action-signature
+确定性覆盖；pair 中的 TurnEnvelope 只用于明确的 packet 差分或结果提升声明。</p>
+<p>For onboarding packets, the suite uses the shipped guided packet builder and
+redacts only local absolute path surfaces before provider transport. The
+deterministic oracle runs first on the actual packet, so redaction cannot hide
+missing commands, a lost host activation, an incorrect gate, a write, or quota
+spend. Human-gate precedence is explicit: an expected absence of executable
+work while waiting for the user is not a projection gap.</p>
+<p>Onboarding 输入来自正式 guided packet builder；provider 调用前只替换本地绝对路径。
+确定性 oracle 会先检查实际 packet，因此脱敏不能掩盖命令缺失、host activation 丢失、
+门禁错误、写入或 quota 消耗。Human gate 的优先级是显式规则：等待用户时没有
+executable work 属于预期状态，不能误判为 projection gap。</p>
+<h2 id="exact-release-commit-gate-commit">Exact Release Commit Gate / 精确发布 Commit 门<a class="headerlink" href="#exact-release-commit-gate-commit" title="Permanent link">&para;</a></h2>
+<p>The final release gate does not rerun tests through a second orchestration
+framework. It aggregates compact receipts from the existing lanes and proves
+that they all qualify the same clean source identity:</p>
+<p>最终发布门不会通过第二套编排框架重新运行测试。它聚合现有测试通道的紧凑回执，并
+证明它们都对应同一个干净源码身份：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>loopx<span class="w"> </span>canary<span class="w"> </span>release-qualification<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span>--manifest-json<span class="w"> </span>release-qualification.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span>--repo-root<span class="w"> </span>.
+</span></code></pre></div>
+<p><code>exact_release_commit_qualification_manifest_v0</code> repeats <code>git_commit</code>, Git
+tree id, clean-tree status, package version, and version tag in every check
+receipt. The CLI also derives those fields from <code>--repo-root</code>. A missing,
+failed, skipped, dirty, rebased, or differently versioned receipt fails closed;
+results from an earlier commit cannot qualify a later tag.</p>
+<p><code>exact_release_commit_qualification_manifest_v0</code> 会在每个检查回执中重复
+<code>git_commit</code>、Git tree id、干净工作树状态、包版本与版本 tag；CLI 还会从
+<code>--repo-root</code> 独立读取这些字段。缺失、失败、跳过、脏工作树、rebase 漂移或版本不一致
+都会 fail closed；旧 commit 的结果不能给新 tag 背书。</p>
+<table>
+<thead>
+<tr>
+<th>Receipt / 回执</th>
+<th>Semantic minimum / 语义下限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pytest</code></td>
+<td>At least one pass and zero failures / 至少一项通过且零失败</td>
+</tr>
+<tr>
+<td><code>ruff</code>, <code>mypy</code></td>
+<td>Zero violations or type errors / 零 lint 或类型错误</td>
+</tr>
+<tr>
+<td><code>risk_canary</code></td>
+<td>Selected checks passed with no unresolved manual hold / 已选检查通过且没有未解决人工 hold</td>
+</tr>
+<tr>
+<td><code>full_public</code></td>
+<td>Fleet receipt is ready with no failure or timeout / 全量集群 ready 且无失败或超时</td>
+</tr>
+<tr>
+<td><code>install_upgrade_host</code></td>
+<td>Install, upgrade, and host routes all passed / 安装、升级与 host 路径均通过</td>
+</tr>
+<tr>
+<td><code>public_boundary</code></td>
+<td>Zero public/private violations / 零公开私有边界违规</td>
+</tr>
+<tr>
+<td><code>doubao_actual_default</code></td>
+<td>The 15-scenario, 4-contrast, 2-repeat actual-default portfolio passed all 30 calls / 15 场景、4 组对照、2 次重复的实际默认 portfolio 共 30 次调用全部通过</td>
+</tr>
+</tbody>
+</table>
+<p>Alongside repeated source identity and status, each receipt keeps only its
+result schema, result digest, completion time, and bounded counters. Result
+schema names are fixed per lane, and public-boundary evidence must show that at
+least one path was scanned. Commands, stdout/stderr, prompts, packets, model responses,
+credentials, and local paths stay outside the manifest. The command is a
+read-only qualification reducer: it runs no checks, calls no model, moves no
+ref, creates no tag, and publishes nothing. A ready receipt still requires the
+owner's release decision.</p>
+<p>每份回执只保留结果 schema、结果 digest、完成时间和有界计数。命令、stdout/stderr、
+prompt、packet、模型响应、凭证与本地路径都不得进入 manifest。该命令只是只读资格
+reducer：不运行测试、不调用模型、不移动 ref、不创建 tag、也不发布。即使回执 ready，
+仍需 owner 作出发布决定。</p>
+<p><code>release_outcome_baseline</code> is conditional. It becomes mandatory only when the
+release explicitly claims benchmark or long-horizon outcome uplift, and its
+candidate ref must be <code>git:&lt;candidate commit&gt;</code>. Without that claim, the receipt
+states <code>not_required_without_outcome_uplift_claim</code>; it does not pretend that an
+expensive stable/candidate pair ran.</p>
+<p><code>release_outcome_baseline</code> 是条件门：只有发布明确声明 benchmark 或长程 outcome
+提升时才必需，且 candidate ref 必须是 <code>git:&lt;candidate commit&gt;</code>。没有该声明时，
+回执会明确写出 <code>not_required_without_outcome_uplift_claim</code>，不会假装昂贵的
+stable/candidate 双臂已经运行。</p>
+<h2 id="release-outcome-baseline">Release Outcome Baseline / 发布结果基线<a class="headerlink" href="#release-outcome-baseline" title="Permanent link">&para;</a></h2>
+<p>Deterministic and model-behavior gates qualify a control-plane contract; they
+do not prove that a release improves long-running outcomes. Outcome claims use
+a small stable-release-versus-candidate manifest with matched task semantics,
+runner protocol, model, reasoning level, timeout, and repetitions. A mismatch
+or incomplete arm fails closed and cannot automatically promote a release.</p>
+<p>确定性测试和模型行为测试验证控制面合同，但不能证明发布提升了长程结果。结果声明
+必须使用小规模 stable-release-vs-candidate manifest，并匹配任务语义、runner、模型、
+reasoning、timeout 与重复次数。任一不匹配或不完整都 fail closed，且不能自动发布。</p>
+<p>See <a href="../../reference/protocols/release-outcome-baseline-v0/">Release outcome baseline v0</a>
+and <a href="../../product/release-readiness/">Release readiness</a>.</p>
+<h2 id="risk-based-review">Risk-Based Review / 按风险审阅<a class="headerlink" href="#risk-based-review" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Change / 变更</th>
+<th>Minimum gate / 最小门禁</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Docs or copy only / 仅文档</td>
+<td>Link and boundary check, focused doc smoke, <code>git diff --check</code></td>
+</tr>
+<tr>
+<td>Pure rule or schema / 纯规则或 schema</td>
+<td>Unit table plus focused smoke</td>
+</tr>
+<tr>
+<td>Scheduler, quota, todo, gate, onboarding / 调度与接入</td>
+<td>Unit table, real integration, replay, catalog canary, owner review</td>
+</tr>
+<tr>
+<td>Default agent-facing output / 默认 agent 输出</td>
+<td>Above plus CLI base/head budget and semantic field ledger</td>
+</tr>
+<tr>
+<td>Provider-backed behavior / 真实模型行为</td>
+<td>Deterministic gates first, then repeated one-arm local shadow receipts</td>
+</tr>
+<tr>
+<td>Release promotion or outcome claim / 发布晋级</td>
+<td>Relevant canary, release checks, matched outcome baseline, explicit owner decision</td>
+</tr>
+</tbody>
+</table>
+<p>Sensitive behavior changes should remain easy to review: state the authority
+rule, list fields added or removed, name the exact deterministic and model
+behaviors checked, report skips, and keep automatic promotion disabled unless
+the release contract explicitly permits it.</p>
+<p>敏感行为变更应便于审阅：说明权威规则，逐项列出字段变化，写清验证过的确定性与模型
+行为，报告跳过项；除非发布合同明确允许，否则保持自动晋级关闭。</p>
+<h2 id="evidence-boundary">Evidence Boundary / 证据边界<a class="headerlink" href="#evidence-boundary" title="Permanent link">&para;</a></h2>
+<p>Before opening a pull request, scan only candidate public paths:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>loopx<span class="w"> </span>check<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span>--scan-path<span class="w"> </span>CONTRIBUTING.md<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span>--scan-path<span class="w"> </span>docs/development/<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span>--scan-path<span class="w"> </span>loopx/control_plane/<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span>--scan-path<span class="w"> </span>tests/<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">  </span>--scan-path<span class="w"> </span>examples/
+</span></code></pre></div>
+<p>Never commit credentials, private state, raw benchmark material, model
+responses, local absolute paths, or generated run logs. Prefer compact fixture
+ids, reason codes, digests, and public-safe semantic projections.</p>
+<p>禁止提交凭证、私有状态、原始 benchmark 材料、模型响应、本地绝对路径或生成日志。
+优先保留紧凑 fixture id、reason code、digest 和公开安全语义投影。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.action.edit", "content.code.copy", "content.tabs.link", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.path", "search.highlight", "search.share", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,3056 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://huangruiteng.github.io/loopx/docs/project-agent-todo-contract/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/loopx-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Project Agent Todo Contract - LoopX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#project-agent-todo-contract" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="LoopX" class="md-header__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LoopX
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Project Agent Todo Contract
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 2c-1.82 0-3.53.5-5 1.35C8 5.08 10 8.3 10 12s-2 6.92-5 8.65C6.47 21.5 8.18 22 10 22a10 10 0 0 0 10-10A10 10 0 0 0 10 2"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../concepts/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../operations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Operations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../capabilities/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Capabilities
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../integrations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Integrations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../development/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../product/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Product
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../showcases/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Showcases
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="LoopX" class="md-nav__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    LoopX
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../guides/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/newcomer-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Newcomer Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/custom-agent-runner-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Runner Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/auto-research-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto Research Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../concepts/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/interaction-pattern-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interaction Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../state-interaction-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    State Interaction Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quota-allocation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quota Allocation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../operations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../operations/attention-queue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attention Queue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../operations/long-task-cadence-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Long Task Cadence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../operations/authority-source-registration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority Sources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../capabilities/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capabilities
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Capabilities
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../capabilities/issue-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Issue Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../capabilities/change-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Change Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../capabilities/explore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Explore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../capabilities/material-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Material Lifecycle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../capabilities/value-connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Value Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../integrations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integrations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integrations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integrations/worker-bridge-install-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Worker Bridge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integrations/lark-kanban-control-plane-adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lark Kanban
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integrations/runtime-connector-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Connector Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../reference/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/benchmark-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../development/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development/testing-and-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing And Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development/documentation-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Layout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development/benchmark-developer-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development/control-plane-course/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control Plane Course
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../product/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Product
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../product/vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../product/release-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../product/surfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Surfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../product/runtimes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtimes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../product/foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../showcases/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Showcases
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Showcases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../showcases/frontend-surface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend Surface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../showcases/cases/0617-blocked-p0-safe-rotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blocked P0 Safe Rotation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../showcases/cases/0619-loopx-self-iteration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LoopX Self Iteration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../showcases/cases/0624-pr-issue-auto-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PR Issue Auto Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#field-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Field Roles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#write-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Write Contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lifecycle-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lifecycle Contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parsed-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parsed Schema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Execution Order
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-smokes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Public Smokes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/huangruiteng/loopx/edit/main/docs/project-agent-todo-contract.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="project-agent-todo-contract">Project Agent Todo Contract<a class="headerlink" href="#project-agent-todo-contract" title="Permanent link">&para;</a></h1>
+<p>Project agents should keep operator-facing work out of long chat replies,
+review documents, and overloaded <code>Next Action</code> paragraphs. LoopX uses
+separate fields so the dashboard and quota guard can show the right work to the
+right actor.</p>
+<h2 id="field-roles">Field Roles<a class="headerlink" href="#field-roles" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>Next Action</code> is one routing sentence for the next bounded step. It is not a
+  reading queue, blocker dump, or checklist.</li>
+<li><code>User Todo / Owner Review Reading Queue</code> is the human-facing checklist. Use
+  it for concrete user, owner, or controller input that the agent cannot
+  complete by itself.</li>
+<li><code>Agent Todo</code> is the project-agent checklist. Use it for safe follow-up work
+  the agent can do after health, operator gates, evidence, and quota allow
+  execution.</li>
+<li>Production blockers, missing write approvals, and safety risks are gates or
+  stop conditions. Do not count them as user todos unless a specific human
+  action can clear them.</li>
+</ul>
+<p>External boards and management surfaces, including Lark Kanban, are projections
+of this contract. They may show critical status, claims, gates, evidence, and
+worker handoff fields, but they should not become the place where agents invent
+new task identity. A long-running Codex session can claim visible board work and
+continue it; when it needs to fan out, split, supersede, or create successor
+work, it writes the new task through the LoopX todo lifecycle and lets the board
+sync catch up.</p>
+<h2 id="write-contract">Write Contract<a class="headerlink" href="#write-contract" title="Permanent link">&para;</a></h2>
+<p>When read-only analysis, a review packet, a gate checklist, or P0/P1 steering
+finds a concrete user or owner action, write it immediately with the todo CLI.
+Use <code>user_gate</code> only when the item blocks an agent or the whole goal:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span>add<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span>--role<span class="w"> </span>user<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span>--task-class<span class="w"> </span>user_gate<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span>--blocks-agent<span class="w"> </span>&lt;agent-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span>--text<span class="w"> </span><span class="s2">&quot;&lt;public-safe blocking user or owner decision&gt;&quot;</span>
+</span></code></pre></div>
+<p>Use <code>user_action</code> for owner-visible follow-up that should not stop unrelated
+agents:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span>add<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>--role<span class="w"> </span>user<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span>--task-class<span class="w"> </span>user_action<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span>--text<span class="w"> </span><span class="s2">&quot;&lt;public-safe non-blocking user or owner todo&gt;&quot;</span>
+</span></code></pre></div>
+<p>Use <code>--role agent</code> for project-agent follow-up work:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span>add<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span>--role<span class="w"> </span>agent<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span>--text<span class="w"> </span><span class="s2">&quot;&lt;public-safe agent action&gt;&quot;</span>
+</span></code></pre></div>
+<p>Executable agent work should register its lane instead of relying on text
+classification. Use <code>advancement_task</code> for a bounded implementation,
+validation, benchmark, blocker-writeback, or repair segment:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span>add<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>--role<span class="w"> </span>agent<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span>--text<span class="w"> </span><span class="s2">&quot;&lt;public-safe executable agent action&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span>--task-class<span class="w"> </span>advancement_task<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span>--action-kind<span class="w"> </span>run_eval
+</span></code></pre></div>
+<p>Use <code>continuous_monitor</code> only for watch-only surfaces where an unchanged poll
+must stay quiet:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span>add<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span>--role<span class="w"> </span>agent<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span>--text<span class="w"> </span><span class="s2">&quot;&lt;public-safe monitor action&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span>--task-class<span class="w"> </span>continuous_monitor<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span>--action-kind<span class="w"> </span>monitor
+</span></code></pre></div>
+<p><code>--action-kind</code> is a public-safe token. Known generic tokens such as
+<code>run_eval</code>, <code>validate</code>, <code>rebuild</code>, <code>writeback</code>, <code>monitor</code>, and <code>poll</code> help the
+CLI project the lane consistently, but explicit <code>--task-class</code> is the authority
+when both are present. If an exact todo already exists, <code>todo add</code> updates or
+inserts the metadata comment instead of creating a duplicate checkbox.
+<code>--task-class user_gate</code>, <code>--task-class user_action</code>, and <code>--task-class blocker</code>
+are non-executable control lanes; quota/executor code must not treat them as
+advancement work. Open user todos must declare either <code>user_gate</code> or
+<code>user_action</code>; a bare <code>--role user</code> todo is an authoring error.</p>
+<p>For scheduled monitors, keep the contract minimal: <code>--next-due-at</code> is the first
+eligible time, <code>--cadence</code> is the retry interval, <code>--monitor-target-key</code> is the
+stable idempotency key, and optional <code>--expires-at</code> is the hard stop after
+which the monitor must not catch up.</p>
+<p>Terminology: a <code>goal_id</code> is the LoopX control-plane boundary: registry
+entry, active-state file, quota lane, status projection, and run-history stream.
+A <code>todo_id</code> is a structured work item inside that goal. LoopX does not
+currently model issues as a separate runtime object.</p>
+<p>Multiple agents may share the same project control plane. A todo can carry a
+soft owner with <code>claimed_by</code>, but ordinary agent todos should not restate the
+agent's broad prompt scope. Scope belongs in the automation prompt or sub-agent
+handoff; the agent uses that scope to decide which open todo it may claim.
+User-gate todos are different: when a user decision only unlocks one registered
+agent or lane, record the blocked agent explicitly with <code>blocks_agent</code> so quota
+does not stop unrelated agents. For convenience, <code>todo add/update --role user
+--task-class user_gate --agent-id &lt;agent&gt;</code> defaults <code>blocks_agent</code> to that agent
+when <code>--blocks-agent</code> is omitted. In multi-agent goals, open <code>user_gate</code> todos
+must have exactly one explicit scope: either <code>blocks_agent=&lt;registered-agent&gt;</code>
+for a lane-scoped decision or <code>global_gate=true</code> / <code>--global-gate</code> for a
+genuine goal-wide owner gate. Unscoped multi-agent user gates are an authoring
+error because every registered agent would otherwise see another lane's
+question as its own stop condition.</p>
+<p>When a user gate only blocks one concrete action, add the blocked todo id with
+<code>unblocks_todo_id=&lt;todo_id&gt;</code>. When multiple todos share the same broad
+<code>action_kind</code>, use the schema-backed decision-scope fields instead of relying
+on title/body token overlap:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span>add<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span>--role<span class="w"> </span>user<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span>--task-class<span class="w"> </span>user_gate<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span>--agent-id<span class="w"> </span>codex-main-control<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span>--decision-scope<span class="w"> </span>direction:action:benchmark_target_choice<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span>--text<span class="w"> </span><span class="s2">&quot;Choose the benchmark target before running that case.&quot;</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>loopx<span class="w"> </span>todo<span class="w"> </span>update<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">  </span>--todo-id<span class="w"> </span>&lt;agent-todo-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">  </span>--required-decision-scope<span class="w"> </span>direction:action:benchmark_target_choice
+</span></code></pre></div>
+<p>Quota treats a gate as covering an agent todo when <code>decision_scope</code> matches or
+dominates one of that todo's <code>required_decision_scopes</code>; otherwise the todo is
+independent and can be selected as a safe fallback when the boundary permits it.</p>
+<p>Each shared goal declares <code>coordination.agent_model=peer_v1</code> and a
+<code>coordination.registered_agents</code> set. Registration grants identity, not rank.
+Work authority comes from <code>claimed_by</code>, task leases, the goal/write boundary,
+and typed continuation policy. Functional profile roles and scope summaries are
+advisory; they do not make one identity the default reviewer or leader.</p>
+<p>Ordinary lifecycle mutations follow todo ownership. A goal may separately
+delegate narrow cross-owner actions to an orchestration agent:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">coordination</span><span class="p">:</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="nt">todo_lifecycle_authority</span><span class="p">:</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">agent_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">codex-main-control</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">      </span><span class="nt">actions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">complete</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">reassign</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">supersede</span><span class="p p-Indicator">]</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">      </span><span class="nt">requires_reason</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span></code></pre></div>
+<p>Configure the equivalent registry value without hand-editing state:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>loopx<span class="w"> </span>configure-goal<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span>--todo-lifecycle-authority-json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="s1">&#39;{&quot;agent_id&quot;:&quot;codex-main-control&quot;,&quot;actions&quot;:[&quot;complete&quot;,&quot;reassign&quot;,&quot;supersede&quot;],&quot;requires_reason&quot;:true}&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span>--execute
+</span></code></pre></div>
+<p>The delegated agent must already be registered. Each override is action-scoped
+and emits a typed receipt containing the actor, original owner, authority
+source, and public-safe <code>--authority-reason</code>. Delegation never bypasses an
+explicit <code>excluded_agents</code> boundary. <code>coordination.supervisor</code> remains a
+proposal-only observation role and does not imply lifecycle authority.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span><span class="nb">complete</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span>--todo-id<span class="w"> </span>&lt;todo-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span>--agent-id<span class="w"> </span>codex-main-control<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span>--authority-reason<span class="w"> </span><span class="s2">&quot;Verified the result and closed the stalled lane.&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">  </span>--evidence<span class="w"> </span><span class="s2">&quot;&lt;public-safe evidence&gt;&quot;</span>
+</span></code></pre></div>
+<p>An agent todo can name a different task repository without copying agent scope
+into todo metadata:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span>update<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span>--role<span class="w"> </span>agent<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span>--todo-id<span class="w"> </span>&lt;todo-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span>--task-repository<span class="w"> </span>git:github.com/owner/repo
+</span></code></pre></div>
+<p><code>task_repository</code> is a first-class, credential-free Git identity. It routes
+workspace isolation, not write authority; claim/lease, capabilities, the goal
+boundary, and repository policy continue to apply.</p>
+<p><code>quota should-run --agent-id &lt;agent-id&gt;</code> is the preflight for every peer. When
+the selected task writes repository state and the peer is in a non-git,
+unrelated, or non-isolated workspace, it returns <code>workspace_guard</code> and blocks
+normal delivery until that peer moves to an independent worktree and reruns the
+guard. Read-only and monitor-only work does not require isolation merely because
+of agent identity. When <code>task_repository</code> is absent, the registered goal repo is
+still the expected repository, so an unrelated worktree cannot bypass the goal
+repository rule.</p>
+<p>Contributor-facing example:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>loopx<span class="w"> </span>--format<span class="w"> </span>json<span class="w"> </span>quota<span class="w"> </span>should-run<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span>--agent-id<span class="w"> </span>codex-peer-b
+</span></code></pre></div>
+<p>If the response includes
+<code>effective_action=agent_workspace_repair</code>, the peer should not edit files yet.
+Create or switch to a separate worktree and rerun the same guard:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>git<span class="w"> </span>worktree<span class="w"> </span>add<span class="w"> </span>/tmp/&lt;goal-id&gt;-peer-b<span class="w"> </span>-b<span class="w"> </span>codex/&lt;peer-branch&gt;
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nb">cd</span><span class="w"> </span>/tmp/&lt;goal-id&gt;-peer-b
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>loopx<span class="w"> </span>--format<span class="w"> </span>json<span class="w"> </span>quota<span class="w"> </span>should-run<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">  </span>--agent-id<span class="w"> </span>codex-peer-b
+</span></code></pre></div>
+<p>Only after that rerun returns normal delivery should the peer claim an in-scope
+todo and edit repository files. A todo claimed by another peer remains owned by
+that peer until explicit transfer. For agent-specific quota payloads, current
+agent claims are preferred, unclaimed todos remain selectable, and other-peer
+claims are diagnostic context rather than executable work. This reduces
+collisions without writing broad prompt scope into todo metadata or pretending
+that a soft claim is already a hard lease. When a runnable current-agent or unclaimed
+advancement todo exists, quota may also expose
+<code>agent_lane_next_action.schema_version=agent_lane_next_action_v0</code>. That field is
+the peer's current slice for this turn; it does not overwrite the durable
+goal-level <code>Next Action</code>. <code>loopx status --agent-id &lt;agent-id&gt;</code> may attach the same derived field to matching status
+queue items for observation, while leaving the project-level route unchanged.
+When a candidate has <code>target_capabilities</code> and missing target bridge
+capabilities, quota may mark it <code>capability_repair_mode=true</code>; scoped
+next-action selection should prefer that repair-mode candidate over ordinary
+runnable work in the same claim/priority bucket so capability-building todos do
+not require fragile active-state reordering.</p>
+<p>Deferred todos may carry a machine-readable resume condition with
+<code>resume_when=&lt;token&gt;</code>. Supported conditions are:</p>
+<ul>
+<li><code>resume_when=todo_done:&lt;todo_id&gt;</code>: the deferred todo becomes a successor
+  replan candidate after the referenced todo reaches <code>status=done</code>.</li>
+<li><code>resume_when=pr_merged:#532</code> or
+  <code>resume_when=pr_merged:owner/repo#532</code>: the deferred todo becomes a successor
+  candidate after a structured rollout event records that PR merge. An
+  unqualified <code>#532</code> is bound only to the todo's GitHub <code>task_repository</code>; use
+  the qualified form for cross-repository dependencies. If LoopX cannot derive
+  that binding, it keeps the todo deferred and exposes a machine-readable
+  repository ambiguity instead of matching the same PR number in another
+  repository.</li>
+</ul>
+<p>Open todos may also carry <code>resume_when</code> when they are visible but not yet
+executable. Until the parsed <code>resume_condition.satisfied</code> value is true, status
+and quota keep the todo out of <code>first_executable_items</code>,
+<code>executable_backlog_items</code>, <code>capability_gate.runnable_candidates</code>, and
+<code>agent_lane_next_action</code>. When <code>resume_ready=true</code>, the open todo may enter the
+normal executable lane for its claimed agent.</p>
+<p>Status and quota expose deferred todos as a visibility lane after sorted open
+todo lanes. This is a deferred gate-resume lane: it is not runnable work, and
+it is not evidence that the current agent has no todo, until an agent reopens,
+supersedes, or records a no-follow-up rationale for the deferred item.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>loopx<span class="w"> </span>register-agent<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span>--agent-id<span class="w"> </span>codex-main-control<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">  </span>--agent-id<span class="w"> </span>codex-side-bypass<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">  </span>--execute
+</span></code></pre></div>
+<p>Then claim through the dedicated command. <code>--claimed-by</code> records the durable
+owner, while <code>--agent-id</code> attributes the peer performing this mutation. For a
+self-claim they are both required and must name the same registered agent:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span>claim<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">  </span>--todo-id<span class="w"> </span>&lt;todo_id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">  </span>--claimed-by<span class="w"> </span>codex-main-control<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">  </span>--agent-id<span class="w"> </span>codex-main-control
+</span></code></pre></div>
+<p>Old projects that do not yet have <code>coordination.registered_agents</code> are
+intentionally blocked when an agent tries to claim work. The CLI error includes
+the <code>register-agent --agent-id &lt;agent-id&gt; --execute</code> command so the agent or
+controller can register its identity before writing ownership metadata. Agent
+registration writes the source registry named by the global projection; if the
+shared global registry is not writable, it fails before changing that source so
+the control plane does not drift into a half-registered state.</p>
+<p>Use <code>--clear-claim</code> when an owning peer reassigns a todo or releases work.
+<code>claimed_by</code> is visibility, not a runtime lease: it does not bypass quota, user
+gates, write-scope checks, validation, or actor authorization. On registered
+multi-agent goals, <code>todo claim/update/complete/supersede</code> require <code>--agent-id</code>;
+the actor must not be excluded and must match the current <code>claimed_by</code> owner
+when one exists. An exact linked <code>user_gate</code> decision scope is the narrow
+exception: its typed approve/reject/cancel completion is attributed to the
+owner/controller decision instead of an agent actor. Old projects without
+<code>coordination.registered_agents</code> still fail closed before ownership metadata
+can be written.
+<code>todo claim</code> is non-destructive: if another registered agent already owns the
+todo, it fails closed instead of silently replacing <code>claimed_by</code>. Transfer
+ownership with an explicit <code>todo update --clear-claim</code> or
+<code>todo update --claimed-by &lt;agent-id&gt;</code> decision. The CLI writes claim changes and
+completion handoffs under the same active-state file lock as todo
+add/update/complete, so concurrent CLI writers re-read the latest state before
+editing instead of overwriting a stale snapshot.</p>
+<p>The command resolves the active state from the project registry, creates the
+canonical section when needed, updates <code>updated_at</code>, and avoids duplicate exact
+todo text. If a dashboard or controller needs the new checklist immediately,
+refresh the status projection after the write:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>loopx<span class="w"> </span>refresh-state<span class="w"> </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span>--agent-id<span class="w"> </span>&lt;registered-agent&gt;
+</span></code></pre></div>
+<p>For multi-agent goals, <code>refresh-state</code> requires an explicit <code>--agent-id</code>.
+The default scoped refresh is an agent-lane run: it is useful for keeping the
+same turn's writeback/accounting identity intact, but it does not replace the
+goal-level status route.</p>
+<h2 id="lifecycle-contract">Lifecycle Contract<a class="headerlink" href="#lifecycle-contract" title="Permanent link">&para;</a></h2>
+<p>Agents should not patch active-state checkboxes directly to move work forward.
+Use the lifecycle commands so LoopX can preserve <code>todo_id</code>, status,
+classification metadata, timestamps, and idempotency in one write.</p>
+<p>Todo lifecycle should stay simple. Do not add a separate feature state machine
+such as <code>slice_done</code>, <code>rolled_out</code>, or <code>proven_in_product_path</code> unless the
+product has a concrete UI/runtime need for it. For ordinary project work, use
+<strong>todo succession</strong> instead: complete the implementation slice, then create the
+next concrete todo for rollout, product-path audit, benchmark proof, docs,
+telemetry, or operator decision.</p>
+<p>A non-trivial feature todo is done only as a slice. Before or during completion,
+the agent should do one of two things:</p>
+<ul>
+<li>create the next public-safe agent or user todo with <code>--next-agent-todo</code>,
+  <code>--next-user-todo</code>, or a follow-up <code>todo add</code>;</li>
+<li>record a compact no-follow-up rationale with <code>--no-follow-up</code> plus <code>--note</code>
+  / <code>--reason</code> / <code>--evidence</code>, explaining why the feature is truly finished
+  and does not need rollout, audit, docs, or product-path proof.</li>
+</ul>
+<p>This keeps the active checklist honest without making LoopX a heavyweight
+project-management state machine.</p>
+<p>Complete the current todo and atomically register the next executable todo:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span><span class="nb">complete</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">  </span>--todo-id<span class="w"> </span>&lt;todo_id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">  </span>--agent-id<span class="w"> </span>&lt;registered-agent&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">  </span>--evidence<span class="w"> </span><span class="s2">&quot;&lt;public-safe artifact or result&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">  </span>--next-agent-todo<span class="w"> </span><span class="s2">&quot;&lt;public-safe next executable action&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">  </span>--next-task-class<span class="w"> </span>advancement_task<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">  </span>--next-action-kind<span class="w"> </span>run_eval
+</span></code></pre></div>
+<p>Human review is not automatically an execution gate. When a validated feature
+PR can wait for review while independent work continues, atomically derive a
+bound reminder and a runnable successor:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span><span class="nb">complete</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">  </span>--todo-id<span class="w"> </span>&lt;todo_id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">  </span>--claimed-by<span class="w"> </span>&lt;registered-agent&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">  </span>--agent-id<span class="w"> </span>&lt;registered-agent&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">  </span>--evidence<span class="w"> </span><span class="s2">&quot;&lt;validated PR URL and checks&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">  </span>--next-user-todo<span class="w"> </span><span class="s2">&quot;Review the validated feature PR.&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">  </span>--next-user-task-class<span class="w"> </span>user_action<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">  </span>--next-agent-todo<span class="w"> </span><span class="s2">&quot;Continue the next independent feature slice.&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">  </span>--next-claimed-by<span class="w"> </span>&lt;registered-agent&gt;
+</span></code></pre></div>
+<p><code>--next-user-todo</code> requires an explicit
+<code>--next-user-task-class user_gate|user_action</code>. Use <code>user_action</code> for a reminder
+that stays visible without setting <code>blocks_agent</code>; reserve <code>user_gate</code> for an
+exact owner/controller authority boundary such as merging an aggregate branch
+into <code>main</code>, release, benchmark launch, credentials, or protected production
+action. Omitting the task class fails before writeback so LoopX never guesses
+an authorization boundary. Add a separate <code>continuous_monitor</code> todo when the
+PR lifecycle needs periodic readback.</p>
+<p>For an experimental feature stack, a stable integration branch may collect
+small feature PRs while review reminders remain open. Each feature still uses a
+dedicated worktree and branch; its PR targets the integration branch. The
+aggregate integration-branch PR to <code>main</code> is the review/merge boundary. This
+keeps review latency from suspending unrelated work without weakening the final
+delivery gate.</p>
+<p>Terminal PR state does not silently complete a review reminder: merged PRs may
+still need post-merge review. When the owner explicitly acknowledges that an
+exact review action is complete, persist a typed acknowledgement receipt with
+the exact bound <code>user_action</code> and GitHub PR:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>loopx<span class="w"> </span>issue-fix<span class="w"> </span>pr-review-ack<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">  </span>--url<span class="w"> </span>https://github.com/owner/repo/pull/123<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">  </span>--todo-id<span class="w"> </span>&lt;review-todo-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">  </span>--agent-id<span class="w"> </span>&lt;bound-agent&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">  </span>--owner-acknowledged
+</span></code></pre></div>
+<p>The receipt is fail-closed, idempotent per todo revision, and read back after
+append. It binds the goal, todo revision, agent, provider, repository, PR
+number, and canonical permalink without parsing reminder prose. Reopening or
+materially editing the todo invalidates the prior acknowledgement.</p>
+<p>Use <code>pr-review-reconcile</code> as the single reconciliation path. It may be invoked
+explicitly or by a due <code>continuous_monitor</code> through any scheduler or host
+adapter. Supplying <code>--owner-acknowledged</code> first records the same typed receipt.
+Reconciliation validates the current todo revision before provider access and
+again before completion, then closes the reminder only for the exact terminal
+PR. A missing receipt, stale revision, unavailable provider, or unsupported
+forge leaves the reminder open. Quota projection has no provider side effects.</p>
+<p>Heartbeat hosts with <code>external_evidence_poll</code> may run the bounded batch form
+before quota:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>loopx<span class="w"> </span>heartbeat-prequota<span class="w"> </span>-g<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span>-a<span class="w"> </span>&lt;bound-agent&gt;
+</span></code></pre></div>
+<p>The batch reads only persisted exact acknowledgement bindings, skips stale or
+already reconciled todos before provider access, and performs no quota spend.
+Provider failures are reported as degraded results and do not block the
+subsequent quota guard. Binding, acknowledgement, and reconciliation are kernel
+contracts; <code>loopx-project</code> may document the workflow but is not a runtime
+dependency.</p>
+<p>If an agent takes ownership at completion time, include the claim in the same
+locked lifecycle write:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span><span class="nb">complete</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">  </span>--todo-id<span class="w"> </span>&lt;todo_id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">  </span>--claimed-by<span class="w"> </span>codex-peer-a<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">  </span>--agent-id<span class="w"> </span>codex-peer-a<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">  </span>--evidence<span class="w"> </span><span class="s2">&quot;&lt;public-safe artifact or result&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">  </span>--next-agent-todo<span class="w"> </span><span class="s2">&quot;Continue the next bounded task.&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="w">  </span>--next-claimed-by<span class="w"> </span>codex-peer-b<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="w">  </span>--next-continuation-policy<span class="w"> </span>independent_handoff
+</span></code></pre></div>
+<p>LoopX does not infer continuation authority from agent identity. <code>action_kind</code>
+remains an open domain token describing the work. The closed
+<code>continuation_policy</code> enum describes only the relationship between the completed
+task and its successor:</p>
+<ul>
+<li><code>independent_handoff</code> is the default. The successor stays unclaimed unless
+  <code>--next-claimed-by</code> selects a registered peer;</li>
+<li><code>same_agent_non_delivery</code> keeps an evidence-backed non-delivery continuation
+  with the completing peer.</li>
+</ul>
+<p>Review, verification, merge, and publication remain ordinary <code>action_kind</code>
+values. They do not alter scheduler ordering. Use <code>independent_handoff</code> for a
+successor that another peer may claim, and add one or more <code>excluded_agents</code>
+only when executor separation is required. <code>claimed_by</code> may not name an
+excluded peer.</p>
+<p><code>same_agent_non_delivery</code> is intentionally structural rather than
+review-specific. It covers readiness checks, audits, triage, and other
+non-delivery continuations when explicitly selected. LoopX does not infer it
+from <code>action_kind</code>, and it does not authorize repository delivery or bypass
+successor quota/capability checks.</p>
+<p>A handoff becomes a blocking dependency only when it carries both
+<code>unblocks_todo_id</code> and executor exclusions. Ordinary independent successors do
+not inherit an owner implicitly. Use <code>--next-claimed-by</code> when the next owner is
+already known; leave the successor unclaimed when a later claim should select
+it.</p>
+<p>For small changes that satisfy the repository's self-merge rules, a peer may
+self-merge and complete without a successor review todo by making the
+exception explicit:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span><span class="nb">complete</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">  </span>--todo-id<span class="w"> </span>&lt;todo_id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">  </span>--claimed-by<span class="w"> </span>codex-peer-a<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">  </span>--agent-id<span class="w"> </span>codex-peer-a<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="w">  </span>--self-merged<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="w">  </span>--evidence<span class="w"> </span><span class="s2">&quot;&lt;public-safe commit, validation, and self-merge summary&gt;&quot;</span>
+</span></code></pre></div>
+<p><code>--self-merged</code> requires <code>--evidence</code>. Do not use it for runtime,
+benchmark, permission, production, destructive git, publication, public
+evidence-policy, or broad coordination changes that need an independent
+handoff.
+After a validated self-merge, write back the real delivery outcome at the
+project level when the slice advanced the public product or case path. An
+agent-lane refresh with <code>--agent-id</code> records peer-local notes; a goal-scope
+refresh records the durable goal route. Both require a registered peer. Do
+not append a follow-up goal-level <code>surface_only</code> sync after a validated
+<code>outcome_progress</code> slice; either skip the duplicate sync or mirror the product
+progress with:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>loopx<span class="w"> </span>refresh-state<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">  </span>--classification<span class="w"> </span>&lt;public-safe-progress-classification&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">  </span>--delivery-batch-scale<span class="w"> </span>multi_surface<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w">  </span>--delivery-outcome<span class="w"> </span>outcome_progress<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="w">  </span>--agent-id<span class="w"> </span>&lt;registered-agent&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="w">  </span>--progress-scope<span class="w"> </span>goal
+</span></code></pre></div>
+<p>This keeps validated peer product work from being misread as another
+surface-only heartbeat turn.
+When a self-merged slice has an obvious same-scope continuation, it may also
+atomically add that successor todo and claim it back to the same peer:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span><span class="nb">complete</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">  </span>--todo-id<span class="w"> </span>&lt;todo_id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="w">  </span>--claimed-by<span class="w"> </span>codex-peer-a<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="w">  </span>--agent-id<span class="w"> </span>codex-peer-a<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="w">  </span>--self-merged<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="w">  </span>--evidence<span class="w"> </span><span class="s2">&quot;&lt;public-safe commit, validation, and self-merge summary&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="w">  </span>--next-agent-todo<span class="w"> </span><span class="s2">&quot;Continue the next small docs/productization slice.&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="w">  </span>--next-claimed-by<span class="w"> </span>codex-peer-a
+</span></code></pre></div>
+<p>Without <code>--self-merged</code>, no implicit review route is created. For independent
+review, use <code>--next-action-kind review --next-continuation-policy
+independent_handoff</code>; add <code>--next-excluded-agent &lt;author&gt;</code> only when the review
+must remain open to multiple peers while excluding the author. When that
+successor belongs to a specific repository or needs execution capabilities,
+set <code>--next-task-repository &lt;git:host/path&gt;</code> and repeat
+<code>--next-required-capability &lt;capability&gt;</code> in the same completion command. The
+successor is then fully routable before its executor exclusions take effect.</p>
+<p>Use <code>todo update</code> for lower-level, non-terminal status changes:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span>update<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">  </span>--todo-id<span class="w"> </span>&lt;todo_id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">  </span>--agent-id<span class="w"> </span>&lt;registered-agent&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">  </span>--status<span class="w"> </span>blocked<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="w">  </span>--reason<span class="w"> </span><span class="s2">&quot;&lt;public-safe blocker&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="w">  </span>--task-class<span class="w"> </span>blocker
+</span></code></pre></div>
+<p>Agent Todo completion always goes through <code>todo complete</code>; <code>todo update
+--status done</code> is rejected so review, successor, and no-follow-up policy cannot
+be bypassed. An evidence-backed peer
+<code>continuous_monitor</code> with no required write scope may close with
+<code>todo complete --no-follow-up</code> when its bounded watch ends without a material
+transition. This closeout records <code>self_merged=false</code> and does not
+create a successor review todo for observation-only work.</p>
+<p>Use <code>--resume-when</code> when deferring a successor that should wake up after a
+machine-readable condition instead of living only in prose:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span>update<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">  </span>--todo-id<span class="w"> </span>&lt;todo_id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="w">  </span>--agent-id<span class="w"> </span>&lt;registered-agent&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="w">  </span>--status<span class="w"> </span>deferred<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="w">  </span>--resume-when<span class="w"> </span>todo_done:&lt;blocking_todo_id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="w">  </span>--reason<span class="w"> </span><span class="s2">&quot;&lt;public-safe deferred rationale&gt;&quot;</span>
+</span></code></pre></div>
+<p>Use <code>todo supersede</code> when the current open todo should be retired and replaced:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span>supersede<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="w">  </span>--todo-id<span class="w"> </span>&lt;todo_id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="w">  </span>--agent-id<span class="w"> </span>&lt;registered-agent&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="w">  </span>--reason<span class="w"> </span><span class="s2">&quot;&lt;public-safe reason&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="w">  </span>--next-agent-todo<span class="w"> </span><span class="s2">&quot;&lt;replacement executable action&gt;&quot;</span>
+</span></code></pre></div>
+<p>If the superseded todo was claimed, the replacement inherits that <code>claimed_by</code>.
+If it carried <code>blocks_agent</code> / <code>unblocks_todo_id</code>, the replacement inherits
+those unblock fields too. Use <code>--next-claimed-by &lt;agent-id&gt;</code> to make a handoff
+explicit.</p>
+<p><code>todo complete</code> and <code>todo supersede</code> are intentionally idempotent for repeated
+heartbeats: if the old todo is already complete and the next todo already
+exists with the same metadata, the command returns <code>changed=false</code> and does not
+duplicate the next checkbox. <code>todo archive-completed</code> is only a hygiene command:
+it moves already-completed active todos into <code>Completed Work Archive</code>; it does
+not mark open todos as done.</p>
+<h2 id="parsed-schema">Parsed Schema<a class="headerlink" href="#parsed-schema" title="Permanent link">&para;</a></h2>
+<p>Projects may keep writing ordinary Markdown checkboxes, but readers should use
+the structured projection emitted by status/quota when available. Todo summaries
+carry <code>schema_version=todo_summary_v0</code>; individual items carry
+<code>schema_version=todo_item_v0</code>, <code>todo_id</code>, <code>role</code>, <code>status</code>, <code>priority</code>,
+<code>title</code>, <code>archive_state</code>, <code>source_section</code>, <code>index</code>, <code>text</code>, <code>task_class</code>, and
+optional <code>action_kind</code>, <code>claimed_by</code>, <code>required_capabilities</code>, and
+<code>target_capabilities</code>. A capability-admitted agent Todo may also carry an opaque
+<code>capability_binding_ref</code>; it identifies the capability-owned authority row and
+is preserved across generated agent successors. Once set, the binding is
+immutable and is distinct from executor <code>required_capabilities</code>.
+<code>action_kind</code> is extensible; optional
+<code>continuation_policy</code> is limited to <code>independent_handoff</code>,
+or <code>same_agent_non_delivery</code>. Agent todos may also carry <code>excluded_agents</code>,
+<code>unblocks_todo_id</code>, and <code>no_followup=true</code> to express executor separation,
+dependency lineage, and intentional closeout. <code>blocks_agent</code> is reserved for
+scoping user gates.</p>
+<p>After a hard-cut upgrade, <code>loopx check</code> reports agent todos that still carry
+removed gate-routing fields. New readers also preserve a read-only
+<code>removed_continuation_policy</code> diagnostic for legacy <code>review_handoff</code> and
+<code>primary_review</code> records and exclude those records from claim/quota execution.
+This fail-closed compatibility marker is not a supported continuation type and
+is never written back. Repair legacy review records explicitly:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span>update<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">  </span>--todo-id<span class="w"> </span>&lt;todo-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">  </span>--agent-id<span class="w"> </span>&lt;registered-agent&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="w">  </span>--role<span class="w"> </span>agent<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="w">  </span>--continuation-policy<span class="w"> </span>independent_handoff<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="w">  </span>--excluded-agent<span class="w"> </span>&lt;author&gt;
+</span></code></pre></div>
+<p>For removed <code>blocks_agent</code> routing, use <code>loopx todo update --todo-id &lt;todo_id&gt;
+--role agent --clear-blocks-agent</code>. LoopX does not infer the excluded author or
+rewrite either form automatically.</p>
+<p>Deferred successors may carry <code>resume_when</code>, <code>resume_condition</code>, and
+<code>resume_ready</code>; <code>resume_ready=true</code> means the deferred item should be considered
+for a successor replan before any agent-scoped no-candidate wait, not that
+normal delivery may skip the todo lifecycle. A ready deferred successor also
+preempts a strictly lower-priority open advancement todo for this lifecycle
+replan. It does not preempt an equal-priority open todo, and it never enters the
+normal executable backlog until a lifecycle command reopens it.
+The <code>todo_id</code> is first-class when written by the CLI.
+<code>claimed_by</code> values are normalized public-safe agent ids and should correspond to
+<code>coordination.registered_agents</code>. Legacy Markdown without metadata still gets a
+parser-derived compatibility id from local section/index/text, and the first
+lifecycle command will materialize that id back into metadata. Future lease
+timestamps, dependency, capability detail, and evidence-link fields should
+extend this item shape instead of adding another todo format.
+In Markdown, lane metadata is stored as an indented HTML comment directly under
+the checkbox, for example:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">- [ ]</span> Run one validated benchmark case and write back result or blocker.
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>  &lt;!-- loopx:todo todo_id=todo_8e280be49441 status=open task_class=advancement_task action_kind=run_eval required_capabilities=shell%2Cbenchmark_runner claimed_by=codex-main-control --&gt;
+</span></code></pre></div>
+<p>Plain checkbox text remains a compatibility fallback. New automation-facing
+work should prefer the CLI metadata path so quota and dashboard consumers do
+not need project-specific word lists.</p>
+<p>Executable agent todos may declare per-todo environment needs with
+<code>--required-capability</code>. Keep this field near the todo, not in a global agent
+profile: the same agent may have shell/filesystem capability for docs work, but
+lack <code>benchmark_runner</code>, <code>external_evidence_poll</code>, <code>network</code>, or another bridge
+for a specific step.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span>add<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">  </span>--role<span class="w"> </span>agent<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="w">  </span>--text<span class="w"> </span><span class="s2">&quot;&lt;public-safe executable agent action&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="w">  </span>--task-class<span class="w"> </span>advancement_task<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="w">  </span>--action-kind<span class="w"> </span>run_eval<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="w">  </span>--required-capability<span class="w"> </span>shell<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="w">  </span>--required-capability<span class="w"> </span>benchmark_runner
+</span></code></pre></div>
+<p>Use <code>--target-capability</code> when the todo is meant to build, repair,
+materialize, or parity-check a capability rather than use that capability as a
+prerequisite. For example, a benchmark product-path parity todo can hard-require
+only shell while targeting the benchmark runner bridge:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span>add<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="w">  </span>--role<span class="w"> </span>agent<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="w">  </span>--text<span class="w"> </span><span class="s2">&quot;&lt;public-safe benchmark parity repair action&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="w">  </span>--task-class<span class="w"> </span>advancement_task<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="w">  </span>--action-kind<span class="w"> </span>benchmark_treatment_product_path_parity<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="w">  </span>--required-capability<span class="w"> </span>shell<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="w">  </span>--target-capability<span class="w"> </span>benchmark_runner
+</span></code></pre></div>
+<p><code>status</code> projects <code>required_capabilities</code> on every visible todo. <code>quota
+should-run</code> then derives a read-only <code>capability_gate</code> from the visible
+executable queue, not from a single preselected todo. With multiple P0 or P1
+items, it scans the projected queue in order and exposes the candidate set:
+capability-satisfied todos appear in <code>capability_gate.runnable_candidates</code>,
+while blocked higher-priority candidates remain visible in
+<code>capability_gate.blocked_candidates</code>. The gate does not choose the final todo;
+the agent keeps decision authority and must pick from the runnable set during
+its steering audit. If no visible executable candidate can run, the gate returns
+<code>repair_bridge</code>, <code>ask_owner</code>, or <code>skip</code> according to the missing capability
+class.
+<code>target_capabilities</code> stay visible in runnable candidate payloads. If a target
+bridge is absent, the candidate is annotated with <code>capability_repair_mode=true</code>
+and <code>missing_target_capabilities</code>, but that target is not treated as a hard
+execution blocker.</p>
+<h2 id="execution-order">Execution Order<a class="headerlink" href="#execution-order" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Run the quota guard against the shared global registry before spending
+   automatic delivery compute.</li>
+<li>If the guard or review packet exposes open user todos, surface them to the
+   user instead of reporting "no new user action".</li>
+<li>If the guard sets <code>notify_user_on_open_todo=true</code>, treat the open todos as a
+   blocker-push notification: ask at most three items, skip delivery work, and
+   skip quota spend unless the same blocker was already surfaced recently.</li>
+<li>Do not execute <code>agent_command</code>, adapter work, write-control, or production
+   actions while the relevant gate is still unresolved.</li>
+<li>After the user todo is completed or explicitly deferred, the project agent
+   may continue only through the safe path allowed by the current guard or
+   review packet.</li>
+</ol>
+<h2 id="public-smokes">Public Smokes<a class="headerlink" href="#public-smokes" title="Permanent link">&para;</a></h2>
+<p>Two dependency-free public fixtures cover this contract:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>python3<span class="w"> </span>examples/control_plane/todo-cli-smoke.py
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>python3<span class="w"> </span>examples/control_plane/todo-lifecycle-cli-smoke.py
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>python3<span class="w"> </span>examples/project/project-agent-adoption-smoke.py
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>python3<span class="w"> </span>examples/control_plane/todo-concurrent-write-lock-smoke.py
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>python3<span class="w"> </span>examples/capability-gate-smoke.py
+</span></code></pre></div>
+<p>The first verifies the todo CLI writes canonical active-state sections. The
+second verifies lifecycle transitions by <code>todo_id</code>, including claimed
+completion, supersede, idempotent next-todo insertion, and non-executable
+blocker lanes.
+The third verifies an executor-facing path from quota guard hint, to user todo
+write, to status projection, to approved project-agent handoff.
+The fourth verifies concurrent todo writers wait on the active-state lock and
+preserve both claim metadata and unrelated updates.
+The fifth verifies per-todo <code>required_capabilities</code>, including multiple P0/P1
+candidate selection, bridge repair, and owner-gated capability misses.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.action.edit", "content.code.copy", "content.tabs.link", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.path", "search.highlight", "search.share", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

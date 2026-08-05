@@ -1,0 +1,4306 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://huangruiteng.github.io/loopx/docs/development/benchmark-developer-workflow/">
+      
+      
+        <link rel="prev" href="../documentation-layout/">
+      
+      
+        <link rel="next" href="../control-plane-course/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/loopx-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Benchmark Workflow - LoopX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#benchmark-developer-workflow" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="LoopX" class="md-header__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LoopX
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Benchmark Workflow
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 2c-1.82 0-3.53.5-5 1.35C8 5.08 10 8.3 10 12s-2 6.92-5 8.65C6.47 21.5 8.18 22 10 22a10 10 0 0 0 10-10A10 10 0 0 0 10 2"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../concepts/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../operations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Operations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../capabilities/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Capabilities
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../integrations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Integrations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../product/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Product
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../showcases/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Showcases
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="LoopX" class="md-nav__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    LoopX
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../guides/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/newcomer-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Newcomer Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/custom-agent-runner-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Runner Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/auto-research-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto Research Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../concepts/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/interaction-pattern-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interaction Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../state-interaction-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    State Interaction Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quota-allocation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quota Allocation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../operations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/attention-queue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attention Queue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/long-task-cadence-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Long Task Cadence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/authority-source-registration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority Sources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../capabilities/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capabilities
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Capabilities
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capabilities/issue-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Issue Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capabilities/change-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Change Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capabilities/explore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Explore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capabilities/material-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Material Lifecycle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capabilities/value-connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Value Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../integrations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integrations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integrations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/worker-bridge-install-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Worker Bridge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/lark-kanban-control-plane-adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lark Kanban
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/runtime-connector-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Connector Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/benchmark-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing-and-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing And Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documentation-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Layout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Workflow
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#product-shape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product Shape
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#golden-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Golden Path
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#capture-the-process-while-running" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capture The Process While Running
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Capture The Process While Running">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#goal-rollout-event-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Goal Rollout Event Log
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-ecs-benchmark-host-route" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cloud ECS Benchmark Host Route
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cloud ECS Benchmark Host Route">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecs-host-bootstrap-sop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ECS Host Bootstrap SOP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote-checkout-patch-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remote Checkout Patch Protocol
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upstream-issue-escalation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upstream Issue Escalation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh-session-hygiene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSH Session Hygiene
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#codex-goal-baseline-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codex Goal Baseline Gate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loopx-product-mode-treatment-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LoopX Product-Mode Treatment Gate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#split-control-route" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Split-Control Route
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Split-Control Route">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-family-compact-workflow-shape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-Family Compact Workflow Shape
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-benchmark-families" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current Benchmark Families
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Current Benchmark Families">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skillsbench-split-control-preflight" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SkillsBench Split-Control Preflight
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evidence-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evidence Contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#developer-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Developer Checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roadmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Roadmap
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../control-plane-course/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control Plane Course
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../product/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Product
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product/vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product/release-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product/surfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Surfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product/runtimes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtimes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product/foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../showcases/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Showcases
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Showcases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcases/frontend-surface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend Surface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcases/cases/0617-blocked-p0-safe-rotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blocked P0 Safe Rotation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcases/cases/0619-loopx-self-iteration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LoopX Self Iteration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcases/cases/0624-pr-issue-auto-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PR Issue Auto Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#product-shape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product Shape
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#golden-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Golden Path
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#capture-the-process-while-running" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capture The Process While Running
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Capture The Process While Running">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#goal-rollout-event-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Goal Rollout Event Log
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-ecs-benchmark-host-route" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cloud ECS Benchmark Host Route
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cloud ECS Benchmark Host Route">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecs-host-bootstrap-sop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ECS Host Bootstrap SOP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote-checkout-patch-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remote Checkout Patch Protocol
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upstream-issue-escalation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upstream Issue Escalation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh-session-hygiene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSH Session Hygiene
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#codex-goal-baseline-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codex Goal Baseline Gate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loopx-product-mode-treatment-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LoopX Product-Mode Treatment Gate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#split-control-route" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Split-Control Route
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Split-Control Route">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-family-compact-workflow-shape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-Family Compact Workflow Shape
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-benchmark-families" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current Benchmark Families
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Current Benchmark Families">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skillsbench-split-control-preflight" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SkillsBench Split-Control Preflight
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evidence-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evidence Contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#developer-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Developer Checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roadmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Roadmap
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Development
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/huangruiteng/loopx/edit/main/docs/development/benchmark-developer-workflow.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="benchmark-developer-workflow">Benchmark Developer Workflow<a class="headerlink" href="#benchmark-developer-workflow" title="Permanent link">&para;</a></h1>
+<p>LoopX treats benchmark execution as a developer workflow, not only as a
+research activity. A benchmark runner should be something a contributor can
+inspect, dry-run, diagnose, and improve without reading maintainer <code>.local</code>
+state or raw benchmark trajectories.</p>
+<p>This document is the stable product entry point for benchmark work. Research
+packets and dated route notes still live under
+<code>docs/research/long-horizon-agent-benchmarks/</code>, but reusable runner behavior
+belongs in <code>loopx/</code>, <code>examples/</code>, and this guide.</p>
+<p>For package ownership and dependency direction, see
+<a href="../../reference/benchmark-architecture/"><code>reference/benchmark-architecture.md</code></a>.</p>
+<h2 id="product-shape">Product Shape<a class="headerlink" href="#product-shape" title="Permanent link">&para;</a></h2>
+<p>The benchmark workflow has four layers:</p>
+<ol>
+<li><strong>Select</strong> a benchmark family, task, and arm without exposing private task
+   text or reward leakage.</li>
+<li><strong>Launch</strong> through an explicit route contract. The default route is now an
+   exclusive cloud benchmark host where Codex CLI, the benchmark runner, Docker
+   or compatible container runtime, task data, and compact reduction all run in
+   one isolated environment. Split-control routes remain useful for constrained
+   hosts or route research, but they are not the first choice when a dedicated
+   cloud host is available.</li>
+<li><strong>Observe</strong> the run through compact handles: pid or job state, readiness
+   re-check, materialization, result or blocker, and cleanup state.</li>
+<li><strong>Ingest</strong> only public-safe evidence into LoopX history, ledger, and
+   case analysis.</li>
+</ol>
+<p>The user-facing product promise is simple: a developer should be able to tell
+what ran, why it was allowed, what blocked it, and what can be tried next,
+without seeing credentials, raw logs, raw trajectories, or local machine paths.</p>
+<h2 id="golden-path">Golden Path<a class="headerlink" href="#golden-path" title="Permanent link">&para;</a></h2>
+<p>From a fresh checkout:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>python3<span class="w"> </span>-m<span class="w"> </span>py_compile<span class="w"> </span>loopx/*.py<span class="w"> </span>loopx/benchmark_core/*.py<span class="w"> </span>loopx/benchmarks/read_models/*.py
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>python3<span class="w"> </span>examples/benchmark-split-control-remote-executor-smoke.py
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>loopx<span class="w"> </span>benchmark<span class="w"> </span>--help
+</span></code></pre></div>
+<p>For a real benchmark slice, use this sequence:</p>
+<ol>
+<li>Run a source and boundary preflight for the target benchmark.</li>
+<li>Prepare or select the benchmark host route:</li>
+<li>prefer the default cloud Codex route when the host is dedicated, has
+     enough CPU/memory/disk, and can run Codex CLI plus containers directly;</li>
+<li>use a split-control route only when host credentials, local policy, or
+     runner constraints make a single cloud host unsuitable.</li>
+<li>Prove the comparison baseline before any treatment claim. The preferred
+   baseline is real Codex Goal mode, not a hand-rolled polling loop and not a
+   prompt that merely starts with <code>/goal</code>. If the runner cannot prove that Codex
+   entered a persistent goal state through a supported Codex surface, park the
+   A/B baseline and continue only readiness, runner, or blocker work.</li>
+<li>Produce a launch plan or runner batch only after a fresh readiness re-check.</li>
+<li>Build benchmark-specific command-adapter facts when the route still needs a
+   LoopX adapter, such as
+   <code>loopx benchmark terminal-bench-command-adapter terminal-bench</code>.
+   When Terminal-Bench uses a remote executor, first reduce the local-driver
+   request plus private remote launch result through the launch adapter:
+   <code>loopx benchmark terminal-bench-remote-launch-adapter terminal-bench --request-json &lt;private-json&gt; --launch-result-json &lt;private-json&gt;</code>.
+   The launch adapter emits only field presence and compact blocker state; it
+   never executes SSH, Docker, Codex, model calls, uploads, or submits. If a
+   lower-level private runner already produced remote-executor handles, reduce
+   them through a materializer such as
+   <code>loopx benchmark terminal-bench-remote-materializer terminal-bench --handle-manifest-json &lt;private-json&gt;</code>.
+   The materializer emits only handle field presence, never handle values. For
+   Terminal-Bench, handle presence is still not enough: the payload must prove
+   that a local Codex driver owns agent/model/auth and that the remote executor
+   does not require agent or Codex runtime. Then build the execution seam from
+   those facts. The seam should expose both a <code>local_driver_contract</code> and a
+   <code>remote_sandbox_contract</code>; treat missing command adapters, missing
+   launch-adapter results, missing local-driver materializers, missing sandbox
+   contracts, remote-agent-runtime requirements, or compact reducers as
+   blockers instead of launching a private script.</li>
+<li>Run the smallest no-upload dry-run or mini-pair that can answer the current
+   product question.</li>
+<li>Ingest a compact result or precise blocker.</li>
+<li>Update LoopX todo/state so the next developer sees the current route.</li>
+</ol>
+<p>Do not start from a raw shell command hidden in a local note. If a benchmark
+cannot be launched through a documented route, the next product task is to
+build that route, not to keep a one-off script alive.</p>
+<h2 id="capture-the-process-while-running">Capture The Process While Running<a class="headerlink" href="#capture-the-process-while-running" title="Permanent link">&para;</a></h2>
+<p>Do not wait for a benchmark family to be fully solved before documenting how it
+runs. Each real run should improve the developer workflow in the same batch as
+the result or blocker:</p>
+<ol>
+<li>Before launch, write down the intended route, boundary, command shape,
+   expected compact artifacts, and stop conditions.</li>
+<li>During launch, preserve only observable handles that another developer can
+   use: pid or job basename, readiness state, poll command, cleanup state, and
+   compact artifact refs.</li>
+<li>After launch, update the workflow or adapter notes with what changed:
+   product-path pass, precise blocker, cleanup rule, or stale assumption.</li>
+<li>If the run required a private local script, turn the reusable part into a
+   public command, fixture, or adapter contract before relying on it again.</li>
+</ol>
+<p>The goal is a living runner guide. Repeated benchmark attempts should make the
+next attempt easier to launch and debug, not only add more private evidence.</p>
+<p>Use the shared snapshot helper for routine polling instead of ad hoc SSH
+commands:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python3<span class="w"> </span>scripts/benchmark_run_status_snapshot.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span>--run-root<span class="w"> </span>&lt;cloud-run-root&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>--label<span class="w"> </span>&lt;terminal-bench-run-label&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span>--label<span class="w"> </span>&lt;skillsbench-run-label&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span>--label<span class="w"> </span>&lt;swe-marathon-run-label&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span>--record-rollout-event<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span>--goal-id<span class="w"> </span>loopx-meta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span>--agent-id<span class="w"> </span>codex-main-control<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span>--pattern<span class="w"> </span>Working<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span>--pattern<span class="w"> </span>timed<span class="se">\ </span>out<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span>--pretty
+</span></code></pre></div>
+<p>The snapshot reports <code>status.env</code>, pid-file liveness, compact result summaries,
+standard artifact presence, and optional keyword booleans for tmux captures. It
+does not run <code>ps</code>, read process cmdline/argv, or emit task text, trajectories,
+raw logs, or capture content. With
+<code>--record-rollout-event</code>, it also appends one aggregate <code>benchmark_status</code>
+event to the rollout log so the control plane can see that a poll happened
+without seeing host paths or capture text.</p>
+<p>For local <code>launchd</code> or similar scheduler jobs, treat benchmark case launches as
+one-shot observable runs. Do not use <code>KeepAlive</code> to rerun a case label
+automatically: a successful compact closeout or a terminal compact failure must
+unload/disable the scheduler label before any rerun is considered. The snapshot
+adds an <code>observable_handle_policy</code> per run with these public-safe decisions:</p>
+<ul>
+<li><code>monitor_poll_allowed=true</code>: keep observing the pid/job handle.</li>
+<li><code>cleanup_required=true</code>: unload/disable the one-shot label, then ingest the
+  compact closeout or write the precise blocker named by <code>next_action</code>.</li>
+<li><code>blocker_required_before_rerun=true</code>: the observable handle ended or vanished
+  without a compact closeout; write that blocker before any rerun.</li>
+</ul>
+<p>This keeps reruns explicit and countable while preserving enough handle state
+for another developer or heartbeat to resume polling without chat memory.</p>
+<h3 id="goal-rollout-event-log">Goal Rollout Event Log<a class="headerlink" href="#goal-rollout-event-log" title="Permanent link">&para;</a></h3>
+<p>Each benchmark case should leave a compact LoopX rollout trail, separate
+from raw Codex sessions or benchmark runner logs. Use the rollout event log when
+you need to explain the lifecycle of a case or an agent workflow:</p>
+<ul>
+<li><code>quota_should_run</code>: the controller allowed a bounded slice.</li>
+<li><code>todo_claim</code>: an agent claimed the work item.</li>
+<li><code>benchmark_launch</code> / <code>benchmark_status</code>: a case was launched or polled.</li>
+<li><code>validation</code>: a smoke, reducer, or official verifier finished.</li>
+<li><code>compact_case_result</code> / <code>compact_blocker</code>: public-safe case outcome.</li>
+<li><code>refresh_state</code> / <code>quota_spend</code>: LoopX writeback and spend.</li>
+<li><code>codex_session_observed</code>: a private Codex session source exists, but raw
+  session contents and file paths are not recorded.</li>
+</ul>
+<p>Core LoopX CLI lifecycle commands append compact events automatically:
+<code>todo</code> transitions, <code>refresh-state</code>, and <code>quota should-run</code> /
+<code>quota monitor-poll</code> / <code>quota spend-slot</code> / <code>quota void-slot</code> all write to the
+rollout event log when they run through the CLI. This makes the log closer to a
+Codex session ledger for LoopX itself: agents do not need to remember to
+record routine GH control-plane transitions by hand.</p>
+<p>Compact benchmark history writes also append automatically when they are
+executed through the CLI. <code>loopx history append-benchmark-run
+--execute</code>, <code>loopx history append-benchmark-result --execute</code>, and the
+<code>loopx benchmark ... --execute</code> fixture/ingest path write
+<code>compact_case_result</code> or <code>compact_blocker</code> events derived only from the compact
+<code>benchmark_run_v0</code> / <code>benchmark_result_v0</code> payload. This is the default path for
+case-level observation: launch/poll scripts may keep their own private raw
+artifacts, but LoopX should observe the public-safe compact writeback.</p>
+<p>Use the script for external benchmark transitions, backfills, or operator-side
+facts that happen outside those core CLI paths:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python3<span class="w"> </span>scripts/goal_rollout_event_log.py<span class="w"> </span>append<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>loopx-meta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span>--event-kind<span class="w"> </span>compact_case_result<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span>--agent-id<span class="w"> </span>codex-main-control<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span>--todo-id<span class="w"> </span>todo_406bb256efd8<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span>--benchmark-id<span class="w"> </span>terminal-bench@2.0<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span>--case-id<span class="w"> </span>build-cython-ext<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span>--status<span class="w"> </span>precise_blocker<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span>--summary<span class="w"> </span><span class="s2">&quot;Official verifier failed before a countable agent result.&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span>--artifact-ref<span class="w"> </span>docs/research/long-horizon-agent-benchmarks/benchmark-case-analysis.json
+</span></code></pre></div>
+<p>Summarize the current trail without reading private sources:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python3<span class="w"> </span>scripts/goal_rollout_event_log.py<span class="w"> </span>summarize<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>loopx-meta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>--limit<span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span>--pretty
+</span></code></pre></div>
+<p>Codex session JSONL files can help local debugging, but treat them as private
+source material. Record only their existence/count, never transcript bodies,
+paths, prompts, tool output, or token-bearing content:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python3<span class="w"> </span>scripts/goal_rollout_event_log.py<span class="w"> </span>observe-codex-sessions<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>loopx-meta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span>--agent-id<span class="w"> </span>codex-main-control
+</span></code></pre></div>
+<p>The canonical log lives under the LoopX runtime root for the goal, for
+example <code>goals/&lt;goal-id&gt;/rollout-event-log.jsonl</code>. It is a local control-plane
+artifact, not a raw evidence file to commit. Public docs and ledgers may cite
+compact event ids, case ids, run ids, and artifact refs, but must keep raw task
+text, logs, trajectories, Codex session transcripts, credentials, and absolute
+host paths out.</p>
+<h2 id="cloud-ecs-benchmark-host-route">Cloud ECS Benchmark Host Route<a class="headerlink" href="#cloud-ecs-benchmark-host-route" title="Permanent link">&para;</a></h2>
+<p>Use the cloud ECS benchmark host route as the default for Terminal-Bench,
+SkillsBench, ALE, and other Docker-heavy benchmark families when a dedicated
+ECS-style cloud VM is available. This is a developer operations pattern: put
+Codex CLI, benchmark source, container runtime, task data, raw artifacts, and
+compact reducers on one isolated cloud host, then publish only public-safe
+control-plane evidence back to LoopX.</p>
+<table>
+<thead>
+<tr>
+<th>Owner</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cloud ECS benchmark host</td>
+<td>Codex CLI, benchmark source checkout, runner dependencies, container runtime, task-data staging, no-upload run execution, compact result reduction, and private raw artifacts.</td>
+</tr>
+<tr>
+<td>LoopX repo</td>
+<td>Public-safe route contracts, reducer schemas, benchmark ledger ingestion, todo/state writeback, public docs, and focused smokes.</td>
+</tr>
+<tr>
+<td>Operator</td>
+<td>Codex login on the cloud host, benchmark data gates, upload/leaderboard decisions, and any private-material or credential approval.</td>
+</tr>
+</tbody>
+</table>
+<p>The route is intentionally simpler than split-control: SSH reaches the ECS
+host, then Codex CLI runs there like a normal developer would. LoopX
+should not need to understand SSH internals, jump hosts, or remote file bridges
+in the hot path. It should only record compact route readiness, result handles,
+blockers, and no-upload boundaries.</p>
+<h3 id="ecs-host-bootstrap-sop">ECS Host Bootstrap SOP<a class="headerlink" href="#ecs-host-bootstrap-sop" title="Permanent link">&para;</a></h3>
+<p>Treat remote benchmark host fixes as product assets only after they become one
+of three reusable surfaces:</p>
+<ul>
+<li>a documented SOP step that another developer can repeat;</li>
+<li>a script or CLI entrypoint that emits compact JSON;</li>
+<li>a reducer that turns private runner state into a public-safe blocker or
+  ingest action.</li>
+</ul>
+<p>Runtime-only tweaks such as Docker registry mirrors, loopback proxy sessions,
+cached base images, source tarballs, dependency prewarm, and run directories
+are useful operator substrate. Do not let them become hidden LoopX
+truth. Record only the compact fact: ready, blocked, or needs operator setup.
+The concrete mirror URL, proxy port, shell history, raw logs, and local host
+paths stay outside public evidence.</p>
+<p>Temporary patches to an upstream benchmark checkout are allowed during route
+bring-up only when they are explicit, reversible, and recorded as route
+substrate. Keep the upstream checkout clean enough to rebase: prefer a small
+patch file, wrapper script, or sidecar module over editing scorer, task truth,
+or prompts in place. After patching a remote checkout, record the compact
+metadata another developer needs: upstream repo/ref, patch purpose, files
+touched by category, whether scoring/task truth changed, validation command,
+and rollback command. Do not publish the raw patched checkout, task text, raw
+logs, private paths, or internal hostnames. Once a patch repeats, promote it to
+one of three durable surfaces: an upstreamable PR, a LoopX wrapper, or a
+documented benchmark-host SOP.</p>
+<p>When the host has both a system disk and a data disk, move every large runner
+cache onto the data disk before calling the host ready. Docker <code>data-root</code>
+alone is not enough: containerd snapshot state can still fill the system disk
+while Docker reports the expected data-root. Verify both paths after setup:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>info<span class="w"> </span>--format<span class="w"> </span><span class="s1">&#39;{{.DockerRootDir}}&#39;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>df<span class="w"> </span>-h<span class="w"> </span>/<span class="w"> </span>/data<span class="w"> </span>/var/lib/docker<span class="w"> </span>/var/lib/containerd
+</span></code></pre></div>
+<p>If <code>/var/lib/containerd</code> is already large on the system disk, stop Docker and
+containerd, copy it to the data disk, replace the original directory with a
+symlink or bind mount, then restart both services. Keep the pre-migration copy
+only until <code>docker images</code>, <code>docker ps</code>, and a tiny runner smoke prove the
+runtime still sees existing images.</p>
+<p>Recommended cloud host layout:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>loopx-bench/
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  sources/
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>  runs/
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>  cache/
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>  artifacts/public/
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>  artifacts/private/
+</span></code></pre></div>
+<p>Run the bootstrap probe on the cloud host before a benchmark slice:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>python3<span class="w"> </span>scripts/benchmark_ecs_bootstrap.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span>--workspace<span class="w"> </span>~/loopx-bench<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span>--min-free-gib<span class="w"> </span><span class="m">80</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span>--create-dirs<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span>--pretty
+</span></code></pre></div>
+<p>After the host is ready, decide the benchmark-specific agent runtime layer
+before launching an official case. The common rule is: agent runtime is
+preinstalled as a stable layer; the case container only runs the task and the
+benchmark scorer. Generate the public-safe profile plan:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>python3<span class="w"> </span>scripts/benchmark_agent_runtime_layer.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span>--benchmark<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span>--workspace<span class="w"> </span>~/loopx-bench<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span>--pretty
+</span></code></pre></div>
+<p>Terminal-Bench and SWE-Marathon are Harbor-family profiles. They share the
+<code>harbor_codex_cli_tools</code> layer mounted at <code>/opt/harbor-agent-tools</code>.
+SkillsBench is a BenchFlow-family profile. It needs a separate
+<code>benchflow_js_agent_runtime</code> layer for Node.js and <code>codex-acp</code>, mounted at
+<code>/opt/benchflow</code>. Treat verifier dependency prewarm as a separate oracle
+concern; the runtime layer is only about making the agent process start without
+per-case downloads.</p>
+<p>For Harbor-based SWE or Terminal-style runners, avoid downloading nvm, npm
+packages, or Codex inside every task container. Materialize a host-side
+preinstalled tools bundle and mount it read-only at Harbor's conventional
+agent-tools path:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>python3<span class="w"> </span>scripts/harbor_agent_tools_bundle.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span>--output<span class="w"> </span>~/loopx-bench/harbor-agent-tools<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span>--pretty
+</span></code></pre></div>
+<p>Then add the mount to the Harbor job config or CLI launch:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nt">environment</span><span class="p">:</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span><span class="nt">mounts</span><span class="p">:</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bind</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">      </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/loopx-bench/harbor-agent-tools</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/opt/harbor-agent-tools</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">      </span><span class="nt">read_only</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span></code></pre></div>
+<p>For a Harbor CLI launch, pass the same mount explicitly:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nv">MOUNTS</span><span class="o">=</span><span class="s1">&#39;[{&quot;type&quot;:&quot;bind&quot;,&quot;source&quot;:&quot;&lt;workspace&gt;/harbor-agent-tools&quot;,&quot;target&quot;:&quot;/opt/harbor-agent-tools&quot;,&quot;read_only&quot;:true}]&#39;</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nv">UV_LINK_MODE</span><span class="o">=</span>copy<span class="w"> </span>uv<span class="w"> </span>run<span class="w"> </span>--no-default-groups<span class="w"> </span>harbor<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span>--env<span class="w"> </span>docker<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">  </span>--agent<span class="w"> </span>codex-api-key-no-search<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">  </span>--mounts<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$MOUNTS</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">  </span>--jobs-dir<span class="w"> </span>&lt;run-dir&gt;/jobs<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">  </span>-p<span class="w"> </span>&lt;task-dir&gt;
+</span></code></pre></div>
+<p>When running SWE-Marathon on a constrained cloud host, prefer invoking Harbor
+from an already materialized local Harbor checkout and pointing <code>-p</code> at the
+SWE-Marathon task directory. Running <code>uv run harbor</code> from the SWE-Marathon
+checkout can fetch Harbor from GitHub and may install default cloud/GPU extras
+before the benchmark case starts. That is dependency materialization noise, not
+case progress. Use <code>uv run --no-default-groups harbor run</code> for the runner layer
+unless the selected environment backend explicitly needs extra Harbor groups.</p>
+<p>After any Harbor-family job finishes, reduce the job directory with the generic
+Harbor reducer and pass the benchmark id explicitly:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>python3<span class="w"> </span>scripts/harbor_job_result_reducer.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span>--job-dir<span class="w"> </span>&lt;jobs-dir&gt;/&lt;job-name&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span>--benchmark-id<span class="w"> </span>swe-marathon<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">  </span>--output-json<span class="w"> </span>&lt;jobs-dir&gt;/&lt;job-name&gt;/loopx_harbor_result.compact.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">  </span>--pretty
+</span></code></pre></div>
+<p>Do not rely on the older Terminal-Bench-named Harbor ingest path for
+SWE-Marathon or other path-based Harbor tasks; when Harbor is launched with
+<code>-p &lt;task-dir&gt;</code> rather than <code>--dataset</code>, the job lock may not carry enough
+benchmark identity to infer the right <code>benchmark_id</code>.</p>
+<p>When Harbor's preinstalled in-container Codex surface fails before a real
+solution attempt, switch to the host Codex Goal custom agent instead of
+continuing to rebuild or reinstall Codex in every case container:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span>&lt;loopx-checkout&gt;:&lt;loopx-checkout&gt;/scripts:<span class="si">${</span><span class="nv">PYTHONPATH</span><span class="k">:-</span><span class="si">}</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nv">UV_LINK_MODE</span><span class="o">=</span>copy<span class="w"> </span>uv<span class="w"> </span>run<span class="w"> </span>--no-default-groups<span class="w"> </span>harbor<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">  </span>--env<span class="w"> </span>docker<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">  </span>--agent-import-path<span class="w"> </span>harbor_host_codex_goal_agent:HarborHostCodexGoalAgent<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">  </span>--agent-kwarg<span class="w"> </span><span class="nv">goal_timeout_sec</span><span class="o">=</span><span class="m">21600</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">  </span>--agent-kwarg<span class="w"> </span><span class="nv">task_workdir</span><span class="o">=</span>/app<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">  </span>--jobs-dir<span class="w"> </span>&lt;run-dir&gt;/jobs<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">  </span>-p<span class="w"> </span>&lt;task-dir&gt;
+</span></code></pre></div>
+<p>Use the same long timeout envelope for base and treatment arms while measuring
+capability ceilings. The host Goal agents default to <code>21600</code> seconds; pass an
+explicit shorter value only for a timeout-cost experiment and record that tier
+in the compact result. A matched LoopX product-mode arm must use the same outer
+timeout envelope as its baseline.</p>
+<p>For the SkillsBench main-table product-mode comparison, treat the pair contract
+as executable input, not prose memory. For the Goal-vs-LoopX study, baseline is
+<code>codex-cli-goal-baseline</code>, treatment is <code>loopx-goal-start-product-mode</code>, both
+use the same case, source, model, reasoning effort, timeout, and no-feedback
+budget, and the treatment must show LoopX goal-start/plan/todo/CLI lifecycle in
+compact counters. Use
+<code>loopx.benchmark_core.classify_product_mode_main_table_pair</code> before promoting a
+base/test pair into the public comparison table; shallow packet-only or
+which-goal-only rows stay analysis assets, not main-table evidence.</p>
+<p>When wrapping that launch in <code>tmux</code>, <code>launchd</code>, or a generated <code>run.sh</code>, put the
+same <code>PYTHONPATH</code> export inside the wrapper script, not only in the interactive
+shell that creates it. Otherwise Harbor can create a job shell but fail before
+trial execution with <code>No module named 'harbor_host_codex_goal_agent'</code>. A reusable
+wrapper should look like:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="ch">#!/usr/bin/env bash</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span>&lt;loopx-checkout&gt;:&lt;loopx-checkout&gt;/scripts:<span class="si">${</span><span class="nv">PYTHONPATH</span><span class="k">:-</span><span class="si">}</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>python3<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;&#39;PY&#39;</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="s">import importlib</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="s">importlib.import_module(&quot;harbor_host_codex_goal_agent&quot;)</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="s">importlib.import_module(&quot;loopx.benchmark_core.loop_protocol&quot;)</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="s">PY</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="nb">cd</span><span class="w"> </span>&lt;harbor-checkout&gt;
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="nb">set</span><span class="w"> </span>+e
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="nv">UV_LINK_MODE</span><span class="o">=</span>copy<span class="w"> </span>uv<span class="w"> </span>run<span class="w"> </span>--no-default-groups<span class="w"> </span>harbor<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="w">  </span>--config<span class="w"> </span>&lt;run-dir&gt;/config.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="w">  </span>&gt;<span class="w"> </span>&lt;run-dir&gt;/harbor.run.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="nv">status</span><span class="o">=</span><span class="nv">$?</span>
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="nb">set</span><span class="w"> </span>-e
+</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>
+</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a><span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;exit_status=%s\n&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$status</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>&lt;run-dir&gt;/status.env
+</span><span id="__span-14-20"><a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a>
+</span><span id="__span-14-21"><a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span>&lt;run-dir&gt;/jobs/&lt;job-name&gt;<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-14-22"><a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a><span class="w">  </span>python3<span class="w"> </span>&lt;loopx-checkout&gt;/scripts/harbor_job_result_reducer.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-23"><a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a><span class="w">    </span>--job-dir<span class="w"> </span>&lt;run-dir&gt;/jobs/&lt;job-name&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-24"><a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a><span class="w">    </span>--benchmark-id<span class="w"> </span>swe-marathon<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-25"><a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a><span class="w">    </span>--output-json<span class="w"> </span>&lt;run-dir&gt;/jobs/&lt;job-name&gt;/harbor_job_result.compact.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-26"><a id="__codelineno-14-26" name="__codelineno-14-26" href="#__codelineno-14-26"></a><span class="w">    </span>--pretty
+</span><span id="__span-14-27"><a id="__codelineno-14-27" name="__codelineno-14-27" href="#__codelineno-14-27"></a><span class="k">fi</span>
+</span><span id="__span-14-28"><a id="__codelineno-14-28" name="__codelineno-14-28" href="#__codelineno-14-28"></a>
+</span><span id="__span-14-29"><a id="__codelineno-14-29" name="__codelineno-14-29" href="#__codelineno-14-29"></a><span class="nb">exit</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$status</span><span class="s2">&quot;</span>
+</span></code></pre></div>
+<p>Treat a wrapper-level import failure as a launcher blocker, not a benchmark case
+failure: no trial ran, no verifier reward exists, and the next step is to fix the
+host-agent import surface before spending another case attempt.</p>
+<p>The agent starts Codex native Goal mode on the benchmark host and exposes a
+host command named <code>harbor-env-exec</code>. Codex is instructed to call
+<code>harbor-env-exec --cwd &lt;task_workdir&gt; -- &lt;command&gt;</code>; set <code>task_workdir</code> per
+benchmark family instead of hardcoding <code>/app</code> in runner patches. Commands issued
+through that bridge are forwarded to Harbor's <code>environment.exec()</code>, so the
+benchmark environment remains the task/scoring surface while Codex login, model
+access, tmux, and runtime state stay on the stable host layer.
+The Harbor app-server agent drains app-server turn events while the async
+runner loop continues to serve <code>harbor-env-exec</code> bridge requests. Its compact
+turn file records bridge request count, active-todo exit state,
+<code>turn/completed</code> observation, and public-safe solution phase counters without
+raw task text, raw logs, raw commands, raw diffs, or raw trajectories. Do not
+make <code>turn/completed</code> the benchmark success gate for Harbor-family runs: the
+official environment result is the scoring path, the case-local LoopX todo state
+is the host exit/closeout source, and app-server completion events are
+diagnostic only.</p>
+<p>For the current SWE-Marathon experiment axis, keep the same task, model,
+timeout, environment, jobs directory shape, and no-upload boundary across arms:</p>
+<ul>
+<li>baseline: native Codex app-server Goal mode;</li>
+<li>test: LoopX prompt-driven polling with scheduled continuations.</li>
+</ul>
+<p>A single LoopX access-packet run is not the test arm by itself. It adds
+planning/checkpoint context to the same host app-server Goal worker, but remains
+packet-only observation unless an outer polling controller records the scheduled
+rounds:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span>&lt;loopx-checkout&gt;:&lt;loopx-checkout&gt;/scripts:<span class="si">${</span><span class="nv">PYTHONPATH</span><span class="k">:-</span><span class="si">}</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nv">UV_LINK_MODE</span><span class="o">=</span>copy<span class="w"> </span>uv<span class="w"> </span>run<span class="w"> </span>--no-default-groups<span class="w"> </span>harbor<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">  </span>--env<span class="w"> </span>docker<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">  </span>--agent-import-path<span class="w"> </span>harbor_host_codex_goal_agent:HarborHostCodexGoalAgent<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">  </span>--agent-kwarg<span class="w"> </span><span class="nv">goal_surface</span><span class="o">=</span>app_server<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">  </span>--agent-kwarg<span class="w"> </span><span class="nv">reasoning_effort</span><span class="o">=</span>high<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">  </span>--agent-kwarg<span class="w"> </span><span class="nv">app_server_wait_for_completion</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">  </span>--agent-kwarg<span class="w"> </span><span class="nv">app_server_response_timeout_sec</span><span class="o">=</span><span class="m">90</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">  </span>--agent-kwarg<span class="w"> </span><span class="nv">goal_timeout_sec</span><span class="o">=</span>&lt;seconds&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">  </span>--agent-kwarg<span class="w"> </span><span class="nv">task_workdir</span><span class="o">=</span>/app<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">  </span>--agent-kwarg<span class="w"> </span><span class="nv">loopx_mode</span><span class="o">=</span>codex_loopx<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">  </span>--agent-kwarg<span class="w"> </span><span class="nv">loopx_access_packet_mode</span><span class="o">=</span>compact<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">  </span>--agent-kwarg<span class="w"> </span><span class="nv">loopx_cli_bridge_enabled</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="w">  </span>--agent-kwarg<span class="w"> </span><span class="nv">loopx_goal_id</span><span class="o">=</span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="w">  </span>--agent-kwarg<span class="w"> </span><span class="nv">loopx_registry_arg</span><span class="o">=</span>&lt;registry.global.json&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="w">  </span>--agent-kwarg<span class="w"> </span><span class="nv">loopx_runtime_root_arg</span><span class="o">=</span>&lt;runtime-root&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="w">  </span>--agent-kwarg<span class="w"> </span><span class="nv">loopx_scan_path</span><span class="o">=</span>&lt;public-scan-path&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="w">  </span>--agent-kwarg<span class="w"> </span><span class="nv">loopx_classification</span><span class="o">=</span>&lt;public-classification&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-19"><a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a><span class="w">  </span>--agent-kwarg<span class="w"> </span><span class="nv">loopx_experiment_protocol</span><span class="o">=</span>packet_only_observation<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-20"><a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="w">  </span>--agent-kwarg<span class="w"> </span><span class="nv">loopx_max_rounds</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-21"><a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="w">  </span>--jobs-dir<span class="w"> </span>&lt;run-dir&gt;/jobs<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-22"><a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a><span class="w">  </span>--job-name<span class="w"> </span>&lt;matched-treatment-job-name&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-23"><a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a><span class="w">  </span>-p<span class="w"> </span>&lt;task-dir&gt;
+</span></code></pre></div>
+<p>The packet is intentionally lightweight: it gives the host Codex worker LoopX
+planning/checkpoint commands and boundary reminders, while the task
+solution still goes through <code>harbor-env-exec</code> and the official Harbor verifier
+remains authoritative. It is useful as route-safety evidence, but on its own it
+must be labeled <code>packet_only_observation</code>, never a LoopX treatment arm.</p>
+<p>The former prompt-polling controller is retired. It measured an outer
+continuation-prompt policy, not LoopX product behavior, and must not be launched
+or presented as a treatment. Reducers may still recognize historical rows, but
+must label them <code>historical_nonproduct_invalid_for_comparison</code>. Do not migrate
+those rows into a current route or include them in uplift tables.</p>
+<p>Harbor and Terminal-Bench currently expose packet-only route diagnostics. Until
+a runner executes the real LoopX goal-start, plan, todo, work, closeout, and quota
+lifecycle inside each case, those benchmark families do not have a countable LoopX treatment arm.</p>
+<p><code>best_score</code> is only an executable final-selection policy when the runner also
+captures a compact per-round artifact snapshot. Use
+<code>loopx.benchmark_core.build_round_artifact_restore_plan</code> to combine
+<code>round_rewards</code> with public-safe snapshot handles. If the best scored round is
+not the final round and has no restore-ready snapshot handle, keep the run as
+offline analysis evidence and record <code>missing_snapshot_for_best_round</code> instead
+of claiming the runner can submit or verify the best round.</p>
+<p>The current executable treatment is SkillsBench
+<code>loopx-goal-start-product-mode</code>. It starts the case through the guided <code>/loopx</code> goal-start surface,
+requires an agent-authored plan before todo writes, and
+records case-local todo selection, solver work, closeout, refresh, and quota
+spend in compact public counters. This is not a submit/upload path and must
+still be reduced to compact public evidence before ledger ingestion.</p>
+<p>The Harbor bundle requires <code>codex</code> and <code>rg</code>. <code>curl</code> is intentionally optional:
+host-copied dynamic curl binaries can fail inside Ubuntu task images because of
+shared-library differences. Use the task image's curl, a static curl, or
+<code>--include-curl</code> only when a runner explicitly depends on it. Before an
+official attempt, run a container-local preflight equivalent to:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nv">PATH</span><span class="o">=</span>/opt/harbor-agent-tools/bin:<span class="nv">$PATH</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>codex<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>codex<span class="w"> </span>--version<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">  </span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>rg<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rg<span class="w"> </span>--version<span class="w"> </span>&gt;/dev/null
+</span></code></pre></div>
+<p>Prefer Harbor's preinstalled Codex agent variant when available, for example
+<code>codex-api-key-no-search</code>, because it prefixes <code>/opt/harbor-agent-tools/bin</code>
+during both setup and execution. A plain <code>codex</code> agent may pass setup if it
+finds the bundle, but still fail execution if the runner shell resets PATH.
+If the task container cannot reach the model endpoint after this, classify that
+as agent egress/proxy readiness, not as nvm/npm dependency materialization.</p>
+<p>For SkillsBench, do not let every task container download Node.js from
+<code>nodejs.org</code> and then <code>npm install</code> the ACP agent. Prewarm a BenchFlow-family
+runtime layer once, mount it at <code>/opt/benchflow</code>, prefix
+<code>/opt/benchflow/bin:/opt/benchflow/js-agents/bin:/opt/benchflow/node/bin</code>, and
+run the <code>codex-acp</code> launch preflight before a real case. Until that preflight is
+green, classify SkillsBench as agent-runtime readiness blocked rather than
+spending more official attempts.</p>
+<p>Use the SkillsBench materializer with host-side cached sources:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>python3<span class="w"> </span>scripts/skillsbench_agent_runtime_layer.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">  </span>--output<span class="w"> </span>~/loopx-bench/benchflow-agent-runtime<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">  </span>--node-root<span class="w"> </span>~/loopx-bench/cache/node-v22.20.0-linux-x64<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">  </span>--codex-acp-bin<span class="w"> </span>~/loopx-bench/cache/codex-acp<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">  </span>--pretty
+</span></code></pre></div>
+<p>If the host has no cached <code>codex-acp</code> binary but may use network outside the
+case container, use <code>--use-default-codex-acp-package</code> once during host
+bootstrap. Record that as host dependency materialization, not as a benchmark
+case step.</p>
+<p>The probe checks command presence, Docker server reachability, disk budget, and
+the standard workspace shape. It intentionally emits only command names,
+version first lines, booleans, counts, and the workspace basename.</p>
+<p>Benchmark source materialization should stay close to upstream:</p>
+<ul>
+<li>prefer a real git checkout or fork when the benchmark source must be patched
+  or rebased;</li>
+<li>if a source tree is only a materialized copy, add a <code>.loopx-upstream</code>
+  marker with upstream repo and commit, and do not treat it as a fork branch;</li>
+<li>keep wrapper scripts, reducer sidecars, and runbooks in this repository
+  unless the change is clearly upstreamable;</li>
+<li>never mix temporary runner probes, raw evidence, local auth setup, or private
+  benchmark artifacts into upstream benchmark source trees.</li>
+</ul>
+<h3 id="remote-checkout-patch-protocol">Remote Checkout Patch Protocol<a class="headerlink" href="#remote-checkout-patch-protocol" title="Permanent link">&para;</a></h3>
+<p>Some benchmark checkouts need a small remote-host patch before they are usable
+as a repeated developer runner. Treat that as a first-class, replayable
+checkout patch, not as a hidden shell edit:</p>
+<ol>
+<li>Keep an <code>upstream-clean</code> checkout or source archive with a recorded upstream
+   repo and commit. Do not patch task text, prompts, scorers, hidden tests, or
+   official result parsing.</li>
+<li>Apply the patch only to a run-work checkout or a clearly marked remote
+   checkout. The patch must be generated by a LoopX script or a compact
+   patch artifact that another developer can re-run after a fresh checkout.</li>
+<li>Record the patch command, upstream commit, patch purpose, and validation
+   smoke in this repo. Record only compact handles in public docs; raw panes,
+   logs, task text, trajectories, verifier output, and host paths stay private.</li>
+<li>Classify the patch as one of:
+   <code>runner_startup_patch</code>, <code>dependency_source_patch</code>,
+   <code>task_image_bootstrap_patch</code>, or <code>temporary_upstream_candidate_patch</code>.
+   Anything outside those classes needs separate review before it enters the
+   benchmark route.</li>
+<li>After upstream updates, recreate the run-work checkout, replay the patch
+   command, rerun the focused smoke, and update the active case-status note.
+   Do not keep layering manual edits on a stale remote tree.</li>
+</ol>
+<p>For Terminal-Bench, the current reusable startup patch is the no-rebuild guard:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>python3<span class="w"> </span>scripts/terminal_bench_no_rebuild_guard.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">  </span>--terminal-bench-root<span class="w"> </span>&lt;terminal-bench-checkout&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">  </span>--apply<span class="w"> </span>--pretty
+</span></code></pre></div>
+<p>This patch teaches older checkout shapes to run Compose with <code>--no-build</code> when
+the operator has explicitly selected <code>--no-rebuild</code>. It is allowed because it
+only changes runner startup behavior around prewarmed images; it does not
+change task contents, scoring, tests, prompts, or result reduction. Pair it
+with <code>examples/terminal-bench-no-rebuild-guard-smoke.py</code> before relying on it
+for a real case.</p>
+<p>For cloud hosts that cannot reliably fetch public Git sources, stage sources as
+archives from the operator machine. Prefer one compressed archive over many
+small-file transfers, and on macOS disable copyfile metadata and xattrs:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nv">COPYFILE_DISABLE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>tar<span class="w"> </span>--no-xattrs<span class="w"> </span>-C<span class="w"> </span>/tmp<span class="w"> </span>-czf<span class="w"> </span>benchmark-source.tgz<span class="w"> </span>upstream-checkout
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>scp<span class="w"> </span>benchmark-source.tgz<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BENCHMARK_HOST_ALIAS</span><span class="s2">&quot;</span>:~/loopx-bench/cache/
+</span></code></pre></div>
+<p>After extraction, verify the upstream commit and clean status. If the staged
+archive includes <code>.git</code> and Git reports a dubious ownership boundary, add a
+bounded remote <code>safe.directory</code> entry for that checkout or restage it as a
+source-only archive with a <code>.loopx-upstream</code> marker. Do not commit the
+host-specific path or exception.</p>
+<p>When a benchmark pins a runner dependency to a public Git repository and the
+cloud host cannot fetch that dependency, stage the dependency source separately
+and patch only a temporary run-work copy to use a local <code>path</code> source. Keep the
+upstream-clean checkout unchanged, record the dependency commit, and classify
+the result as dependency readiness or a precise dependency-fetch blocker. Do
+not patch official scorer, task, prompt, or runner behavior merely to work
+around network fetch.</p>
+<p>Avoid putting <code>uvx --from git+https://...</code> or equivalent Git dependency fetches
+in the hot path of repeated benchmark case launches. A wrapper can return
+success while the detached runner is still stuck in dependency acquisition, so
+the public signal must include job-root/result materialization, not only
+process start. Prefer a pre-materialized runner checkout with a local virtual
+environment, or stage the dependency source from the operator machine and run
+from that checkout. If the process tree shows the runner blocked in Git fetch
+before job materialization, classify it as dependency-fetch readiness, not a
+benchmark score result.</p>
+<p>Remote bootstrap snippets should assume a small base image: use <code>grep</code>, <code>find</code>,
+<code>git</code>, <code>python</code>, and the benchmark runner itself unless the bootstrap probe has
+confirmed extra tools such as <code>rg</code>.</p>
+<p>For Terminal-Bench, the first product-path launcher should be no-upload and
+probe-only:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>python3<span class="w"> </span>scripts/terminal_bench_no_upload_smoke.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">  </span>--task-id<span class="w"> </span>hello-world<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">  </span>--jobs-dir<span class="w"> </span>~/loopx-bench/runs/terminal-bench/jobs<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">  </span>--run-root<span class="w"> </span>~/loopx-bench/runs/terminal-bench/no-upload-smoke<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">  </span>--pretty
+</span></code></pre></div>
+<p>That command is a dry-run by default. Add <code>--execute</code> only after Codex auth,
+network, Docker, source, and task-data readiness are known. It emits command
+shape and boundary facts, not argv values or raw runner output.</p>
+<p>For direct <code>tb run</code> smoke runs on the cloud host, keep the runner invocation
+boring and Docker-compose-safe:</p>
+<ul>
+<li>verify the task directory before launching. Some materialized Terminal-Bench
+  checkouts store tasks under <code>original-tasks/</code>, not the CLI default <code>tasks/</code>.
+  For those checkouts pass <code>--dataset-path original-tasks</code>; a correct task id
+  with the wrong dataset path fails before the agent reaches the case;</li>
+<li>use an all-lowercase run id with only letters, digits, hyphens, or
+  underscores; Docker Compose rejects project names with uppercase timestamp
+  separators such as <code>T</code>. Generate it with the public-safe guard instead of
+  hand-formatting timestamps:</li>
+</ul>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>python3<span class="w"> </span>scripts/terminal_bench_safe_run_id.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">  </span>--prefix<span class="w"> </span>&lt;task-id&gt;-host-codex-goal<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">  </span>--pretty
+</span></code></pre></div>
+- pass <code>--output-path</code> as the parent runs directory and let Terminal-Bench
+  create the run-id subdirectory itself; pre-creating that directory can make
+  the runner think it is resuming a run and fail before execution;
+- keep <code>--no-upload-results</code> explicit for every developer smoke;
+- start with <code>--no-rebuild</code> only after the task image already exists, otherwise
+  record the image/build blocker instead of hiding it behind a score result.</p>
+<p>Classify pre-agent failures before comparing model or LoopX behavior:</p>
+<ul>
+<li>invalid or unsafe run ids are launch-shape blockers. Normalize them with
+  <code>scripts/terminal_bench_safe_run_id.py</code>; do not hand-format timestamps with
+  uppercase separators that Docker Compose can reject;</li>
+<li><code>--no-rebuild</code> is a runner-startup optimization, not a readiness proof. Use
+  it only after the task image exists locally and the no-rebuild guard has made
+  Compose use <code>--no-build</code>; otherwise classify the attempt as task-image or
+  runner materialization blocked;</li>
+<li>missing job roots, job locks, trial directories, or compact result files are
+  job-materialization blockers. Do not report them as agent failures,
+  benchmark score failures, or verifier failures until the runner has created a
+  job and a task environment that the agent actually reached.</li>
+</ul>
+<p>Before trusting <code>--no-rebuild</code>, guard the local Terminal-Bench checkout:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>python3<span class="w"> </span>scripts/terminal_bench_no_rebuild_guard.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">  </span>--terminal-bench-root<span class="w"> </span>&lt;terminal-bench-checkout&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">  </span>--apply<span class="w"> </span>--pretty
+</span></code></pre></div>
+<p>Terminal-Bench skips the explicit <code>docker compose build</code> step when
+<code>--no-rebuild</code> is set, but older checkout shapes still call
+<code>docker compose up -d</code> without <code>--no-build</code>. Because task compose files usually
+include <code>build:</code>, Compose can silently rebuild anyway and strand a case in
+BuildKit. The guard is a local runner-startup patch only: it does not change
+task text, scoring, verifier behavior, or official result parsing.</p>
+<p>If <code>compose up --no-build</code> starts the prewarmed image but Terminal-Bench reports
+that runner utilities such as <code>tmux</code> or <code>asciinema</code> are missing, derive a
+task-image bootstrap layer once and retag it to the Terminal-Bench client image
+name:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>python3<span class="w"> </span>scripts/terminal_bench_task_image_bootstrap.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">  </span>--source-image<span class="w"> </span>&lt;prebuilt-task-image&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">  </span>--target-image<span class="w"> </span>tb__&lt;task-id&gt;__client<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">  </span>--work-dir<span class="w"> </span>&lt;workspace&gt;/image-bootstrap/&lt;task-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">  </span>--network-host<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="w">  </span>--execute<span class="w"> </span>--pretty
+</span></code></pre></div>
+<p>Use a bounded timeout and a known mirror for apt-based images. This is still a
+task-image startup prerequisite, not per-case agent runtime installation and
+not a scoring or verifier change.</p>
+<p>When the task image is ready but Codex auth and runtime should stay on the
+benchmark host, run Terminal-Bench through the host Codex Goal custom agent:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span>&lt;loopx-checkout&gt;/scripts:<span class="si">${</span><span class="nv">PYTHONPATH</span><span class="k">:-</span><span class="si">}</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="nv">RUN_ID</span><span class="o">=</span><span class="k">$(</span>python3<span class="w"> </span>&lt;loopx-checkout&gt;/scripts/terminal_bench_safe_run_id.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">  </span>--prefix<span class="w"> </span>&lt;task-id&gt;-host-codex-goal<span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;import json,sys; print(json.load(sys.stdin)[&quot;safe_run_id&quot;])&#39;</span><span class="k">)</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>tb<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="w">  </span>--dataset-path<span class="w"> </span>&lt;tasks-dir&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="w">  </span>--task-id<span class="w"> </span>&lt;task-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="w">  </span>--output-path<span class="w"> </span>&lt;run-parent&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="w">  </span>--run-id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$RUN_ID</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="w">  </span>--no-upload-results<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="w">  </span>--no-rebuild<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="w">  </span>--agent-import-path<span class="w"> </span>terminal_bench_host_codex_goal_agent:HostCodexGoalAgent<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-24-12"><a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a><span class="w">  </span>--agent-kwarg<span class="w"> </span><span class="nv">goal_surface</span><span class="o">=</span>app_server<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-24-13"><a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a><span class="w">  </span>--agent-kwarg<span class="w"> </span><span class="nv">goal_timeout_sec</span><span class="o">=</span><span class="m">21600</span>
+</span></code></pre></div>
+<p>This uses Codex native Goal mode on the host through the app-server Goal API
+and instructs it to operate on the task container through <code>docker exec</code>. It
+keeps Codex login state, model access, and agent runtime outside the benchmark
+case container while the container remains responsible for task files and
+official tests. The TUI <code>/goal</code> surface is a manual fallback only; do not count
+it as the default baseline when app-server <code>thread/goal/set</code>,
+<code>thread/goal/get</code>, and <code>turn/start</code> are available.</p>
+<p>Terminal-Bench does not currently ship a comparable LoopX product-mode arm.
+The host agent can inject a packet-only lifecycle diagnostic, but that result is
+not treatment evidence and must not be compared against the Goal baseline.
+Add a Terminal-Bench treatment only after the runner invokes real LoopX
+goal-start/plan/todo/closeout behavior and the compact reducer verifies that
+agent-side lifecycle without reading task text, trajectories, raw logs, or
+verifier output.</p>
+<p>When a Terminal-Bench launch produces only startup or materialization state,
+reduce it before writing LoopX evidence:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>python3<span class="w"> </span>scripts/terminal_bench_compose_startup_reducer.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="w">  </span>--post-launch-json<span class="w"> </span>~/loopx-bench/runs/terminal-bench/no-upload-smoke/post_launch_summary.public.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="w">  </span>--pretty
+</span></code></pre></div>
+<p>The reducer classifies compact startup blockers such as missing jobs directory,
+missing job root, missing job lock, ended worker without trial result, or stale
+active job without trial result. It does not read raw logs, task text,
+trajectories, credentials, or command argv. If a blocker repeats, improve the
+SOP or script in the same batch instead of preserving a private one-off shell
+fragment.</p>
+<p>When Terminal-Bench reaches official closeout, reduce the official result before
+writing the run ledger. The official <code>results.json</code> may include trial-level
+fields such as task instruction, parser details, and recording paths, so use the
+metadata-only route by default:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>python3<span class="w"> </span>scripts/terminal_bench_official_result_reducer.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">  </span>--metadata-only<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">  </span>--run-metadata-json<span class="w"> </span>&lt;terminal-bench-run&gt;/run_metadata.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">  </span>--mode<span class="w"> </span>terminal_bench_host_codex_app_server_goal<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="w">  </span>--pretty
+</span></code></pre></div>
+<p>The reducer emits both <code>terminal_bench_official_result_reducer_v0</code> and a
+compact <code>benchmark_run_v0</code> projection suitable for
+<code>loopx benchmark run-ledger-upsert</code>. If a run needs <code>results.json</code>, pass
+it explicitly and rely only on the reducer's top-level summary / allowlisted
+trial counters; never publish trial instruction, parser output, recording
+paths, raw logs, task text, trajectories, or command argv.</p>
+<p>For Harbor-backed Terminal-Bench launches on a cloud host, keep the operator
+loop explicit:</p>
+<ol>
+<li>Launch inside <code>tmux</code> with a lowercase job name and private runner log.</li>
+<li>Write <code>status.env</code> and a bounded public file list even on non-zero exit;
+   use <code>set +e</code> around the runner so the status file is not skipped.</li>
+<li>Treat wrapper exit code, process state, job root, job lock, and compact
+   result as separate facts. <code>rc=0</code> for the wrapper only means the wrapper
+   completed; it does not prove the benchmark case reached the agent.</li>
+<li>Validate that the task filter matches the selected dataset before spending
+   an agent attempt. A filter that matches zero tasks is a launch-shape
+   blocker, not model or benchmark performance.</li>
+<li>If <code>tasks/&lt;name&gt;</code> is passed as a relative path, run Harbor from the checkout
+   that actually contains that <code>tasks/</code> tree. A wrong current directory can
+   fail before Docker or Codex start and should be fixed locally, not reported
+   upstream.</li>
+</ol>
+<p>For SkillsBench, prove the verifier dependency substrate before claiming a
+no-upload task result. A timeout-looking failure can actually be a missing
+verifier launcher surface: the verifier may need minimal Python, pip, curl,
+certificates, <code>uv</code>, and <code>uvx</code> before it can run the official oracle sanity path.
+Do not repair that first by globally extending timeouts.</p>
+<p>For the Codex baseline arm, use the native app-server Goal route instead of the
+older slash-prefix experiment. The SkillsBench route name is
+<code>codex-app-server-goal-baseline</code>; it requires host Codex app-server Goal
+methods <code>thread/start</code>, <code>thread/goal/set</code>, <code>thread/goal/get</code>, and <code>turn/start</code>.
+Generate the public-safe plan first:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>python3<span class="w"> </span>scripts/skillsbench_automation_loop.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">  </span>--task-id<span class="w"> </span>llm-prefix-cache-replay<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">  </span>--route<span class="w"> </span>codex-app-server-goal-baseline<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="w">  </span>--plan-only
+</span></code></pre></div>
+<p>The plan must show
+<code>agent_execution_mode=host_codex_app_server_goal_worker</code>,
+<code>codex_app_server_goal_worker_turn_start_required=true</code>, and
+<code>codex_app_server_goal_worker_remote_command_file_bridge_required=true</code>.
+By default it should also show
+<code>codex_app_server_goal_worker_remote_command_file_bridge_ready=false</code> and
+<code>codex_app_server_goal_worker_runner_integration_ready=false</code>.</p>
+<p>There are two distinct gates for a real scored launch:</p>
+<ol>
+<li>Materialize a bounded command/file bridge so the host Codex app-server Goal
+   worker can operate on the BenchFlow sandbox where task files and edits live.
+   A host cwd that cannot see the sandbox is not a valid fallback.</li>
+<li>Wire that host worker through BenchFlow's ACP transport so official task
+   staging and verification still run through BenchFlow.</li>
+</ol>
+<p>The second gate is implemented through the host-local ACP relay. In
+<code>codex-app-server-goal-baseline</code>, pass <code>--host-local-acp-launch</code> only after the
+bridge probe is green; the launcher then starts
+<code>scripts/skillsbench_local_acp_relay.py --app-server-goal-worker</code>, and the
+relay delegates each ACP <code>session/prompt</code> to
+<code>scripts/skillsbench_host_codex_goal_worker.py</code>. This preserves BenchFlow as
+the official task stager/verifier while Codex runs through native app-server
+Goal methods on the host:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>python3<span class="w"> </span>scripts/skillsbench_automation_loop.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">  </span>--task-id<span class="w"> </span>llm-prefix-cache-replay<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">  </span>--route<span class="w"> </span>codex-app-server-goal-baseline<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="w">  </span>--remote-command-file-bridge-ready<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="w">  </span>--host-local-acp-launch<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="w">  </span>--plan-only
+</span></code></pre></div>
+<p>With both flags, the plan should show
+<code>codex_app_server_goal_worker_remote_command_file_bridge_ready=true</code> and
+<code>codex_app_server_goal_worker_runner_integration_ready=true</code>. Without
+<code>--host-local-acp-launch</code>, a real launch must still fail closed as
+<code>SkillsBenchNativeGoalWorkerIntegrationPending</code>.</p>
+<p>A real remote launch also has a single-checkout invariant: the wrapper must use
+the same LoopX checkout for <code>cd</code>, <code>PYTHONPATH</code>, and the executable
+script path. Do not rely on <code>PYTHONPATH</code> alone to override a relative
+<code>scripts/skillsbench_automation_loop.py</code> from an older current directory; that
+can produce official results while silently dropping the public controller and
+worker traces. Prefer an immutable tool snapshot and an absolute script path:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="ch">#!/usr/bin/env bash</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="nv">TOOL_ROOT</span><span class="o">=</span>&lt;loopx-tool-snapshot&gt;
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TOOL_ROOT</span><span class="s2">&quot;</span>
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$TOOL_ROOT</span><span class="s2">:</span><span class="nv">$TOOL_ROOT</span><span class="s2">/scripts:</span><span class="si">${</span><span class="nv">PYTHONPATH</span><span class="k">:-</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>
+</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>python3<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TOOL_ROOT</span><span class="s2">/scripts/skillsbench_automation_loop.py&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-29-9"><a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="w">  </span>--task-id<span class="w"> </span>llm-prefix-cache-replay<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-29-10"><a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="w">  </span>--route<span class="w"> </span>codex-app-server-goal-baseline<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-29-11"><a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a><span class="w">  </span>--remote-command-file-bridge-ready<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-29-12"><a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a><span class="w">  </span>--host-local-acp-launch<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-29-13"><a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a><span class="w">  </span>--jobs-dir<span class="w"> </span>&lt;run-dir&gt;/jobs<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-29-14"><a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a><span class="w">  </span>--job-name<span class="w"> </span>&lt;job-name&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-29-15"><a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a><span class="w">  </span>--app-server-reasoning-effort<span class="w"> </span>high
+</span></code></pre></div>
+<p>Before comparing scores, confirm that the public closeout contains
+<code>loopx_controller_trace.public.json</code> and
+<code>app_server_goal_worker_traces/*.compact.json</code>. A valid native app-server
+Goal baseline must show at least <code>goal_get_present=true</code> and
+<code>turn_id_present=true</code> in a public worker trace, or it must close with a precise
+worker-trace blocker such as <code>worker_prompt_received_no_turn_trace</code>. If the
+official result exists but those trace files are absent, classify it as a
+tool-snapshot or launcher-persistence problem, not solver-quality evidence.</p>
+<p>A full launch of this route must fail closed rather than falling back to
+<code>codex-acp</code>, a slash-prefix <code>/goal</code> prompt, or a host-only workspace. The
+host-side worker surface is:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>python3<span class="w"> </span>scripts/skillsbench_host_codex_goal_worker.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="w">  </span>--task-id<span class="w"> </span>&lt;task-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="w">  </span>--contract-only
+</span></code></pre></div>
+<p>When the worker is launched from a benchmark host wrapper rather than from the
+LoopX checkout, set the import path explicitly so shared driver modules
+are resolved from the shipped checkout:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="nv">PYTHONPATH</span><span class="o">=</span>&lt;loopx-checkout&gt;:&lt;loopx-checkout&gt;/scripts<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="w">  </span>python3<span class="w"> </span>&lt;loopx-checkout&gt;/scripts/skillsbench_host_codex_goal_worker.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">    </span>--task-id<span class="w"> </span>&lt;task-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="w">    </span>--contract-only
+</span></code></pre></div>
+<p>When used for a private case, the same worker reads the private prompt file and
+workspace path on the benchmark host, invokes Codex app-server Goal mode, waits
+for <code>turn/completed</code>, and writes the assistant response only to a private
+response file for the surrounding runner. The public JSON records compact turn
+proof, assistant-message hash/size, and method counters only. Do not copy raw
+task text, raw assistant response, raw trajectory, raw logs, LoopX state,
+credentials, or host paths into the compact result. The old
+<code>codex-goal-mode-baseline</code> slash-prefix probe route is removed from SkillsBench
+runner choices; use <code>codex-cli-goal-baseline</code> for the scored Codex Goal
+baseline.</p>
+<p>For a scored SkillsBench route, the worker should be called with an explicit
+private output target:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>python3<span class="w"> </span>scripts/skillsbench_host_codex_goal_worker.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="w">  </span>--task-id<span class="w"> </span>&lt;task-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="w">  </span>--work-dir<span class="w"> </span>&lt;private-case-workdir&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="w">  </span>--prompt-file<span class="w"> </span>&lt;private-prompt-file&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a><span class="w">  </span>--response-text-file<span class="w"> </span>&lt;private-agent-response-file&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a><span class="w">  </span>--output-json<span class="w"> </span>&lt;private-compact-worker-json&gt;
+</span></code></pre></div>
+<p>For the LoopX treatment arm, launch the complete goal-start product route rather
+than calling the host worker with a treatment-looking arm label:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>python3<span class="w"> </span>scripts/skillsbench_automation_loop.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="w">  </span>--skillsbench-root<span class="w"> </span>&lt;skillsbench-root&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="w">  </span>--route<span class="w"> </span>loopx-goal-start-product-mode<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="w">  </span>--task-id<span class="w"> </span>&lt;task-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a><span class="w">  </span>--model<span class="w"> </span>&lt;model&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="w">  </span>--reasoning-effort<span class="w"> </span>&lt;effort&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-7"><a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a><span class="w">  </span>--run-group-id<span class="w"> </span>&lt;run-group&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-8"><a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a><span class="w">  </span>--job-name<span class="w"> </span>&lt;job-name&gt;
+</span></code></pre></div>
+<p>The compact result must show guided goal-start, an agent-authored plan before
+todo writes, selected P0 lifecycle, task-facing solver activity, and agent-side
+todo completion/refresh/quota spend. A baseline run uses
+<code>codex-cli-goal-baseline</code> and must not include LoopX lifecycle state.</p>
+<p>The compact worker JSON is safe to inspect for lifecycle debugging, but the
+response text file is private task execution material and must stay out of
+public docs, ledgers, rollout logs, and PRs.</p>
+<p>For the host-local ACP relay, materialize public trace as early as the relay
+lifecycle, not only after a completed worker turn. The relay should write
+compact <code>relay_lifecycle</code> traces for <code>initialize</code>, <code>session_new</code>, and
+<code>prompt_received</code> when <code>--worker-public-trace-dir</code> is configured. These traces
+are pure observation: they record stage names and boundary booleans only, never
+task text, ACP payloads, stdout/stderr, session ids, response text, or host
+paths. Reducers must not treat lifecycle-only traces as solver evidence. A
+status such as <code>worker_connected_no_prompt_trace</code> or
+<code>worker_prompt_received_no_turn_trace</code> remains a failed native-worker evidence
+check; it only narrows attribution from "trace directory missing" to "BenchFlow
+connected but did not reach a countable Goal worker turn."</p>
+<p>Use <code>--remote-command-file-bridge-ready</code> only after a public-safe bridge probe
+has passed. That flag updates only the plan's bridge readiness fields;
+<code>codex_app_server_goal_worker_runner_integration_ready</code> must remain <code>false</code>
+until the BenchFlow transport is requested through <code>--host-local-acp-launch</code>.
+If the full route exits with
+<code>SkillsBenchNativeGoalWorkerIntegrationPending</code>, the next fix belongs in the
+host-worker-to-ACP transport, not in verifier timeout, Docker setup, or model
+behavior.</p>
+<p>Preview the public-safe prewarm plan:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>python3<span class="w"> </span>scripts/skillsbench_verifier_prewarm_plan.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="w">  </span>--task-id<span class="w"> </span>hello-world<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="w">  </span>--pretty
+</span></code></pre></div>
+<p>The plan is deliberately not an upstream patch. Apply it only to a temporary
+task copy, wrapper layer, or derived sandbox image, then run a one-attempt
+oracle no-upload sanity task. Claim SkillsBench case readiness only after the
+oracle run reaches reward <code>1.0</code> with verifier errors cleared. If the sanity run
+still times out after the dependency substrate is present, classify it as a
+real verifier timeout and consider a bounded timeout increase for that tier.</p>
+<p>SkillsBench runner exceptions need a second look before they become blockers.
+BenchFlow can sometimes write official <code>result.json</code>/<code>timing.json</code> before a
+later runner exception. In that case, reduce the official compact result and
+mark the runner exception as recovery metadata instead of losing the result.
+If no official result exists, close out with a compact runner-error blocker and
+do not infer verifier or model behavior from raw logs.</p>
+<p>Keep these boundaries:</p>
+<ul>
+<li>do not modify official task truth, scorer, prompt, or leaderboard behavior;</li>
+<li>do not publish raw verifier output, task text, trajectories, local paths, or
+  remote run directories;</li>
+<li>record only compact fields such as dependency-prewarm ready/blocked, oracle
+  sanity pass/fail, and the next blocker label
+  <code>skillsbench_verifier_dependency_prewarm_required</code>.</li>
+</ul>
+<h3 id="upstream-issue-escalation">Upstream Issue Escalation<a class="headerlink" href="#upstream-issue-escalation" title="Permanent link">&para;</a></h3>
+<p>Open an upstream benchmark issue only after ruling out local route mistakes:
+wrong current directory, wrong config schema, missing data-root migration,
+missing runner dependency prewarm, stale LoopX tool copy, missing Codex
+auth, or a launcher that failed to write status. The issue should include a
+compact reproduction command shape, upstream commit, runner version, no-upload
+boundary, and sanitized blocker label. Do not paste raw task text, raw logs,
+trajectories, verifier output, credentials, private hostnames, or local paths.</p>
+<p>Good issue candidates are repeated upstream-close failures where the command
+schema and working directory match the README, dependencies are
+pre-materialized or publicly reachable, and the runner still fails before a
+compact result for reasons the benchmark maintainers own.</p>
+<h3 id="ssh-session-hygiene">SSH Session Hygiene<a class="headerlink" href="#ssh-session-hygiene" title="Permanent link">&para;</a></h3>
+<p>When the benchmark host is reached through a jump host, GSSAPI, or another
+access path with expensive handshakes, do not make every probe open a fresh SSH
+session. Keep one SSH multiplexed master warm for the benchmark slice and run
+remote commands through that connection. This is an operator workflow
+convention, not a LoopX protocol requirement.</p>
+<p>Use <code>python3 -m loopx.benchmark_adapters.skillsbench_runner_profile probe-ssh</code>
+as the task-free readiness receipt. Its typed fields distinguish local GSSAPI
+ticket presence from remote task-free SSH acceptance without recording command
+output or profile values. A present local ticket is not sufficient evidence to
+launch: <code>readiness_state</code> must be <code>ready</code>. Keep the benchmark blocked on
+<code>remote_task_free_acceptance_failed</code> while unrelated runnable work continues.
+The non-dry-run launcher consumes the same receipt before any remote preflight
+or supervisor start. A rejected receipt exits as the compact public blocker;
+dry-run reports the gate as required without probing the host.</p>
+<p>For repeated benchmark work, prefer a host-local SSH config stanza instead of
+spelling the multiplexing flags on every command:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>Host benchmark-host-alias
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>  ControlMaster auto
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>  ControlPath ~/.ssh/cm/%C
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>  ControlPersist 8h
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>  ServerAliveInterval 30
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>  ServerAliveCountMax 6
+</span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a>  BatchMode yes
+</span><span id="__span-35-8"><a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>  LogLevel ERROR
+</span></code></pre></div>
+<p>Use a hashed <code>ControlPath</code> such as <code>%C</code> so the socket does not expose host
+names and is unlikely to exceed path-length limits. <code>BatchMode yes</code> keeps
+automation from hanging on an interactive auth prompt; <code>LogLevel ERROR</code> avoids
+known-host chatter in compact run logs when the operator intentionally uses an
+ephemeral known-host policy. Keep the real host name, jump path, identity file,
+and control socket directory in private operator config.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="nv">BENCHMARK_HOST_ALIAS</span><span class="o">=</span>&lt;your-ssh-config-alias&gt;
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.ssh/cm
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>chmod<span class="w"> </span><span class="m">700</span><span class="w"> </span>~/.ssh/cm
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>ssh<span class="w"> </span>-MNf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BENCHMARK_HOST_ALIAS</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>ssh<span class="w"> </span>-O<span class="w"> </span>check<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BENCHMARK_HOST_ALIAS</span><span class="s2">&quot;</span>
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>ssh<span class="w"> </span>-O<span class="w"> </span>check<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BENCHMARK_HOST_ALIAS</span><span class="s2">&quot;</span>
+</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>ssh<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BENCHMARK_HOST_ALIAS</span><span class="s2">&quot;</span><span class="w"> </span><span class="s1">&#39;hostname &amp;&amp; docker --version &amp;&amp; codex --version&#39;</span>
+</span></code></pre></div>
+<p>Keep commands through the master connection mostly serial when the access path
+is sensitive to concurrent authentication. Do not commit SSH aliases, host
+names, private keys, jump-host details, raw shell history, or local control-path
+values into public benchmark evidence. Public docs should preserve the shape:
+create or reuse one master, route bounded probes and launch commands through it,
+then let <code>ControlPersist</code> expire or close it explicitly with <code>ssh -O exit</code> when
+the benchmark slice is done.</p>
+<p>Long-running benchmark jobs should not live in a foreground SSH session. Start a
+stable remote <code>tmux</code> session and send benchmark launch commands into it, then
+poll with <code>capture-pane</code> or compact artifact files:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="nv">BENCHMARK_TMUX_SESSION</span><span class="o">=</span>gh-bench
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>ssh<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BENCHMARK_HOST_ALIAS</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="w">  </span><span class="s1">&#39;tmux has-session -t gh-bench 2&gt;/dev/null || tmux new-session -d -s gh-bench -c &quot;$HOME&quot;&#39;</span>
+</span><span id="__span-37-5"><a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>
+</span><span id="__span-37-6"><a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a>ssh<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BENCHMARK_HOST_ALIAS</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-37-7"><a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a><span class="w">  </span><span class="s1">&#39;tmux send-keys -t gh-bench &quot;cd benchmark-work &amp;&amp; ./run-no-upload-smoke.sh&quot; C-m&#39;</span>
+</span><span id="__span-37-8"><a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a>
+</span><span id="__span-37-9"><a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a>ssh<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BENCHMARK_HOST_ALIAS</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-37-10"><a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a><span class="w">  </span><span class="s1">&#39;tmux capture-pane -pt gh-bench -S -120&#39;</span>
+</span></code></pre></div>
+<p>This gives the operator a durable remote workspace even if the local Codex app,
+laptop network, or SSH master connection restarts. Treat <code>tmux</code> as benchmark
+host bootstrap tooling: installing it on the host is an operations step, not a
+benchmark result. Public evidence may say that a long run used a persistent
+remote session; raw panes, host paths, task text, verifier output, and command
+history still stay private.</p>
+<h3 id="codex-goal-baseline-gate">Codex Goal Baseline Gate<a class="headerlink" href="#codex-goal-baseline-gate" title="Permanent link">&para;</a></h3>
+<p>The primary comparison target is <strong>Codex Goal mode</strong> running on the benchmark
+host. A benchmark route may call itself a Codex Goal baseline only when it has
+evidence for all of the following:</p>
+<ul>
+<li>the installed Codex build exposes <code>features.goals=true</code> or an equivalent
+  enabled Goal feature;</li>
+<li>the runner starts Goal mode through a supported Codex surface. Prefer the
+  Codex app-server goal API for automation: initialize with
+  <code>capabilities.experimentalApi=true</code>, <code>thread/start</code> the benchmark workspace,
+  then call <code>thread/goal/set</code> with <code>objective</code>, <code>status: active</code>, and an
+  optional <code>tokenBudget</code>. The interactive CLI slash command <code>/goal</code> remains the
+  manual fallback, not the preferred benchmark automation seam;</li>
+<li>the run evidence shows a persistent goal attached to the active thread, not
+  only a prompt string whose first token is <code>/goal</code>;</li>
+<li>the route does not add LoopX state, access packets, reward feedback,
+  or polling semantics to the baseline arm.</li>
+</ul>
+<h3 id="loopx-product-mode-treatment-gate">LoopX Product-Mode Treatment Gate<a class="headerlink" href="#loopx-product-mode-treatment-gate" title="Permanent link">&para;</a></h3>
+<p>The comparable LoopX arm must execute LoopX product behavior inside the case.
+An extra access packet, an outer prompt scheduler, or a treatment-looking arm
+label is insufficient. Use the shared product-mode and case-lifecycle contracts
+across benchmarks:</p>
+<table>
+<thead>
+<tr>
+<th>Benchmark family</th>
+<th>Baseline arm</th>
+<th>Test arm</th>
+<th>Shared surface</th>
+<th>Benchmark-specific glue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SkillsBench</td>
+<td><code>codex-cli-goal-baseline</code></td>
+<td><code>loopx-goal-start-product-mode</code></td>
+<td>matched case/source/model/reasoning/timeout, no feedback to either agent, compact official score</td>
+<td>treatment records guided goal-start, plan-before-todo, selected-P0 work, closeout, refresh, and quota spend</td>
+</tr>
+<tr>
+<td>SWE-Marathon</td>
+<td>host Codex app-server Goal baseline through Harbor</td>
+<td>not yet shipped</td>
+<td>packet-only diagnostics remain non-comparable</td>
+<td>implement real case-local LoopX product lifecycle before adding a treatment</td>
+</tr>
+<tr>
+<td>Terminal-Bench</td>
+<td>host Codex app-server Goal baseline or official no-upload runner baseline</td>
+<td>not yet shipped</td>
+<td>packet-only diagnostics remain non-comparable</td>
+<td>implement real case-local LoopX product lifecycle before adding a treatment</td>
+</tr>
+</tbody>
+</table>
+<p>The shared layer is intentionally small: route ids, feedback blinding fields,
+case lifecycle, packet-only classification, and public counters. Do not force
+every benchmark into the same runner implementation when its upstream surface
+differs. Do require real product lifecycle before a result is compared. A
+single access packet is only <code>packet_only_observation</code>.</p>
+<p>For the test arm, also require the shared per-case lifecycle contract from
+<code>loopx.benchmark_case_state</code>. Each benchmark/case/arm must have an
+isolated <code>benchmark_case_lifecycle_contract</code> with
+<code>case_isolation_scope=per_benchmark_case_arm</code>, a canonical
+<code>/app/.codex/goals/&lt;case-arm&gt;/ACTIVE_GOAL_STATE.md</code> state path, and the public
+lifecycle sequence <code>quota_should_run -&gt; todo_claim_or_update -&gt;
+bounded_agent_turn -&gt; validation_or_case_result -&gt; refresh_state -&gt;
+quota_spend</code>. Harbor-family agents inject this contract into the LoopX
+access packet and compact metadata; other adapters should reuse the same
+contract rather than inventing benchmark-specific state markers. A runner
+without this lifecycle remains <code>packet_only_observation</code> or incomplete evidence.</p>
+<p>For strict <code>loopx-product-mode</code>, "the agent touched LoopX" is not enough. The
+test arm is countable only when compact evidence shows both task-facing solver
+activity and an agent-side case closeout: <code>todo complete</code>, <code>refresh-state</code>, and
+<code>quota spend-slot --source adapter --execute</code> for the isolated case goal. Driver
+orchestrated checkpoints may prove the control plane is reachable, but they do
+not substitute for the agent completing and spending the case turn. Prompt
+packets and reducer checks must use the same closeout contract; if the prompt
+only suggests spend-slot as optional, treat the run as a product-path mismatch
+until the prompt and compact reducer are aligned.</p>
+<p><code>codex exec</code> is still useful as a tiny connectivity smoke on the cloud host,
+but a successful <code>codex exec</code> run is not by itself a Codex Goal baseline. Do not
+rename a polling loop, resume loop, or prompt-prefixed <code>/goal</code> experiment into a
+Goal baseline without <code>thread/goal/get</code> or equivalent persistent-goal evidence.</p>
+<p>If these facts are not available, classify the result as a runner/readiness
+probe or unverified slash-goal prompt experiment, not as a Codex Goal baseline.
+In that state, do not launch matched LoopX treatment for uplift claims;
+instead record the exact trigger gap and keep working on cloud host, runner,
+task-data, or compact-result readiness.</p>
+<p>For Terminal-Bench launcher work, use the fail-closed app-server Goal surface
+when validating this boundary:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>python3<span class="w"> </span>-m<span class="w"> </span>loopx.cli<span class="w"> </span>--format<span class="w"> </span>json<span class="w"> </span>benchmark<span class="w"> </span>launch-terminal-bench-run<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="w">  </span>terminal-bench<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="w">  </span>--mode<span class="w"> </span>codex-app-server-goal<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-38-4"><a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="w">  </span>--include-task-name<span class="w"> </span>hello-world<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-38-5"><a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="w">  </span>--jobs-dir<span class="w"> </span><span class="s1">&#39;&lt;private-jobs-dir&gt;&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-38-6"><a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a><span class="w">  </span>--run-root<span class="w"> </span>terminal-bench-app-server-goal-probe<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-38-7"><a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a><span class="w">  </span>--job-name<span class="w"> </span>terminal_bench_app_server_goal_probe<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-38-8"><a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a><span class="w">  </span>--wait-seconds<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-38-9"><a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a><span class="w">  </span>--materialization-wait-seconds<span class="w"> </span><span class="m">0</span>
+</span></code></pre></div>
+<p>The app-server Goal launcher now exposes a public worker contract for
+<code>thread/goal/set</code>, <code>thread/goal/get</code>, and <code>turn/start</code>. Until a real
+Terminal-Bench case launch returns compact <code>turn/start</code> proof plus no-upload
+case proof, this mode must still return <code>execution_ready=false</code>,
+<code>first_blocker=terminal_bench_app_server_goal_turn_start_proof_missing</code>, and
+<code>codex_goal_mode_baseline_claim_allowed=false</code>. Older slash-command fallback
+launchers must not be used as scored Codex Goal baselines.</p>
+<p>Default cloud ECS host readiness:</p>
+<ul>
+<li>SSH access works through the operator's approved access path.</li>
+<li>Codex CLI is installed on the host; auth is completed by the operator on that
+  host and is not copied from another machine.</li>
+<li><code>git</code>, Python, <code>uv</code>, Node/npm when required, and Docker or a Docker-compatible
+  runtime are available.</li>
+<li>Container image pulls use a documented reachable registry or mirror.</li>
+<li>The benchmark workspace is dedicated and private enough for raw artifacts.</li>
+<li>The first task is a no-upload dry-run or mini-pair that writes compact
+  <code>benchmark_run_v0</code> / <code>benchmark_result_v0</code> evidence before any score claim.</li>
+</ul>
+<p>Cloud-host Codex connectivity is its own preflight, separate from benchmark
+runner readiness. A host can have a valid Codex login and still fail model calls
+because its network egress cannot reach the provider endpoints. Before blaming
+the benchmark runner, prove three layers in order:</p>
+<ol>
+<li><strong>Auth</strong>: <code>codex login status</code> or equivalent reports an authenticated local
+   user on the benchmark host.</li>
+<li><strong>Network</strong>: a bounded model-provider probe reaches the endpoint through the
+   operator-approved route. If direct egress is unavailable, use an approved
+   loopback-only proxy or tunnel instead of copying credentials or embedding
+   proxy details in public docs.</li>
+<li><strong>Execution</strong>: <code>codex exec</code> can complete a tiny read-only smoke in a scratch
+   directory and write a compact last-message or exit-code artifact.</li>
+</ol>
+<p>The reusable trick is the shape, not the private wiring: keep the concrete SSH
+jump path, local ports, auth-cache handling, and proxy process command in a
+local-private runbook, then expose only these public-safe facts to LoopX:
+auth ready, network route ready or blocked, <code>codex exec</code> smoke result, and the
+next benchmark-family blocker. Prefer per-command tunnels or short-lived
+operator-managed proxy sessions for benchmark slices; long-running unattended
+network bridges should have an explicit owner and cleanup rule.</p>
+<p>When the SkillsBench reverse-tunnel supervisor should own the local CONNECT
+process, store its foreground argv-style command in the owner-only runner
+profile as <code>SKILLSBENCH_LOCAL_CODEX_PROXY_COMMAND</code>. The supervisor starts the
+process when the local endpoint is absent, performs bounded restarts if that
+endpoint disappears while the SSH tunnel is still alive, and cleans up only
+processes it started. The raw command and process output remain private. Without
+this setting, the local endpoint remains externally owned and the launcher
+keeps its existing fail-fast behavior.</p>
+<p>For SkillsBench setup/verifier egress on a cloud host, prefer the runner's
+runtime-only proxy switch over editing task files or committing host details.
+Set <code>LOOPX_SKILLSBENCH_EGRESS_PROXY</code> in the private remote shell environment
+before launching <code>scripts/skillsbench_automation_loop.py</code>; the runner forwards
+standard proxy variables only to the private BenchFlow subprocess and agent
+environment, runs a bounded HTTP CONNECT preflight, and records only
+source/scheme/endpoint-kind/port plus <code>proxy_url_recorded=false</code> in public
+artifacts. Formal host-local Goal benchmark routes resolve the default <code>auto</code>
+policy to <code>require</code>, so a missing benchmark egress proxy blocks before setup or
+verifier dependency installs begin. Outside those formal routes, <code>auto</code> still
+validates a configured proxy first, but if that proxy is unavailable and direct
+egress to the public test host is reachable, the runner records a direct
+fallback and does not inject the stale proxy into the benchmark runtime. Use
+<code>--benchmark-egress-proxy-mode off</code> only for explicit no-proxy debugging.</p>
+<p>For Docker-backed SkillsBench runs, the proxy endpoint must be reachable from
+both the remote host shell and Docker build/runtime containers. A loopback-only
+SSH reverse tunnel such as <code>127.0.0.1:&lt;port&gt;</code> is enough for host-side Codex API
+preflight, but Docker build steps interpret <code>127.0.0.1</code> as the build container
+itself, so apt/pip/bootstrap commands fail with connection refused. The public
+launcher starts a short-lived bridge listener on the remote Docker bridge
+address and passes that bridge URL as <code>LOOPX_SKILLSBENCH_EGRESS_PROXY</code>, while
+keeping the concrete proxy value out of public artifacts. Equivalent
+host-network or bridge-forwarder wiring is valid; do not treat a host-only
+loopback proxy as benchmark/verifier-ready.</p>
+<p>Keep upstream benchmark sources clean:</p>
+<ul>
+<li>Use upstream <code>main</code> or a pinned upstream commit for official runner code.</li>
+<li>Keep any internal convenience changes on a tiny, rebased adapter branch.</li>
+<li>Prefer wrapper scripts, environment files, and reducer sidecars over editing
+  upstream benchmark logic.</li>
+<li>Fork only when we need to preserve a small reusable patch set; keep the fork
+  close enough that upstream pulls remain routine.</li>
+<li>Do not mix LoopX runner experiments, local bridge probes, raw logs, or
+  credential setup into benchmark forks.</li>
+</ul>
+<h2 id="split-control-route">Split-Control Route<a class="headerlink" href="#split-control-route" title="Permanent link">&para;</a></h2>
+<p>The split-control route is now a fallback and research route, not the default
+when a dedicated cloud host exists.</p>
+<p>Use it when Codex auth cannot live on the execution host, when the host is
+shared, or when the product question is specifically about a local LoopX
+controller using a separate Docker substrate.</p>
+<table>
+<thead>
+<tr>
+<th>Owner</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Local agent</td>
+<td>Codex CLI, auth, model invocation, planning, patch generation, LoopX state, quota, todo, and evidence filtering.</td>
+</tr>
+<tr>
+<td>Remote executor</td>
+<td>Docker runtime, runner dependencies, task-data or image staging, bounded command/file execution, and compact result reduction.</td>
+</tr>
+</tbody>
+</table>
+<p>The remote executor is not an agent-auth environment. Missing remote Codex,
+Codex ACP, or model credentials is not a benchmark blocker. Real blockers are
+things like missing split-control adapter, missing runner tooling, missing task
+data or images, missing remote node runtime when a specific runner requires it,
+or a failed cleanup/readiness check.</p>
+<p>Historical split-control work is still useful: it records which boundaries
+matter when credentials cannot move, and it produced adapter/reducer seams that
+can be reused for compact evidence. Do not continue adding split-control bridge
+layers when a cloud-host route can answer the benchmark question directly.</p>
+<p>Treat split-control assets as a retained experimental fallback, not a live
+default:</p>
+<ul>
+<li>keep durable contracts, reducers, and boundary smokes that still protect
+  public behavior;</li>
+<li>do not add new bridge layers unless a cloud-host run is blocked by a concrete
+  auth, policy, or host gate;</li>
+<li>move future local-Codex / remote-executor experiments to an explicitly named
+  experimental branch or research issue;</li>
+<li>remove or defer mainline split-control code once the cloud-host route has
+  equivalent compact evidence for the same benchmark family.</li>
+<li>mark retained machine contracts as <code>experimental_fallback_not_default</code> so
+  operator-facing projections do not select them as a default cloud-host or
+  app-server route.</li>
+</ul>
+<p>See
+<a href="../../research/long-horizon-agent-benchmarks/benchmark-split-control-remote-executor-v0/"><code>benchmark-split-control-remote-executor-v0.md</code></a>
+for the current machine contract, and
+<a href="../../research/long-horizon-agent-benchmarks/benchmark-route-transition-retrospective-20260619/"><code>benchmark-route-transition-retrospective-20260619.md</code></a>
+for the split-control retention, branch-hygiene, and retirement runbook.</p>
+<h3 id="cross-family-compact-workflow-shape">Cross-Family Compact Workflow Shape<a class="headerlink" href="#cross-family-compact-workflow-shape" title="Permanent link">&para;</a></h3>
+<p>After one benchmark family has a live cloud-host smoke, do not copy its
+private shell history into the next family. Copy the workflow shape:</p>
+<ol>
+<li>Bootstrap the host with <code>scripts/benchmark_ecs_bootstrap.py</code>.</li>
+<li>Select the shared runtime profile with
+   <code>scripts/benchmark_agent_runtime_layer.py</code>.</li>
+<li>Run the family-specific public-safe readiness surface.</li>
+<li>Launch at most one no-upload case or task-free worker proof.</li>
+<li>Reduce the outcome into a compact ready/blocker packet before writing LoopX
+   state or ledger evidence.</li>
+</ol>
+<p>The family-specific surface should stay close to existing product code:</p>
+<ul>
+<li>Terminal-Bench uses the no-upload launcher plus
+  <code>scripts/terminal_bench_compose_startup_reducer.py</code> for startup blockers and
+  the official-result reducer for countable closeout.</li>
+<li>SkillsBench uses <code>scripts/skillsbench_agent_runtime_layer.py</code>,
+  <code>scripts/skillsbench_automation_loop.py --plan-only</code>,
+  <code>--local-driver-worker-handshake-preflight</code>,
+  <code>--host-local-acp-codex-exec-preflight</code>, <code>--host-local-acp-launch</code>,
+  <code>--require-preinstalled-benchflow-agent-runtime</code>, and
+  <code>--remote-command-file-bridge-probe</code> to prove BenchFlow worker, bridge,
+  runtime, and canonical <code>loopx-product-mode</code> lifecycle readiness before
+  spending scored attempts.</li>
+<li>Agents' Last Exam uses the compact builders in
+  <code>loopx/benchmark_adapters/agents_last_exam.py</code>, especially
+  <code>build_agents_last_exam_local_source_readiness</code>,
+  <code>build_agents_last_exam_task_material_readiness</code>,
+  <code>build_agents_last_exam_host_codex_cua_no_task_smoke</code>, and
+  <code>build_agents_last_exam_validation_run_gate</code>, until those surfaces are
+  wrapped by a CLI entrypoint.</li>
+</ul>
+<p>The public packet shape is the contract, not the family internals. It should
+contain the benchmark family, route, <code>ready</code>, <code>first_blocker</code>, compact lifecycle
+counters when applicable, and boundary booleans proving that raw logs, task
+text, trajectories, verifier output, credentials, command argv, and private
+paths were not published. SkillsBench product-mode evidence is not countable
+unless compact counters such as
+<code>remote_command_file_bridge_driver_lifecycle_loopx_cli_call_count</code>,
+<code>remote_command_file_bridge_driver_lifecycle_loopx_state_read_count</code>, and
+<code>remote_command_file_bridge_driver_lifecycle_loopx_state_write_count</code> are
+nonzero or the closeout names a precise pre-agent blocker.</p>
+<p>Prefer wrappers, reducers, and adapter-side compact builders over patching an
+upstream benchmark runner. If a runner patch is unavoidable, it must follow the
+Remote Checkout Patch Protocol above and prove that scorer, task truth, prompts,
+and official result parsing were not changed. Do not expand to more cases in a
+family until one compact no-upload cloud-host result or blocker exists and the
+selected reducer can be rerun without private material.</p>
+<h2 id="current-benchmark-families">Current Benchmark Families<a class="headerlink" href="#current-benchmark-families" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Family</th>
+<th>Product-path target</th>
+<th>Current maturity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Terminal-Bench</td>
+<td>Cloud Codex CLI runs the task on a dedicated benchmark host; LoopX ingests compact no-upload evidence.</td>
+<td>Prior split-control adapters remain useful reducers, but the next run should prefer direct cloud-host Codex plus container runtime.</td>
+</tr>
+<tr>
+<td>SkillsBench</td>
+<td>Cloud Codex CLI and BenchFlow run on the same dedicated host; LoopX records compact base/test mini-pair evidence.</td>
+<td>Prior host-local ACP relay work is historical route-repair evidence. Do not add more bridge layers before trying the cloud-host path.</td>
+</tr>
+<tr>
+<td>Agents' Last Exam</td>
+<td>Cloud Codex CLI drives the local-Docker-capable ALE route on the dedicated host; LoopX ingests compact no-upload evidence.</td>
+<td>Formal task runs still need task-data and public-claim gates, but Docker/Codex colocation should replace the earlier local-host split-control assumption.</td>
+</tr>
+</tbody>
+</table>
+<p>This table is intentionally about runner maturity, not leaderboard score.
+Score claims require separate public-safe result ingestion and review.</p>
+<h3 id="skillsbench-split-control-preflight">SkillsBench Split-Control Preflight<a class="headerlink" href="#skillsbench-split-control-preflight" title="Permanent link">&para;</a></h3>
+<p>This preflight is retained for historical split-control debugging and for
+shared-host environments where Codex auth cannot live on the runner host. It is
+not the default route when a dedicated cloud benchmark host is available.</p>
+<p>SkillsBench currently uses BenchFlow's ACP stdio worker protocol for Codex-like
+agents. For split-control runs, Codex auth, model invocation, and goal state
+stay local. Before launching a split-control mini-pair, run:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>python3<span class="w"> </span>scripts/skillsbench_automation_loop.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="w">  </span>--local-driver-worker-handshake-preflight<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="w">  </span>--local-codex-cli-participant-ready<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-39-4"><a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a><span class="w">  </span>--local-acp-relay-probe<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-39-5"><a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a><span class="w">  </span>--host-local-acp-transport-probe
+</span></code></pre></div>
+<p>The preflight is successful only when BenchFlow is importable, the default
+Codex agent is registered as ACP, the local Codex CLI participant was already
+materialized, the local ACP relay completes <code>initialize</code>, <code>session/new</code>,
+<code>session/set_model</code>, and <code>session/prompt</code>, BenchFlow's own <code>ACPClient</code> can
+drive that relay over host-local stdio, and a bounded remote command/file
+bridge exists for the sandbox side. The default relay and transport probes are
+dry-run: they do not invoke Codex, read task text, copy credentials, record raw
+logs, or launch a benchmark task.</p>
+<p>Do not treat a successful relay probe as mini-pair readiness. It only proves
+the local ACP server shape. The host-local transport probe proves BenchFlow can
+talk to that local server without <code>ContainerTransport</code>. A no-upload mini-pair
+is product-path evidence only after the remote bridge is also materialized, so
+the preflight may legitimately return <code>skillsbench_remote_command_file_bridge_missing</code>
+after both local probes pass.</p>
+<p>For the remote bridge, prefer a machine-verifiable probe over a manual
+readiness flag:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>python3<span class="w"> </span>scripts/skillsbench_automation_loop.py<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="w">  </span>--local-driver-worker-handshake-preflight<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a><span class="w">  </span>--local-codex-cli-participant-ready<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-40-4"><a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a><span class="w">  </span>--local-acp-relay-probe<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-40-5"><a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a><span class="w">  </span>--host-local-acp-transport-probe<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-40-6"><a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a><span class="w">  </span>--remote-command-file-bridge-probe<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-40-7"><a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a><span class="w">  </span>--remote-command-file-bridge-probe-command<span class="w"> </span><span class="s1">&#39;&lt;private-remote-bridge-command&gt;&#39;</span>
+</span></code></pre></div>
+<p>The bridge command reads a fixed JSON request from stdin and writes compact JSON
+to stdout. It must prove four bounded operations: <code>exec</code>, <code>write_file</code>,
+<code>read_file</code>, and <code>cleanup</code>. Its public result records only operation kinds,
+statuses, and boundary flags; it must not return raw commands, stdout, stderr,
+task text, paths, credentials, logs, trajectories, uploads, or submissions.
+<code>scripts/skillsbench_remote_command_file_bridge.py --serve-probe</code> is only a
+local fake bridge for smoke tests and adapter development. It is not evidence
+that a real remote executor is ready.</p>
+<p>For a scored split-control launch, the readiness probe is not the solver
+bridge. Pass a separate private <code>--remote-command-file-bridge-solver-command</code>
+only when that command can operate on the scored BenchFlow sandbox. The runner
+must fail closed when only a probe command is configured, and it must reject the
+repo fake probe helper as a solver command.</p>
+<h2 id="evidence-contract">Evidence Contract<a class="headerlink" href="#evidence-contract" title="Permanent link">&para;</a></h2>
+<p>Benchmark evidence may include:</p>
+<ul>
+<li>benchmark id, task id or public-safe case id;</li>
+<li>arm or mode label;</li>
+<li>readiness gate result;</li>
+<li>process or job handle basename;</li>
+<li>compact result fields such as <code>score</code>, <code>best_score</code>, <code>final_score</code>,
+  <code>first_success_round</code>, <code>duration_s</code>, and <code>blocker</code>;</li>
+<li>cleanup state;</li>
+<li>links to public docs or compact JSON/Markdown artifacts.</li>
+</ul>
+<p>Benchmark evidence must not include:</p>
+<ul>
+<li>raw task text, hidden task files, verifier body output, or solution material;</li>
+<li>raw trajectories, transcripts, screenshots, stdout, stderr, or shell argv;</li>
+<li>credentials, tokens, local absolute paths, remote absolute paths, or private
+  hostnames;</li>
+<li>uploads, submit paths, or leaderboard claims unless a specific public release
+  gate has approved them.</li>
+</ul>
+<h2 id="developer-checklist">Developer Checklist<a class="headerlink" href="#developer-checklist" title="Permanent link">&para;</a></h2>
+<p>Before a PR that changes benchmark behavior:</p>
+<ul>
+<li>Name which layer changed: selection, launch, observe, ingest, scoring, or
+  docs.</li>
+<li>Keep benchmark-specific runner details inside the adapter.</li>
+<li>Preserve the split-control boundary when a remote executor is involved.</li>
+<li>Add or update a focused smoke for the durable contract.</li>
+<li>Run <code>loopx check --scan-path &lt;changed-public-path&gt;</code> for public docs or
+  examples.</li>
+<li>Do not commit <code>.local</code>, raw logs, private run directories, active state, or
+  local runner configs.</li>
+</ul>
+<h2 id="roadmap">Roadmap<a class="headerlink" href="#roadmap" title="Permanent link">&para;</a></h2>
+<p>Near-term work should make the benchmark workflow feel like a small product:</p>
+<ul>
+<li>expose a single developer-facing command path for readiness and runner batch
+  planning;</li>
+<li>add observable launch handles so long runs can be polled without chat memory;</li>
+<li>align Terminal-Bench, SkillsBench, and Agents' Last Exam on the same
+  launch/observe/ingest lifecycle;</li>
+<li>document the no-upload dry-run path before chasing broad score matrices;</li>
+<li>make compact blockers first-class, so a failed launch still teaches the next
+  developer exactly what to repair.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.action.edit", "content.code.copy", "content.tabs.link", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.path", "search.highlight", "search.share", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

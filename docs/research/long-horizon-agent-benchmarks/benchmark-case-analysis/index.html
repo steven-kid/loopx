@@ -1,0 +1,5482 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://huangruiteng.github.io/loopx/docs/research/long-horizon-agent-benchmarks/benchmark-case-analysis/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/loopx-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Benchmark Case Analysis - LoopX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#benchmark-case-analysis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="LoopX" class="md-header__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../../../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LoopX
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Benchmark Case Analysis
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 2c-1.82 0-3.53.5-5 1.35C8 5.08 10 8.3 10 12s-2 6.92-5 8.65C6.47 21.5 8.18 22 10 22a10 10 0 0 0 10-10A10 10 0 0 0 10 2"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../guides/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../concepts/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../operations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Operations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../capabilities/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Capabilities
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../integrations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Integrations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../development/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../product/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Product
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../showcases/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Showcases
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="LoopX" class="md-nav__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../../../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    LoopX
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../guides/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/newcomer-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Newcomer Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/custom-agent-runner-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Runner Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/auto-research-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto Research Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../concepts/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concepts/interaction-pattern-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interaction Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../state-interaction-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    State Interaction Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quota-allocation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quota Allocation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../operations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operations/attention-queue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attention Queue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operations/long-task-cadence-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Long Task Cadence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operations/authority-source-registration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority Sources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../capabilities/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capabilities
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Capabilities
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/issue-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Issue Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/change-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Change Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/explore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Explore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/material-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Material Lifecycle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/value-connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Value Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../integrations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integrations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integrations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/worker-bridge-install-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Worker Bridge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/lark-kanban-control-plane-adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lark Kanban
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/runtime-connector-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Connector Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../reference/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/benchmark-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../development/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/testing-and-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing And Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/documentation-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Layout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/benchmark-developer-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/control-plane-course/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control Plane Course
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../product/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Product
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/release-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/surfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Surfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/runtimes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtimes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../showcases/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Showcases
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Showcases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/frontend-surface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend Surface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/cases/0617-blocked-p0-safe-rotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blocked P0 Safe Rotation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/cases/0619-loopx-self-iteration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LoopX Self Iteration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/cases/0624-pr-issue-auto-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PR Issue Auto Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-trajectory-summary-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Public Trajectory Summary Coverage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-harness-interaction-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Public Harness Interaction Coverage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminal-bench-current-protocol-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terminal-Bench Current-Protocol Coverage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#treatment-policy-control-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Treatment Policy Control Set
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-terminal-bench-train-fasttext" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case: Terminal-Bench train-fasttext
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-terminal-bench-multi-source-data-merger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case: Terminal-Bench multi-source-data-merger
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-terminal-bench-nginx-request-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case: Terminal-Bench nginx-request-logging
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-terminal-bench-make-doom-for-mips" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case: Terminal-Bench make-doom-for-mips
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-terminal-bench-mteb-retrieve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case: Terminal-Bench mteb-retrieve
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-terminal-bench-pytorch-model-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case: Terminal-Bench pytorch-model-recovery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-skillsbench-llm-prefix-cache-replay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case: SkillsBench llm-prefix-cache-replay
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-skillsbench-tictoc-unnecessary-abort-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case: SkillsBench tictoc-unnecessary-abort-detection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-skillsbench-dapt-intrusion-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case: SkillsBench dapt-intrusion-detection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-skillsbench-debug-trl-grpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case: SkillsBench debug-trl-grpo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-skillsbench-civ6-adjacency-optimizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case: SkillsBench civ6-adjacency-optimizer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-skillsbench-manufacturing-codebook-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case: SkillsBench manufacturing-codebook-normalization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-skillsbench-software-dependency-audit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case: SkillsBench software-dependency-audit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-skillsbench-react-performance-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case: SkillsBench react-performance-debugging
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-skillsbench-pddl-airport-planning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case: SkillsBench pddl-airport-planning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-skillsbench-ada-bathroom-plan-repair" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case: SkillsBench ada-bathroom-plan-repair
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-skillsbench-organize-messy-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case: SkillsBench organize-messy-files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-skillsbench-citation-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case: SkillsBench citation-check
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-skillsbench-3d-scan-calc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case: SkillsBench 3d-scan-calc
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-skillsbench-bike-rebalance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case: SkillsBench bike-rebalance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-skillsbench-azure-bgp-oscillation-route-leak" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case: SkillsBench azure-bgp-oscillation-route-leak
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-skillsbench-setup-fuzzing-py" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case: SkillsBench setup-fuzzing-py
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-skillsbench-adaptive-cruise-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case: SkillsBench adaptive-cruise-control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-swe-marathon-zstd-decoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case: SWE-Marathon zstd-decoder
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-case-lessons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-Case Lessons
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/huangruiteng/loopx/edit/main/docs/research/long-horizon-agent-benchmarks/benchmark-case-analysis.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="benchmark-case-analysis">Benchmark Case Analysis<a class="headerlink" href="#benchmark-case-analysis" title="Permanent link">&para;</a></h1>
+<p>This file is the human view of <code>benchmark_case_analysis_v0</code>. It records durable
+case lessons that should guide benchmark routing, treatment design, and claims.</p>
+<p>It is intentionally separate from <code>benchmark-run-ledger.md</code>. The run ledger
+records compact attempts and scores; this file records why a result matters.</p>
+<ul>
+<li>schema_version: <code>benchmark_case_analysis_v0</code></li>
+<li>updated_at: <code>2026-07-02T17:38:24+08:00</code></li>
+<li>machine_source: <code>benchmark-case-analysis.json</code></li>
+<li>ledger-only migration audit:
+  <code>benchmark-case-analysis-ledger-only-migration-audit-20260618.md</code></li>
+</ul>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>The table below is generated from compact public case-analysis JSON. It uses
+<code>n/a</code> when the compact record does not establish a comparable paired arm,
+and it preserves detailed hand-authored case notes below the generated
+summary sections.</p>
+<ul>
+<li>case_count: <code>39</code></li>
+<li>generated_compact_record_count: <code>8</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Benchmark</th>
+<th>Case</th>
+<th>Class</th>
+<th>Baseline</th>
+<th>Treatment</th>
+<th>Delta</th>
+<th>Decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>terminal-bench@2.0</code></td>
+<td><code>multi-source-data-merger</code></td>
+<td>current-protocol baseline-solved / non-regression asset</td>
+<td><code>1</code></td>
+<td><code>1</code></td>
+<td>``</td>
+<td><code>paired_baseline_solved_treatment_preserved</code></td>
+</tr>
+<tr>
+<td><code>terminal-bench@2.0</code></td>
+<td><code>nginx-request-logging</code></td>
+<td>current-protocol baseline-solved / non-regression asset</td>
+<td><code>1</code></td>
+<td><code>1</code></td>
+<td>``</td>
+<td><code>paired_baseline_solved_treatment_preserved</code></td>
+</tr>
+<tr>
+<td><code>terminal-bench@2.0</code></td>
+<td><code>make-doom-for-mips</code></td>
+<td>timeout attribution asset</td>
+<td><code>|</code></td>
+<td>``</td>
+<td><code>paired_result_requires_attribution</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>terminal-bench@2.0</code></td>
+<td><code>mteb-retrieve</code></td>
+<td>setup probe asset</td>
+<td><code>|</code></td>
+<td>``</td>
+<td><code>environment_setup_probe_materialized_with_exception_repeat_blocked</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>terminal-bench@2.0</code></td>
+<td><code>pytorch-model-recovery</code></td>
+<td>exception attribution asset</td>
+<td><code>|</code></td>
+<td>``</td>
+<td><code>paired_no_score_uplift_exception_research_required</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>llm-prefix-cache-replay</code></td>
+<td>reward feedback positive blind loop neutral asset</td>
+<td><code>|</code></td>
+<td>``</td>
+<td><code>reward_feedback_positive_primary_blind_loop_no_uplift</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>tictoc-unnecessary-abort-detection</code></td>
+<td>native goal connected no trace runner error asset</td>
+<td>``</td>
+<td>n/a</td>
+<td>n/a</td>
+<td><code>baseline_runner_or_setup_repair_required</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>dapt-intrusion-detection</code></td>
+<td>reward feedback positive blind loop neutral asset</td>
+<td><code>|</code></td>
+<td>``</td>
+<td><code>reward_feedback_positive_primary_blind_loop_no_uplift</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>debug-trl-grpo</code></td>
+<td>regression asset</td>
+<td><code>0.25</code></td>
+<td>``</td>
+<td><code>-0.25</code></td>
+<td><code>paired_treatment_regressed</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>civ6-adjacency-optimizer</code></td>
+<td>no-uplift asset</td>
+<td><code>|</code></td>
+<td>``</td>
+<td><code>paired_no_score_uplift</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>manufacturing-codebook-normalization</code></td>
+<td>no-uplift asset</td>
+<td><code>|</code></td>
+<td>``</td>
+<td><code>paired_no_score_uplift</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>software-dependency-audit</code></td>
+<td>no-uplift asset</td>
+<td><code>|</code></td>
+<td>``</td>
+<td><code>paired_no_score_uplift</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>react-performance-debugging</code></td>
+<td>xhigh app server zero attribution asset</td>
+<td>n/a</td>
+<td>``</td>
+<td>n/a</td>
+<td><code>single_arm_xhigh_app_server_official_zero_attributed</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>react-performance-debugging</code></td>
+<td>no-uplift asset</td>
+<td><code>|</code></td>
+<td>``</td>
+<td><code>paired_no_score_uplift</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>pddl-airport-planning</code></td>
+<td>no-uplift asset</td>
+<td><code>|</code></td>
+<td>``</td>
+<td><code>paired_no_score_uplift</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>ada-bathroom-plan-repair</code></td>
+<td>current-protocol baseline-solved / non-regression asset</td>
+<td><code>1</code></td>
+<td><code>1</code></td>
+<td>``</td>
+<td><code>paired_baseline_solved_treatment_preserved</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>organize-messy-files</code></td>
+<td>current-protocol baseline-solved / non-regression asset</td>
+<td><code>1</code></td>
+<td><code>1</code></td>
+<td>``</td>
+<td><code>paired_baseline_solved_treatment_preserved</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>citation-check</code></td>
+<td>current-protocol baseline-solved / non-regression asset</td>
+<td><code>1</code></td>
+<td><code>1</code></td>
+<td>``</td>
+<td><code>paired_baseline_solved_treatment_preserved</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>3d-scan-calc</code></td>
+<td>current-protocol baseline-solved / non-regression asset</td>
+<td><code>1</code></td>
+<td><code>1</code></td>
+<td>``</td>
+<td><code>paired_baseline_solved_treatment_preserved</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>bike-rebalance</code></td>
+<td>current-protocol baseline-solved / non-regression asset</td>
+<td><code>1</code></td>
+<td><code>1</code></td>
+<td>``</td>
+<td><code>paired_baseline_solved_treatment_preserved</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>azure-bgp-oscillation-route-leak</code></td>
+<td>no-uplift asset</td>
+<td><code>|</code></td>
+<td>``</td>
+<td><code>paired_no_score_uplift</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>terminal-bench@2.0</code></td>
+<td><code>train-fasttext</code></td>
+<td>single arm failure asset</td>
+<td>n/a</td>
+<td>``</td>
+<td>n/a</td>
+<td><code>single_arm_recorded</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>setup-fuzzing-py</code></td>
+<td>xhigh app server zero attribution asset</td>
+<td>n/a</td>
+<td>``</td>
+<td>n/a</td>
+<td><code>single_arm_xhigh_app_server_official_zero_attributed</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>setup-fuzzing-py</code></td>
+<td>setup blocker asset</td>
+<td><code>missing</code></td>
+<td>n/a</td>
+<td>n/a</td>
+<td><code>baseline_runner_or_setup_repair_required</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>adaptive-cruise-control</code></td>
+<td>xhigh app server zero attribution asset</td>
+<td>n/a</td>
+<td>``</td>
+<td>n/a</td>
+<td><code>single_arm_xhigh_app_server_official_zero_attributed</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>adaptive-cruise-control</code></td>
+<td>setup blocker asset</td>
+<td><code>missing</code></td>
+<td>n/a</td>
+<td>n/a</td>
+<td><code>baseline_runner_or_setup_repair_required</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>travel-planning</code></td>
+<td>baseline solved control asset</td>
+<td><code>1.0</code></td>
+<td>n/a</td>
+<td>n/a</td>
+<td><code>baseline_passed_not_current_treatment_priority</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>paratransit-routing</code></td>
+<td>product mode invalid shallow loopx asset</td>
+<td><code>|</code></td>
+<td>``</td>
+<td><code>product_mode_treatment_invalid_shallow_loopx_lifecycle</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>swe-marathon</code></td>
+<td><code>zstd-decoder</code></td>
+<td>extended round product path negative asset</td>
+<td><code>1.0</code></td>
+<td>``</td>
+<td><code>-1.0</code></td>
+<td><code>paired_treatment_regressed</code></td>
+</tr>
+<tr>
+<td><code>terminal-bench@2.0</code></td>
+<td><code>headless-terminal</code></td>
+<td>generated no-uplift asset</td>
+<td><code>|</code></td>
+<td>``</td>
+<td><code>paired_no_score_uplift</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>terminal-bench@2.0</code></td>
+<td><code>build-cython-ext</code></td>
+<td>generated baseline-solved control asset</td>
+<td><code>1.0</code></td>
+<td>n/a</td>
+<td>n/a</td>
+<td><code>baseline_passed_not_current_treatment_priority</code></td>
+</tr>
+<tr>
+<td><code>terminal-bench@2.0</code></td>
+<td><code>compile-compcert</code></td>
+<td>generated baseline-solved control asset</td>
+<td><code>1.0</code></td>
+<td>n/a</td>
+<td>n/a</td>
+<td><code>baseline_passed_not_current_treatment_priority</code></td>
+</tr>
+<tr>
+<td><code>terminal-bench@2.0</code></td>
+<td><code>financial-document-processor</code></td>
+<td>generated baseline-solved control asset</td>
+<td><code>1.0</code></td>
+<td>n/a</td>
+<td>n/a</td>
+<td><code>baseline_passed_not_current_treatment_priority</code></td>
+</tr>
+<tr>
+<td><code>terminal-bench@2.0</code></td>
+<td><code>fix-code-vulnerability</code></td>
+<td>generated baseline-solved control asset</td>
+<td><code>1.0</code></td>
+<td>n/a</td>
+<td>n/a</td>
+<td><code>baseline_passed_not_current_treatment_priority</code></td>
+</tr>
+<tr>
+<td><code>terminal-bench@2.0</code></td>
+<td><code>merge-diff-arc-agi-task</code></td>
+<td>generated baseline-solved control asset</td>
+<td><code>1.0</code></td>
+<td>n/a</td>
+<td>n/a</td>
+<td><code>baseline_passed_not_current_treatment_priority</code></td>
+</tr>
+<tr>
+<td><code>terminal-bench@2.0</code></td>
+<td><code>path-tracing</code></td>
+<td>generated baseline-solved control asset</td>
+<td><code>1.0</code></td>
+<td>n/a</td>
+<td>n/a</td>
+<td><code>baseline_passed_not_current_treatment_priority</code></td>
+</tr>
+<tr>
+<td><code>terminal-bench@2.0</code></td>
+<td><code>sqlite-db-truncate</code></td>
+<td>generated baseline-solved control asset</td>
+<td><code>1.0</code></td>
+<td>n/a</td>
+<td>n/a</td>
+<td><code>baseline_passed_not_current_treatment_priority</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>fix-build-agentops</code></td>
+<td>xhigh app server zero attribution asset</td>
+<td>n/a</td>
+<td>``</td>
+<td>n/a</td>
+<td><code>single_arm_xhigh_app_server_official_zero_attributed</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>data-to-d3</code></td>
+<td>xhigh app server zero attribution asset</td>
+<td>n/a</td>
+<td>``</td>
+<td>n/a</td>
+<td><code>single_arm_xhigh_app_server_official_zero_attributed</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-trajectory-summary-coverage">Public Trajectory Summary Coverage<a class="headerlink" href="#public-trajectory-summary-coverage" title="Permanent link">&para;</a></h2>
+<p>These rows are generated from <code>trajectory_public_summary</code> blocks already
+backfilled into <code>benchmark-case-analysis.json</code>. They expose only compact
+public counters; absence from this table means the durable case record does
+not yet contain a public trajectory summary.</p>
+<ul>
+<li>schema_version: <code>trajectory_public_summary_coverage_v0</code></li>
+<li>summary_count: <code>6</code></li>
+<li>attribution_conclusion_count: <code>6</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Benchmark</th>
+<th>Case</th>
+<th>Summary</th>
+<th>Rounds</th>
+<th>Tools</th>
+<th>LoopX CLI</th>
+<th>Protected Edits</th>
+<th>Attribution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>3d-scan-calc</code></td>
+<td><code>historical_final_only_lifecycle_trajectory_summaries.baseline.trajectory_public_summary</code> (public-safe)</td>
+<td><code>1</code></td>
+<td><code>7</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>yes</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>3d-scan-calc</code></td>
+<td><code>historical_final_only_lifecycle_trajectory_summaries.treatment.trajectory_public_summary</code> (public-safe)</td>
+<td><code>8</code></td>
+<td><code>138</code></td>
+<td><code>73</code></td>
+<td><code>0</code></td>
+<td><code>yes</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>citation-check</code></td>
+<td><code>goal_start_bridge_timeout_recheck.trajectory_public_summary</code> (public-safe)</td>
+<td><code>13</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>yes</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>citation-check</code></td>
+<td><code>post_stop_policy_raw_rerun.trajectory_public_summary</code> (public-safe)</td>
+<td><code>1</code></td>
+<td><code>26</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>yes</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>debug-trl-grpo</code></td>
+<td><code>trajectory_public_summary</code> (public-safe)</td>
+<td><code>5</code></td>
+<td><code>112</code></td>
+<td><code>0</code></td>
+<td><code>2</code></td>
+<td><code>yes</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>paratransit-routing</code></td>
+<td><code>legacy_blind_loop_positive_result.trajectory_public_summary</code> (public-safe)</td>
+<td><code>1</code></td>
+<td><code>16</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>yes</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-harness-interaction-coverage">Public Harness Interaction Coverage<a class="headerlink" href="#public-harness-interaction-coverage" title="Permanent link">&para;</a></h2>
+<p>These rows are generated from compact case-analysis counters across
+benchmarks. They combine SkillsBench trajectory summaries, Terminal-Bench
+worker/LoopX counters, SWE-Marathon product-path counters, and any future
+benchmark case records that expose the same public fields. They do not read
+or copy raw trajectories, task text, verifier output, logs, or local paths.</p>
+<ul>
+<li>schema_version: <code>harness_interaction_public_summary_coverage_v0</code></li>
+<li>summary_count: <code>21</code></li>
+<li>benchmark_ids: <code>skillsbench@1.1, swe-marathon, terminal-bench@2.0</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Benchmark</th>
+<th>Case</th>
+<th>Source</th>
+<th>Kind</th>
+<th>LoopX CLI</th>
+<th>Rounds</th>
+<th>Tools</th>
+<th>Events</th>
+<th>Controller Trace</th>
+<th>Lifecycle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>3d-scan-calc</code></td>
+<td><code>historical_final_only_lifecycle_trajectory_summaries.baseline.trajectory_public_summary</code> (public-safe)</td>
+<td><code>trajectory_public_summary</code></td>
+<td><code>0</code></td>
+<td><code>1</code></td>
+<td><code>7</code></td>
+<td><code>7</code></td>
+<td><code>no</code></td>
+<td><code>no</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>3d-scan-calc</code></td>
+<td><code>historical_final_only_lifecycle_trajectory_summaries.treatment.trajectory_public_summary</code> (public-safe)</td>
+<td><code>trajectory_public_summary</code></td>
+<td><code>73</code></td>
+<td><code>8</code></td>
+<td><code>138</code></td>
+<td><code>211</code></td>
+<td><code>no</code></td>
+<td><code>no</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>adaptive-cruise-control</code></td>
+<td><code>native_goal_route_observations</code> (public-safe)</td>
+<td><code>native_goal_route_observation</code></td>
+<td><code>0</code></td>
+<td><code>1</code></td>
+<td><code>0</code></td>
+<td><code>4</code></td>
+<td><code>yes</code></td>
+<td><code>yes</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>citation-check</code></td>
+<td><code>goal_start_bridge_timeout_recheck.trajectory_public_summary</code> (public-safe)</td>
+<td><code>trajectory_public_summary</code></td>
+<td><code>0</code></td>
+<td><code>13</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>no</code></td>
+<td><code>no</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>citation-check</code></td>
+<td><code>goal_start_transport_monitor</code> (public-safe)</td>
+<td><code>compact_harness_interaction</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>yes</code></td>
+<td><code>no</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>citation-check</code></td>
+<td><code>post_stop_policy_raw_rerun.trajectory_public_summary</code> (public-safe)</td>
+<td><code>trajectory_public_summary</code></td>
+<td><code>0</code></td>
+<td><code>1</code></td>
+<td><code>26</code></td>
+<td><code>0</code></td>
+<td><code>no</code></td>
+<td><code>no</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>data-to-d3</code></td>
+<td><code>native_goal_route_observations</code> (public-safe)</td>
+<td><code>native_goal_route_observation</code></td>
+<td><code>0</code></td>
+<td><code>1</code></td>
+<td><code>0</code></td>
+<td><code>4</code></td>
+<td><code>yes</code></td>
+<td><code>yes</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>debug-trl-grpo</code></td>
+<td><code>trajectory_public_summary</code> (public-safe)</td>
+<td><code>trajectory_public_summary</code></td>
+<td><code>0</code></td>
+<td><code>5</code></td>
+<td><code>112</code></td>
+<td><code>0</code></td>
+<td><code>no</code></td>
+<td><code>no</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>fix-build-agentops</code></td>
+<td><code>native_goal_route_observations</code> (public-safe)</td>
+<td><code>native_goal_route_observation</code></td>
+<td><code>0</code></td>
+<td><code>1</code></td>
+<td><code>0</code></td>
+<td><code>4</code></td>
+<td><code>yes</code></td>
+<td><code>yes</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>llm-prefix-cache-replay</code></td>
+<td><code>native_goal_route_observations</code> (public-safe)</td>
+<td><code>native_goal_route_observation</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>yes</code></td>
+<td><code>no</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>paratransit-routing</code></td>
+<td><code>arms.treatment</code> (public-safe)</td>
+<td><code>case_arm</code></td>
+<td><code>1</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>no</code></td>
+<td><code>no</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>paratransit-routing</code></td>
+<td><code>legacy_blind_loop_positive_result.trajectory_public_summary</code> (public-safe)</td>
+<td><code>trajectory_public_summary</code></td>
+<td><code>0</code></td>
+<td><code>1</code></td>
+<td><code>16</code></td>
+<td><code>0</code></td>
+<td><code>no</code></td>
+<td><code>no</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>paratransit-routing</code></td>
+<td><code>product_mode_attribution.blind_loop_positive_treatment</code> (public-safe)</td>
+<td><code>product_mode_attribution</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>16</code></td>
+<td><code>0</code></td>
+<td><code>no</code></td>
+<td><code>no</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>paratransit-routing</code></td>
+<td><code>product_mode_attribution.product_mode_neutral_treatment</code> (public-safe)</td>
+<td><code>product_mode_attribution</code></td>
+<td><code>1</code></td>
+<td><code>0</code></td>
+<td><code>13</code></td>
+<td><code>0</code></td>
+<td><code>no</code></td>
+<td><code>no</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>react-performance-debugging</code></td>
+<td><code>native_goal_route_observations</code> (public-safe)</td>
+<td><code>native_goal_route_observation</code></td>
+<td><code>0</code></td>
+<td><code>1</code></td>
+<td><code>0</code></td>
+<td><code>4</code></td>
+<td><code>yes</code></td>
+<td><code>yes</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>setup-fuzzing-py</code></td>
+<td><code>native_goal_route_observations</code> (public-safe)</td>
+<td><code>native_goal_route_observation</code></td>
+<td><code>0</code></td>
+<td><code>1</code></td>
+<td><code>0</code></td>
+<td><code>4</code></td>
+<td><code>yes</code></td>
+<td><code>yes</code></td>
+</tr>
+<tr>
+<td><code>skillsbench@1.1</code></td>
+<td><code>tictoc-unnecessary-abort-detection</code></td>
+<td><code>native_goal_route_observations</code> (public-safe)</td>
+<td><code>native_goal_route_observation</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>yes</code></td>
+<td><code>no</code></td>
+</tr>
+<tr>
+<td><code>swe-marathon</code></td>
+<td><code>zstd-decoder</code></td>
+<td><code>arms.baseline</code> (public-safe)</td>
+<td><code>case_arm</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>no</code></td>
+<td><code>no</code></td>
+</tr>
+<tr>
+<td><code>swe-marathon</code></td>
+<td><code>zstd-decoder</code></td>
+<td><code>arms.treatment</code> (public-safe)</td>
+<td><code>case_arm</code></td>
+<td><code>31</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>no</code></td>
+<td><code>yes</code></td>
+</tr>
+<tr>
+<td><code>terminal-bench@2.0</code></td>
+<td><code>nginx-request-logging</code></td>
+<td><code>arms.treatment</code> (public-safe)</td>
+<td><code>case_arm</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>no</code></td>
+<td><code>no</code></td>
+</tr>
+<tr>
+<td><code>terminal-bench@2.0</code></td>
+<td><code>nginx-request-logging</code></td>
+<td><code>legacy_runner_materialization_asset.arms.treatment</code> (public-safe)</td>
+<td><code>case_arm</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td><code>no</code></td>
+<td><code>no</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="terminal-bench-current-protocol-coverage">Terminal-Bench Current-Protocol Coverage<a class="headerlink" href="#terminal-bench-current-protocol-coverage" title="Permanent link">&para;</a></h2>
+<p>These rows are generated from the latest compact ledger decisions. They are
+current-protocol success-preservation guards: both baseline and treatment
+score <code>1.0</code>, so none of them should be counted as current uplift.</p>
+<table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Baseline</th>
+<th>Treatment</th>
+<th>Delta</th>
+<th>Role</th>
+<th>Case Analysis Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cobol-modernization</code></td>
+<td><code>1</code> (<code>5d2bb1d5974a</code>)</td>
+<td><code>1</code> (<code>a14ad9487f8a</code>)</td>
+<td><code>0.0</code></td>
+<td><code>current_protocol_baseline_solved_non_regression_guard</code></td>
+<td><code>coverage_row_only_no_deep_case_note_yet</code></td>
+</tr>
+<tr>
+<td><code>git-multibranch</code></td>
+<td><code>1</code> (<code>af14bc3210c8</code>)</td>
+<td><code>1</code> (<code>daf4b67ab222</code>)</td>
+<td><code>0.0</code></td>
+<td><code>current_protocol_baseline_solved_non_regression_guard</code></td>
+<td><code>coverage_row_only_no_deep_case_note_yet</code></td>
+</tr>
+<tr>
+<td><code>large-scale-text-editing</code></td>
+<td><code>1</code> (<code>52105cdfe282</code>)</td>
+<td><code>1</code> (<code>01cd5e4bf562</code>)</td>
+<td><code>0.0</code></td>
+<td><code>current_protocol_baseline_solved_non_regression_guard</code></td>
+<td><code>coverage_row_only_no_deep_case_note_yet</code></td>
+</tr>
+<tr>
+<td><code>multi-source-data-merger</code></td>
+<td><code>1</code> (<code>37d3587daf12</code>)</td>
+<td><code>1</code> (<code>76cbfb57f1ea</code>)</td>
+<td><code>0.0</code></td>
+<td><code>current_protocol_baseline_solved_non_regression_guard</code></td>
+<td><code>case_record_has_legacy_positive_plus_current_protocol_recheck</code></td>
+</tr>
+<tr>
+<td><code>nginx-request-logging</code></td>
+<td><code>1</code> (<code>c9e583310242</code>)</td>
+<td><code>1</code> (<code>2a6a46cfb953</code>)</td>
+<td><code>0.0</code></td>
+<td><code>current_protocol_baseline_solved_non_regression_guard</code></td>
+<td><code>case_record_current_protocol_baseline_solved_with_legacy_runner_asset</code></td>
+</tr>
+<tr>
+<td><code>regex-log</code></td>
+<td><code>1</code> (<code>a9503b70072d</code>)</td>
+<td><code>1</code> (<code>5926107e45f4</code>)</td>
+<td><code>0.0</code></td>
+<td><code>current_protocol_baseline_solved_non_regression_guard</code></td>
+<td><code>coverage_row_only_no_deep_case_note_yet</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="treatment-policy-control-set">Treatment Policy Control Set<a class="headerlink" href="#treatment-policy-control-set" title="Permanent link">&para;</a></h2>
+<p>Current active control set:
+<code>skillsbench_automation_loop_policy_controls_20260615</code>.</p>
+<h2 id="case-terminal-bench-train-fasttext">Case: Terminal-Bench train-fasttext<a class="headerlink" href="#case-terminal-bench-train-fasttext" title="Permanent link">&para;</a></h2>
+<p>This is a single-arm monitor closeout asset, not uplift evidence.</p>
+<p>Compact evidence:</p>
+<ul>
+<li>benchmark: <code>terminal-bench@2.0</code></li>
+<li>treatment arm: <code>codex_loopx_treatment</code></li>
+<li>treatment run id: <code>5a8f56f61908</code></li>
+<li>treatment score: <code>0.0</code></li>
+<li>failure: <code>official_verifier_solution_failure</code></li>
+<li>run group: <code>terminal-bench-train-fasttext-managed-20260618T035534CST</code></li>
+</ul>
+<p>Interpretation:</p>
+<p>The run completed one no-upload trial and reached verifier scoring, but official
+reward stayed <code>0.0</code>. There is no comparable baseline or paired treatment arm
+for this case yet, so it must not be counted as uplift or no-uplift evidence.</p>
+<p>The important process lesson is monitor closeout: the active todo still reported
+the detached process as running after compact result artifacts already existed.
+Future Terminal-Bench monitors should promptly ingest completed <code>result.json</code>
+and update the ledger/case-analysis instead of leaving stale running state.</p>
+<p>Follow-up guidance:</p>
+<ul>
+<li>Do not repeat immediately unless a paired baseline/treatment protocol selects
+  <code>train-fasttext</code>.</li>
+<li>Keep it out of main paired tables until a comparable counterpart exists.</li>
+<li>Continue ALE/Terminal/Skills rotation, but track remaining ledger-only cases
+  as a migration gap instead of claiming the case table is complete.</li>
+</ul>
+<p>Good-case conclusion:</p>
+<ul>
+<li><code>llm-prefix-cache-replay</code> and <code>dapt-intrusion-detection</code> are now a two-case
+  positive-control pair. In both cases the baseline reached official scoring
+  and received <code>0.0</code>; the automation-loop treatment observed failed reward,
+  sent one follow-up, and reached official <code>1.0</code>.</li>
+<li>The help signal is therefore not "LoopX is globally better". The
+  durable signal is narrower and more useful: a compact outer loop with one
+  reward-aware follow-up can recover some clean, solver-scoped SkillsBench
+  baseline failures. This is now classified as a reward-feedback ablation, not
+  as primary no-reward-leakage uplift evidence.</li>
+</ul>
+<p>Interaction-count assessment:</p>
+<ul>
+<li>The current SkillsBench baseline records use the legacy arm name
+  <code>codex_goal_mode_baseline</code>, but the audited runs do not prove native Codex
+  <code>/goal</code> invocation. Their compact/config evidence shows official BenchFlow
+  <code>codex-acp</code> execution with no LoopX controller user, no <code>user_rounds</code>
+  file, and no true slash-goal prompt candidate. Treat the current uplift
+  evidence as <code>codex-acp</code> baseline versus outer reward-feedback loop, not as a
+  confirmed native <code>/goal</code> baseline.</li>
+<li>The runner contract now separates request from confirmation:
+  <code>native_goal_mode_requested</code> may be true for an ACP prompt that starts with
+  <code>/goal</code>, but <code>native_goal_mode_invoked</code> must stay false unless the run has
+  interactive Codex CLI slash-command or goal-state evidence. ACP prompt text
+  alone is not sufficient confirmation.</li>
+<li>The post-PR-353 native app-server Goal canary pair now confirms a narrower
+  route fact: <code>native_goal_mode_invoked=true</code>, a host app-server worker
+  connection, and a public-safe controller trace can be observed through compact
+  counters. Both observed cases still classify as <code>skillsbench_runner_error</code>
+  with no public worker trace directory, so they are runner/observation repair
+  assets rather than model-quality or uplift evidence.</li>
+<li>Historical <code>loopx_automation_loop_treatment</code> rows are now classified only as
+  deprecated oracle-feedback evidence. They used <code>loopx_inside_case=false</code> and a
+  scheduler-side follow-up after failed reward, so they are useful as a boundary
+  caution but not as a fair LoopX treatment or future experiment arm.</li>
+<li>Any follow-up payload after failed official reward should be treated as reward
+  feedback and must not be fed back into the agent. Signals such as
+  <code>previous_reward</code>, <code>previous_verifier_error</code>, <code>previous_tool_calls</code>, and
+  verifier-output tails leak oracle/verifier diagnostics; the executable
+  SkillsBench routes no longer expose them.</li>
+<li>Blind-loop max5 remains the fair prompt/continuation guard: compare
+  <code>codex-acp-blind-loop-baseline</code> against
+  <code>loopx-blind-loop-treatment</code>, with ordinary Codex ACP/CLI inside both
+  arms, no <code>/goal</code> mode, identical <code>max_rounds</code>/timeout budgets, and no
+  official reward, pass/fail status, verifier error, verifier output, or
+  verifier tail returned to the agent during the loop. Scheduled continuations
+  must explicitly say they are pre-set, do not imply verifier success/failure,
+  and re-project durable round-1 controller constraints and protected paths.</li>
+<li>Main-table comparison should collapse to one base+test pair: base is raw
+  Codex autonomous max5, test is LoopX product-mode with state,
+  todos, replanning, and LoopX CLI. Both arms receive no official verifier
+  feedback during execution and stop on reward <code>1.0</code> or agent-declared done/no
+  remaining goals; all other prompt/loop variants are ablations or guards.</li>
+<li>The controller still records scalar official reward after each completed agent
+  round for offline analysis. The ledger must preserve <code>round_rewards</code> and the
+  first <code>agent_round</code> that reaches the official pass threshold; these metrics are
+  never forwarded to the agent in blind-loop execution.</li>
+<li>Product-mode setup check: no-apt task selection is not sufficient by itself,
+  but the host Docker readiness blocker is now repaired for
+  <code>paratransit-routing</code>. Earlier raw-Codex-autonomous-max5 reruns compact-closed
+  before agent rounds as <code>skillsbench_docker_compose_setup_failure</code> and then
+  <code>skillsbench_docker_daemon_unavailable</code>; correct Colima/Lima daemon cleanup
+  and restart brought <code>loopx-bench</code> back to a healthy Docker context.
+  The docker-ready rerun
+  <code>skillsbench-product-mode-paratransit-routing-main-dockerready-20260616T2156CST</code>
+  reached Codex ACP, agent round 1, verifier, and official result, with raw
+  Codex autonomous max5 scoring <code>0.0</code> and declaring done in round 1. The
+  matching <code>loopx-product-mode</code> treatment also reached agent round 1,
+  verifier, and official result, but scored <code>0.0</code> and declared done in round 1.
+  Compact counters show that treatment only ran <code>loopx which goal</code>, with no
+  state read/write/replan lifecycle, so this is not a valid main-table
+  product-mode no-uplift result. Keep the older blind-loop <code>0.0 -&gt; 1.0</code>
+  positive asset separate from this shallow product-mode recheck.
+  The public-safe attribution is now stable at the mechanism level: the
+  blind-loop positive treatment succeeded in round 1 with zero LoopX CLI
+  calls and stopped only after offline official success; the product-mode
+  treatment failed in round 1, made only one non-substantive LoopX CLI
+  call (<code>loopx which goal</code>), performed no state reads/writes, and stopped
+  on <code>agent_declared_done</code> at score <code>0.0</code>. The product-mode miss is therefore
+  a stop/goal-state semantics failure. The later depth-gate product-mode rerun
+  <code>skillsbench-product-mode-paratransit-depth-gate-20260617T1229CST</code>
+  continued through five rounds and reached official score <code>1.0</code>, so future
+  product-mode claims must require stateful LoopX lifecycle before accepting
+  declared done at <code>0.0</code>. It is not explained by extra interactions, reward
+  leakage, protected-path edits, or
+  Docker readiness. It is currently best attributed to the changed product-mode
+  prompt/stop contract failing to preserve the blind-loop treatment's successful
+  first-round behavior; content-level root cause still requires a stronger
+  redacted trajectory summarizer or explicit raw-trace owner gate.</li>
+<li>Blind-loop recheck result: <code>llm-prefix-cache-replay</code> protocol v10 and
+  <code>dapt-intrusion-detection</code> protocol v0 both completed under the primary
+  no-reward protocol. Each produced baseline <code>0.0</code>, treatment <code>0.0</code>,
+  <code>paired_no_score_uplift</code>. This preserves the old <code>1.0</code> results as
+  reward-feedback ablation wins, but removes both cases from the evidence pool
+  for blind no-reward uplift.</li>
+<li>Max-5 blind-loop recheck result: <code>llm-prefix-cache-replay</code> completed the
+  stricter default <code>max_rounds=5</code> protocol after the old reward-feedback uplift
+  was questioned. Baseline exhausted five blinded rounds at <code>0.0</code>
+  (<code>1:0,2:0,3:0,4:0,5:0</code>); treatment also exhausted five blinded rounds at
+  <code>0.0</code> (<code>1:0,2:0,3:0,4:0,5:0</code>). No reward/pass/fail/verifier feedback was
+  returned to either agent. This makes the old uplift reward-feedback-specific
+  and rules out "more blind interactions alone" as the explanation.</li>
+<li>Blind-loop regression result: <code>debug-trl-grpo</code> protocol v0 completed under
+  the same primary no-reward protocol. Baseline held <code>0.25</code> across rounds
+  <code>1:0.25,2:0.25</code>; treatment reached <code>0.25</code> after round 1 but dropped to final
+  <code>0.0</code> after the scheduled continuation. This makes the regression a
+  continuation/scope-stability problem, not a reward-feedback leakage artifact.</li>
+<li>Max-5 blind-loop stability result: <code>debug-trl-grpo</code> now has a stricter
+  max-rounds-5 rerun under the same no-reward protocol. Baseline held <code>0.25</code>
+  across all five rounds (<code>1:0.25,2:0.25,3:0.25,4:0.25,5:0.25</code>); treatment held
+  <code>0.25</code> for rounds 1-2 but dropped to <code>0.0</code> for rounds 3-5
+  (<code>1:0.25,2:0.25,3:0,4:0,5:0</code>). Under max-score loop analysis both arms reach
+  <code>0.25</code>, so this is not a best-score capability regression; it is a
+  final-workspace stability/regression signal.</li>
+<li>Prompt ablation result: <code>debug-trl-grpo</code> baseline-safe treatment prompt v0
+  kept the same two-round blind budget and treatment route, but replaced the
+  structured treatment framing with baseline-compatible ordinary Codex framing.
+  It preserved official <code>0.25</code> across rounds <code>1:0.25,2:0.25</code>, recovering the
+  structured-treatment regression to baseline partial credit.</li>
+<li>Max-5 neutral guard result: <code>azure-bgp-oscillation-route-leak</code> completed a
+  fresh max-rounds-5 blind-loop pair under the same no-reward protocol.
+  Baseline exhausted five rounds at <code>0.0</code> (<code>1:missing,2:0,3:0,4:0,5:0</code>);
+  treatment also exhausted five rounds at <code>0.0</code>
+  (<code>1:missing,2:0,3:0,4:0,5:0</code>). This upgrades the earlier two-round neutral
+  pair into a stricter no-uplift guard: extra blinded interactions alone did
+  not move either arm, while both arms reached real solver/verifier execution.</li>
+<li>Blind-loop neutral result: <code>manufacturing-codebook-normalization</code> protocol v0
+  completed under the same primary no-reward protocol. Both arms scored <code>0.0</code>
+  with round rewards <code>1:0,2:0</code>, so it is now a clean neutral guard for prompt,
+  continuation, and task-family policy changes.</li>
+<li>Blind-loop neutral result: <code>civ6-adjacency-optimizer</code> protocol v0 also
+  completed under the primary no-reward protocol. Both arms scored <code>0.0</code> with
+  round rewards <code>1:0,2:0</code>; this upgrades the old legacy neutral case into a
+  clean blind-loop neutral guard.</li>
+<li>Blind-loop neutral result: <code>software-dependency-audit</code> protocol v0 also
+  completed under the primary no-reward protocol. Both arms scored <code>0.0</code> with
+  round rewards <code>1:0,2:0</code>; this broadens the neutral guard set to a dependency
+  audit task family.</li>
+<li>Blind-loop neutral result: <code>react-performance-debugging</code> protocol v0 also
+  completed under the primary no-reward protocol. Both arms scored <code>0.0</code> with
+  round rewards <code>1:0,2:0</code>; this adds a frontend/performance-debugging task
+  family to the neutral guard set.</li>
+<li>Blind-loop neutral result: <code>pddl-airport-planning</code> protocol v0 also
+  completed under the primary no-reward protocol. Both arms scored <code>0.0</code> with
+  round rewards <code>1:0,2:0</code>; this adds a PDDL/planning task family to the neutral
+  guard set.</li>
+<li>Blind-loop success/non-regression result: <code>ada-bathroom-plan-repair</code> protocol
+  v0 now completes under the same primary no-reward protocol. Both arms scored
+  <code>1.0</code> in round 1 with feedback blinded, so the old setup blocker is resolved
+  for this route and the case becomes a guard that treatment does not damage
+  already-solvable baseline tasks.</li>
+<li>Blind-loop success/non-regression result: <code>organize-messy-files</code> protocol v0
+  now also completes under the primary no-reward protocol. Both arms scored
+  <code>1.0</code> in round 1 with feedback blinded; the treatment arm used the
+  baseline-safe prompt framing. The old Docker compose setup blocker is now
+  historical runner-readiness evidence rather than the current case state.</li>
+<li>Blind-loop success/non-regression result: <code>citation-check</code> protocol v0 now
+  also completes under the primary no-reward protocol. Both arms scored <code>1.0</code>
+  in round 1 with feedback blinded; the treatment arm used the baseline-safe
+  prompt framing. The old <code>/app</code> mount setup blocker is now historical
+  runner-readiness evidence rather than the current case state.</li>
+<li>Blind-loop success/non-regression result: <code>3d-scan-calc</code> protocol v0 now
+  also completes under the primary no-reward protocol. Both arms scored <code>1.0</code>
+  in round 1 with feedback blinded; the treatment arm used the baseline-safe
+  prompt framing. This converts an old baseline-pass-only record into a
+  comparable treatment non-regression guard.</li>
+<li>Blind-loop success/non-regression result: <code>bike-rebalance</code> now also completes
+  under the primary no-reward protocol after a baseline-only runner repair
+  rerun. The initial comparable baseline attempt ended as
+  <code>skillsbench_runner_error</code>, but the repaired baseline and the baseline-safe
+  treatment both scored <code>1.0</code> in round 1. This is a runner-readiness lesson and
+  success guard, not a positive uplift claim.</li>
+<li>Blind-loop baseline-solved control: <code>travel-planning</code> baseline scored <code>1.0</code>
+  in round 1 with official feedback blinded and reward feedback not forwarded.
+  This historical run used <code>max_rounds=2</code>, but it proves the success early-stop
+  rule: the controller stopped after the first official success. Future runs use
+  the updated default <code>max_rounds=5</code> and retain the same stop-at-1 rule.</li>
+<li>Blind-loop positive result: <code>paratransit-routing</code> completed under the updated
+  primary no-reward protocol with <code>max_rounds=5</code> and stop-at-1. Baseline
+  exhausted five rounds at <code>0.0</code> (<code>1:0,2:0,3:0,4:0,5:0</code>); treatment reached
+  official <code>1.0</code> in round 1 (<code>1:1</code>) and stopped without forwarding official
+  reward/pass/fail/verifier feedback. This is the first clean primary
+  blind-loop positive control, not a reward-feedback ablation win.</li>
+<li>Trace-backed positive attribution: the treatment's public-safe ACP trajectory
+  summary records 1 round, 16 tool calls, <code>loopx_cli_call_count=0</code>, and
+  no protected-path edit signals. This makes the current explanation narrower:
+  the uplift is not from in-case GH CLI interaction or extra rounds, but from
+  first-round treatment framing plus stop-at-1 discipline.</li>
+<li>SkillsBench uplift is therefore not explained by interaction count alone.
+  The reward-feedback positives are best explained by explicit failed-reward
+  follow-up on solver-addressable first failures, while the <code>paratransit-routing</code>
+  blind positive is best explained by first-round treatment framing plus
+  validation discipline. The old two-round samples without returning
+  reward/pass/fail/verifier information did not improve either reward-feedback
+  positive-control case; generic two-decision treatment also produced
+  blind-loop no-uplift on <code>civ6-adjacency-optimizer</code> and
+  <code>manufacturing-codebook-normalization</code>, produced no-uplift on
+  <code>software-dependency-audit</code>, <code>react-performance-debugging</code>, and
+  <code>pddl-airport-planning</code>, produced a blind-loop regression on
+  <code>debug-trl-grpo</code> under both two-round and max-5 checks, and preserved an
+  already-solved <code>1.0</code> baseline on
+  <code>ada-bathroom-plan-repair</code>, <code>organize-messy-files</code>, <code>citation-check</code>,
+  <code>3d-scan-calc</code>, and <code>bike-rebalance</code>.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>group</th>
+<th>case</th>
+<th style="text-align: right;">baseline official</th>
+<th style="text-align: right;">treatment official</th>
+<th style="text-align: right;">treatment controller decisions</th>
+<th style="text-align: right;">follow-ups</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reward-feedback positive; blind-loop neutral</td>
+<td><code>llm-prefix-cache-replay</code></td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td>uplift under reward-feedback; blind-loop v10 and max-5 both 0.0 -&gt; 0.0</td>
+</tr>
+<tr>
+<td>reward-feedback positive; blind-loop neutral</td>
+<td><code>dapt-intrusion-detection</code></td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td>uplift under reward-feedback; blind-loop v0 0.0 -&gt; 0.0</td>
+</tr>
+<tr>
+<td>blind-loop stability regression</td>
+<td><code>debug-trl-grpo</code></td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">0.0 final / 0.25 best</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
+<td>max-score ties baseline at 0.25, but final workspace regresses to 0.0 after protected-path edits in rounds 3-4</td>
+</tr>
+<tr>
+<td>prompt ablation</td>
+<td><code>debug-trl-grpo</code></td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td>baseline-safe treatment prompt v0 recovered to baseline partial credit; rounds 1:0.25,2:0.25</td>
+</tr>
+<tr>
+<td>blind-loop neutral</td>
+<td><code>civ6-adjacency-optimizer</code></td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td>blind-loop v0 0.0 -&gt; 0.0; rounds 1:0,2:0 in both arms</td>
+</tr>
+<tr>
+<td>blind-loop neutral</td>
+<td><code>manufacturing-codebook-normalization</code></td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td>blind-loop v0 0.0 -&gt; 0.0; rounds 1:0,2:0 in both arms</td>
+</tr>
+<tr>
+<td>blind-loop neutral</td>
+<td><code>software-dependency-audit</code></td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td>blind-loop v0 0.0 -&gt; 0.0; rounds 1:0,2:0 in both arms</td>
+</tr>
+<tr>
+<td>blind-loop neutral</td>
+<td><code>react-performance-debugging</code></td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td>blind-loop v0 0.0 -&gt; 0.0; rounds 1:0,2:0 in both arms</td>
+</tr>
+<tr>
+<td>blind-loop neutral</td>
+<td><code>pddl-airport-planning</code></td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td>blind-loop v0 0.0 -&gt; 0.0; rounds 1:0,2:0 in both arms</td>
+</tr>
+<tr>
+<td>blind-loop success/non-regression</td>
+<td><code>ada-bathroom-plan-repair</code></td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td>blind-loop v0 1.0 -&gt; 1.0; first_success_round=1 in both arms</td>
+</tr>
+<tr>
+<td>blind-loop success/non-regression</td>
+<td><code>organize-messy-files</code></td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td>blind-loop v0 baseline-safe treatment 1.0 -&gt; 1.0; first_success_round=1 in both arms</td>
+</tr>
+<tr>
+<td>blind-loop success/non-regression</td>
+<td><code>citation-check</code></td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td>blind-loop v0 baseline-safe treatment 1.0 -&gt; 1.0; first_success_round=1 in both arms</td>
+</tr>
+<tr>
+<td>blind-loop success/non-regression</td>
+<td><code>3d-scan-calc</code></td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td>blind-loop v0 baseline-safe treatment 1.0 -&gt; 1.0; first_success_round=1 in both arms</td>
+</tr>
+<tr>
+<td>blind-loop success/non-regression</td>
+<td><code>bike-rebalance</code></td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td>repaired baseline rerun and baseline-safe treatment both reached first_success_round=1; no uplift claim</td>
+</tr>
+<tr>
+<td>baseline-solved control</td>
+<td><code>travel-planning</code></td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">n/a</td>
+<td style="text-align: right;">n/a</td>
+<td style="text-align: right;">0</td>
+<td>baseline-only blind-loop run reached first_success_round=1 and stopped; future default max_rounds=5, stop-at-1</td>
+</tr>
+<tr>
+<td>blind-loop positive</td>
+<td><code>paratransit-routing</code></td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td>primary blind-loop max_rounds=5: baseline rounds 1:0,2:0,3:0,4:0,5:0; treatment first_success_round=1 and stopped</td>
+</tr>
+</tbody>
+</table>
+<p>Bad-case conclusion:</p>
+<ul>
+<li><code>debug-trl-grpo</code> is the stability regression guard. Baseline kept scope
+  narrow and preserved partial credit, scoring <code>0.25</code>; structured treatment can
+  also reach <code>0.25</code>, but later blind continuations damage the final workspace to
+  <code>0.0</code>.</li>
+<li>The max-5 blind-loop pair is especially diagnostic: baseline stayed at
+  <code>0.25</code> for all five blinded rounds, while treatment stayed at <code>0.25</code> for two
+  rounds and then dropped to final <code>0.0</code>. Under the controller's best-round
+  metric, treatment ties baseline; under final-workspace scoring, treatment
+  regresses. The problem is not connectivity, setup, reward leakage, or simply
+  too few interactions. It is treatment policy: prompt shape, scope preservation,
+  round budget, and stop/stabilize conditions.</li>
+<li>The baseline-safe prompt ablation is the first repair signal: with the same
+  two-round blind budget and treatment route, replacing the structured treatment
+  framing with baseline-compatible ordinary Codex framing kept final score at
+  <code>0.25</code>. So the current leading suspect is structured prompt/scope framing
+  rather than interaction count alone.</li>
+</ul>
+<p>Neutral-control conclusion:</p>
+<ul>
+<li><code>civ6-adjacency-optimizer</code> proves the automation loop can run under the
+  primary blind-loop protocol and still fail to improve. Generic two-round
+  scheduled continuation is not enough for every task family.</li>
+<li><code>manufacturing-codebook-normalization</code> now gives the same neutral signal under
+  the primary blind-loop protocol: both baseline and treatment scored <code>0.0</code>,
+  both recorded <code>1:0,2:0</code>, and the treatment surface ran without receiving
+  official reward/pass/fail/verifier feedback.</li>
+<li><code>software-dependency-audit</code> adds the same neutral signal in a dependency-audit
+  task family, again with both arms at <code>0.0</code> and round rewards <code>1:0,2:0</code>.</li>
+<li><code>react-performance-debugging</code> adds the same neutral signal in a
+  frontend/performance-debugging task family, again with both arms at <code>0.0</code> and
+  round rewards <code>1:0,2:0</code>.</li>
+<li><code>pddl-airport-planning</code> adds the same neutral signal in a PDDL/planning task
+  family, again with both arms at <code>0.0</code> and round rewards <code>1:0,2:0</code>.</li>
+</ul>
+<p>Success/non-regression conclusion:</p>
+<ul>
+<li><code>ada-bathroom-plan-repair</code> is no longer a current setup blocker under the
+  primary blind-loop route. It is also not uplift evidence: baseline already
+  passed at <code>1.0</code> in round 1. Its durable value is as a success guard showing
+  the treatment wrapper can preserve a baseline-solved case without reward or
+  verifier feedback leakage.</li>
+<li><code>organize-messy-files</code> similarly moved from setup-blocker history to a
+  baseline-solved non-regression guard. The old Docker compose setup failure is
+  useful runner-readiness evidence, but the current blind-loop pair scored
+  <code>1.0</code>/<code>1.0</code> in round 1, including the baseline-safe treatment prompt.</li>
+<li><code>citation-check</code> also moved from setup-blocker history to a baseline-solved
+  non-regression guard. The old <code>/app</code> mount setup failure is useful
+  runner-readiness evidence, but the current blind-loop pair scored
+  <code>1.0</code>/<code>1.0</code> in round 1, including the baseline-safe treatment prompt.</li>
+<li><code>3d-scan-calc</code> moved from a legacy baseline-pass-only record to a
+  baseline-solved non-regression guard. The current blind-loop pair scored
+  <code>1.0</code>/<code>1.0</code> in round 1, including the baseline-safe treatment prompt, so it
+  checks that treatment does not damage an already-solvable 3D calculation task.</li>
+<li><code>bike-rebalance</code> also moved from route-canary history to a baseline-solved
+  non-regression guard. The first comparable baseline attempt failed before
+  rounds with <code>skillsbench_runner_error</code>, but the repaired baseline-only rerun
+  reached official <code>1.0</code> in round 1. The previously recorded baseline-safe
+  treatment also scored <code>1.0</code> in round 1, so this case is useful as a success
+  guard and runner-readiness lesson, not as uplift evidence.</li>
+<li><code>travel-planning</code> is a baseline-solved control rather than a paired
+  non-regression guard. The ordinary Codex ACP blind-loop baseline reached
+  official <code>1.0</code> in round 1 with feedback blinded, so treatment was not launched
+  for uplift mining. Its durable value is route selection: when baseline already
+  passes, skip treatment unless explicitly checking non-regression.</li>
+</ul>
+<p>Policy gate:</p>
+<ul>
+<li>Do not claim route-wide improvement from positive cases alone.</li>
+<li>Do not claim uplift from treatment passes when the paired baseline is a
+  runner/setup failure; repair or rerun baseline first.</li>
+<li>Any prompt or round-policy change should preserve the <code>debug-trl-grpo</code>
+  regression guard, avoid regressing the <code>civ6-adjacency-optimizer</code> and
+  <code>manufacturing-codebook-normalization</code>, <code>software-dependency-audit</code>, and
+  <code>react-performance-debugging</code> and <code>pddl-airport-planning</code> blind neutral
+  guards, keep the <code>ada-bathroom-plan-repair</code> baseline-solved success guard
+  plus the <code>organize-messy-files</code>, <code>citation-check</code>, <code>3d-scan-calc</code>, and
+  <code>bike-rebalance</code>
+  baseline-solved success guards passing, keep at least one positive-control
+  case passing, and avoid counting setup/materialization blockers as case
+  outcomes.</li>
+<li>Primary SkillsBench main-table claims should use the single product-mode
+  base+test pair: raw Codex autonomous max5 versus LoopX
+  state/todo/replan/CLI product-mode. Blind-loop pairs with
+  <code>reward_feedback_forwarded=false</code> and <code>official_feedback_blinded=true</code> remain
+  prompt/continuation guards, and reward-aware routes remain ablations.</li>
+<li>New blind-loop guard runs should use the shared default <code>max_rounds=5</code> for
+  both arms and stop an arm as soon as official reward reaches <code>1.0</code>; always
+  record <code>first_success_round</code> and per-round scalar reward offline.</li>
+<li>Main-table runs should report only <code>best_score</code>, <code>final_score</code>,
+  <code>first_success_round</code>, and <code>declared_done_score</code> as the shared headline
+  metrics; keep extra prompt/round variants out of the main comparison table.</li>
+<li>Future blind-loop treatment prompts should start from baseline-safe
+  scope-preserving framing. Scheduled continuations must explicitly preserve
+  protected files, no-GH-CLI/no-upload/no-human-query controls, and narrow task
+  scope unless compact verifier-facing evidence requires broader edits.</li>
+</ul>
+<h2 id="case-terminal-bench-multi-source-data-merger">Case: Terminal-Bench multi-source-data-merger<a class="headerlink" href="#case-terminal-bench-multi-source-data-merger" title="Permanent link">&para;</a></h2>
+<p>This is a legacy end-to-end positive-control case that became a
+current-protocol baseline-solved/non-regression control. The old evidence is
+strong that the historical treatment route could pass a real case, but it is
+weaker evidence that the treatment solver is intrinsically better than baseline
+on this task. Under the current Terminal-Bench protocol, both the hardened Codex
+baseline and LoopX managed treatment scored <code>1.0</code>.</p>
+<p>Compact evidence:</p>
+<ul>
+<li>benchmark: <code>terminal-bench@2.0</code></li>
+<li>baseline arm: <code>codex_goal_mode_baseline</code></li>
+<li>baseline run id: <code>232721f7caf1</code></li>
+<li>baseline score: <code>0.0</code></li>
+<li>baseline failure: <code>official_verifier_solution_failure</code></li>
+<li>treatment arm: <code>codex_loopx_treatment</code></li>
+<li>treatment run id: <code>2986c373a314</code></li>
+<li>treatment score: <code>1.0</code></li>
+<li>treatment failure: <code>none</code></li>
+</ul>
+<p>Current protocol rerun:</p>
+<ul>
+<li>route pair: Terminal-Bench <code>hardened-codex</code> baseline vs.
+  <code>loopx-managed-codex</code> treatment</li>
+<li>run group: <code>terminal-bench-multi-source-data-merger-current-protocol-20260617T201625CST</code></li>
+<li>baseline job:
+  <code>terminal_bench_multi_source_data_merger_hardened_codex_current_protocol_20260617T202500CST</code></li>
+<li>baseline run id: <code>37d3587daf12</code></li>
+<li>baseline score: <code>1.0</code></li>
+<li>treatment job:
+  <code>terminal_bench_multi_source_data_merger_loopx_managed_codex_current_protocol_20260617T201625CST</code></li>
+<li>treatment run id: <code>76cbfb57f1ea</code></li>
+<li>treatment score: <code>1.0</code></li>
+<li>official score delta: <code>0.0</code></li>
+<li>decision: <code>paired_baseline_solved_treatment_preserved</code></li>
+<li>boundary: no upload, no leaderboard submit, no raw task/log/trajectory read</li>
+</ul>
+<p>Interpretation:</p>
+<p>LoopX treatment produced correct artifacts that the official verifier
+scored <code>1.0</code>. The trajectory shows a useful harness pattern: bridge preflight,
+schema inspection, reproducible script generation, and local validation before
+final closeout.</p>
+<p>The caveat is that the baseline trajectory also inspected schemas, wrote a
+merge script, regenerated outputs, and self-validated row counts, types, dates,
+priority selection, and conflict count. Its official <code>0.0</code> came from a
+verifier/runtime crash before task tests completed, not from a clean hidden-test
+failure. Treatment also hit a bridge status hang after output validation, but
+the artifacts were already written and verifier-facing output passed.</p>
+<p>Why it matters:</p>
+<ul>
+<li>It proves the treatment route can reach official <code>1.0</code> on a real
+  Terminal-Bench case.</li>
+<li>It anchors the migration from historical <code>codex_loopx</code> evidence to the
+  newer LoopX managed route: the current route preserves success, but
+  the comparable baseline now also passes.</li>
+<li>It proves the distinction between runner readiness, self-validation, and
+  verifier success matters; baseline self-validation and official score
+  diverged.</li>
+<li>It is a good non-regression/control case for end-to-end harness behavior, but
+  not current-protocol uplift evidence.</li>
+</ul>
+<p>Follow-up guidance:</p>
+<ul>
+<li>Do not use the old <code>0.0 -&gt; 1.0</code> result as current main-table uplift evidence;
+  the new comparable pair is <code>1.0 -&gt; 1.0</code>.</li>
+<li>Keep this case as a current-protocol success-preservation guard when changing
+  Terminal-Bench managed routing, lifecycle trace, or worker setup policy.</li>
+<li>Preserve the materialization and compact closeout path that made the case
+  interpretable.</li>
+<li>Fix or time-bound the worker bridge status call; it should not hang after
+  successful artifact validation.</li>
+</ul>
+<h2 id="case-terminal-bench-nginx-request-logging">Case: Terminal-Bench nginx-request-logging<a class="headerlink" href="#case-terminal-bench-nginx-request-logging" title="Permanent link">&para;</a></h2>
+<p>This is now a current-protocol baseline-solved non-regression guard. The older
+<code>0.0 -&gt; 1.0</code> row remains useful as a runner-materialization lesson, not as a
+main-table uplift claim.</p>
+<p>Compact evidence:</p>
+<ul>
+<li>benchmark: <code>terminal-bench@2.0</code></li>
+<li>baseline arm: <code>hardened_codex_baseline</code></li>
+<li>baseline run id: <code>c9e583310242</code></li>
+<li>baseline score: <code>1.0</code></li>
+<li>baseline failure: <code>none</code></li>
+<li>treatment arm: <code>codex_loopx_treatment</code></li>
+<li>treatment run id: <code>2a6a46cfb953</code></li>
+<li>treatment score: <code>1.0</code></li>
+<li>treatment failure: <code>none</code></li>
+<li>treatment worker CLI calls observed: <code>0</code></li>
+<li>legacy blocked baseline run id: <code>890f0a8487e4</code></li>
+<li>legacy blocked baseline score: <code>0.0</code></li>
+<li>legacy blocked baseline failure:
+  <code>worker_install_failed_agent_codex_install_nvm_node</code></li>
+<li>follow-up worker materialization probe run id: <code>51fa05316d18</code></li>
+<li>follow-up worker materialization probe failure: <code>codex_cli_not_on_path</code></li>
+</ul>
+<p>Interpretation:</p>
+<p>The LoopX treatment arm reached official verifier pass, and after the
+worker materialization route was repaired the hardened Codex baseline also
+reached official verifier pass. The current comparable conclusion is therefore
+<code>1.0 -&gt; 1.0</code>: treatment preserved success, but there is no current-protocol
+uplift.</p>
+<p>A follow-up fail-fast worker materialization probe used the <code>require_existing_codex</code>
+repair profile and ended before solver execution with compact
+<code>codex_cli_not_on_path</code>. This proves the current hardened baseline worker path
+does not contain a usable Codex CLI; same-config baseline reruns would mostly
+remeasure runner setup rather than case solving.</p>
+<p>This distinction matters because earlier <code>nginx-request-logging</code> evidence had
+unstable runner/setup shape: at one point treatment was setup-blocked; later a
+hardened baseline was setup-blocked while treatment passed. The useful durable
+signal is therefore not "LoopX always helps this case"; it is that
+runner/materialization state must be fixed before the case can be used for a
+fair treatment comparison.</p>
+<p>Why it matters:</p>
+<ul>
+<li>It preserves the treatment pass as a useful end-to-end route-canary.</li>
+<li>It converts nginx into a current-protocol success-preservation guard.</li>
+<li>It prevents a false uplift claim from a baseline worker/setup blocker.</li>
+<li>It records that access-packet presence is not the same as observed
+  worker-side LoopX CLI use.</li>
+<li>It turns the baseline blocker into a concrete repair target: materialize
+  <code>codex</code> on worker <code>PATH</code> before solver start.</li>
+</ul>
+<p>Follow-up guidance:</p>
+<ul>
+<li>Keep this case out of pure solver-uplift counts because the repaired baseline
+  reaches worker materialization and official <code>1.0</code>.</li>
+<li>Use the legacy blocked baseline as a regression guard for worker setup and
+  false-claim prevention, not as the active score comparison.</li>
+<li>Continue alternating to fresh baseline-failing cases if the next goal is
+  evidence breadth rather than this specific materialization repair.</li>
+</ul>
+<h2 id="case-terminal-bench-make-doom-for-mips">Case: Terminal-Bench make-doom-for-mips<a class="headerlink" href="#case-terminal-bench-make-doom-for-mips" title="Permanent link">&para;</a></h2>
+<p>This is a timeout and attribution asset, not a treatment-uplift case.</p>
+<p>Compact evidence:</p>
+<ul>
+<li>benchmark: <code>terminal-bench@2.0</code></li>
+<li>baseline arm: <code>codex_goal_mode_baseline</code></li>
+<li>baseline run id: <code>1e0e7327d18a</code></li>
+<li>baseline score: <code>0.0</code></li>
+<li>baseline failure: <code>agent_timeout_before_solution_completion</code></li>
+<li>treatment arm: <code>codex_loopx_treatment</code></li>
+<li>treatment run id: <code>1caa8b39f0a4</code></li>
+<li>treatment score: <code>0.0</code></li>
+<li>treatment failure: <code>score_failure_unattributed</code></li>
+</ul>
+<p>Interpretation:</p>
+<p>This case answers one of the timeout questions: simply raising the case budget
+is not enough by itself. The first default-timeout pair failed before solution
+completion. A private 2h relaunch then exposed worker setup timeout, which is a
+different phase and should not be counted as solver failure. After applying the
+setup8+2h route, the baseline still ended in timeout context and the treatment
+still produced official <code>0.0</code>, but the treatment closeout did not include
+enough compact verifier-facing attribution to say whether the bottleneck was
+solver output, verifier behavior, or result finalization.</p>
+<p>Why it matters:</p>
+<ul>
+<li>It prevents <code>make-doom-for-mips</code> from being mislabeled as clean no-uplift.</li>
+<li>It shows that Terminal-Bench long cases need explicit lifecycle phase
+  evidence: setup readiness, worker start, solver completion, result write,
+  and verifier score.</li>
+<li>It gives us a concrete guardrail for timeout-tier policy: increase timeout
+  only with materialization and attribution evidence, not as a blind retry.</li>
+</ul>
+<p>Follow-up guidance:</p>
+<ul>
+<li>Do not repeat immediately.</li>
+<li>First collect compact phase/verifier attribution for the setup8+2h pair.</li>
+<li>Only rerun after the launcher can prove worker materialization and record the
+  chosen timeout tier in the compact closeout.</li>
+</ul>
+<p>Latest case-first managed run, 2026-06-17:</p>
+<ul>
+<li>run group: <code>terminal-bench-make-doom-managed-20260617T193035CST</code></li>
+<li>arm: <code>loopx-managed-codex</code></li>
+<li>compact result: completed, official score <code>0.0</code></li>
+<li>compact attribution: <code>official_verifier_solution_failure</code></li>
+<li>control-plane signal: the launcher and post-launch closeout are now usable;
+  job root materialized, the trial completed, and compact ingestion reached a
+  verifier-facing official score without reading raw task text, logs, or
+  trajectories.</li>
+<li>product-mode gap: this run is not a clean treatment claim. The compact
+  counters show <code>worker_loopx_cli_call_total=0</code> and no worker bridge
+  trace, so it proves the managed Terminal-Bench route can run and close out,
+  not that the in-case LoopX product experience improved the task.</li>
+</ul>
+<p>Updated guidance:</p>
+<ul>
+<li>Use this as a completed Terminal-Bench lifecycle/attribution data point.</li>
+<li>Do not claim uplift or regression from it.</li>
+<li>Before another <code>make-doom-for-mips</code> repeat, either add Terminal-Bench
+  product-mode parity/trace evidence comparable to the SkillsBench route, or
+  choose a different material-ready case where the current product-mode route
+  can expose real state/todo/replan behavior.</li>
+</ul>
+<h2 id="case-terminal-bench-mteb-retrieve">Case: Terminal-Bench mteb-retrieve<a class="headerlink" href="#case-terminal-bench-mteb-retrieve" title="Permanent link">&para;</a></h2>
+<p>This is a setup-probe asset, not a solver comparison.</p>
+<p>Compact evidence:</p>
+<ul>
+<li>benchmark: <code>terminal-bench@2.0</code></li>
+<li>baseline arm: <code>codex_goal_mode_baseline</code></li>
+<li>baseline run id: <code>f51ed0bc44ef</code></li>
+<li>baseline compact failure: <code>environment_setup_failed_before_worker</code></li>
+<li>treatment arm: <code>codex_loopx_treatment</code></li>
+<li>treatment run id: <code>4dca7e651fac</code></li>
+<li>treatment compact failure: <code>environment_setup_failed_before_worker</code></li>
+<li>setup probe arm: <code>harbor_observed</code></li>
+<li>setup probe run id: <code>b1c43dfaaa19</code></li>
+<li>setup probe run group: <code>terminal-bench-mteb-retrieve-env-probe-20260616T0800CST</code></li>
+<li>setup probe worker mode: <code>nop</code></li>
+<li>setup probe worker start status: <code>environment_setup_probe_materialized</code></li>
+<li>setup probe trial result count: <code>1</code></li>
+<li>setup probe artifact manifest count: <code>1</code></li>
+<li>setup probe exception type: <code>RuntimeError</code></li>
+<li>setup probe outcome: <code>materialized_with_exception</code></li>
+<li>setup probe repeat blocker: <code>environment_setup_probe_exception_requires_interpretation</code></li>
+</ul>
+<p>Interpretation:</p>
+<p>The previous paired baseline and treatment both failed before worker start in
+environment setup. This turn launched a no-upload, NOP-agent,
+verification-disabled environment setup probe for the same task. The probe
+materialized a Harbor job root, produced a trial result, and exposed an
+artifact manifest through compact ingest.</p>
+<p>That is progress on the runner/setup layer, but it is not a case success and
+not a treatment comparison. The compact lifecycle reducer now reports
+<code>environment_setup_probe_completed</code> instead of misrouting the single-arm probe
+to <code>paired_comparison_missing</code>. It also keeps <code>case_attempt_countable=false</code>,
+<code>benchmark_budget_countable=false</code>, and <code>repeat_allowed=false</code>.
+The probe is now further classified as <code>materialized_with_exception</code>, so the
+same-task full repeat remains blocked until the compact <code>RuntimeError</code> is
+classified.</p>
+<p>Why it matters:</p>
+<ul>
+<li>It gives <code>mteb-retrieve</code> a real setup/materialization signal instead of only
+  old pre-worker setup failures.</li>
+<li>It proves the no-upload setup-probe path can move past launcher/job-root
+  materialization for this case.</li>
+<li>It prevents a setup probe from being counted as a benchmark case attempt or
+  hidden-test no-uplift.</li>
+</ul>
+<p>Follow-up guidance:</p>
+<ul>
+<li>Do not launch a full same-task repeat yet.</li>
+<li>First classify whether the compact <code>RuntimeError</code> is expected from the
+  NOP/disable-verification route or indicates persistent task environment
+  failure.</li>
+<li>Keep setup-probe lifecycle accounting separate from case-attempt and
+  benchmark-budget accounting.</li>
+</ul>
+<h2 id="case-terminal-bench-pytorch-model-recovery">Case: Terminal-Bench pytorch-model-recovery<a class="headerlink" href="#case-terminal-bench-pytorch-model-recovery" title="Permanent link">&para;</a></h2>
+<p>This is an exception-attribution asset, not a clean no-uplift case.</p>
+<p>Compact evidence:</p>
+<ul>
+<li>benchmark: <code>terminal-bench@2.0</code></li>
+<li>baseline arm: <code>codex_goal_mode_baseline</code></li>
+<li>baseline run id: <code>2db3f1047704</code></li>
+<li>baseline compact failure: <code>agent_exception_before_solution_completion</code></li>
+<li>baseline exception type: <code>RuntimeError</code></li>
+<li>baseline verifier reward: absent</li>
+<li>treatment arm: <code>codex_loopx_treatment</code></li>
+<li>treatment run id: <code>9ba1b6872167</code></li>
+<li>treatment compact failure: <code>agent_exception_before_solution_completion</code></li>
+<li>treatment exception type: <code>RuntimeError</code></li>
+<li>treatment verifier reward: absent</li>
+<li>treatment worker bridge: <code>not_materialized</code></li>
+</ul>
+<p>Interpretation:</p>
+<p>The stable conclusion is not "baseline and treatment both failed hidden tests."
+The compact artifacts show both arms ended before verifier reward with
+<code>RuntimeError</code>. The treatment side has an additional bridge-readiness caveat:
+the bridge-materialization compact marker reports <code>worker_bridge_materialization_status=not_materialized</code>.</p>
+<p>The verifier-attribution review now classifies this pattern as
+<code>agent_exception_score_failure</code> instead of generic
+<code>unattributed_score_failure</code>. That matters because the next action is no longer
+"collect arbitrary finer verifier attribution"; it is narrower: inspect compact
+agent-exception context or form a case-level exception hypothesis before any
+same-task repeat.</p>
+<p>Why it matters:</p>
+<ul>
+<li>It prevents this case from being mislabeled as clean no-uplift.</li>
+<li>It separates agent/runtime exception before verifier reward from official
+  verifier solution failure.</li>
+<li>It keeps treatment-readiness evidence separate from solver quality: treatment
+  cannot be judged until bridge materialization is proven.</li>
+<li>It gives Terminal-Bench a durable exception-attribution guard alongside the
+  timeout guard from <code>make-doom-for-mips</code>.</li>
+</ul>
+<p>Follow-up guidance:</p>
+<ul>
+<li>Do not use this case for uplift, regression, or clean no-uplift claims.</li>
+<li>Do not repeat the same task until compact exception context or a case-level
+  intervention hypothesis exists.</li>
+<li>If compact exception context cannot be improved without raw logs or
+  trajectory, select a new material-ready Terminal-Bench case instead.</li>
+<li>Preserve the public-safe boundary: no raw logs, task text, verifier output,
+  or trajectories are needed for this classification.</li>
+</ul>
+<h2 id="case-skillsbench-llm-prefix-cache-replay">Case: SkillsBench llm-prefix-cache-replay<a class="headerlink" href="#case-skillsbench-llm-prefix-cache-replay" title="Permanent link">&para;</a></h2>
+<p>This is the first clean SkillsBench reward-feedback positive-control case, but
+it is now a blind-loop neutral guard under the primary no-reward protocol.</p>
+<p>Compact evidence:</p>
+<ul>
+<li>benchmark: <code>skillsbench@1.1</code></li>
+<li>baseline arm: <code>codex_goal_mode_baseline</code></li>
+<li>baseline run id: <code>7eb47e9e7f35</code></li>
+<li>baseline score: <code>0.0</code></li>
+<li>baseline failure: <code>official_verifier_solution_failure</code></li>
+<li>treatment arm: <code>loopx_automation_loop_treatment</code></li>
+<li>treatment run id: <code>cf8da5bd77a2</code></li>
+<li>treatment score: <code>1.0</code></li>
+<li>treatment failure: <code>none</code></li>
+<li>max-5 blind-loop run group:
+  <code>skillsbench-llm-prefix-cache-replay-blind-loop-max5-20260616T1531CST</code></li>
+<li>max-5 blind-loop baseline: <code>codex-acp-blind-loop-baseline</code>, score <code>0.0</code>,
+  rounds <code>1:0,2:0,3:0,4:0,5:0</code>, <code>first_success_round=null</code></li>
+<li>max-5 blind-loop treatment: <code>loopx-blind-loop-treatment</code>, score <code>0.0</code>,
+  rounds <code>1:0,2:0,3:0,4:0,5:0</code>, <code>first_success_round=null</code></li>
+<li>native app-server Goal canary run group:
+  <code>skillsbench-native-goal-post353-20260620T220003Z</code></li>
+<li>native Goal baseline run id: <code>b7fdd71e481b</code></li>
+<li>native Goal baseline score: <code>0.0</code></li>
+<li>native Goal baseline failure: <code>skillsbench_runner_error</code></li>
+<li>native Goal route counters: <code>native_goal_mode_invoked=true</code>,
+  worker connected, public worker trace count <code>0</code></li>
+</ul>
+<p>Interpretation:</p>
+<p>The baseline reached official SkillsBench verifier scoring and failed with
+reward <code>0.0</code>, so this is a solver/case-scoped baseline failure rather than a
+setup or materialization artifact. The treatment ran the outer automation loop:
+compact controller counters record two heartbeat/controller decisions, one
+initial controller prompt, one failed-reward observation, and one follow-up.
+After that follow-up, the official verifier scored the case <code>1.0</code>.
+The same case does not improve when reward/pass/fail/verifier feedback is
+blinded: both the two-round blind recheck and the stricter max-5 rerun finished
+at <code>0.0</code> for both arms.</p>
+<p>The post-PR-353 native app-server Goal canary is a separate route observation:
+it confirms native Goal invocation, host-worker connection, and public-safe
+controller trace, but it still fails as <code>skillsbench_runner_error</code> and exposes
+no public worker trace directory. It should not be folded into the reward
+feedback or blind-loop claim table until worker trace collection or runner
+attribution is repaired.</p>
+<p>Why it matters:</p>
+<ul>
+<li>It proves the reward-feedback automation-loop route can convert a clean
+  baseline <code>0.0</code> into an official <code>1.0</code> without relying on setup repair as the
+  outcome.</li>
+<li>It does not prove blind no-reward LoopX uplift: under protocol v10 and
+  the max-5 rerun, the same case completed both blind-loop arms and stayed at
+  <code>0.0</code>.</li>
+<li>It gives a positive control to pair with <code>debug-trl-grpo</code> regression and
+  <code>civ6-adjacency-optimizer</code> no-uplift controls.</li>
+<li>It shows that compact controller counters are enough to confirm the treatment
+  surface actually ran, even without copying raw task text, logs, or
+  trajectory.</li>
+<li>It also gives the native Goal route a concrete repair target: public worker
+  trace collection must materialize before this route can support model-quality
+  comparisons.</li>
+</ul>
+<p>Follow-up guidance:</p>
+<ul>
+<li>Do not repeat this case immediately unless testing a stability or
+  treatment-policy hypothesis.</li>
+<li>Keep this as the SkillsBench positive-control asset for automation-loop
+  reward-feedback-ablation prompt, round, and termination-policy changes.</li>
+<li>Do not use it as a positive-control asset for the primary blind-loop protocol;
+  protocol v10 and the max-5 rerun are no-uplift guards.</li>
+<li>Do not generalize from one uplift case; compare future changes against the
+  regression and no-uplift assets before making route-wide claims.</li>
+<li>For native app-server Goal, repair or explain the missing public worker trace
+  directory before using the route as the default SkillsBench quality baseline.</li>
+</ul>
+<h2 id="case-skillsbench-tictoc-unnecessary-abort-detection">Case: SkillsBench tictoc-unnecessary-abort-detection<a class="headerlink" href="#case-skillsbench-tictoc-unnecessary-abort-detection" title="Permanent link">&para;</a></h2>
+<p>This is a native app-server Goal route/runner observation, not a model-quality
+case result yet.</p>
+<p>Compact evidence:</p>
+<ul>
+<li>benchmark: <code>skillsbench@1.1</code></li>
+<li>baseline arm: <code>skillsbench_codex_app_server_goal_baseline</code></li>
+<li>run group: <code>skillsbench-native-goal-post353-20260620T220003Z</code></li>
+<li>baseline run id: <code>a054a9322569</code></li>
+<li>baseline score: <code>0.0</code></li>
+<li>baseline failure: <code>skillsbench_runner_error</code></li>
+<li>native Goal route counters: <code>native_goal_mode_invoked=true</code>,
+  worker connected, public-safe controller trace present, public worker trace
+  count <code>0</code></li>
+</ul>
+<p>Interpretation:</p>
+<p>The compact result proves the host app-server Goal route can connect to the
+worker and record public-safe controller evidence without reading raw task text,
+raw logs, verifier output, or trajectory. The useful finding is still negative:
+the public worker trace directory was not observed, so the failure remains
+<code>runner_or_setup</code> and cannot be used to judge whether the agent solved the task.</p>
+<p>Why it matters:</p>
+<ul>
+<li>It gives the native Goal SkillsBench route a second concrete canary beyond
+  <code>llm-prefix-cache-replay</code>.</li>
+<li>It confirms route connection and controller trace observability, while
+  keeping the public/private boundary compact-only.</li>
+<li>It blocks quality comparison until the missing worker trace or runner error is
+  repaired.</li>
+</ul>
+<p>Follow-up guidance:</p>
+<ul>
+<li>Do not launch treatment or claim uplift/no-uplift from this row.</li>
+<li>Repair public worker trace collection, or record a compact explanation for
+  why no worker trace is expected, then rerun a selected SkillsBench case.</li>
+<li>Keep this as a runner/observation repair asset in the rotation ledger.</li>
+</ul>
+<h2 id="case-skillsbench-dapt-intrusion-detection">Case: SkillsBench dapt-intrusion-detection<a class="headerlink" href="#case-skillsbench-dapt-intrusion-detection" title="Permanent link">&para;</a></h2>
+<p>This is the second clean SkillsBench positive-control case for the
+automation-loop treatment route.</p>
+<p>Compact evidence:</p>
+<ul>
+<li>benchmark: <code>skillsbench@1.1</code></li>
+<li>baseline arm: <code>codex_goal_mode_baseline</code></li>
+<li>baseline run id: <code>da0d9b235bee</code></li>
+<li>baseline score: <code>0.0</code></li>
+<li>baseline failure: <code>official_verifier_solution_failure</code></li>
+<li>treatment arm: <code>loopx_automation_loop_treatment</code></li>
+<li>treatment run id: <code>8f4799261e11</code></li>
+<li>treatment score: <code>1.0</code></li>
+<li>treatment failure: <code>none</code></li>
+</ul>
+<p>Interpretation:</p>
+<p>The baseline reached official SkillsBench verifier scoring and failed with
+reward <code>0.0</code>, so this is a solver/case-scoped baseline failure rather than a
+setup or materialization artifact. The matching treatment ran the outer
+automation loop. Compact controller counters record two heartbeat/controller
+decisions, one initial controller prompt, one failed-reward observation, and
+one follow-up. After that follow-up, the official verifier scored the case
+<code>1.0</code>.</p>
+<p>Why it matters:</p>
+<ul>
+<li>It gives a second SkillsBench positive-control case, reducing the chance that
+  <code>llm-prefix-cache-replay</code> is a one-off reward-feedback treatment win.</li>
+<li>It strengthens the evidence that one explicit follow-up after failed reward
+  can recover some clean SkillsBench baseline failures.</li>
+<li>It does not support blind-loop uplift: protocol v0 completed the primary
+  no-reward comparison with baseline <code>0.0</code>, treatment <code>0.0</code>, round rewards
+  <code>1:0,2:0</code> in both arms, and <code>first_success_round=null</code>.</li>
+<li>The useful difference is not interaction count alone. The reward-feedback
+  route passed after receiving failed-reward semantics; the blind-loop route had
+  the same two-round budget without reward/pass/fail/verifier feedback and did
+  not improve.</li>
+<li>It still does not justify a broad route-wide superiority claim, because
+  <code>debug-trl-grpo</code> remains a regression asset and several cases remain neutral
+  or setup-blocked.</li>
+</ul>
+<p>Follow-up guidance:</p>
+<ul>
+<li>Keep this paired with <code>llm-prefix-cache-replay</code> as the SkillsBench
+  reward-feedback-ablation positive control set for automation-loop policy
+  changes.</li>
+<li>Do not use it as a positive-control asset for the primary blind-loop protocol;
+  protocol v0 is a no-uplift guard.</li>
+<li>Repeat only after a concrete prompt, round-policy, or stability hypothesis.</li>
+<li>Compare every new treatment-policy change against positive, regression, and
+  no-uplift controls before widening claims.</li>
+</ul>
+<h2 id="case-skillsbench-debug-trl-grpo">Case: SkillsBench debug-trl-grpo<a class="headerlink" href="#case-skillsbench-debug-trl-grpo" title="Permanent link">&para;</a></h2>
+<p>This is the current negative-control case.</p>
+<p>Compact evidence:</p>
+<ul>
+<li>benchmark: <code>skillsbench@1.1</code></li>
+<li>baseline arm: <code>codex_goal_mode_baseline</code></li>
+<li>baseline run id: <code>9db0404df80b</code></li>
+<li>baseline score: <code>0.25</code></li>
+<li>baseline failure: <code>none</code></li>
+<li>treatment arm: <code>loopx_automation_loop_treatment</code></li>
+<li>treatment run id: <code>ef452ac2450b</code></li>
+<li>treatment score: <code>0.0</code></li>
+<li>treatment failure: <code>official_verifier_solution_failure</code></li>
+<li>blind-loop run group: <code>skillsbench-debug-trl-grpo-blind-loop-v0</code></li>
+<li>blind-loop baseline: <code>codex-acp-blind-loop-baseline</code>, score <code>0.25</code>, rounds
+  <code>1:0.25,2:0.25</code></li>
+<li>blind-loop treatment: <code>loopx-blind-loop-treatment</code>, score <code>0.0</code>,
+  rounds <code>1:0.25,2:0</code>, <code>first_success_round=null</code></li>
+<li>max-5 blind-loop run group:
+  <code>skillsbench-debug-trl-grpo-blind-loop-max5-20260616T144124CST</code></li>
+<li>max-5 blind-loop baseline: <code>codex-acp-blind-loop-baseline</code>, score <code>0.25</code>,
+  rounds <code>1:0.25,2:0.25,3:0.25,4:0.25,5:0.25</code></li>
+<li>max-5 blind-loop treatment: <code>loopx-blind-loop-treatment</code>, score
+  <code>0.0</code>, rounds <code>1:0.25,2:0.25,3:0,4:0,5:0</code>,
+  <code>first_success_round=null</code></li>
+<li>max-5 scoring view: baseline best <code>0.25</code>, treatment best <code>0.25</code>,
+  <code>best_round_score_delta=0.0</code>; baseline final <code>0.25</code>, treatment final <code>0.0</code>,
+  <code>final_round_score_delta=-0.25</code></li>
+<li>prompt ablation: <code>loopx-blind-loop-treatment</code> with
+  <code>treatment_prompt_style=baseline-safe</code>, run <code>f37b0a3e9654</code>, score <code>0.25</code>,
+  rounds <code>1:0.25,2:0.25</code></li>
+<li>max-5 treatment public trajectory summary: 5 rounds, 112 tool calls,
+  <code>loopx_cli_call_count=0</code>, protected edit signals on
+  <code>/app/train_grpo.py</code> in rounds 3 and 4</li>
+</ul>
+<p>Interpretation:</p>
+<p>After the local Docker CPU setup blocker was repaired, the treatment route
+still regressed relative to baseline. The primary blind-loop repeat reproduced
+the regression without returning reward, pass/fail, verifier errors, or verifier
+output to the agent. That makes this a treatment-design signal, not a
+runner-readiness issue or reward-feedback leakage artifact.</p>
+<p>The max-5 rerun strengthens but also narrows the conclusion. Baseline held its
+<code>0.25</code> partial-credit plateau across five blinded rounds, while structured
+treatment also reached <code>0.25</code> for two rounds and then fell to <code>0.0</code> for the
+remaining rounds. If the controller is evaluated by best round, treatment ties
+baseline on this case; if evaluated by final workspace, treatment regresses.
+More blind interaction did not improve best score; it revealed that scheduled
+continuation needs a partial-credit stabilization rule.</p>
+<p>Trace-backed attribution:</p>
+<ul>
+<li>The max-5 treatment's public-safe ACP trajectory summary records zero in-case
+  LoopX CLI calls. The regression is therefore not explained by
+  treatment talking to the LoopX CLI more often than baseline.</li>
+<li>The same summary records protected-path edit signals in rounds 3 and 4, both
+  on <code>/app/train_grpo.py</code>. This strengthens the scope-drift diagnosis: the
+  harmful factor is scheduled continuation plus structured treatment framing
+  crossing protected task boundaries after already reaching baseline-level
+  partial credit.</li>
+<li>A direct comparison of baseline, structured treatment, and baseline-safe
+  ACP user messages showed the same continuation gap: round 1 contained the
+  protected paths and no-<code>/goal</code>/no-GH-CLI controls, while later scheduled
+  continuations preserved only generic narrow-scope language. The controller
+  now re-projects those durable round-1 constraints on every blind-loop
+  continuation.</li>
+<li>Raw ACP trajectory, task text, verifier output, and local artifact paths stay
+  out of this analysis record; only compact counters and protected edit-round
+  facts are durable here.</li>
+</ul>
+<p>Trajectory comparison:</p>
+<ul>
+<li>Baseline stayed narrow: it focused on the TRL trainer, fixed the advantage
+  epsilon bug, added a constructor compatibility alias, and left protected
+  files alone.</li>
+<li>Baseline verifier result was partial credit: it passed source presence,
+  protected training script, protected reward function, advantage epsilon, and
+  non-vanishing advantage checks; it still failed selective log-softmax
+  correctness and decode preservation.</li>
+<li>Treatment used more rounds and more tool calls, fixed the same epsilon bug,
+  then expanded into rewriting <code>reward_fn.py</code>.</li>
+<li>The treatment still failed selective log-softmax and decode preservation, and
+  additionally failed the protected reward-function check. That extra scope
+  expansion is the concrete regression.</li>
+<li>In the blind-loop repeat, the first treatment round reached the same <code>0.25</code>
+  partial-credit score as baseline, but the scheduled continuation destabilized
+  the final result to <code>0.0</code>. This points at continuation policy and
+  scope-stability guards, not simply at interaction count.</li>
+<li>In the max-5 repeat, baseline remained stable at <code>0.25</code> for rounds 1-5, while
+  treatment remained at <code>0.25</code> for rounds 1-2 and then degraded to <code>0.0</code> for
+  rounds 3-5. That makes the continuation-risk diagnosis more stable than the
+  old two-round sample alone.</li>
+<li>In the baseline-safe prompt ablation, the treatment route kept the same
+  two-round blind-loop budget but used ordinary baseline-compatible framing for
+  the first prompt. It preserved <code>0.25</code> across both rounds, so the regression is
+  more likely caused by structured treatment framing and scope expansion than by
+  the mere presence of a second interaction.</li>
+</ul>
+<p>Why it matters:</p>
+<ul>
+<li>It prevents us from making a broad "LoopX treatment is better" claim
+  based only on the Terminal-Bench uplift case.</li>
+<li>It points specifically at automation-loop behavior: prompt shape, polling
+  cadence, round budget, termination policy, and scope-preservation rules.</li>
+<li>It gives us a negative-control case for prompt/round-policy ablations.</li>
+<li>It gives us a repair candidate: baseline-safe treatment framing should be
+  tested against positive, neutral, and success/non-regression guards before any
+  default policy change.</li>
+</ul>
+<p>Follow-up guidance:</p>
+<ul>
+<li>Treat baseline-safe framing as the current prompt-policy candidate, but do not
+  promote it until it preserves at least one positive-control, one neutral
+  control, and the <code>ada-bathroom-plan-repair</code> success guard.</li>
+<li>Compare fixed polling, model-decided termination, and hybrid termination on
+  compact evidence rather than chat memory.</li>
+<li>Use this case as a regression guard when changing the automation-loop route or
+  blind-loop scheduled-continuation policy.</li>
+<li>Test a stop/stabilize rule that preserves nonzero partial-credit states unless
+  local evidence clearly justifies further risky edits.</li>
+<li>Add a hard guard or strong prompt rule against editing protected files unless
+  verifier-facing evidence explicitly requires it.</li>
+</ul>
+<h2 id="case-skillsbench-civ6-adjacency-optimizer">Case: SkillsBench civ6-adjacency-optimizer<a class="headerlink" href="#case-skillsbench-civ6-adjacency-optimizer" title="Permanent link">&para;</a></h2>
+<p>This is a clean no-uplift case from the repaired SkillsBench staging path, now
+rechecked under the primary blind-loop treatment route.</p>
+<p>Compact evidence:</p>
+<ul>
+<li>benchmark: <code>skillsbench@1.1</code></li>
+<li>baseline arm: <code>codex_goal_mode_baseline</code></li>
+<li>baseline run id: <code>8eccae2d04d6</code></li>
+<li>baseline score: <code>0.0</code></li>
+<li>baseline failure: <code>official_verifier_solution_failure</code></li>
+<li>treatment arm: <code>loopx_automation_loop_treatment</code></li>
+<li>treatment run id: <code>978868092e84</code></li>
+<li>treatment score: <code>0.0</code></li>
+<li>treatment failure: <code>official_verifier_solution_failure</code></li>
+<li>blind-loop run group:
+  <code>skillsbench-civ6-adjacency-optimizer-blind-loop-v0</code></li>
+<li>blind-loop baseline: <code>codex-acp-blind-loop-baseline</code>, run id
+  <code>973d9618d7f6</code>, score <code>0.0</code>, rounds <code>1:0,2:0</code></li>
+<li>blind-loop treatment: <code>loopx-blind-loop-treatment</code>, run id
+  <code>8d21a5cc42f2</code>, score <code>0.0</code>, rounds <code>1:0,2:0</code>,
+  <code>first_success_round=null</code></li>
+</ul>
+<p>Interpretation:</p>
+<p>The baseline failure is useful because it reached official verifier scoring
+after staging repair; it is a case/solution failure, not a setup or
+materialization artifact. The treatment exercised the automation-loop surface:
+compact controller trace was present, two heartbeat/action decisions were
+recorded, and the second round followed failed reward/verifier feedback.</p>
+<p>The treatment still scored <code>0.0</code>. The stable conclusion is therefore not
+"LoopX regressed", but "generic two-round feedback did not help this
+task family."</p>
+<p>The blind-loop repeat preserves that conclusion without returning official
+reward, pass/fail status, verifier errors, verifier output, or private verifier
+tail to the agent. Both arms completed official scoring at <code>0.0</code> and recorded
+<code>1:0,2:0</code>, so this case is a clean neutral guard for no-reward comparison
+claims.</p>
+<p>Why it matters:</p>
+<ul>
+<li>It adds a baseline-failing SkillsBench case without setup confound.</li>
+<li>It shows that the automation-loop machinery ran, observed feedback, and
+  still did not improve official score.</li>
+<li>It is a good historical control for showing that verifier feedback is an
+  oracle-assisted ablation, not a route to tune or ship as fair LoopX
+  treatment.</li>
+<li>It now also guards blind-loop prompt, continuation, and termination changes
+  alongside <code>manufacturing-codebook-normalization</code>.</li>
+</ul>
+<p>Follow-up guidance:</p>
+<ul>
+<li>Do not count this as uplift evidence.</li>
+<li>Repeat only after a targeted blind-loop prompt, termination, or task-family
+  hypothesis.</li>
+<li>Mine more baseline-failing SkillsBench cases before overfitting to this one.</li>
+</ul>
+<h2 id="case-skillsbench-manufacturing-codebook-normalization">Case: SkillsBench manufacturing-codebook-normalization<a class="headerlink" href="#case-skillsbench-manufacturing-codebook-normalization" title="Permanent link">&para;</a></h2>
+<p>This is the first clean no-uplift neutral guard that has been rechecked under
+the primary blind-loop treatment route.</p>
+<p>Compact evidence:</p>
+<ul>
+<li>benchmark: <code>skillsbench@1.1</code></li>
+<li>baseline arm: <code>codex_goal_mode_baseline</code></li>
+<li>baseline run id: <code>c76c8bed6a8a</code></li>
+<li>baseline score: <code>0.0</code></li>
+<li>baseline failure: <code>official_verifier_solution_failure</code></li>
+<li>treatment arm: <code>loopx_automation_loop_treatment</code></li>
+<li>treatment run id: <code>e85065a9c230</code></li>
+<li>treatment score: <code>0.0</code></li>
+<li>treatment failure: <code>official_verifier_solution_failure</code></li>
+<li>blind-loop run group:
+  <code>skillsbench-manufacturing-codebook-normalization-blind-loop-v0</code></li>
+<li>blind-loop baseline: <code>codex-acp-blind-loop-baseline</code>, score <code>0.0</code>, rounds
+  <code>1:0,2:0</code></li>
+<li>blind-loop treatment: <code>loopx-blind-loop-treatment</code>, score <code>0.0</code>,
+  rounds <code>1:0,2:0</code>, <code>first_success_round=null</code></li>
+</ul>
+<p>Interpretation:</p>
+<p>The baseline reached official SkillsBench verifier scoring and failed with
+reward <code>0.0</code>, so it is a valid baseline-failing candidate rather than a setup
+or materialization blocker. The treatment also reached official scoring and
+exercised the automation-loop surface: compact counters record two
+heartbeat/controller decisions, one initial prompt, one failed-reward
+observation, and one follow-up after failed reward.</p>
+<p>The treatment still scored <code>0.0</code>. This strengthens the neutral-control set:
+the outer loop can run correctly and still fail to improve a clean
+solver-scoped baseline failure.</p>
+<p>The primary blind-loop repeat preserves that conclusion without returning
+official reward, pass/fail, verifier errors, or verifier output to the agent.
+Both blind-loop arms completed official scoring at <code>0.0</code> and recorded
+<code>1:0,2:0</code>, so this case is a neutral guard for the no-reward comparison route.</p>
+<p>Why it matters:</p>
+<ul>
+<li>It adds a second no-uplift SkillsBench control after
+  <code>civ6-adjacency-optimizer</code>.</li>
+<li>It prevents overfitting prompt/round policy to the two positive-control
+  cases.</li>
+<li>It shows that "one follow-up after failed reward" is a useful mechanism on
+  some cases, but not a sufficient policy for all task families.</li>
+<li>It also shows that the current blind-loop framing alone is not sufficient for
+  this task family.</li>
+</ul>
+<p>Follow-up guidance:</p>
+<ul>
+<li>Do not count this as uplift evidence.</li>
+<li>Repeat only after a targeted blind-loop prompt, continuation, or task-family
+  hypothesis.</li>
+<li>Use it as a neutral guard alongside the <code>debug-trl-grpo</code> regression guard and
+  the reward-feedback-only positive controls.</li>
+</ul>
+<h2 id="case-skillsbench-software-dependency-audit">Case: SkillsBench software-dependency-audit<a class="headerlink" href="#case-skillsbench-software-dependency-audit" title="Permanent link">&para;</a></h2>
+<p>This is a clean no-uplift case from the repaired SkillsBench staging path, now
+rechecked under the primary blind-loop treatment route.</p>
+<p>Compact evidence:</p>
+<ul>
+<li>benchmark: <code>skillsbench@1.1</code></li>
+<li>baseline arm: <code>codex_goal_mode_baseline</code></li>
+<li>baseline run id: <code>885b7647488b</code></li>
+<li>baseline score: <code>0.0</code></li>
+<li>baseline failure: <code>official_verifier_solution_failure</code></li>
+<li>treatment arm: <code>loopx_automation_loop_treatment</code></li>
+<li>treatment run id: <code>6cf96cd0b19a</code></li>
+<li>treatment score: <code>0.0</code></li>
+<li>treatment failure: <code>official_verifier_solution_failure</code></li>
+<li>blind-loop run group:
+  <code>skillsbench-software-dependency-audit-blind-loop-v0</code></li>
+<li>blind-loop baseline: <code>codex-acp-blind-loop-baseline</code>, run id
+  <code>42be7dc4459e</code>, score <code>0.0</code>, rounds <code>1:0,2:0</code></li>
+<li>blind-loop treatment: <code>loopx-blind-loop-treatment</code>, run id
+  <code>173a02eb893d</code>, score <code>0.0</code>, rounds <code>1:0,2:0</code>,
+  <code>first_success_round=null</code></li>
+</ul>
+<p>Interpretation:</p>
+<p>The legacy pair already showed no score uplift after the SkillsBench staging
+repair: both arms reached official scoring and stayed at <code>0.0</code>. The primary
+blind-loop repeat preserves that conclusion under the stricter no-reward
+protocol. It returned no official reward, pass/fail status, verifier errors,
+verifier output, or private verifier tail to the agent during the loop.</p>
+<p>Both blind-loop arms completed official scoring at <code>0.0</code> and recorded
+<code>1:0,2:0</code>. This makes the case another neutral guard for no-reward comparison
+claims, especially for dependency-audit-style task families.</p>
+<p>Why it matters:</p>
+<ul>
+<li>It broadens the neutral-control set beyond <code>civ6-adjacency-optimizer</code> and
+  <code>manufacturing-codebook-normalization</code>.</li>
+<li>It shows that a dependency-audit task can remain flat even when the outer
+  loop runs correctly.</li>
+<li>It helps prevent overfitting prompt/round policy to the two old
+  reward-feedback positive controls.</li>
+</ul>
+<p>Follow-up guidance:</p>
+<ul>
+<li>Do not count this as uplift evidence.</li>
+<li>Repeat only after a targeted blind-loop prompt, termination, or task-family
+  hypothesis.</li>
+<li>Keep it in the neutral guard set when changing scheduled continuation policy.</li>
+</ul>
+<h2 id="case-skillsbench-react-performance-debugging">Case: SkillsBench react-performance-debugging<a class="headerlink" href="#case-skillsbench-react-performance-debugging" title="Permanent link">&para;</a></h2>
+<p>This is a clean no-uplift case from the repaired SkillsBench staging path, now
+rechecked under the primary blind-loop treatment route.</p>
+<p>Compact evidence:</p>
+<ul>
+<li>benchmark: <code>skillsbench@1.1</code></li>
+<li>baseline arm: <code>codex_goal_mode_baseline</code></li>
+<li>baseline score: <code>0.0</code></li>
+<li>baseline failure: <code>official_verifier_solution_failure</code></li>
+<li>treatment arm: <code>loopx_automation_loop_treatment</code></li>
+<li>treatment score: <code>0.0</code></li>
+<li>treatment failure: <code>official_verifier_solution_failure</code></li>
+<li>blind-loop run group:
+  <code>skillsbench-react-performance-debugging-blind-loop-v0</code></li>
+<li>blind-loop baseline: <code>codex-acp-blind-loop-baseline</code>, run id
+  <code>851ca794f780</code>, score <code>0.0</code>, rounds <code>1:0,2:0</code></li>
+<li>blind-loop treatment: <code>loopx-blind-loop-treatment</code>, run id
+  <code>8efed51d81e5</code>, score <code>0.0</code>, rounds <code>1:0,2:0</code>,
+  <code>first_success_round=null</code></li>
+</ul>
+<p>Interpretation:</p>
+<p>The blind-loop pair completed both arms under the stricter no-reward protocol:
+no official reward, pass/fail status, verifier errors, verifier output, or
+private verifier tail was returned to the agent during the loop. Both arms
+still reached official scoring at <code>0.0</code> and recorded <code>1:0,2:0</code>.</p>
+<p>This makes the case another neutral guard rather than uplift evidence. It is
+especially useful because it covers a frontend/performance-debugging task
+family instead of another data normalization or dependency-audit task.</p>
+<p>Why it matters:</p>
+<ul>
+<li>It broadens the neutral-control set to a new SkillsBench task family.</li>
+<li>It shows that the two-round blind-loop treatment can execute cleanly and
+  still fail to improve official score.</li>
+<li>It helps prevent overfitting future prompt/round-policy changes to the two
+  old reward-feedback positive controls.</li>
+</ul>
+<p>Follow-up guidance:</p>
+<ul>
+<li>Do not count this as uplift evidence.</li>
+<li>Repeat only after a targeted blind-loop prompt, termination, or task-family
+  hypothesis.</li>
+<li>Keep it in the neutral guard set when changing scheduled continuation policy.</li>
+</ul>
+<h2 id="case-skillsbench-pddl-airport-planning">Case: SkillsBench pddl-airport-planning<a class="headerlink" href="#case-skillsbench-pddl-airport-planning" title="Permanent link">&para;</a></h2>
+<p>This is a clean no-uplift blind-loop pair for a PDDL/planning task family.</p>
+<p>Compact evidence:</p>
+<ul>
+<li>benchmark: <code>skillsbench@1.1</code></li>
+<li>baseline arm: <code>codex_goal_mode_baseline</code></li>
+<li>baseline score: <code>0.0</code></li>
+<li>baseline failure: <code>official_verifier_solution_failure</code></li>
+<li>treatment arm: <code>loopx_automation_loop_treatment</code></li>
+<li>treatment score: <code>0.0</code></li>
+<li>treatment failure: <code>official_verifier_solution_failure</code></li>
+<li>blind-loop run group:
+  <code>skillsbench-pddl-airport-planning-blind-loop-v0</code></li>
+<li>blind-loop baseline: <code>codex-acp-blind-loop-baseline</code>, run id
+  <code>adf46f67374c</code>, score <code>0.0</code>, rounds <code>1:0,2:0</code></li>
+<li>blind-loop treatment: <code>loopx-blind-loop-treatment</code>, run id
+  <code>1564d6cfc2fb</code>, score <code>0.0</code>, rounds <code>1:0,2:0</code>,
+  <code>first_success_round=null</code></li>
+</ul>
+<p>Interpretation:</p>
+<p>The blind-loop pair completed both arms under the stricter no-reward protocol:
+no official reward, pass/fail status, verifier errors, verifier output, or
+private verifier tail was returned to the agent during the loop. Both arms
+reached official scoring at <code>0.0</code> and recorded <code>1:0,2:0</code>.</p>
+<p>Historical pddl-airport-planning attempts were noisy, including runner/result
+variability, so this record should be scoped to the new primary blind-loop
+pair. The value is not uplift evidence; it is another neutral guard, now for
+planning-style tasks.</p>
+<p>Why it matters:</p>
+<ul>
+<li>It broadens the neutral-control set to a PDDL/planning task family.</li>
+<li>It shows that the current two-round blind-loop treatment can execute cleanly
+  and still fail to improve official score.</li>
+<li>It helps prevent overfitting future prompt/round-policy changes to data,
+  frontend, or dependency-audit task families only.</li>
+</ul>
+<p>Follow-up guidance:</p>
+<ul>
+<li>Do not count this as uplift evidence.</li>
+<li>Repeat only after a targeted blind-loop prompt, termination, or task-family
+  hypothesis.</li>
+<li>Keep it in the neutral guard set when changing scheduled continuation policy.</li>
+</ul>
+<h2 id="case-skillsbench-ada-bathroom-plan-repair">Case: SkillsBench ada-bathroom-plan-repair<a class="headerlink" href="#case-skillsbench-ada-bathroom-plan-repair" title="Permanent link">&para;</a></h2>
+<p>This was a runner/setup blocker asset, but the primary blind-loop rerun now
+turns it into a baseline-solved treatment non-regression guard.</p>
+<p>Compact evidence:</p>
+<ul>
+<li>benchmark: <code>skillsbench@1.1</code></li>
+<li>baseline arm: <code>codex-acp-blind-loop-baseline</code></li>
+<li>baseline run id: <code>7d919631a765</code></li>
+<li>baseline score: <code>1.0</code></li>
+<li>baseline first success round: <code>1</code></li>
+<li>treatment arm: <code>loopx-blind-loop-treatment</code></li>
+<li>treatment run id: <code>52a934d39c59</code></li>
+<li>treatment score: <code>1.0</code></li>
+<li>treatment first success round: <code>1</code></li>
+<li>historical setup blocker run ids: <code>2eba92c0552d</code>, <code>87abf4d54cb6</code></li>
+<li>historical blocker classes: <code>skillsbench_codex_acp_launch_failed</code>,
+  <code>skillsbench_codex_acp_binary_missing</code></li>
+</ul>
+<p>Interpretation:</p>
+<p>The old setup blocker remains useful historical runner-readiness evidence, but
+it no longer describes the current primary route. The new blind-loop baseline
+and treatment both reached official verifier pass at <code>1.0</code> in the first
+completed agent round. Official feedback stayed blinded, reward feedback was
+not forwarded, and no raw task text, raw logs, verifier output, or trajectory
+were copied into this analysis.</p>
+<p>Why it matters:</p>
+<ul>
+<li>It repairs the previous classification: this case should no longer be counted
+  as a current setup blocker for the primary blind-loop route.</li>
+<li>It is not uplift evidence, because baseline already solved the task.</li>
+<li>It is a non-regression guard: treatment must continue to preserve easy
+  baseline successes while we tune prompt, continuation, and stop policies.</li>
+<li>It keeps the historical setup failures available as compact runner-readiness
+  evidence without letting them override the newer comparable pair.</li>
+</ul>
+<p>Follow-up guidance:</p>
+<ul>
+<li>Do not use this case for uplift claims.</li>
+<li>Rerun it only after a treatment prompt, round, or stop-policy change.</li>
+<li>Prefer baseline-failing cases for the next uplift-mining run, while preserving
+  this case as a success/non-regression guard.</li>
+</ul>
+<h2 id="case-skillsbench-organize-messy-files">Case: SkillsBench organize-messy-files<a class="headerlink" href="#case-skillsbench-organize-messy-files" title="Permanent link">&para;</a></h2>
+<p>This was a Docker compose setup blocker asset, but the primary blind-loop rerun
+now turns it into another baseline-solved treatment non-regression guard.</p>
+<p>Compact evidence:</p>
+<ul>
+<li>benchmark: <code>skillsbench@1.1</code></li>
+<li>baseline arm: <code>codex-acp-blind-loop-baseline</code></li>
+<li>baseline run id: <code>f25208ace86a</code></li>
+<li>baseline score: <code>1.0</code></li>
+<li>baseline first success round: <code>1</code></li>
+<li>treatment arm: <code>loopx-blind-loop-treatment</code></li>
+<li>treatment prompt style: <code>baseline-safe</code></li>
+<li>treatment run id: <code>60878623ceca</code></li>
+<li>treatment score: <code>1.0</code></li>
+<li>treatment first success round: <code>1</code></li>
+<li>historical setup blocker run id: <code>a1c722810880</code></li>
+<li>historical blocker class: <code>skillsbench_docker_compose_setup_failure</code></li>
+</ul>
+<p>Interpretation:</p>
+<p>The old Docker compose setup blocker remains useful historical
+runner-readiness evidence, but it no longer describes the current primary
+route. The new blind-loop baseline and baseline-safe treatment both reached
+official verifier pass at <code>1.0</code> in the first completed agent round. Official
+feedback stayed blinded, reward feedback was not forwarded, and no raw task
+text, raw logs, verifier output, or trajectory were copied into this analysis.</p>
+<p>Why it matters:</p>
+<ul>
+<li>It repairs the previous classification: this case should no longer be counted
+  as a current setup blocker for the primary blind-loop route.</li>
+<li>It is not uplift evidence, because baseline already solved the task.</li>
+<li>It is a non-regression guard for baseline-safe treatment prompt framing.</li>
+<li>It shows the local Docker capacity/resource staging repair is sufficient for
+  this case family under the current runner path.</li>
+</ul>
+<p>Follow-up guidance:</p>
+<ul>
+<li>Do not use this case for uplift claims.</li>
+<li>Rerun it only after a treatment prompt, round, stop-policy, or Docker staging
+  change.</li>
+<li>Prefer baseline-failing cases for the next uplift-mining run, while preserving
+  this case as a success/non-regression guard.</li>
+</ul>
+<h2 id="case-skillsbench-citation-check">Case: SkillsBench citation-check<a class="headerlink" href="#case-skillsbench-citation-check" title="Permanent link">&para;</a></h2>
+<p>This was an <code>/app</code> mount setup blocker asset, but the primary blind-loop rerun
+now turns it into another baseline-solved treatment non-regression guard.</p>
+<p>Compact evidence:</p>
+<ul>
+<li>benchmark: <code>skillsbench@1.1</code></li>
+<li>baseline arm: <code>codex-acp-blind-loop-baseline</code></li>
+<li>baseline run id: <code>9b4df14b3ed8</code></li>
+<li>baseline score: <code>1.0</code></li>
+<li>baseline first success round: <code>1</code></li>
+<li>treatment arm: <code>loopx-blind-loop-treatment</code></li>
+<li>treatment prompt style: <code>baseline-safe</code></li>
+<li>treatment run id: <code>d553e635f00c</code></li>
+<li>treatment score: <code>1.0</code></li>
+<li>treatment first success round: <code>1</code></li>
+<li>historical setup blocker run id: <code>cec197c1424a</code></li>
+<li>historical blocker class: <code>skillsbench_environment_app_mount_missing</code></li>
+</ul>
+<p>Interpretation:</p>
+<p>The old <code>/app</code> mount setup blocker remains useful historical runner-readiness
+evidence, but it no longer describes the current staged primary route. The new
+blind-loop baseline and baseline-safe treatment both reached official verifier
+pass at <code>1.0</code> in the first completed agent round. Official feedback stayed
+blinded, reward feedback was not forwarded, and no raw task text, raw logs,
+verifier output, or trajectory were copied into this analysis.</p>
+<p>Why it matters:</p>
+<ul>
+<li>It repairs the previous classification: this case should no longer be counted
+  as a current setup blocker for the primary blind-loop route.</li>
+<li>It is not uplift evidence, because baseline already solved the task.</li>
+<li>It is a non-regression guard for baseline-safe treatment prompt framing.</li>
+<li>It gives a second setup-history-to-success-guard example after
+  <code>organize-messy-files</code>, which helps keep stale setup blockers out of case
+  outcome statistics.</li>
+</ul>
+<p>Follow-up guidance:</p>
+<ul>
+<li>Do not use this case for uplift claims.</li>
+<li>Rerun it only after a treatment prompt, round, stop-policy, or task-staging
+  change.</li>
+<li>Prefer baseline-failing cases for the next uplift-mining run, while preserving
+  this case as a success/non-regression guard.</li>
+</ul>
+<p>Canonical product-mode rerun note:</p>
+<ul>
+<li>run group: <code>skillsbench-citation-check-c9facd4-canonicalbridge-20260624T1815Z</code></li>
+<li>route: <code>loopx-product-mode</code></li>
+<li>official score: <code>0.0</code></li>
+<li>failure attribution: <code>official_verifier_solution_failure</code></li>
+<li>lifecycle counters: 8 driver lifecycle checkpoints, 32 successful driver
+  lifecycle calls, 0 driver lifecycle failures, 10 agent LoopX CLI calls,
+  1 agent state read, and 8 agent state writes.</li>
+<li>verifier policy: <code>final-only</code>; intermediate soft verify call count <code>0</code>,
+  skipped count <code>8</code>; official feedback and reward/pass/fail signals were not
+  forwarded to the agent.</li>
+</ul>
+<p>This rerun does not overturn the older blind-loop non-regression result. It
+answers a different product-mode question: the canonical bridge can exercise
+LoopX lifecycle, but <code>final-only</code> gives the controller no private per-round
+reward signal. Therefore the runner continues through the scheduled prompt
+budget even when another run history says this case can be solved. In the
+historical product-mode <code>1.0</code> row, the <code>1.0</code> was only observed at the final
+official scoring point, so earlier rounds could not have stopped on it.</p>
+<p>Every-round product-mode rerun note:</p>
+<ul>
+<li>run group: <code>skillsbench-citation-check-ef3006e-everyround-cleanup-20260624T2022Z</code></li>
+<li>run id: <code>ac6716eb1ae2</code></li>
+<li>route: <code>loopx-product-mode</code></li>
+<li>official score: <code>0.0</code></li>
+<li>failure attribution: <code>official_verifier_solution_failure</code></li>
+<li>lifecycle counters: 1 driver lifecycle checkpoint, 4 driver lifecycle CLI
+  calls, 18 agent LoopX CLI calls, 2 agent state reads, 16 agent state writes,
+  and 8 task-facing bridge operations.</li>
+<li>verifier policy: <code>every-round</code>; intermediate soft verify call count <code>1</code>,
+  skipped count <code>0</code>; soft verifier timeout was enabled at 180 seconds but did
+  not trigger in this completed run.</li>
+</ul>
+<p>This rerun proves the canonical product-mode driver can produce public-safe
+every-round verifier counters and full LoopX lifecycle counters. It stopped
+after round 1 because the agent declared done and final official scoring
+returned <code>0.0</code>. The attribution is therefore solution/case scoped, not
+transport, lifecycle, or reward-sampling scoped. The separate soft-timeout
+cleanup path is covered by runner smoke and remains a guard for cases whose
+intermediate verifier process tree does hang.</p>
+<p>Policy outcome:</p>
+<ul>
+<li>Product-mode should default to every-round private soft verification.</li>
+<li>The controller may stop as soon as reward reaches <code>1.0</code>.</li>
+<li>Reward, pass/fail, verifier output, and task-private material must remain
+  blinded from the agent unless an experiment explicitly studies feedback.</li>
+<li><code>final-only</code> remains useful only as an explicit ablation for measuring the
+  cost of withholding all intermediate verifier observations.</li>
+</ul>
+<h2 id="case-skillsbench-3d-scan-calc">Case: SkillsBench 3d-scan-calc<a class="headerlink" href="#case-skillsbench-3d-scan-calc" title="Permanent link">&para;</a></h2>
+<p>This was a legacy baseline-pass-only record, but the primary blind-loop rerun
+now turns it into another baseline-solved treatment non-regression guard.</p>
+<p>Compact evidence:</p>
+<ul>
+<li>benchmark: <code>skillsbench@1.1</code></li>
+<li>baseline arm: <code>codex-acp-blind-loop-baseline</code></li>
+<li>baseline run id: <code>9b1d8be29eb4</code></li>
+<li>baseline score: <code>1.0</code></li>
+<li>baseline first success round: <code>1</code></li>
+<li>treatment arm: <code>loopx-blind-loop-treatment</code></li>
+<li>treatment prompt style: <code>baseline-safe</code></li>
+<li>treatment run id: <code>306537fca3ac</code></li>
+<li>treatment score: <code>1.0</code></li>
+<li>treatment first success round: <code>1</code></li>
+<li>historical context: older baseline run <code>9e5ca7417555</code> also passed, but was
+  not a current primary blind-loop treatment pair.</li>
+</ul>
+<p>Canonical product-mode every-round recheck:</p>
+<ul>
+<li>baseline run group:
+  <code>skillsbench-3d-scan-calc-d666545-everyround-baseline-20260624T2047Z</code></li>
+<li>baseline run id: <code>fac3a39fdd9a</code></li>
+<li>treatment run group:
+  <code>skillsbench-3d-scan-calc-d666545-everyround-treatment-20260624T2053Z</code></li>
+<li>treatment run id: <code>10d4a914cccc</code></li>
+<li>route pair: <code>raw-codex-autonomous-max5</code> -&gt; <code>loopx-product-mode</code></li>
+<li>max-rounds budget: <code>8</code></li>
+<li>baseline score / first success round / final round: <code>1.0</code> / <code>1</code> / <code>1</code></li>
+<li>treatment score / first success round / final round: <code>1.0</code> / <code>1</code> / <code>1</code></li>
+<li>every-round private soft verifier calls: baseline <code>1</code>, treatment <code>1</code></li>
+<li>product-mode pair review: <code>main_table_ready</code>; <code>claim_blocker=none</code></li>
+<li>treatment lifecycle counters: checkpoint count <code>1</code>, checkpoint round <code>1</code>,
+  state reads <code>2</code>, state writes <code>16</code>, refresh-state calls <code>2</code>, quota spend-slot
+  calls <code>2</code>, todo closeout calls <code>6</code></li>
+<li>host-local ACP Codex exec preflight: <code>passed</code></li>
+</ul>
+<p>Historical final-only lifecycle trajectory summary:</p>
+<ul>
+<li>baseline summary: <code>1</code> round, <code>7</code> tool calls, <code>0</code> LoopX CLI calls</li>
+<li>treatment summary: <code>8</code> rounds, <code>138</code> tool calls, <code>73</code> LoopX CLI calls</li>
+<li>treatment LoopX CLI state usage: <code>28</code> reads, <code>43</code> writes, <code>2</code> other</li>
+<li>case-local state access in that historical public trace: <code>0</code> reads, <code>0</code>
+  writes</li>
+</ul>
+<p>Interpretation:</p>
+<p>The old record said the case was solvable by baseline, but it did not answer
+whether the current LoopX treatment wrapper preserves that success under
+the no-reward primary protocol. The new blind-loop baseline and baseline-safe
+treatment both reached official verifier pass at <code>1.0</code> in the first completed
+agent round. Official feedback stayed blinded, reward feedback was not
+forwarded, and no raw task text, raw logs, verifier output, or trajectory were
+copied into this analysis.</p>
+<p>The canonical product-mode recheck answers a different question: can the
+current product-mode lifecycle driver run a real SkillsBench case, sample the
+private verifier every round, stop early when reward reaches <code>1.0</code>, and still
+leave public-safe LoopX lifecycle counters? For this case, yes. Both arms had
+an 8-round budget but stopped after round 1 because the private verifier
+observed reward <code>1.0</code>; the reward/pass/fail/verifier output was not forwarded
+to the agent. In treatment, the full case-local lifecycle was visible through
+state read/write, refresh, spend, and todo-closeout counters.</p>
+<p>The historical final-only lifecycle trace is kept only as overhead and
+lifecycle-depth-gap evidence. It predates the every-round recheck, and it shows
+that the older product-mode treatment preserved final official success but
+needed all <code>8</code> rounds and substantial LoopX CLI activity. It should not be used
+as the current stop-policy proof.</p>
+<p>Why it matters:</p>
+<ul>
+<li>It is not uplift evidence, because baseline already solved the task.</li>
+<li>It expands the baseline-solved non-regression set to a 3D calculation task
+  family.</li>
+<li>It checks that baseline-safe treatment prompt framing does not harm a case
+  where ordinary Codex ACP can solve the task in the first round.</li>
+<li>It is a good-case proof for the canonical product-mode every-round driver:
+  the driver stopped on private reward <code>1.0</code> and produced complete lifecycle
+  counters.</li>
+<li>It keeps the current policy evidence aligned with the primary blind-loop
+  protocol instead of relying on a legacy baseline-only pass.</li>
+</ul>
+<p>Follow-up guidance:</p>
+<ul>
+<li>Do not use this case for uplift claims.</li>
+<li>Rerun it only after a treatment prompt, round, stop-policy, or task-staging
+  change.</li>
+<li>Prefer baseline-failing cases for the next uplift-mining run, while preserving
+  this case as a success/non-regression guard.</li>
+</ul>
+<h2 id="case-skillsbench-bike-rebalance">Case: SkillsBench bike-rebalance<a class="headerlink" href="#case-skillsbench-bike-rebalance" title="Permanent link">&para;</a></h2>
+<p>This is a baseline-solved non-regression asset and runner-readiness lesson, not
+uplift evidence.</p>
+<p>Compact evidence:</p>
+<ul>
+<li>benchmark: <code>skillsbench@1.1</code></li>
+<li>original pair run group: <code>skillsbench-bike-rebalance-blind-loop-20260616T082339CST-popen</code></li>
+<li>repaired baseline rerun group: <code>skillsbench-bike-rebalance-baseline-rerun-20260616T0852CST</code></li>
+<li>baseline arm: <code>codex-acp-blind-loop-baseline</code></li>
+<li>original baseline run id: <code>a22a96cea1fe</code></li>
+<li>original baseline failure: <code>skillsbench_runner_error</code></li>
+<li>repaired baseline run id: <code>7ab4d4e3f194</code></li>
+<li>repaired baseline score: <code>1.0</code></li>
+<li>repaired baseline rounds: <code>1:1</code></li>
+<li>repaired baseline first success round: <code>1</code></li>
+<li>treatment arm: <code>loopx-blind-loop-treatment</code></li>
+<li>treatment prompt style: <code>baseline-safe</code></li>
+<li>treatment run id: <code>239aecc4f3a3</code></li>
+<li>treatment score: <code>1.0</code></li>
+<li>treatment rounds: <code>1:1</code></li>
+<li>treatment first success round: <code>1</code></li>
+</ul>
+<p>Interpretation:</p>
+<p>The first baseline attempt was invalid for score comparison because it ended as
+<code>skillsbench_runner_error</code> before any recorded round rewards. After the generic
+baseline closeout/preflight-state repair, the baseline-only rerun reached
+official verifier pass in the first completed round.</p>
+<p>The treatment route also reached official verifier pass in the first completed
+round, with official feedback blinded and reward feedback not forwarded to the
+agent. The score delta is therefore <code>0.0</code>: both arms solved the case at <code>1.0</code>
+in round 1.</p>
+<p>Why it matters:</p>
+<ul>
+<li>It prevents a false uplift claim: the treatment pass looked interesting only
+  while the baseline runner was broken.</li>
+<li>It proves the repaired baseline route can materialize, solve, and record
+  <code>first_success_round=1</code> under the no-reward blind protocol.</li>
+<li>It adds a success/non-regression guard: future prompt, continuation, or stop
+  policy changes should keep this baseline-solved case at <code>1.0</code>.</li>
+</ul>
+<p>Follow-up guidance:</p>
+<ul>
+<li>Treat this as a baseline-solved non-regression guard, not a treatment-search
+  target.</li>
+<li>Keep the initial <code>skillsbench_runner_error</code> as runner-readiness evidence, but
+  keep it separate from case-score comparisons.</li>
+<li>Repeat only after a concrete prompt or round-policy change.</li>
+</ul>
+<h2 id="case-skillsbench-azure-bgp-oscillation-route-leak">Case: SkillsBench azure-bgp-oscillation-route-leak<a class="headerlink" href="#case-skillsbench-azure-bgp-oscillation-route-leak" title="Permanent link">&para;</a></h2>
+<p>This is a clean no-uplift control, setup-repair proof, and product-mode depth
+check, not treatment uplift evidence.</p>
+<p>Compact evidence:</p>
+<ul>
+<li>benchmark: <code>skillsbench@1.1</code></li>
+<li>run group: <code>skillsbench-azure-bgp-route-leak-blind-loop-20260616T103700CST</code></li>
+<li>baseline arm: <code>codex-acp-blind-loop-baseline</code></li>
+<li>baseline run id: <code>ed2c390f39b9</code></li>
+<li>baseline score: <code>0.0</code></li>
+<li>baseline rounds: <code>1:0,2:0</code></li>
+<li>treatment arm: <code>loopx-blind-loop-treatment</code></li>
+<li>treatment run id: <code>8d9511cee40f</code></li>
+<li>treatment score: <code>0.0</code></li>
+<li>treatment rounds: <code>1:0,2:0</code></li>
+<li>max5 run group:
+  <code>skillsbench-azure-bgp-oscillation-route-leak-blind-loop-max5-20260616T1649CST</code></li>
+<li>max5 baseline run id: <code>d08c5bf09769</code></li>
+<li>max5 baseline score: <code>0.0</code></li>
+<li>max5 baseline rounds: <code>1:missing,2:0,3:0,4:0,5:0</code></li>
+<li>max5 treatment run id: <code>c50ebc418b8e</code></li>
+<li>max5 treatment score: <code>0.0</code></li>
+<li>max5 treatment rounds: <code>1:missing,2:0,3:0,4:0,5:0</code></li>
+<li>product-mode run group:
+  <code>skillsbench-azure-bgp-product-mode-20260617T195844CST</code></li>
+<li>product-mode baseline route: <code>raw-codex-autonomous-max5</code></li>
+<li>product-mode baseline run id: <code>788c64ee1ddd</code></li>
+<li>product-mode baseline score: <code>0.0</code></li>
+<li>product-mode baseline rounds: <code>1:0</code></li>
+<li>product-mode baseline stop: agent declared done in round 1 with no remaining
+  goals</li>
+<li>product-mode treatment route: <code>loopx-product-mode</code></li>
+<li>product-mode treatment run id: <code>4002396acce9</code></li>
+<li>product-mode treatment score: <code>0.0</code></li>
+<li>product-mode treatment rounds: <code>1:0,2:0,3:0,4:0,5:0</code></li>
+<li>product-mode treatment depth: 5 controller decisions, 5 heartbeat turns, 5
+  case-state reads, and 5 case-state writes</li>
+<li>product-mode protected-path edit signals: <code>0</code></li>
+<li>setup patch: staged Codex ACP runtime tools
+  (<code>codex_acp_runtime_tools_patch_applied=true</code>)</li>
+</ul>
+<p>Interpretation:</p>
+<p>Earlier attempts on this case failed before solver execution: first in Codex ACP
+runtime bootstrap, then in Docker build/container capacity. After adding the
+staged runtime-tools patch and clearing only stopped containers plus dangling
+image layers, both arms reached two completed blind-loop rounds and official
+SkillsBench scoring.</p>
+<p>Both the two-round pair and the later max-5 pair scored <code>0.0</code>, with official
+reward/pass/fail/verifier feedback blinded during the agent loop and rewards
+recorded only after each completed round. The subsequent product-mode pair also
+stayed <code>0.0 -&gt; 0.0</code>: the raw Codex autonomous baseline stopped after round 1
+when the agent declared done, while the LoopX product-mode treatment kept
+the case alive for all 5 rounds through case-local active-state reads/writes.
+The result is therefore a real neutral pair and a depth-control proof: useful
+for runner readiness, product-mode parity, and stop-policy analysis, not for
+uplift claims. The first round's scalar reward is missing in both earlier max-5
+blind-loop arms because only later round and final compact records exposed
+scalar reward; this does not change the final-score or best-score conclusion.</p>
+<p>Why it matters:</p>
+<ul>
+<li>It proves the SkillsBench runner can now move a fresh Docker case past setup
+  into real Codex ACP rounds and official verifier scoring.</li>
+<li>It preserves a no-uplift guard for BGP/network-analysis style tasks.</li>
+<li>It demonstrates that local Docker capacity can masquerade as runner or apt
+  setup failure unless recorded separately from case outcome.</li>
+<li>It shows a real product-mode difference: LoopX prevented premature
+  "done" collapse and drove five compact-safe rounds, but that extra depth did
+  not solve this case.</li>
+</ul>
+<p>Follow-up guidance:</p>
+<ul>
+<li>Do not repeat this case until a prompt, stop-policy, or compact-safe semantic
+  failure hypothesis changes.</li>
+<li>Keep it in the no-uplift guard set when evaluating future blind-loop policy
+  changes.</li>
+<li>Use it as a product-mode depth regression guard: future changes should retain
+  case-state init/read/write counters and avoid reward leakage, but should not
+  claim uplift unless score improves.</li>
+<li>Do not inspect raw trajectory, logs, or task text unless explicitly authorized;
+  use compact summaries first.</li>
+</ul>
+<h2 id="case-skillsbench-setup-fuzzing-py">Case: SkillsBench setup-fuzzing-py<a class="headerlink" href="#case-skillsbench-setup-fuzzing-py" title="Permanent link">&para;</a></h2>
+<p>This is a runner/setup blocker asset, not a solver-quality signal.</p>
+<p>Compact evidence:</p>
+<ul>
+<li>benchmark: <code>skillsbench@1.1</code></li>
+<li>baseline arm: <code>codex-acp-blind-loop-baseline</code></li>
+<li>baseline run id: <code>92aaefc0c077</code></li>
+<li>baseline score: missing</li>
+<li>baseline failure: <code>skillsbench_docker_compose_apt_repository_failure</code></li>
+<li>latest setup intervention: staged Dockerfile apt retry/no-cache patch applied
+  (<code>apt_retry_patch_applied=true</code>, <code>staged=true</code>, <code>task_skills_removed=true</code>)</li>
+<li>treatment arm: not launched</li>
+<li>treatment run id: n/a</li>
+<li>treatment score: n/a</li>
+<li>treatment failure: n/a</li>
+</ul>
+<p>Interpretation:</p>
+<p>The case still has not reached solver execution. Compact evidence shows zero
+completed agent rounds and no official score. The earlier repaired baseline
+uncovered a <code>codex-acp</code> startup failure for missing <code>libssl.so.3</code>; the current
+primary blind-loop baseline has moved past that class and now fails during
+Docker compose setup with a compact <code>apt</code> repository/GPG/hash-fetch
+attribution in the Focal/Oss-Fuzz environment.</p>
+<p>The latest aptrepair rerun proves the staged setup patch was not merely missed:
+the compact artifact and ledger record <code>apt_retry_patch_applied=true</code>, but the
+run still completed zero agent rounds and produced no official score. The
+remaining blocker is deeper than the current retry/no-cache staging layer.</p>
+<p>Why it matters:</p>
+<ul>
+<li>It prevents an environment/runner ABI failure from being counted as a
+  benchmark case failure.</li>
+<li>It gives SkillsBench routing a concrete compatibility constraint: Focal-based
+  Oss-Fuzz tasks need both agent-runtime compatibility and robust package
+  repository setup before they are valid baseline/treatment comparisons.</li>
+<li>It validates the preflight direction: classify startup/setup failures before
+  spending treatment budget.</li>
+<li>It makes same-config repeats low value: repeating this case with the current
+  apt retry/no-cache patch would mostly re-measure the same setup blocker.</li>
+</ul>
+<p>Follow-up guidance:</p>
+<ul>
+<li>Do not launch treatment for this case until the Docker compose apt setup
+  failure is repaired or bypassed by a materially different runner route.</li>
+<li>Prefer a non-Focal or already-compatible SkillsBench case for the next
+  baseline/treatment pair if immediate paired evidence is needed.</li>
+<li>Keep this case as a setup preflight regression test when changing SkillsBench
+  runner bootstrap and Docker setup logic.</li>
+</ul>
+<h2 id="case-skillsbench-adaptive-cruise-control">Case: SkillsBench adaptive-cruise-control<a class="headerlink" href="#case-skillsbench-adaptive-cruise-control" title="Permanent link">&para;</a></h2>
+<p>This is a second compact setup blocker asset for the SkillsBench Docker apt
+route, not a solver-quality signal.</p>
+<p>Compact evidence:</p>
+<ul>
+<li>benchmark: <code>skillsbench@1.1</code></li>
+<li>baseline arm: <code>codex-acp-blind-loop-baseline</code></li>
+<li>baseline run id: <code>235f52dc6a5b</code></li>
+<li>baseline score: missing</li>
+<li>baseline failure: <code>skillsbench_docker_compose_apt_repository_failure</code></li>
+<li>setup intervention: staged Dockerfile apt retry/no-cache patch applied
+  (<code>apt_retry_patch_applied=true</code>, <code>staged=true</code>, <code>task_skills_removed=true</code>)</li>
+<li>treatment arm: not launched</li>
+<li>treatment score: n/a</li>
+</ul>
+<p>Interpretation:</p>
+<p>The fresh no-upload baseline probe produced compact result and controller-trace
+artifacts quickly, but no initial prompt or follow-up was sent because setup
+failed before controller/agent interaction. The same public staging metadata
+as the <code>setup-fuzzing-py</code> aptrepair run shows that the retry/no-cache patch
+entered the staged task. The remaining failure is therefore a broader
+SkillsBench Docker apt setup route risk, not a missed patch or task-solving
+behavior.</p>
+<p>Follow-up guidance:</p>
+<ul>
+<li>Do not launch treatment for this case until baseline reaches agent rounds or
+  official scoring.</li>
+<li>Avoid blind random sampling of additional apt-based Docker tasks until either
+  a compact task-selection filter excludes likely apt setup blockers or the
+  Docker apt setup route changes materially.</li>
+<li>Current runner support: <code>skillsbench_task_setup_preflight</code> now reports
+  public-safe apt setup risk, and <code>--fail-fast-on-apt-risk</code> can close out the
+  case as a setup-selection blocker before a full baseline/treatment attempt.</li>
+<li>Keep <code>adaptive-cruise-control</code> plus <code>setup-fuzzing-py</code> as a two-case setup
+  guard when changing SkillsBench runner bootstrap, staging, or Docker setup.</li>
+</ul>
+<h2 id="case-swe-marathon-zstd-decoder">Case: SWE-Marathon zstd-decoder<a class="headerlink" href="#case-swe-marathon-zstd-decoder" title="Permanent link">&para;</a></h2>
+<p>This is the first SWE-Marathon product-path verified negative asset with an
+extended prompt-polling rerun. It is not an uplift row, not a LoopX connectivity
+blocker, and not yet a content-level root-cause claim.</p>
+<p>Compact evidence:</p>
+<ul>
+<li>benchmark: <code>swe-marathon</code></li>
+<li>baseline arm: <code>swe_marathon_host_codex_app_server_goal_baseline</code></li>
+<li>baseline run id: <code>9ae95dbf5ab4</code></li>
+<li>baseline score: <code>1.0</code></li>
+<li>baseline wall limit: <code>3600s</code></li>
+<li>baseline actual wall time: <code>1071.022472s</code></li>
+<li>baseline official-timeout comparable: <code>false</code></li>
+<li>treatment arm: <code>swe_marathon_loopx_prompt_polling_treatment_10800_pr467</code></li>
+<li>treatment run id: <code>1e3c8703e24b</code></li>
+<li>treatment score: <code>0.0</code></li>
+<li>treatment wall limit: <code>900s</code></li>
+<li>treatment actual wall time: <code>3265.878558s</code></li>
+<li>treatment official-timeout comparable: <code>false</code></li>
+<li>treatment polling rounds observed: <code>5</code> of budget <code>5</code></li>
+<li>treatment follow-up prompts observed: <code>4</code></li>
+<li>treatment failure: <code>official_verifier_solution_failure</code></li>
+<li>first blocker: <code>none</code></li>
+<li>product path: <code>loopx_inside_case=true</code>, worker bridge <code>verified</code>,
+  public LoopX lifecycle/trace observed, and 31 LoopX CLI calls</li>
+</ul>
+<p>Interpretation:</p>
+<p>The native app-server Goal baseline can solve this CPU/no-CUA SWE-Marathon case
+under the current runner. After PR #467, the prompt-driven LoopX treatment also
+exercised the intended case-local LoopX lifecycle and reached official scoring
+after five controller rounds and four follow-up prompts, but still scored
+<code>0.0</code>. The old one-round timeout and pre-bridge runtime blockers are therefore
+superseded for product-path validation. The remaining issue is solution-phase
+quality, prompt/stop policy, or benchmark semantics; public compact evidence
+does not expose the exact code-level mistake.</p>
+<p>Follow-up guidance:</p>
+<ul>
+<li>Do not claim treatment value from this pair.</li>
+<li>Do not claim a stable LoopX-caused regression from this pair without
+  additional phase attribution or a redacted trajectory summary.</li>
+<li>Do not repeat the same case just to prove LoopX connectivity; that part is
+  already verified.</li>
+<li>Before a same-case repeat, add compact edit/build/test/verify phase counters
+  that distinguish incomplete continuation from wrong solution edits or
+  verifier-facing behavior.</li>
+<li>Use this as an extended-round negative guard when changing SWE-Marathon
+  prompt-driven polling, case-local LoopX state, or stop policy.</li>
+</ul>
+<h2 id="cross-case-lessons">Cross-Case Lessons<a class="headerlink" href="#cross-case-lessons" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Lesson</th>
+<th>Evidence</th>
+<th>Implication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connectivity is not case success.</td>
+<td>Terminal-Bench needed materialization and closeout repair before scores were meaningful.</td>
+<td>Keep lifecycle stages separate: launch, materialization, trial, solver, result, verifier.</td>
+</tr>
+<tr>
+<td>Historical treatment route can help, but current-protocol claims need reruns.</td>
+<td><code>multi-source-data-merger</code> improved from <code>0.0</code> to <code>1.0</code> under the legacy Terminal-Bench route; under the current protocol, baseline and treatment both scored <code>1.0</code>.</td>
+<td>Keep the treatment lane alive, but make the main table prefer current product-mode evidence over legacy uplift rows.</td>
+</tr>
+<tr>
+<td>Score delta is not automatically claimable uplift.</td>
+<td><code>nginx-request-logging</code> once showed treatment <code>1.0</code> while the hardened baseline <code>0.0</code> came from worker Codex materialization failure; after repair, the current comparison is <code>1.0 -&gt; 1.0</code>.</td>
+<td>Preserve legacy blocked rows as runner lessons, but make the main table prefer repaired comparable evidence.</td>
+</tr>
+<tr>
+<td>Treatment can preserve baseline success.</td>
+<td><code>ada-bathroom-plan-repair</code>, <code>organize-messy-files</code>, <code>citation-check</code>, <code>3d-scan-calc</code>, and <code>bike-rebalance</code> scored <code>1.0</code> in both blind-loop arms with first_success_round=1.</td>
+<td>Keep baseline-solved non-regression guards so treatment prompts do not damage easy wins.</td>
+</tr>
+<tr>
+<td>Baseline comparability must be repaired before uplift claims.</td>
+<td><code>bike-rebalance</code> first looked like a treatment-only pass because the baseline ended with <code>skillsbench_runner_error</code>; after baseline repair, the rerun also passed at <code>1.0</code>.</td>
+<td>Treat initial runner errors as readiness evidence, not case-score deltas.</td>
+</tr>
+<tr>
+<td>Timeout policy needs phase attribution.</td>
+<td><code>make-doom-for-mips</code> default attempts timed out, a 2h relaunch exposed setup timeout, and setup8+2h still needed verifier attribution.</td>
+<td>Do not treat a longer timeout as a case result unless setup, worker, solver, result, and verifier phases are compactly separated.</td>
+</tr>
+<tr>
+<td>Agent exceptions before verifier reward are not clean no-uplift.</td>
+<td><code>pytorch-model-recovery</code> has compact <code>RuntimeError</code> in both arms with verifier reward absent, and treatment bridge materialization was not proven.</td>
+<td>Route these cases to compact exception-hypothesis work before same-task repeat or treatment claims.</td>
+</tr>
+<tr>
+<td>Treatment can help on SkillsBench too.</td>
+<td><code>llm-prefix-cache-replay</code> and <code>dapt-intrusion-detection</code> both improved from <code>0.0</code> to <code>1.0</code> after one reward-feedback automation-loop follow-up.</td>
+<td>Keep multiple SkillsBench positive-control cases in the reward-feedback ablation test set.</td>
+</tr>
+<tr>
+<td>Blind-loop claims need fresh evidence.</td>
+<td><code>llm-prefix-cache-replay</code> protocol v10 completed baseline <code>0.0</code> and treatment <code>0.0</code> with no reward feedback forwarded.</td>
+<td>Do not recycle reward-feedback wins as blind-control-plane uplift claims; use blind-loop pairs and <code>first_success_round</code> instead.</td>
+</tr>
+<tr>
+<td>Treatment can regress.</td>
+<td><code>debug-trl-grpo</code> dropped from <code>0.25</code> to <code>0.0</code> under both reward-feedback and blind-loop treatment; in the max-5 blind-loop rerun, baseline held <code>0.25</code> for five rounds while treatment fell from early <code>0.25</code> partial credit to <code>0.0</code> after round 2.</td>
+<td>Add negative controls and optimize stop/stabilize policy before scaling treatment claims.</td>
+</tr>
+<tr>
+<td>Treatment can be neutral.</td>
+<td><code>civ6-adjacency-optimizer</code>, <code>manufacturing-codebook-normalization</code>, <code>software-dependency-audit</code>, <code>react-performance-debugging</code>, and <code>pddl-airport-planning</code> all stayed <code>0.0</code> after blind-loop two-round treatment, while <code>azure-bgp-oscillation-route-leak</code> stayed <code>0.0/0.0</code> after both a two-round pair and a max-5 pair.</td>
+<td>Track no-uplift controls separately from regressions and positive cases, and keep neutral guards in prompt/round-policy validation.</td>
+</tr>
+<tr>
+<td>Setup repair is necessary but not sufficient.</td>
+<td>SkillsBench setup was repaired, then a behavior regression remained.</td>
+<td>Separate infra blockers from solver-quality blockers in the ledger and analysis.</td>
+</tr>
+<tr>
+<td>Baseline launch must reach solver/verifier before treatment.</td>
+<td><code>ada-bathroom-plan-repair</code> first produced generic <code>skillsbench_codex_acp_launch_failed</code>; after the preflight repair, rerun evidence narrowed it to <code>skillsbench_codex_acp_binary_missing</code>.</td>
+<td>Block treatment and materialize Codex ACP inside the SkillsBench sandbox before repeating or treating the case.</td>
+</tr>
+<tr>
+<td>Runner ABI can block before solver execution.</td>
+<td><code>setup-fuzzing-py</code> ended with missing <code>libssl.so.3</code>/Focal ABI incompatibility and <code>n_tool_calls=0</code>.</td>
+<td>Preflight task image versus agent binary compatibility; exclude startup blockers from case score statistics.</td>
+</tr>
+<tr>
+<td>Docker capacity can masquerade as apt/signature failure.</td>
+<td><code>organize-messy-files</code> first hit <code>skillsbench_docker_compose_setup_failure</code>; after runner staging/resource repair, the primary blind-loop baseline and treatment both scored <code>1.0</code>.</td>
+<td>Track Docker free space as runner readiness, and update setup-blocked cases after a clean rerun instead of leaving stale blocker classifications.</td>
+</tr>
+<tr>
+<td>Task staging can repair app-mount setup failures.</td>
+<td><code>citation-check</code> first hit <code>skillsbench_environment_app_mount_missing</code>; after staged task preparation, the primary blind-loop baseline and treatment both scored <code>1.0</code>.</td>
+<td>Treat staging/setup blockers as infra facts until a clean comparable pair supersedes them.</td>
+</tr>
+<tr>
+<td>Apt retry/no-cache staging is not enough for every Docker apt setup.</td>
+<td><code>setup-fuzzing-py</code>, <code>adaptive-cruise-control</code>, and the product-mode <code>debug-trl-grpo</code> raw baseline rerun all recorded apt hardening metadata but still ended before agent rounds with <code>skillsbench_docker_compose_apt_repository_failure</code>. A setup-shape scan found only 8 of 87 local SkillsBench tasks are no-apt Docker candidates.</td>
+<td>Add a task-selection filter for apt-risk Docker tasks or materially change the apt setup route before spending more full SkillsBench probes on the same blocker.</td>
+</tr>
+<tr>
+<td>Shallow product-mode lifecycle is not a valid no-uplift claim.</td>
+<td>After Docker readiness repair, <code>paratransit-routing</code> raw-Codex-autonomous-max5 baseline and the old <code>loopx-product-mode</code> treatment both reached agent round 1 and official result at <code>0.0</code>, but treatment only recorded <code>loopx which goal</code>, with <code>loopx_state_reads=0</code> and <code>loopx_state_writes=0</code>.</td>
+<td>Treat host readiness as repaired but mark this product-mode treatment invalid: goal discovery is not stateful LoopX use. Require state read/write/replan lifecycle before a product-mode pair can enter the main table as no-uplift.</td>
+</tr>
+<tr>
+<td>Depth-gate stop semantics can recover the paratransit positive behavior.</td>
+<td><code>paratransit-routing</code> blind-loop treatment passed in round 1; the old product-mode treatment stopped on <code>agent_declared_done</code> at <code>0.0</code>; the later depth-gate product-mode rerun continued to round 5 and reached official score <code>1.0</code>.</td>
+<td>Preserve the depth gate: do not accept declared done at <code>0.0</code> unless the case state has no active todo/goal and compact counters show substantive LoopX lifecycle. For content-level root cause, add a stronger public-safe trajectory summarizer or request an explicit raw-trace gate.</td>
+</tr>
+<tr>
+<td>Apt-risk preflight should happen before full case execution.</td>
+<td>A plan-only probe for <code>setup-fuzzing-py</code> now emits <code>skillsbench_task_setup_preflight</code> with <code>apt_setup_risk_detected=true</code> and no raw task text, raw logs, or raw trajectory reads.</td>
+<td>Use <code>--fail-fast-on-apt-risk</code> or select a non-apt-risk task before launching blind-loop baseline/treatment pairs.</td>
+</tr>
+<tr>
+<td>Docker capacity and runtime-tools setup are runner readiness, not case quality.</td>
+<td><code>azure-bgp-oscillation-route-leak</code> moved from runtime apt/cache and Docker capacity failures to a complete baseline/treatment pair only after staged Codex ACP runtime-tools setup plus bounded dangling-layer cleanup.</td>
+<td>Record setup/capacity repairs separately and do not count pre-materialization failures as case attempts.</td>
+</tr>
+<tr>
+<td>Product-path verification does not prove causal regression.</td>
+<td><code>zstd-decoder</code> baseline passed at <code>1.0</code>; after PR #467 the LoopX prompt-driven treatment reached official scoring with verified case-local lifecycle, five controller rounds, four follow-ups, and 31 CLI calls, but still scored <code>0.0</code>.</td>
+<td>Separate "LoopX path exercised" from "treatment improved outcome" and "LoopX caused regression"; add solution-phase counters or a redacted trajectory summarizer before repeating or claiming root cause.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="boundary">Boundary<a class="headerlink" href="#boundary" title="Permanent link">&para;</a></h2>
+<p>This file records only compact public-safe evidence. It does not copy raw logs,
+task prompts, trajectories, credentials, hidden tests, uploads, or absolute
+local paths.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.action.edit", "content.code.copy", "content.tabs.link", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.path", "search.highlight", "search.share", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

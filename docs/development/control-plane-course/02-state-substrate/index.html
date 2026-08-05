@@ -1,0 +1,3670 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://huangruiteng.github.io/loopx/docs/development/control-plane-course/02-state-substrate/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/loopx-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第 2 讲：状态底座与可重放事实 - LoopX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="LoopX" class="md-header__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../../../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LoopX
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第 2 讲：状态底座与可重放事实
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 2c-1.82 0-3.53.5-5 1.35C8 5.08 10 8.3 10 12s-2 6.92-5 8.65C6.47 21.5 8.18 22 10 22a10 10 0 0 0 10-10A10 10 0 0 0 10 2"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../guides/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../concepts/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../operations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Operations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../capabilities/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Capabilities
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../integrations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Integrations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../product/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Product
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../showcases/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Showcases
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="LoopX" class="md-nav__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../../../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    LoopX
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../guides/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/newcomer-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Newcomer Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/custom-agent-runner-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Runner Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/auto-research-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto Research Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../concepts/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concepts/interaction-pattern-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interaction Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../state-interaction-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    State Interaction Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quota-allocation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quota Allocation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../operations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operations/attention-queue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attention Queue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operations/long-task-cadence-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Long Task Cadence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operations/authority-source-registration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority Sources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../capabilities/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capabilities
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Capabilities
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/issue-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Issue Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/change-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Change Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/explore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Explore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/material-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Material Lifecycle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/value-connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Value Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../integrations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integrations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integrations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/worker-bridge-install-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Worker Bridge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/lark-kanban-control-plane-adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lark Kanban
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/runtime-connector-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Connector Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../reference/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/benchmark-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testing-and-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing And Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Layout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../benchmark-developer-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control Plane Course
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../product/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Product
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/release-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/surfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Surfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/runtimes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtimes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../showcases/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Showcases
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Showcases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/frontend-surface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend Surface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/cases/0617-blocked-p0-safe-rotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blocked P0 Safe Rotation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/cases/0619-loopx-self-iteration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LoopX Self Iteration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/cases/0624-pr-issue-auto-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PR Issue Auto Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学习目标
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本讲技术契约
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#showcase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从三个 Showcase 找事实归属
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        看板列是多轴状态的 Projection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#goal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Goal 不是聊天线程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#session-context-project-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Session Context 不是 Project Memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五类状态面
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五类状态面">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-project-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Project registry：注册与策略真相
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-event-ledger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Event ledger：追加式事实
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-active-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Active state：人可读工作台与兼容投影
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-run-history-agent-evidence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Run history 与 agent evidence：执行证据索引
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-status-read-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Status：面向操作者的 read model
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-statedomain-state-runtime-artifact" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core State、Domain State 与 Runtime Artifact
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#canonical-projection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical 与 Projection 的判别法
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#todo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一次 Todo 写入如何穿过状态层
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projection_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么不能直接编辑 Projection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replay 与恢复
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projection-gap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projection Gap：控制面常见故障
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        状态所有权边界
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实验：沿一次状态变化追踪事实
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="实验：沿一次状态变化追踪事实">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-registry-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 先读 registry 与 status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-todo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 增加并领取一个 todo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 比较三种读面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-successor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 完成并写 successor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status-read-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心代码领读：从一条事件到 status read model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="核心代码领读：从一条事件到 status read model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Registry 只解析连接边界
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-event-store-sequence-fingerprint-replay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Event store 用锁、sequence 和 fingerprint 保证可 replay
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-todo-projection-markdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Todo projection 先信结构化事件，缺失时才兼容 Markdown
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-status-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Status collection 是聚合器，不是第二套状态机
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据流练习
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        读完这一段应能回答
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        代码阅读路线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smoke" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        代表性 Smoke
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见设计错误
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="常见设计错误">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sink" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        把项目私有文件当成通用 sink 数据源
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为每个 host 复制一份状态机
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        把兼容 migration 当作当前模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        只追加文档，不退休旧真相
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        课后检查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/huangruiteng/loopx/edit/main/docs/development/control-plane-course/02-state-substrate.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="2">第 2 讲：状态底座与可重放事实<a class="headerlink" href="#2" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>本讲结论：</strong> Canonical event/state contract 拥有长期事实；active state、status 和
+dashboard 是可重建 read model；session context 不能替代 project memory。</p>
+</blockquote>
+<p>建议时长：90 分钟。讲解 55 分钟、状态追踪 20 分钟、实验 15 分钟。</p>
+<h2 id="_1">学习目标<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>完成本讲后，开发者应该能够：</p>
+<ol>
+<li>区分 goal、executor、user/operator 和 dashboard 四类 actor。</li>
+<li>区分 registry、event ledger、active state、run history 和 status projection。</li>
+<li>解释为什么 projection 不能成为写 API。</li>
+<li>沿一次 todo transition 找到它的事实源和 read model。</li>
+<li>判断一个新字段应该属于配置、事件、工作台还是展示层。</li>
+<li>区分 session context、project memory、Domain State 和私有 runtime artifact。</li>
+</ol>
+<h2 id="_2">本讲技术契约<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>边界</th>
+<th>LoopX 中的答案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>State owner</td>
+<td>Registry 拥有长期配置；canonical todo/event/state contract 拥有已提交事实</td>
+</tr>
+<tr>
+<td>Turn snapshot</td>
+<td>Status、todo projection 和 fresh environment observation 组成本轮只读输入</td>
+</tr>
+<tr>
+<td>Write boundary</td>
+<td>只有经过 authority 与 transition validation 的 CLI/API 可以提交状态</td>
+</tr>
+<tr>
+<td>Replay boundary</td>
+<td>从 durable state 重建 read model，再重新探测当前环境；不重放旧推理文本</td>
+</tr>
+<tr>
+<td>Forbidden</td>
+<td>Session、dashboard、sink 和 host 不能直接成为 goal truth</td>
+</tr>
+</tbody>
+</table>
+<h2 id="showcase">从三个 Showcase 找事实归属<a class="headerlink" href="#showcase" title="Permanent link">&para;</a></h2>
+<p>先不背状态文件。遇到一条信息时，先问“谁能证明它是真的”：</p>
+<table>
+<thead>
+<tr>
+<th>信息</th>
+<th>Issue-Fix owner</th>
+<th>Single-Agent Auto ML owner</th>
+<th>Auto Research owner</th>
+<th>LoopX 怎样保存</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>外部对象当前状态</td>
+<td>Repository / GitHub</td>
+<td>training/evaluation provider</td>
+<td>evaluator / artifact store / public source</td>
+<td>fresh observation，不复制成第二权威源</td>
+</tr>
+<tr>
+<td>可跨 turn 复用的领域事实</td>
+<td>feasibility、PR lifecycle</td>
+<td>experiment contract/result、hypothesis ledger</td>
+<td>hypothesis、evidence event、metric result</td>
+<td>stable key + compact fingerprint + lineage</td>
+</tr>
+<tr>
+<td>当前必须做的工作</td>
+<td>Kernel todo/gate/monitor</td>
+<td>Kernel candidate todo/task monitor/promotion gate</td>
+<td>Kernel role todo/promotion gate</td>
+<td>canonical lifecycle transition</td>
+</tr>
+<tr>
+<td>本轮临时推理和工具输出</td>
+<td>coding session / workspace</td>
+<td>model session / experiment workspace</td>
+<td>worker session / experiment workspace</td>
+<td>不作为长期事实；只提取 validated ref</td>
+</tr>
+<tr>
+<td>给人和 host 看的当前视图</td>
+<td>status / PR report</td>
+<td>experiment board / Explore Graph</td>
+<td>frontier / evidence graph</td>
+<td>从 canonical state 重建 projection</td>
+</tr>
+</tbody>
+</table>
+<p>同一句“PR checks 仍 pending”可能同时出现在 session、Domain State 和 status 中，但它们的
+权威不同：GitHub 证明当前事实，Domain State 证明某轮已观察到什么，status 只是把已提交
+状态展示出来。判断 owner 后，再决定它应进入 registry、event、Domain State 还是只留在
+runtime artifact。</p>
+<p>Auto ML 里最容易混淆的是三种“图或表”：</p>
+<table>
+<thead>
+<tr>
+<th>表面</th>
+<th>拥有什么</th>
+<th>不能证明什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>External task/metric source</td>
+<td>task 当前状态、原始 artifact 与 provider readback</td>
+<td>LoopX 已接受结果、候选值得 promotion</td>
+</tr>
+<tr>
+<td>ML Experiment Domain State</td>
+<td>matched contract、紧凑结果、归因、promotion/no-promote proposal</td>
+<td>通用 todo 已关闭、资源或发布已获授权</td>
+</tr>
+<tr>
+<td>Explore Graph result log/view</td>
+<td>hypothesis、experiment、finding 与 supports/refutes lineage</td>
+<td>graph edge 已执行、Harness 建议已 claim</td>
+</tr>
+</tbody>
+</table>
+<p>恢复时先重新观察外部 task，再按稳定 identity 更新 Domain State；material finding 才追加到
+Explore result log。Explore Harness 读取这些 projection 做 planning，但它不写回 external
+truth，也不成为第四个状态源。</p>
+<h2 id="projection">看板列是多轴状态的 Projection<a class="headerlink" href="#projection" title="Permanent link">&para;</a></h2>
+<p>面向操作者的界面可以把 todo 渲染成 Kanban，但 canonical state 不能退化成一个
+<code>column</code> 字段。同一张卡片至少同时具有四组状态：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>典型字段或对象</th>
+<th>回答的问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lifecycle</td>
+<td><code>open</code>、<code>blocked</code>、<code>deferred</code>、<code>done</code></td>
+<td>工作是否仍在生命周期中？</td>
+</tr>
+<tr>
+<td>Task class</td>
+<td>advancement、user gate/action、monitor、blocker</td>
+<td>这是什么类型的工作或等待？</td>
+</tr>
+<tr>
+<td>Routing and authority</td>
+<td>claim、lease、dependency、scope、capability</td>
+<td>谁能执行，前置条件和权限是否满足？</td>
+</tr>
+<tr>
+<td>Proof and time</td>
+<td>evidence、receipt、freshness、cadence、<code>resume_when</code></td>
+<td>什么证明变化成立，何时应再次观察？</td>
+</tr>
+</tbody>
+</table>
+<p>看板可以把这些事实投影成便于操作的逻辑列：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Runnable | Claimed | Waiting on user | Monitoring | Blocked | Review | Done
+</span></code></pre></div>
+<p>这些列不是新的事实源。“Waiting on user”来自 scoped user gate，“Monitoring”来自
+带 cadence 和 target key 的 monitor，“Review”可以来自领域状态与当前 acceptance，
+而不是把每个展示名称写进 Kernel lifecycle enum。</p>
+<p>看板上的移动也对应结构化算子，而不是任意拖拽：</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>必须保持的约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claim / release</td>
+<td>注册身份、executor exclusion、lease 和 workspace 仍然有效</td>
+</tr>
+<tr>
+<td>Gate / decide</td>
+<td>decision scope、阻塞对象和授权结果明确绑定</td>
+</tr>
+<tr>
+<td>Monitor / resume</td>
+<td>target、cadence、fresh observation 和恢复条件可重放</td>
+</tr>
+<tr>
+<td>Complete / supersede</td>
+<td>evidence、successor 或 no-follow-up rationale 完整</td>
+</tr>
+<tr>
+<td>Writeback / replay / repair</td>
+<td>已提交 transition 可验证，projection 可重建，失败后可恢复</td>
+</tr>
+</tbody>
+</table>
+<p>Capability Pack 可以在同一组通用算子上增加领域泳道。例如 Issue Fix 展示
+<code>feasibility -&gt; patch -&gt; CI -&gt; review -&gt; merge</code>，Single-Agent Auto ML 展示
+<code>candidate -&gt; preflight -&gt; launch -&gt; monitor -&gt; evaluate -&gt; promote/no-promote</code>，Auto
+Research 展示 <code>hypothesis -&gt; execute -&gt; evaluate -&gt; promote/retire</code>。这些阶段来自 Domain
+State 和 capability proposal；只要它们涉及 claim、gate、quota、permission 或 terminal
+closure，最终 transition 仍由 Kernel 接受或拒绝。</p>
+<h2 id="goal">Goal 不是聊天线程<a class="headerlink" href="#goal" title="Permanent link">&para;</a></h2>
+<p>LoopX 的 durable identity 是 goal，不是某个 Codex thread：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Goal: 长期存在的目标、边界和进度身份
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Executor: 某一轮暂时执行 bounded transition 的模型 session
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>User/operator: 拥有高风险决策和目标边界
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>Dashboard: 只读观察和路由界面
+</span></code></pre></div>
+<p>一个 goal 可以先后被多个 session、模型或 host 推进。一个 session 也可能在不同时间读取多个 goal，但它不能因为读到了某个 goal 就获得写权限。</p>
+<p>这一区分解决了两个常见问题：</p>
+<ul>
+<li>聊天压缩或 session 结束后，长期任务仍可恢复；</li>
+<li>多个 peer 可以共享事实，而不共享同一个巨大 transcript。</li>
+</ul>
+<h2 id="session-context-project-memory">Session Context 不是 Project Memory<a class="headerlink" href="#session-context-project-memory" title="Permanent link">&para;</a></h2>
+<p>长程任务跨 session 恢复时，下一位 peer 同时面对三类信息：当前对话留下的临时
+上下文、LoopX 持久化的 project memory，以及必须重新探测的运行环境。三者拥有
+不同事实：</p>
+<table>
+<thead>
+<tr>
+<th>表面</th>
+<th>保存什么</th>
+<th>可能发生什么</th>
+<th>能否单独作为 authority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Session context</td>
+<td>当前对话、临时推理、尚未写回的观察</td>
+<td>被压缩、截断、结束或换模型</td>
+<td>不能</td>
+</tr>
+<tr>
+<td>Project memory</td>
+<td>goal identity、objective/boundary、todo/gate、紧凑 evidence、run lineage</td>
+<td>被 replay、投影或由另一 peer 恢复</td>
+<td>可以，但必须经过 canonical contract</td>
+</tr>
+<tr>
+<td>Environment</td>
+<td>当前 checkout、host capability、外部服务与 fresh source</td>
+<td>在 handoff 之间变化</td>
+<td>不能，必须重新探测</td>
+</tr>
+</tbody>
+</table>
+<p>恢复的目标不是逐字重建旧 transcript，而是从持久化事实和新鲜环境重新生成可执行
+决定：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>next decision = replay(project memory) + inspect(fresh environment)
+</span></code></pre></div>
+<p>Project memory 的充分性标准是：更换 session 后，新的 peer 仍能从 durable state
+重建同一 objective、authority boundary、open frontier、gate、next probe 和 stop
+condition。它不要求逐字复现旧推理。第 3 讲会把这个要求进一步写成 handoff 的
+不动点检查。</p>
+<p>可以把这看成长期任务的“最小可恢复状态”，而不是“最大可记忆内容”。外置状态应优先保存：</p>
+<ul>
+<li>能改变合法 action set 的事实，例如 gate、claim、capability 与 workspace boundary；</li>
+<li>能改变下一步判断的事实，例如 fresh observation、acceptance gap 与 monitor due time；</li>
+<li>能避免重复 effect 的 identity、receipt 与 reconciliation key；</li>
+<li>能让路线被解释和修订的 evidence ref、vision checkpoint 与 successor lineage。</li>
+</ul>
+<p>原始 transcript、完整工具输出、未验证猜测和可以从 source 重建的展示内容通常不应进入
+canonical state。它们会扩大上下文和隐私成本，却不一定提高恢复正确性。</p>
+<p>状态底座与 CLI packet 也要分开：前者为 replay 保留完整的结构化事实，后者只把当前 lane
+需要的 decision、proof boundary 和 writeback 命令投影进有限模型上下文。Packet 丢失可以
+重建；canonical event 丢失则可能无法判断 effect 是否已提交。</p>
+<h2 id="_3">五类状态面<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="1-project-registry">1. Project registry：注册与策略真相<a class="headerlink" href="#1-project-registry" title="Permanent link">&para;</a></h3>
+<p>Registry 回答“这个 goal 是谁、在哪里、允许什么”。常见字段包括：</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;goal-id&gt;&quot;</span><span class="p">,</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">&quot;repo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;repo&gt;&quot;</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="nt">&quot;state_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;active-state&gt;&quot;</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="nt">&quot;adapter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generic_project_goal_v0&quot;</span><span class="p">},</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="nt">&quot;coordination&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="nt">&quot;agent_model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;peer_v1&quot;</span><span class="p">,</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nt">&quot;registered_agents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;agent-a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;agent-b&quot;</span><span class="p">]</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span><span class="nt">&quot;spawn_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="nt">&quot;spawn_allowed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="nt">&quot;max_children&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">  </span><span class="nt">&quot;guards&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">  </span><span class="nt">&quot;quota&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Registry 适合保存：</p>
+<ul>
+<li>goal identity 和 repo/state_file 连接；</li>
+<li>authority sources；</li>
+<li>registered peer 集合；</li>
+<li>spawn、quota、guard 等长期策略；</li>
+<li>default-off capability 的 opt-in 配置。</li>
+</ul>
+<p>它不适合保存每一次 todo claim、每轮模型输出或临时观察。</p>
+<p>项目 registry 和 global registry 的职责不同：</p>
+<ul>
+<li>project registry 是目标的项目内注册源；</li>
+<li>global registry 聚合多个项目，支持 App automation 和跨项目 status 路由；</li>
+<li>CLI 必须明确使用哪个 registry，不能把某个旧 checkout 的本地文件当成全局真相。</li>
+</ul>
+<h3 id="2-event-ledger">2. Event ledger：追加式事实<a class="headerlink" href="#2-event-ledger" title="Permanent link">&para;</a></h3>
+<p>事件流保存“发生过什么”。协议见 <code>docs/reference/protocols/event-sourced-state-contract-v0.md</code>。</p>
+<p>代表性事件包括：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>todo_added
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>todo_claimed
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>todo_updated
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>todo_completed
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>todo_deferred
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>operator_gate_recorded
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>run_refreshed
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>quota_spent
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>evidence_recorded
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>projection_synced
+</span></code></pre></div>
+<p>事件模型有四个重要属性：</p>
+<ol>
+<li><strong>Append-only</strong>：新事实追加，不重写历史来伪装没有发生过。</li>
+<li><strong>Idempotent</strong>：相同 <code>event_id</code> 和相同 payload 重放不应重复生效。</li>
+<li><strong>Ordered</strong>：使用 append sequence 或确定顺序进行 replay。</li>
+<li><strong>Partitioned</strong>：公开安全摘要和本地私有 payload 分开，不能把 raw transcript 推进公共状态。</li>
+</ol>
+<p>事件适合回答：</p>
+<ul>
+<li>这个 todo 何时被谁 claim？</li>
+<li>这个 gate 为什么被关闭？</li>
+<li>这一轮为什么 spend？</li>
+<li>某个 projection 是否真的完成 readback？</li>
+</ul>
+<h3 id="3-active-state">3. Active state：人可读工作台与兼容投影<a class="headerlink" href="#3-active-state" title="Permanent link">&para;</a></h3>
+<p><code>ACTIVE_GOAL_STATE.md</code> 保留一个人可以直接读的长期工作台，通常包含：</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="gu">## Objective</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="gu">## Operating Contract</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="gu">## Non-goals</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="gu">## Next Action</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="gu">## User Todo</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="gu">## Agent Todo</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="gu">## Progress</span>
+</span></code></pre></div>
+<p>它很重要，但不能简单地理解成“所有 canonical truth 都在 Markdown”。当前设计正在把 todo/history 的规范事实迁移到 append-only event ledger；active state 继续承担：</p>
+<ul>
+<li>人可读目标与边界；</li>
+<li>当前工作台；</li>
+<li>兼容旧状态；</li>
+<li>结构化 projection 的来源之一；</li>
+<li>本地恢复时的可检查表面。</li>
+</ul>
+<p>协议 <code>active_state_structured_projection_v0</code> 是对 Markdown 的只读解析，不是第二个写 API。</p>
+<h3 id="4-run-history-agent-evidence">4. Run history 与 agent evidence：执行证据索引<a class="headerlink" href="#4-run-history-agent-evidence" title="Permanent link">&para;</a></h3>
+<p>一次 run 需要留下足以恢复的紧凑记录，例如：</p>
+<ul>
+<li>classification；</li>
+<li>delivery scale 和 outcome；</li>
+<li>validation/evidence refs；</li>
+<li>blocker 或 successor；</li>
+<li>agent identity；</li>
+<li>spend 关系。</li>
+</ul>
+<p>富 payload 可以保留在本地私有 runtime state；status 和 handoff 只读取 compact、public-safe 的索引。Supervisor 也只读取 thin agent evidence projection，不读取 raw transcript。</p>
+<h3 id="5-status-read-model">5. Status：面向操作者的 read model<a class="headerlink" href="#5-status-read-model" title="Permanent link">&para;</a></h3>
+<p><code>loopx status</code> 把多类事实折叠成一个稳定的只读合同，回答：</p>
+<ul>
+<li>哪些 goal 需要注意？</li>
+<li>哪些 user todo 是 open？</li>
+<li>哪些 agent todo runnable、claimed、blocked 或 stale？</li>
+<li>当前 peer lane 在做什么？</li>
+<li>是否有 contract errors、projection gaps 或 repair needs？</li>
+</ul>
+<p>Status 不是写入口。Dashboard、Lark kanban、review packet 都应该消费 status 或其他 public-safe projection，而不是反向解析私有源文件再写回。</p>
+<h2 id="core-statedomain-state-runtime-artifact">Core State、Domain State 与 Runtime Artifact<a class="headerlink" href="#core-statedomain-state-runtime-artifact" title="Permanent link">&para;</a></h2>
+<p>前面的五类状态面主要解释跨场景生命周期。领域扩展还需要一层紧凑事实，但不能
+因此把 Issue-Fix、Explore 或 ML Experiment 的字段塞进通用 todo/quota 状态机。</p>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>代表内容</th>
+<th>拥有什么</th>
+<th>明确不拥有什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Core State</td>
+<td>registry、todo、gate、quota、event、run、vision</td>
+<td>跨领域生命周期与权限边界</td>
+<td>领域专属结果 schema</td>
+</tr>
+<tr>
+<td>Domain State</td>
+<td>issue feasibility、PR lifecycle、experiment result、checkpoint</td>
+<td>某个 Capability Pack 的紧凑 read model</td>
+<td>quota、gate、claim、permission</td>
+</tr>
+<tr>
+<td>Runtime Artifact</td>
+<td>raw log、transcript、verifier tail、临时调试文件</td>
+<td>私有诊断与可复现实验材料</td>
+<td>public control-plane truth</td>
+</tr>
+</tbody>
+</table>
+<p><code>loopx/domain_state.py::default_domain_state_file_path</code> 把领域事实限制在稳定的
+goal/pack 路径中：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">return</span> <span class="p">(</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="n">Path</span><span class="p">(</span><span class="n">project</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="o">/</span> <span class="s2">&quot;.loopx&quot;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="o">/</span> <span class="s2">&quot;domain-state&quot;</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="o">/</span> <span class="n">compact_goal_id</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="o">/</span> <span class="n">compact_pack</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="o">/</span> <span class="n">compact_filename</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">)</span>
+</span></code></pre></div>
+<p><code>upsert_domain_state_jsonl</code> 进一步要求稳定 key，并以 lock + temporary file +
+<code>os.replace</code> 完成原子 upsert。下面只省略遍历之外的分支，其余行保持源码一致：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">candidate</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">payload</span><span class="p">,</span> <span class="s2">&quot;domain_state_key&quot;</span><span class="p">:</span> <span class="n">key</span><span class="p">}</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1"># ...</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="n">row_key</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">updated</span><span class="p">:</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>        <span class="n">merged_candidate</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>            <span class="n">merge_existing_fn</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">candidate</span><span class="p">)</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>            <span class="k">if</span> <span class="n">merge_existing_fn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>            <span class="k">else</span> <span class="n">candidate</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>        <span class="p">)</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>        <span class="k">if</span> <span class="n">unchanged_fn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">unchanged_fn</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">merged_candidate</span><span class="p">):</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>            <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>            <span class="n">unchanged</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>            <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">merged_candidate</span><span class="p">)</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>        <span class="n">updated</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="c1"># ...</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="n">os</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tmp_name</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+</span></code></pre></div>
+<p>从这段代码应读出三个边界：</p>
+<ol>
+<li>Domain State 是 project-local、按 goal 与 pack 分区的事实，不是全局 memory dump。</li>
+<li>稳定 key 和 unchanged 判定用于幂等观察，不代表领域 pack 可以决定下一轮执行。</li>
+<li>返回值显式使用 <code>path_recorded=False</code>，public receipt 不应泄露本地路径。</li>
+</ol>
+<p>Issue-Fix 与 ML Experiment 的 smoke 分别验证这条通用 seam：
+<code>examples/issue-fix-feasibility-smoke.py</code>、
+<code>tests/test_ml_experiment_volc_packet.py</code>。如果一个新领域字段会改变 quota、gate、
+claim 或 permission，它很可能属于 Core State 规则，而不是 Domain State。</p>
+<h2 id="canonical-projection">Canonical 与 Projection 的判别法<a class="headerlink" href="#canonical-projection" title="Permanent link">&para;</a></h2>
+<p>面对一个字段，依次问：</p>
+<ol>
+<li>它是长期策略，还是发生过的 transition？</li>
+<li>是否必须可 replay、可审计、可幂等？</li>
+<li>它只是为了某个 UI 好看，还是会改变下一轮决策？</li>
+<li>谁拥有写权限？CLI、operator、agent，还是外部 sink？</li>
+</ol>
+<p>一个实用表格：</p>
+<table>
+<thead>
+<tr>
+<th>信息</th>
+<th>推荐归属</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>registered peers</td>
+<td>registry</td>
+<td>长期配置与身份集合</td>
+</tr>
+<tr>
+<td>todo claimed by agent-a</td>
+<td>event ledger</td>
+<td>可审计 transition</td>
+</tr>
+<tr>
+<td>当前 open todo 数</td>
+<td>status projection</td>
+<td>可从事实折叠得到</td>
+</tr>
+<tr>
+<td>下一步的人类可读描述</td>
+<td>active state</td>
+<td>工作台与恢复入口</td>
+</tr>
+<tr>
+<td>Lark record id</td>
+<td>sink-local config/projection lineage</td>
+<td>外部展示映射，不是 goal 事实</td>
+</tr>
+<tr>
+<td>raw model transcript</td>
+<td>私有 runtime artifact</td>
+<td>不应进入公共 control-plane 状态</td>
+</tr>
+</tbody>
+</table>
+<h2 id="todo">一次 Todo 写入如何穿过状态层<a class="headerlink" href="#todo" title="Permanent link">&para;</a></h2>
+<p>考虑：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span>claim<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span>--todo-id<span class="w"> </span>&lt;todo-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span>--claimed-by<span class="w"> </span>agent-a
+</span></code></pre></div>
+<p>概念路径是：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>CLI validation
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>  -&gt; resolve registry goal and registered agent
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>  -&gt; enter the canonical state transaction boundary
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>  -&gt; authorize and validate the todo transition
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>  -&gt; write the durable transition through its supported API
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>  -&gt; rebuild the compatible read projection
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>  -&gt; status later folds current claim
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>  -&gt; quota sees claimed runnable frontier
+</span></code></pre></div>
+<p>这里有三个不能省略的性质：</p>
+<ul>
+<li><code>agent-a</code> 必须是注册 peer；</li>
+<li>claim 是 soft ownership，不是永久权限；</li>
+<li>status 看到 claim 不等于 status 自己写了 claim。</li>
+</ul>
+<h2 id="projection_1">为什么不能直接编辑 Projection<a class="headerlink" href="#projection_1" title="Permanent link">&para;</a></h2>
+<p>假设 dashboard 显示 todo <code>done=false</code>，然后 UI 直接把它改成 <code>true</code>，但没有写 todo completion event：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Dashboard says done
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>Event ledger says open
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>Quota sees runnable
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>Active state may still show open
+</span></code></pre></div>
+<p>系统出现多真相。正确路径应是：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>UI action
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>  -&gt; LoopX todo complete API
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>  -&gt; transition validation
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>  -&gt; durable event/state write
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>  -&gt; refreshed projections
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>  -&gt; UI readback
+</span></code></pre></div>
+<p>同理，Lark Base、web dashboard 和 supervisor observation 都是 sink/read model，不应该自己成为 control-plane author。</p>
+<h2 id="replay">Replay 与恢复<a class="headerlink" href="#replay" title="Permanent link">&para;</a></h2>
+<p>一个可恢复的状态内核至少需要：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>registry policy
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>+ ordered events
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>+ active-state objective/boundary
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>+ compact evidence refs
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>= current status projection
+</span></code></pre></div>
+<p>Replay 不是简单地重放聊天。聊天里可能有：</p>
+<ul>
+<li>未执行的建议；</li>
+<li>失败的命令；</li>
+<li>过期推理；</li>
+<li>私有文本；</li>
+<li>被后续状态 supersede 的结论。</li>
+</ul>
+<p>事件则应明确区分 proposal、attempt、executed receipt 和 validation。例如 supervisor 的 <code>inject</code> proposal 不是 session 已被注入的证明；只有 capability-matched host receipt 才是执行事实。</p>
+<h2 id="projection-gap">Projection Gap：控制面常见故障<a class="headerlink" href="#projection-gap" title="Permanent link">&para;</a></h2>
+<p>最典型的 gap 是：人类可读文本说“请用户确认 X”，但结构化 <code>user_todo_summary.open_count=0</code>。</p>
+<p>这时不能只回复“owner gate”。正确诊断是：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>具体 user todo 未投影，需修复 LoopX 状态投影
+</span></code></pre></div>
+<p>修复方式是通过 LoopX user todo / operator gate API 写入具体问题、decision scope 和 blocking scope，而不是让 agent 从 prose 猜测。</p>
+<p>另一个常见 gap 是：agent 声称交付完成，但没有 successor，也没有结构化 <code>no_followup</code> rationale。此时 terminal closure 不应成立。</p>
+<h2 id="_4">状态所有权边界<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Actor</th>
+<th>可以做</th>
+<th>不可以做</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User/operator</td>
+<td>决定目标边界、高风险操作、公开声明、凭据和生产动作</td>
+<td>通过随口一句话绕过 durable gate 记录</td>
+</tr>
+<tr>
+<td>Agent</td>
+<td>执行一个允许的 transition，写 todo/evidence/refresh</td>
+<td>领取别人的 todo、伪造 host receipt、重写用户决策</td>
+</tr>
+<tr>
+<td>CLI</td>
+<td>校验 schema、transition、projection、quota</td>
+<td>猜测缺失的业务事实</td>
+</tr>
+<tr>
+<td>Dashboard/sink</td>
+<td>读取并显示 public-safe projection</td>
+<td>直接改 canonical state</td>
+</tr>
+<tr>
+<td>Host</td>
+<td>唤醒 turn、传 task body、应用调度</td>
+<td>自己重写 quota 或 todo 规则</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">实验：沿一次状态变化追踪事实<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>只在专门的实验 goal 中执行写操作。</p>
+<h3 id="1-registry-status">1. 先读 registry 与 status<a class="headerlink" href="#1-registry-status" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>loopx<span class="w"> </span>--format<span class="w"> </span>json<span class="w"> </span>registry
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>loopx<span class="w"> </span>--format<span class="w"> </span>json<span class="w"> </span>status<span class="w"> </span>--goal-id<span class="w"> </span>&lt;lab-goal-id&gt;
+</span></code></pre></div>
+<p>只保留字段结构，不复制私有 objective 或路径到课堂作业。</p>
+<h3 id="2-todo">2. 增加并领取一个 todo<a class="headerlink" href="#2-todo" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span>add<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;lab-goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">  </span>--role<span class="w"> </span>agent<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">  </span>--text<span class="w"> </span><span class="s2">&quot;[P1] Trace one state transition&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">  </span>--task-class<span class="w"> </span>advancement_task<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">  </span>--action-kind<span class="w"> </span>trace_state<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">  </span>--required-capability<span class="w"> </span>shell
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>loopx<span class="w"> </span>todo<span class="w"> </span>list<span class="w"> </span>--goal-id<span class="w"> </span>&lt;lab-goal-id&gt;
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>loopx<span class="w"> </span>todo<span class="w"> </span>claim<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;lab-goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">  </span>--todo-id<span class="w"> </span>&lt;todo-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="w">  </span>--claimed-by<span class="w"> </span>&lt;lab-agent-id&gt;
+</span></code></pre></div>
+<h3 id="3">3. 比较三种读面<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span>list<span class="w"> </span>--goal-id<span class="w"> </span>&lt;lab-goal-id&gt;
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>loopx<span class="w"> </span>--format<span class="w"> </span>json<span class="w"> </span>status<span class="w"> </span>--goal-id<span class="w"> </span>&lt;lab-goal-id&gt;
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>loopx<span class="w"> </span><span class="nb">history</span><span class="w"> </span>--goal-id<span class="w"> </span>&lt;lab-goal-id&gt;
+</span></code></pre></div>
+<p>回答：</p>
+<ul>
+<li>哪个输出是 lifecycle API 的直接投影？</li>
+<li>哪个是 operator read model？</li>
+<li>哪个保存时间顺序？</li>
+</ul>
+<h3 id="4-successor">4. 完成并写 successor<a class="headerlink" href="#4-successor" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>loopx<span class="w"> </span>todo<span class="w"> </span><span class="nb">complete</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;lab-goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">  </span>--todo-id<span class="w"> </span>&lt;todo-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">  </span>--claimed-by<span class="w"> </span>&lt;lab-agent-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">  </span>--evidence<span class="w"> </span><span class="s2">&quot;state transition traced in lab&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">  </span>--next-agent-todo<span class="w"> </span><span class="s2">&quot;[P1] Explain the resulting status projection&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">  </span>--next-continuation-policy<span class="w"> </span>same_agent_non_delivery
+</span></code></pre></div>
+<p>观察 completion 和 successor 是否在同一个 transaction 中可见。</p>
+<h2 id="status-read-model">核心代码领读：从一条事件到 status read model<a class="headerlink" href="#status-read-model" title="Permanent link">&para;</a></h2>
+<p>这一讲不要把 registry、Markdown 和 JSONL 当成三个互相竞争的数据库。按下面的所有权链阅读：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>registry entry
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>  -&gt; resolve state_file / runtime root
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>  -&gt; append-only event log
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>  -&gt; active-state todo projection
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>  -&gt; attention queue / status payload
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>  -&gt; quota 的只读输入
+</span></code></pre></div>
+<h3 id="1-registry">1. Registry 只解析连接边界<a class="headerlink" href="#1-registry" title="Permanent link">&para;</a></h3>
+<p><code>loopx/registry.py</code> 的入口刻意很薄：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">read_json</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>    <span class="k">with</span> <span class="n">path</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>        <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;registry root must be a JSON object&quot;</span><span class="p">)</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>    <span class="k">return</span> <span class="n">payload</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="k">def</span><span class="w"> </span><span class="nf">resolve_state_file</span><span class="p">(</span><span class="n">repo</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">state_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">state_file</span><span class="p">:</span>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>        <span class="k">return</span> <span class="kc">None</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>    <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">state_file</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>    <span class="k">return</span> <span class="n">path</span> <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">is_absolute</span><span class="p">()</span> <span class="k">else</span> <span class="n">repo</span> <span class="o">/</span> <span class="n">path</span>
+</span></code></pre></div>
+<p>这层只回答“goal 在哪里、状态文件在哪里、边界是什么”。它不拥有 todo transition，也不把 arbitrary JSON 当成有效 registry。</p>
+<h3 id="2-event-store-sequence-fingerprint-replay">2. Event store 用锁、sequence 和 fingerprint 保证可 replay<a class="headerlink" href="#2-event-store-sequence-fingerprint-replay" title="Permanent link">&para;</a></h3>
+<p><code>loopx/event_sourced_state.py</code> 先规范化事件，再在 append 时重新读取锁内真相：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">make_state_event</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">event_id</span><span class="p">,</span> <span class="n">goal_id</span><span class="p">,</span> <span class="n">event_type</span><span class="p">,</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>                     <span class="n">refs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">recorded_at</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>    <span class="k">return</span> <span class="n">normalize_state_event</span><span class="p">({</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>        <span class="s2">&quot;schema_version&quot;</span><span class="p">:</span> <span class="n">STATE_EVENT_SCHEMA_VERSION</span><span class="p">,</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>        <span class="s2">&quot;event_id&quot;</span><span class="p">:</span> <span class="n">event_id</span><span class="p">,</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>        <span class="s2">&quot;goal_id&quot;</span><span class="p">:</span> <span class="n">goal_id</span><span class="p">,</span>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>        <span class="s2">&quot;event_type&quot;</span><span class="p">:</span> <span class="n">event_type</span><span class="p">,</span>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>        <span class="s2">&quot;recorded_at&quot;</span><span class="p">:</span> <span class="n">recorded_at</span> <span class="ow">or</span> <span class="n">now_utc_iso</span><span class="p">(),</span>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>        <span class="s2">&quot;refs&quot;</span><span class="p">:</span> <span class="n">refs</span> <span class="ow">or</span> <span class="p">{},</span>
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>        <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="n">payload</span> <span class="ow">or</span> <span class="p">{},</span>
+</span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>        <span class="c1"># ... producer/privacy/projection_version</span>
+</span><span id="__span-20-12"><a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>    <span class="p">})</span>
+</span><span id="__span-20-13"><a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>
+</span><span id="__span-20-14"><a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a><span class="k">def</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+</span><span id="__span-20-15"><a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a>    <span class="k">with</span> <span class="n">exclusive_file_lock</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">):</span>
+</span><span id="__span-20-16"><a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_loaded</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="__span-20-17"><a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a>        <span class="n">events</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+</span><span id="__span-20-18"><a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a>        <span class="n">next_sequence</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span>
+</span><span id="__span-20-19"><a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a>            <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;append_sequence&quot;</span><span class="p">])</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">events</span><span class="p">),</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span>
+</span><span id="__span-20-20"><a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a>        <span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span id="__span-20-21"><a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a>        <span class="n">normalized</span> <span class="o">=</span> <span class="n">normalize_state_event</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">append_sequence</span><span class="o">=</span><span class="n">next_sequence</span><span class="p">)</span>
+</span><span id="__span-20-22"><a id="__codelineno-20-22" name="__codelineno-20-22" href="#__codelineno-20-22"></a>        <span class="n">prior</span> <span class="o">=</span> <span class="p">{</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;event_id&quot;</span><span class="p">]:</span> <span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">events</span><span class="p">}</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">normalized</span><span class="p">[</span><span class="s2">&quot;event_id&quot;</span><span class="p">])</span>
+</span><span id="__span-20-23"><a id="__codelineno-20-23" name="__codelineno-20-23" href="#__codelineno-20-23"></a>        <span class="k">if</span> <span class="n">prior</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-20-24"><a id="__codelineno-20-24" name="__codelineno-20-24" href="#__codelineno-20-24"></a>            <span class="k">if</span> <span class="n">event_fingerprint</span><span class="p">(</span><span class="n">prior</span><span class="p">)</span> <span class="o">!=</span> <span class="n">event_fingerprint</span><span class="p">(</span><span class="n">normalized</span><span class="p">):</span>
+</span><span id="__span-20-25"><a id="__codelineno-20-25" name="__codelineno-20-25" href="#__codelineno-20-25"></a>                <span class="k">raise</span> <span class="n">StateEventConflictError</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</span><span id="__span-20-26"><a id="__codelineno-20-26" name="__codelineno-20-26" href="#__codelineno-20-26"></a>            <span class="k">return</span> <span class="n">prior</span>
+</span><span id="__span-20-27"><a id="__codelineno-20-27" name="__codelineno-20-27" href="#__codelineno-20-27"></a>        <span class="c1"># ... append one canonical JSONL row</span>
+</span></code></pre></div>
+<p>逐分支理解：</p>
+<ul>
+<li>同一个 <code>event_id</code>、同一个 fingerprint：幂等重试，返回 prior；</li>
+<li>同一个 <code>event_id</code>、不同 fingerprint：冲突，拒绝覆盖历史；</li>
+<li>新事件：在锁内分配单调 <code>append_sequence</code> 后追加。</li>
+</ul>
+<p>这就是“append-only”比“只用文件追加模式打开”更强的地方。</p>
+<p>建议断点：<code>AppendOnlyStateEventStore.append:511</code>。用同一事件 append 两次，再修改 payload append 第三次，比较两个结果。</p>
+<h3 id="3-todo-projection-markdown">3. Todo projection 先信结构化事件，缺失时才兼容 Markdown<a class="headerlink" href="#3-todo-projection-markdown" title="Permanent link">&para;</a></h3>
+<p><code>loopx/control_plane/todos/active_state_todos.py</code> 展示了 migration reader 与 live truth 如何共存：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">state_text</span> <span class="o">=</span> <span class="n">state_path</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">next_action_entries</span> <span class="o">=</span> <span class="n">active_state_next_action_entries</span><span class="p">(</span><span class="n">state_text</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="n">rollout_events</span> <span class="o">=</span> <span class="n">load_rollout_events</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="k">if</span> <span class="n">runtime_root</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">[]</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="n">event_fields</span> <span class="o">=</span> <span class="n">active_state_event_projection_fields</span><span class="p">(</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>    <span class="n">goal</span><span class="p">,</span>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>    <span class="n">state_path</span><span class="o">=</span><span class="n">state_path</span><span class="p">,</span>
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>    <span class="n">preferred_todo_ids</span><span class="o">=</span><span class="n">preferred_todo_ids</span><span class="p">,</span>
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>    <span class="n">rollout_events</span><span class="o">=</span><span class="n">rollout_events</span><span class="p">,</span>
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="p">)</span>
+</span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="k">if</span> <span class="n">event_fields</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;user_todos&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">event_fields</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;agent_todos&quot;</span><span class="p">):</span>
+</span><span id="__span-21-12"><a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>    <span class="n">fields</span> <span class="o">=</span> <span class="n">event_fields</span>
+</span><span id="__span-21-13"><a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>    <span class="n">monitor_writeback_contract_writer</span><span class="p">(</span>
+</span><span id="__span-21-14"><a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>        <span class="n">fields</span><span class="p">,</span> <span class="n">supported</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;event_projection_read_model&quot;</span>
+</span><span id="__span-21-15"><a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a>    <span class="p">)</span>
+</span><span id="__span-21-16"><a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-21-17"><a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a>    <span class="n">fields</span> <span class="o">=</span> <span class="n">parse_active_state_todos</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</span><span id="__span-21-18"><a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a>    <span class="n">monitor_writeback_contract_writer</span><span class="p">(</span>
+</span><span id="__span-21-19"><a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a>        <span class="n">fields</span><span class="p">,</span> <span class="n">supported</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;markdown_active_state&quot;</span>
+</span><span id="__span-21-20"><a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a>    <span class="p">)</span>
+</span><span id="__span-21-21"><a id="__codelineno-21-21" name="__codelineno-21-21" href="#__codelineno-21-21"></a>
+</span><span id="__span-21-22"><a id="__codelineno-21-22" name="__codelineno-21-22" href="#__codelineno-21-22"></a><span class="n">projection_gap</span> <span class="o">=</span> <span class="n">state_projection_gap_warning</span><span class="p">(</span><span class="n">state_text</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</span><span id="__span-21-23"><a id="__codelineno-21-23" name="__codelineno-21-23" href="#__codelineno-21-23"></a><span class="k">if</span> <span class="n">projection_gap</span><span class="p">:</span>
+</span><span id="__span-21-24"><a id="__codelineno-21-24" name="__codelineno-21-24" href="#__codelineno-21-24"></a>    <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;state_projection_gap&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">projection_gap</span>
+</span><span id="__span-21-25"><a id="__codelineno-21-25" name="__codelineno-21-25" href="#__codelineno-21-25"></a><span class="k">return</span> <span class="n">redacted_status_todo_fields</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+</span></code></pre></div>
+<p>关键点有三个：</p>
+<ol>
+<li>新路径优先消费 event projection；旧 Markdown reader 仍保留，负责迁移窗口。</li>
+<li>event projection 是 read model，不能伪装成 monitor 的直接写 API。</li>
+<li>prose 中有可执行 Next Action、结构化 todo 却为空时，必须投影 <code>state_projection_gap</code>，不能安静地当成无工作。</li>
+</ol>
+<h3 id="4-status-collection">4. Status collection 是聚合器，不是第二套状态机<a class="headerlink" href="#4-status-collection" title="Permanent link">&para;</a></h3>
+<p><code>loopx/control_plane/status_collection.py::collect_status</code> 的调用顺序很值得照抄到白板：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">registry</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">load_registry</span><span class="p">(</span><span class="n">registry_path</span><span class="p">)</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="n">runtime_root</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">resolve_runtime_root</span><span class="p">(</span><span class="n">registry</span><span class="p">,</span> <span class="n">runtime_root_override</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="n">global_registry</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">collect_global_registry_health</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="n">history</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">collect_history</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="n">contract</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">check_contract</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="n">queue</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">build_attention_queue</span><span class="p">(</span>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>    <span class="n">contract</span><span class="o">=</span><span class="n">contract</span><span class="p">,</span>
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>    <span class="n">history</span><span class="o">=</span><span class="n">history</span><span class="p">,</span>
+</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>    <span class="n">global_registry</span><span class="o">=</span><span class="n">global_registry</span><span class="p">,</span>
+</span><span id="__span-22-10"><a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>    <span class="n">runtime_root</span><span class="o">=</span><span class="n">runtime_root</span><span class="p">,</span>
+</span><span id="__span-22-11"><a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="p">)</span>
+</span><span id="__span-22-12"><a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a><span class="n">runtime_summaries</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">build_runtime_summaries</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</span><span id="__span-22-13"><a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a>
+</span><span id="__span-22-14"><a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-22-15"><a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a>    <span class="s2">&quot;ok&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">contract</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ok&quot;</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">bool</span><span class="p">(</span><span class="n">global_registry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ok&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)),</span>
+</span><span id="__span-22-16"><a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a>    <span class="s2">&quot;attention_queue&quot;</span><span class="p">:</span> <span class="n">queue</span><span class="p">,</span>
+</span><span id="__span-22-17"><a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a>    <span class="o">**</span><span class="n">runtime_summaries</span><span class="p">,</span>
+</span><span id="__span-22-18"><a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a><span class="p">}</span>
+</span><span id="__span-22-19"><a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a><span class="n">payload</span><span class="p">[</span><span class="s2">&quot;agent_management_projection&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="__span-22-20"><a id="__codelineno-22-20" name="__codelineno-22-20" href="#__codelineno-22-20"></a>    <span class="n">context</span><span class="o">.</span><span class="n">build_agent_management_projection</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</span><span id="__span-22-21"><a id="__codelineno-22-21" name="__codelineno-22-21" href="#__codelineno-22-21"></a><span class="p">)</span>
+</span></code></pre></div>
+<p>它通过 callback context 组合已有 read models。<code>collect_status</code> 不应自行重写 todo terminal 规则；否则 status 与 quota 会形成两套真相。</p>
+<h3 id="_6">数据流练习<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>选一个 todo id，沿下面四处追同一个稳定标识：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>rg<span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;&lt;todo-id&gt;&quot;</span><span class="w"> </span>.codex/goals<span class="w"> </span>.loopx<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.codex/loopx&quot;</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>loopx<span class="w"> </span>--format<span class="w"> </span>json<span class="w"> </span>todo<span class="w"> </span>list<span class="w"> </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>loopx<span class="w"> </span>--format<span class="w"> </span>json<span class="w"> </span>status<span class="w"> </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>loopx<span class="w"> </span>--format<span class="w"> </span>json<span class="w"> </span>quota<span class="w"> </span>should-run<span class="w"> </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span>--agent-id<span class="w"> </span>&lt;agent-id&gt;
+</span></code></pre></div>
+<p>不要比较整份 JSON。只比较 <code>todo_id</code>、<code>status</code>、<code>claimed_by</code>、<code>task_class</code> 和 projection source。</p>
+<h3 id="_7">读完这一段应能回答<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Registry 为什么不是 todo truth？</li>
+<li>为什么 event id 冲突必须 fail closed？</li>
+<li>Markdown fallback 为什么应保留，但不能继续定义新 runtime 语义？</li>
+<li><code>state_projection_gap</code> 在哪一层产生，又在哪一层改变执行选择？</li>
+<li>Status collector 为什么适合依赖注入式聚合，而不适合拥有 transition？</li>
+</ol>
+<h2 id="_8">代码阅读路线<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>顺序</th>
+<th>文件或协议</th>
+<th>关注点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>examples/registry.example.json</code></td>
+<td>注册配置的边界</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>examples/active-goal-state.example.md</code></td>
+<td>人可读工作台</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>docs/reference/protocols/event-sourced-state-contract-v0.md</code></td>
+<td>事件与 replay</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>docs/reference/protocols/active-state-structured-projection-v0.md</code></td>
+<td>projection 非写 API</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>docs/status-data-contract.md</code></td>
+<td>status read model</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>loopx/control_plane/todos/</code>、<code>loopx/control_plane/work_items/lifecycle.py</code></td>
+<td>todo contract 与 transition lifecycle</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>loopx/status.py</code></td>
+<td>聚合 read model，先搜 builder 入口</td>
+</tr>
+</tbody>
+</table>
+<h2 id="smoke">代表性 Smoke<a class="headerlink" href="#smoke" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>examples/control_plane/event-sourced-state-api-smoke.py</code></li>
+<li><code>examples/control_plane/todo-lifecycle-cli-smoke.py</code></li>
+<li><code>examples/state-projection-gap-smoke.py</code></li>
+<li><code>examples/control_plane/todo-projection-shared-helper-smoke.py</code></li>
+</ul>
+<p>Smoke 的目的不是验证每个 incidental JSON 字段，而是守住 durable behavior：可 replay、幂等、合法 transition、projection gap 不被静默忽略。</p>
+<h2 id="_9">常见设计错误<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h3 id="sink">把项目私有文件当成通用 sink 数据源<a class="headerlink" href="#sink" title="Permanent link">&para;</a></h3>
+<p>通用 dashboard 应消费 LoopX projection，不应解析某个项目的会议文档、原始 transcript 或本地路径。</p>
+<h3 id="host">为每个 host 复制一份状态机<a class="headerlink" href="#host" title="Permanent link">&para;</a></h3>
+<p>Codex App、CLI、Claude Code 应共享 LoopX CLI/state kernel。host adapter 只做触发和能力执行，不 fork truth。</p>
+<h3 id="migration">把兼容 migration 当作当前模型<a class="headerlink" href="#migration" title="Permanent link">&para;</a></h3>
+<p>旧 hierarchy 字段可以保留 exactly-once migration reader，但当前 runtime model 只有 <code>peer_v1</code>。迁移逻辑的存在不表示 primary/side 仍是实时概念。</p>
+<h3 id="_10">只追加文档，不退休旧真相<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>Canonical 文档和 projection 应压缩、替换或标记 superseded，避免同时保留多个互相冲突的“当前版本”。</p>
+<h2 id="_11">课后检查<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Registry 和 event ledger 分别回答什么问题？</li>
+<li>Active state 为什么既重要，又不能被当成唯一 canonical event store？</li>
+<li>为什么 supervisor observation 必须是 read-only projection？</li>
+<li>一个 Lark sink 的 record id 应该放在哪里？</li>
+<li>如果 user gate 只存在于 prose，下一轮 quota 应如何处理？</li>
+</ol>
+<p>下一讲将在这个状态底座上建立工作图：todo 类型、peer claim、lease、capability、gate、successor 和 handoff。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.action.edit", "content.code.copy", "content.tabs.link", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.path", "search.highlight", "search.share", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

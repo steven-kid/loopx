@@ -1,0 +1,158 @@
+{
+  "ok": true,
+  "registry": "public-safe fixture",
+  "runtime_root": "omitted",
+  "goal_count": 1,
+  "run_count": 2,
+  "generated_at": "2026-06-20T13:30:00Z",
+  "status_contract": {
+    "schema_version": 2,
+    "minimum_dashboard_schema_version": 2,
+    "producer": "examples/export-frontstage-share-bundle.mjs",
+    "reload_hint": "rebuild this bundle from the public fixture"
+  },
+  "contract": {
+    "ok": true,
+    "summary": {
+      "checks": 2,
+      "errors": 0,
+      "warnings": 0
+    },
+    "checks": [
+      "public-safe goal_channel_projection_v0 fixture",
+      "static frontstage route exported for direct hosting"
+    ],
+    "errors": [],
+    "warnings": []
+  },
+  "attention_queue": {
+    "available": true,
+    "item_count": 1,
+    "needs_user_or_controller": 1,
+    "needs_controller": 0,
+    "needs_codex": 1,
+    "watching_external_evidence": 0,
+    "items": [
+      {
+        "goal_id": "demo-goal-channel",
+        "status": "safe_side_path_running",
+        "waiting_on": "codex",
+        "severity": "action",
+        "recommended_action": "Continue only the safe side path.",
+        "source": "frontstage-share-bundle-fixture",
+        "goal_channel_projection": {
+          "active_leases": [
+            {
+              "owner_agent": "codex-main-control",
+              "status": "soft_claim",
+              "todo_id": "todo_primary_route"
+            },
+            {
+              "owner_agent": "codex-side-bypass",
+              "status": "soft_claim",
+              "todo_id": "todo_side_fixture"
+            }
+          ],
+          "agent_todos": [
+            {
+              "claimed_by": "codex-main-control",
+              "priority": "P0",
+              "status": "open",
+              "task_class": "advancement_task",
+              "title": "Keep the primary delivery route visible while it waits.",
+              "todo_id": "todo_primary_route"
+            },
+            {
+              "claimed_by": "codex-side-bypass",
+              "priority": "P2",
+              "status": "open",
+              "task_class": "advancement_task",
+              "title": "Render the productization frontstage fixture.",
+              "todo_id": "todo_side_fixture"
+            }
+          ],
+          "artifacts": [
+            {
+              "kind": "doc",
+              "label": "frontstage roadmap",
+              "path": "docs/product/roadmaps/frontstage-channel-lease-roadmap.md"
+            },
+            {
+              "kind": "local_state",
+              "label": "omitted private control-plane source"
+            }
+          ],
+          "decision_frame": {
+            "agent_action_required": true,
+            "quiet_noop_allowed": false,
+            "user_action_required": true
+          },
+          "display_name": "Demo Goal Channel",
+          "generated_at": "2026-06-20T08:04:00Z",
+          "goal_id": "demo-goal-channel",
+          "latest_status": "safe_side_path_running",
+          "mode": "read_only",
+          "next_action": "Continue only the safe side path.",
+          "open_gates": [
+            {
+              "blocks": [
+                "todo_user_decision"
+              ],
+              "gate_id": "interaction_contract_user_channel",
+              "kind": "user_channel",
+              "status": "action_required"
+            }
+          ],
+          "quota": {
+            "allowed_slots": "10",
+            "reason": "synthetic fixture has quota",
+            "spend_policy": "spend after validated writeback",
+            "spent_slots": "2",
+            "state": "eligible"
+          },
+          "recent_events": [
+            {
+              "classification": "validated_progress",
+              "generated_at": "2026-06-20T08:02:00Z",
+              "summary": "frontstage fixture rendered from compact projection"
+            },
+            {
+              "classification": "operator_gate_recorded",
+              "generated_at": "2026-06-20T07:50:00Z",
+              "summary": "human decision stayed explicit"
+            }
+          ],
+          "schema_version": "goal_channel_projection_v0",
+          "source_refs": {
+            "active_state_updated_at": "2026-06-20T08:00:00Z",
+            "event_ledger_source": "run_history",
+            "latest_run_generated_at": "2026-06-20T08:02:00Z",
+            "review_packet_generated_at": "2026-06-20T08:03:00Z",
+            "status_generated_at": "2026-06-20T08:01:00Z"
+          },
+          "source_warnings": [
+            {
+              "kind": "raw_or_private_material_omitted",
+              "message": "raw/private-looking fields were omitted; inspect the compact source references instead of copying raw material into the frontstage channel projection"
+            }
+          ],
+          "truth_contract": {
+            "event_ledger_is_source_of_truth": true,
+            "projection_is_writable": false,
+            "recompute_rule": "refresh from LoopX status/quota/run history; do not edit the channel projection as project truth",
+            "write_authority": "none"
+          },
+          "user_todos": [
+            {
+              "priority": "P0",
+              "status": "open",
+              "title": "Decide whether the gated delivery route may continue.",
+              "todo_id": "todo_user_decision"
+            }
+          ],
+          "waiting_on": "codex"
+        }
+      }
+    ]
+  }
+}

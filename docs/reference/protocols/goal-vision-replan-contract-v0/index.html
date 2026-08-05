@@ -1,0 +1,3060 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://huangruiteng.github.io/loopx/docs/reference/protocols/goal-vision-replan-contract-v0/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/loopx-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>goal_vision_replan_contract_v0 - LoopX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#goal_vision_replan_contract_v0" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="LoopX" class="md-header__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../../../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LoopX
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              goal_vision_replan_contract_v0
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 2c-1.82 0-3.53.5-5 1.35C8 5.08 10 8.3 10 12s-2 6.92-5 8.65C6.47 21.5 8.18 22 10 22a10 10 0 0 0 10-10A10 10 0 0 0 10 2"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../guides/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../concepts/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../operations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Operations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../capabilities/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Capabilities
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../integrations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Integrations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../development/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../product/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Product
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../showcases/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Showcases
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="LoopX" class="md-nav__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../../../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    LoopX
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../guides/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/newcomer-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Newcomer Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/custom-agent-runner-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Runner Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/auto-research-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto Research Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../concepts/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concepts/interaction-pattern-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interaction Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../state-interaction-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    State Interaction Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quota-allocation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quota Allocation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../operations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operations/attention-queue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attention Queue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operations/long-task-cadence-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Long Task Cadence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operations/authority-source-registration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority Sources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../capabilities/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capabilities
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Capabilities
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/issue-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Issue Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/change-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Change Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/explore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Explore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/material-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Material Lifecycle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/value-connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Value Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../integrations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integrations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integrations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/worker-bridge-install-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Worker Bridge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/lark-kanban-control-plane-adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lark Kanban
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/runtime-connector-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Connector Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../benchmark-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../development/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/testing-and-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing And Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/documentation-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Layout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/benchmark-developer-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/control-plane-course/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control Plane Course
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../product/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Product
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/release-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/surfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Surfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/runtimes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtimes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../showcases/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Showcases
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Showcases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/frontend-surface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend Surface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/cases/0617-blocked-p0-safe-rotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blocked P0 Safe Rotation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/cases/0619-loopx-self-iteration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LoopX Self Iteration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/cases/0624-pr-issue-auto-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PR Issue Auto Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ownership-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ownership Boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli-budget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI Budget
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CLI Budget">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#path-delta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Path Delta
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vision-checkpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vision Checkpoint
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vision-continuation-audit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vision Continuation Audit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#state-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State Machine
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="State Machine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exact-blocked-successor-wait" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exact blocked-successor wait
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replan-triggers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replan Triggers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replan-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replan Output
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Replan Output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bad-case-ack-hidden-by-scheduler-accounting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bad Case: ACK Hidden By Scheduler Accounting
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projection-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projection Contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#write-correction-mechanism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Write / Correction Mechanism
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acceptance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acceptance
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/huangruiteng/loopx/edit/main/docs/reference/protocols/goal-vision-replan-contract-v0.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="goal_vision_replan_contract_v0">goal_vision_replan_contract_v0<a class="headerlink" href="#goal_vision_replan_contract_v0" title="Permanent link">&para;</a></h1>
+<p><code>goal_vision_replan_contract_v0</code> defines the small per-agent contract that
+connects bounded agent vision, autonomous replan, dreaming proposals, and
+goal-routing projection. It is a kernel contract, not an auto-research preset.</p>
+<p>The purpose is to keep both the user layer and the product preset thin:</p>
+<ul>
+<li>the user supplies intent and small overrides;</li>
+<li>the preset supplies domain defaults and handoff hints;</li>
+<li>the kernel owns bounded per-agent vision, replan state transitions, and the
+  read/write protocol used by quota and status.</li>
+</ul>
+<p>Every vision packet and checkpoint is scoped by <code>agent_id</code>. Goal-level
+projection may aggregate the resulting gaps, but it must not let one role's
+vision drift or missing closeout satisfy, block, or wake another role.</p>
+<h2 id="ownership-boundary">Ownership Boundary<a class="headerlink" href="#ownership-boundary" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Owns</th>
+<th>Must Not Own</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User</td>
+<td>Objective, optional role overrides, and optional data/eval entrypoint.</td>
+<td>Vision state-machine transitions, replan recovery policy, quota routing, or raw agent scratchpads.</td>
+</tr>
+<tr>
+<td>Preset</td>
+<td>Domain roles, handoff hints, metric/evidence adapters, and compact default acceptance text.</td>
+<td>Long-lived replan mechanics, pane-local tick policy, generic successor routing, or product-specific forks of the kernel state machine.</td>
+</tr>
+<tr>
+<td>Kernel</td>
+<td>CLI-enforced vision budgets, vision/replan state transitions, goal-route projection, todo/evidence/status protocol, and compact default prompts.</td>
+<td>Domain-specific research logic, benchmark scoring, support triage semantics, or sales workflow semantics.</td>
+</tr>
+</tbody>
+</table>
+<p><code>loopx/quota.py</code> should consume the final <code>goal_route_projection</code> or
+<code>goal_frontier_projection</code>. It should not grow per-agent vision storage,
+budgeting, dreaming, or product-specific replan logic.</p>
+<h2 id="cli-budget">CLI Budget<a class="headerlink" href="#cli-budget" title="Permanent link">&para;</a></h2>
+<p>Per-agent vision is an executable control-plane field, so the CLI/write API must
+enforce a hard size budget before the state reaches quota, status, or a visible
+agent pane. Long reasoning belongs in evidence artifacts or design docs.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th style="text-align: right;">Max chars</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vision_summary</code></td>
+<td style="text-align: right;">420</td>
+<td>Current role-specific direction and success shape.</td>
+</tr>
+<tr>
+<td><code>role_scope</code></td>
+<td style="text-align: right;">280</td>
+<td>What this agent owns and must not own.</td>
+</tr>
+<tr>
+<td><code>acceptance_summary</code></td>
+<td style="text-align: right;">420</td>
+<td>Compact completion contract for this agent.</td>
+</tr>
+<tr>
+<td><code>advancement_policy</code></td>
+<td style="text-align: right;">32</td>
+<td><code>as_needed</code> or <code>repeat_until_closed</code>.</td>
+</tr>
+<tr>
+<td><code>replan_trigger_summary</code></td>
+<td style="text-align: right;">240</td>
+<td>Why the latest replan is required.</td>
+</tr>
+<tr>
+<td><code>dreaming_policy</code></td>
+<td style="text-align: right;">240</td>
+<td>Whether advisory dreaming can propose a patch.</td>
+</tr>
+<tr>
+<td><code>last_patch_summary</code></td>
+<td style="text-align: right;">240</td>
+<td>What changed in the latest bounded vision patch.</td>
+</tr>
+<tr>
+<td><code>total_agent_vision</code></td>
+<td style="text-align: right;">1200</td>
+<td>Aggregate budget for one agent's active vision packet.</td>
+</tr>
+</tbody>
+</table>
+<p>Required write-path behavior:</p>
+<ol>
+<li>Reject over-budget writes with <code>vision_budget_exceeded</code>, including the
+   current character count, field limit, and a compact suggested replacement
+   when the offending field is known.</li>
+<li>Do not silently truncate fields; truncation hides control-plane intent.</li>
+<li>Store verbose rationale as evidence and reference it by id.</li>
+<li>Keep the latest bounded packet visible in status/quota so agents can reason
+   without reading private scratchpads or chat history.</li>
+</ol>
+<p>The normal lightweight CLI write boundary is <code>loopx refresh-state</code> with inline
+vision patch fields:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>loopx<span class="w"> </span>refresh-state<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span>--agent-id<span class="w"> </span>&lt;agent-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span>--vision-summary<span class="w"> </span><span class="s2">&quot;&lt;bounded direction&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span>--vision-acceptance<span class="w"> </span><span class="s2">&quot;&lt;bounded acceptance&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span>--vision-advancement-policy<span class="w"> </span>repeat_until_closed<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span>--vision-replan-trigger<span class="w"> </span><span class="s2">&quot;&lt;why the frontier is insufficient&gt;&quot;</span>
+</span></code></pre></div>
+<p><code>advancement_policy</code> is a small machine-readable frontier rule, not a domain
+label. It defaults to <code>as_needed</code>, which preserves bounded external waits: an
+open acceptance gap, whether implicit or paired with an explicit replan
+trigger, may remain quiet when a continuous monitor lane has recorded an exact
+<code>watch_lane_continuation</code> ACK. The ACK does not prove acceptance or close the
+vision; it records that current monitors cover the next decision checkpoint and
+keeps the gap visible for audit. Without that ACK or monitor coverage, the same
+gap still requires bounded replan. Use <code>repeat_until_closed</code> for campaigns,
+iterative research, sweepers, and other visions whose open acceptance requires
+another advancement iteration whenever the runnable advancement frontier is
+empty. In that mode, monitor successors and a watch ACK remain useful evidence,
+but cannot satisfy advancement continuation by themselves. A runnable
+advancement successor, blocker or scoped gate, or a closed/superseding vision
+still prevents duplicate replan churn.</p>
+<p>For machine-generated or multi-field patches, the same command also accepts
+<code>--agent-vision-json &lt;packet.json&gt;</code>. The two forms are mutually exclusive and
+both pass through the same budget validation. When paired with
+<code>--autonomous-replan-recorded</code>, a valid packet counts as the machine-visible
+<code>goal_vision_patch</code> repair delta. An invalid or over-budget packet fails the
+command instead of recording a partial ACK.</p>
+<p>Inline vision writes require <code>--agent-id</code>. JSON packets must also resolve to
+the same <code>agent_id</code> as the refresh run. This keeps <code>research-executor</code>,
+<code>evaluator-promoter</code>, and other roles from overwriting or satisfying each
+other's active vision.</p>
+<h3 id="path-delta">Path Delta<a class="headerlink" href="#path-delta" title="Permanent link">&para;</a></h3>
+<p>A machine-generated vision packet may include one optional
+<code>goal_path_delta_v0</code>. It makes a bounded loop's look-back explicit without
+adding more inline CLI flags or expanding the heartbeat prompt. The packet is
+written through the existing <code>--agent-vision-json</code> boundary and is retained in
+the same agent-scoped run-history and shared-runtime vision projection:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&quot;schema_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;goal_path_delta_v0&quot;</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">&quot;outcome&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;replan&quot;</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">&quot;prior_assumption&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The current monitor lane would produce acceptance evidence.&quot;</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nt">&quot;observed_reality&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Two bounded polls produced no material transition.&quot;</span><span class="p">,</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="nt">&quot;retained&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Keep the verified monitor target and evidence refs.&quot;</span><span class="p">],</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="nt">&quot;changed&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Create one runnable advancement successor.&quot;</span><span class="p">],</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="nt">&quot;stopped&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Stop treating future polling as completion evidence.&quot;</span><span class="p">],</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="nt">&quot;unresolved_questions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Which successor can falsify the new path?&quot;</span><span class="p">],</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="nt">&quot;reentry_condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Resume the monitor-only wait after successor evidence lands.&quot;</span><span class="p">,</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="nt">&quot;evidence_refs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;evidence:monitor-poll-02&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;todo:successor-01&quot;</span><span class="p">]</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><code>outcome</code> is one of <code>continue</code>, <code>replan</code>, <code>wait</code>, <code>no_change</code>, <code>ask_human</code>, or
+<code>stop</code>. <code>prior_assumption</code> and <code>observed_reality</code> are required when the object
+is present, together with at least one <code>retained</code>, <code>changed</code>, or <code>stopped</code>
+item. The remaining optional lists preserve unresolved questions and
+public-safe evidence ids. The enclosing
+vision packet's <code>agent_id</code> records who made the comparison; <code>evidence_refs</code>
+point to evidence instead of copying long rationale or raw artifacts.</p>
+<p>The path delta shares the existing 1,200-character <code>total_agent_vision</code> budget.
+Scalar fields are bounded to 180-220 characters; keep/change/stop lists accept
+at most three 120-character items, unresolved questions at most two
+140-character items, and evidence refs at most four 140-character items. The
+write path rejects excess data instead of silently truncating it. This is a
+compact audit/read model, not a second planner or a new state machine. An
+honest <code>no_change</code> remains valid when the observed reality does not justify a
+different path.</p>
+<p><code>state</code> is a lower <code>snake_case</code> lifecycle token. Domain-specific states remain
+extensible and are treated as open. The write path canonicalizes closure aliases
+such as <code>closed</code>, <code>satisfied</code>, and <code>vision_satisfied</code> to <code>vision_closed</code>, and
+<code>closed_no_followup</code> to <code>no_followup</code>. Quota/status use the same centralized
+closure predicate when reading older persisted packets, so a legacy alias cannot
+silently reopen a satisfied vision. Prose or malformed state values fail at the
+write boundary with an actionable error.</p>
+<p>When a valid packet includes <code>replan_trigger_summary</code>, status/quota projects it
+as <code>goal_frontier_projection.acceptance_gaps[]</code>. If no runnable advancement
+frontier remains, that gap is evaluated before monitor quiet skip and can
+produce <code>autonomous_replan_required</code>. This is the intended self-discovery path:
+an agent records the bounded reason the current vision is still incomplete, and
+LoopX turns that reason into the next replan obligation without relying on chat
+memory or owner reminders.</p>
+<h2 id="vision-checkpoint">Vision Checkpoint<a class="headerlink" href="#vision-checkpoint" title="Permanent link">&para;</a></h2>
+<p><code>refresh-state</code> is the normal closeout boundary for a LoopX turn. When a turn
+records a material delivery outcome, records an autonomous replan ACK, or
+updates the durable <code>## Next Action</code>, it emits a per-agent
+<code>vision_checkpoint_v0</code>:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&quot;schema_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vision_checkpoint_v0&quot;</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">&quot;agent_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;research-executor&quot;</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="nt">&quot;satisfied&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="nt">&quot;decision&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;missing_required&quot;</span><span class="p">,</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="nt">&quot;triggers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;material_delivery_outcome&quot;</span><span class="p">}],</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="nt">&quot;required_resolution&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;write_agent_vision_patch&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;record_unchanged_reason&quot;</span><span class="p">]</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Valid checkpoint decisions are:</p>
+<ul>
+<li><code>patched</code>: the refresh wrote a bounded <code>agent_vision</code> packet for the same
+  <code>agent_id</code>;</li>
+<li><code>unchanged_with_reason</code>: an already persisted current per-agent vision still
+  applies, with a compact public-safe reason. A reason cannot create the first
+  vision baseline; without one, the checkpoint remains <code>missing_required</code> and
+  requires <code>write_vision_patch</code>;</li>
+<li><code>retired_or_superseded</code>: the frontier was explicitly closed, superseded, or
+  given a no-follow-up rationale;</li>
+<li><code>missing_required</code>: the turn was material but did not make a per-agent vision
+  decision; and</li>
+<li><code>not_required</code>: no material closeout trigger was present.</li>
+</ul>
+<p><code>missing_required</code> is not a chat reminder. Status keeps it in compact run
+history, quota filters it by current <code>agent_id</code>, and goal-frontier projection
+turns it into <code>acceptance_gaps[]</code>. If the current agent has no runnable
+advancement frontier, that gap can trigger <code>autonomous_replan_required</code>.
+For the same <code>agent_id</code>, a newer satisfied checkpoint with <code>patched</code>,
+<code>unchanged_with_reason</code>, or <code>retired_or_superseded</code> supersedes older
+<code>missing_required</code> checkpoints; <code>not_required</code> does not.</p>
+<p>Checkpoint and autonomous-replan ACK packets are protocol records, not semantic
+completion proof. A future monitor schedule is also not completion proof; it
+only says when to poll. A recent same-agent ACK may suppress duplicate
+monitor-only empty-frontier requests only after it explicitly carries
+<code>watch_lane_continuation</code>, and after the current per-agent vision has no
+projected acceptance gap. Generic deltas such as a vision patch, no-follow-up,
+or active next action do not authorize a monitor-only wait by themselves. An
+ACK from another agent lane must not clear this lane's empty-frontier
+obligation. If evidence, successor state, blocker state, or a superseding
+vision packet still shows the vision is unmet, the acceptance gap remains
+authoritative and quota must continue to project replan work.</p>
+<h2 id="vision-continuation-audit">Vision Continuation Audit<a class="headerlink" href="#vision-continuation-audit" title="Permanent link">&para;</a></h2>
+<p>Every selected todo is a bounded step toward the active per-agent vision, not a
+replacement for that vision. Before an agent records <code>todo complete</code>, a
+no-follow-up rationale, <code>--vision-unchanged-reason</code>, or an autonomous replan
+ACK, it must audit the current evidence against the active
+<code>acceptance_summary</code>:</p>
+<ol>
+<li>Derive the explicit requirements from the active vision, current todo,
+   user correction, and protected scope.</li>
+<li>Name the authoritative evidence for each requirement: changed files,
+   public-safe evidence records, public web research findings, evaluation
+   outputs, successor state, blocker state, or a superseding vision packet.</li>
+<li>Treat weak, indirect, stale, or protocol-only evidence as incomplete.</li>
+<li>Before external research, inspect the selected goal's registry-declared
+   <code>topic_authority</code> and <code>project_materials</code>, preferring projected
+   <code>agent_material_frontier</code> or <code>required_reads</code>. Use role, freshness, revision,
+   boundary, gate status, and conflict rule to select permitted references.
+   Registration guides discovery; it neither grants access nor proves acceptance.</li>
+<li>If projected evidence and permitted registry references remain weak, and the
+   acceptance question depends on public facts, run bounded public web research
+   from primary or authoritative sources and write back the confirmed/refuted
+   finding.</li>
+<li>If any requirement remains unproven, keep the vision active by creating a
+   successor todo or writing a compact <code>--vision-replan-trigger</code>.</li>
+</ol>
+<p>Quota/status expose this as <code>vision_continuation_audit_v0</code> in the CLI payload
+and <code>interaction_contract</code>. This mirrors the <code>/goal</code> continuation rule: goal
+state persists across turns until evidence proves the requested end state. It
+prevents a role from declaring success merely because it consumed the currently
+selected todo, recorded a checkpoint, or observed that another lane is quiet.</p>
+<p>The audit also exposes a compact deterministic <code>vision_gap_judge_v0</code>
+instruction packet for the agent. It borrows the strict done-judge stance used
+by autonomous goal loops without calling an LLM: the agent is told to compare
+the active vision <code>acceptance_summary</code> with projected evidence, using
+projected required reads, an explicit agent-scoped <code>loopx evidence-log
+--goal-id &lt;goal&gt; --agent-id &lt;agent&gt; --thin</code> read when available, then permitted
+registry-declared material references. Bounded public web research is the next
+fallback when those sources are missing or stale and the gap depends on public
+facts. <code>done=true</code> is only valid
+when the response or state clearly provides one of these outcomes:</p>
+<ul>
+<li>explicit completion with authoritative evidence;</li>
+<li>final deliverable or evaluation output satisfying the acceptance summary;</li>
+<li>a projected blocker/user gate that makes the goal unachievable without input;</li>
+<li>a superseding vision or no-follow-up rationale that explicitly closes the
+  frontier.</li>
+</ul>
+<p>Otherwise the judge remains <code>continue</code> and quota should keep projecting either
+the runnable successor or the replan trigger. This is intentionally stricter
+than todo lifecycle status: a completed todo is only evidence input, not the
+judge result.</p>
+<h2 id="state-machine">State Machine<a class="headerlink" href="#state-machine" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>stateDiagram-v2
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  [*] --&gt; Unset
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  Unset --&gt; DraftVision: goal configured or preset seeded
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>  DraftVision --&gt; ActiveVision: CLI budget + acceptance validated
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>  ActiveVision --&gt; VisionDriftDetected: frontier exhausted or objective shifted
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>  ActiveVision --&gt; DreamProposal: advisory dreaming proposes a bounded patch
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>  VisionDriftDetected --&gt; ReplanRequired: trigger accepted
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>  DreamProposal --&gt; ReplanRequired: proposal needs delivery routing
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>  ReplanRequired --&gt; ReplanDrafted: bounded plan + todo delta prepared
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>  ReplanDrafted --&gt; VisionPatchProposed: patch updates vision and route
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>  VisionPatchProposed --&gt; ActiveVision: budget + write correctness validated
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>  ActiveVision --&gt; Superseded: goal route replaced
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>  ActiveVision --&gt; Retired: acceptance done or no-follow-up recorded
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Meaning</th>
+<th>Required Exit Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Unset</code></td>
+<td>No per-agent vision packet exists.</td>
+<td>Goal configuration or preset seed.</td>
+</tr>
+<tr>
+<td><code>DraftVision</code></td>
+<td>A bounded packet is being prepared.</td>
+<td>CLI budget validation and acceptance text.</td>
+</tr>
+<tr>
+<td><code>ActiveVision</code></td>
+<td>Agents may use the packet for lane-local work.</td>
+<td>Progress, evidence, replan trigger, or retirement.</td>
+</tr>
+<tr>
+<td><code>VisionDriftDetected</code></td>
+<td>Current vision no longer explains the frontier.</td>
+<td>Concrete trigger, not vague "needs planning".</td>
+</tr>
+<tr>
+<td><code>DreamProposal</code></td>
+<td>Advisory planning suggests a patch.</td>
+<td>Explicit proposal id and public-safe summary.</td>
+</tr>
+<tr>
+<td><code>ReplanRequired</code></td>
+<td>The next bounded work is replan, not quiet wait.</td>
+<td>Replan obligation in goal-route/frontier projection.</td>
+</tr>
+<tr>
+<td><code>ReplanDrafted</code></td>
+<td>A concrete route/todo/acceptance delta exists.</td>
+<td>Bounded patch packet.</td>
+</tr>
+<tr>
+<td><code>VisionPatchProposed</code></td>
+<td>The patch is ready to apply.</td>
+<td>Budget check and local-state write correctness.</td>
+</tr>
+<tr>
+<td><code>Superseded</code></td>
+<td>Another route replaces this packet.</td>
+<td><code>superseded_by</code> or successor id.</td>
+</tr>
+<tr>
+<td><code>Retired</code></td>
+<td>The route is complete or intentionally closed.</td>
+<td>Acceptance evidence or no-follow-up evidence.</td>
+</tr>
+</tbody>
+</table>
+<p>The canonical stored close states are <code>vision_closed</code>, <code>retired</code>,
+<code>retired_or_superseded</code>, <code>superseded</code>, and <code>no_followup</code>. A state such as
+<code>completed_current_slice</code> intentionally remains open because completing one
+slice is not evidence that the per-agent vision acceptance is satisfied.</p>
+<p>These close states do not all have the same succession meaning.
+<code>vision_closed</code> means the current bounded stage passed its acceptance; while
+the registry goal remains <code>active</code> (including <code>active-*</code> variants), quota must
+project <code>vision_successor_required</code> and run a bounded replan before ordinary
+advancement or monitor quiet. The agent must write the next bounded vision, or
+choose the explicit terminal lane semantics <code>retired</code>, <code>superseded</code>, or
+<code>no_followup</code>. A completed/archived registry goal does not need a successor
+vision. This keeps stage completion from silently terminating a long-horizon
+goal.</p>
+<h3 id="exact-blocked-successor-wait">Exact blocked-successor wait<a class="headerlink" href="#exact-blocked-successor-wait" title="Permanent link">&para;</a></h3>
+<p>An open agent vision does not need another replan when the lane already has an
+exact current-agent or unclaimed advancement successor whose supported
+<code>resume_when</code> condition is projected as <code>resume_ready=false</code>. When there is no
+other selectable advancement, quota/status expose
+<code>goal_vision_wait_state_v0</code> with the waiting todo id, <code>resume_when</code>, compact
+<code>resume_condition</code>, and <code>automatic_resume=true</code>. The ordinary
+<code>vision_acceptance_gap</code> is deferred while that read model is active, so the
+agent can remain quiet instead of inventing duplicate successor work.</p>
+<p>This is a read model, not a stored vision or todo lifecycle state. When the
+condition becomes ready, normal open-todo or deferred-successor routing resumes
+automatically and the active vision remains available for acceptance auditing.
+It cannot suppress <code>vision_checkpoint_missing</code>, <code>vision_successor_required</code>, a
+resume condition that lacks exact projected evidence, or the dedicated repair
+for an advancement todo incorrectly gated by a standing continuous monitor.</p>
+<h2 id="replan-triggers">Replan Triggers<a class="headerlink" href="#replan-triggers" title="Permanent link">&para;</a></h2>
+<p>A replan trigger is goal-level and should be evaluated before lane-local quiet
+or agent-scope wait decisions:</p>
+<ul>
+<li>normalized progress shows no remaining advancement frontier;</li>
+<li>monitor-only lanes have no material transition and acceptance remains open;</li>
+<li>a cleared handoff has no successor or no-follow-up rationale;</li>
+<li>the current agent lane has a long selectable todo chain, such as 15 or more
+  advancement todos or roughly 20 open todos with advancement work still present;</li>
+<li>a periodic autonomous replan obligation is due;</li>
+<li>the user objective or acceptance contract changed;</li>
+<li>an approved dreaming proposal requires a delivery route.</li>
+</ul>
+<p>The replan decision must not be disturbed by monitor quiet skip, scoped gate
+waiting, or a single agent having no runnable todo. Those may explain local
+lane state, but they cannot erase a required goal-level replan.</p>
+<h2 id="replan-output">Replan Output<a class="headerlink" href="#replan-output" title="Permanent link">&para;</a></h2>
+<p>A valid replan writes at least one bounded delta:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">&quot;schema_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;goal_vision_replan_contract_v0&quot;</span><span class="p">,</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="nt">&quot;goal_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example-goal&quot;</span><span class="p">,</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="nt">&quot;agent_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;research-curator&quot;</span><span class="p">,</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vision_patch_proposed&quot;</span><span class="p">,</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="nt">&quot;vision_patch&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="nt">&quot;vision_summary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Map the next evidence frontier and hand off one runnable claim.&quot;</span><span class="p">,</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="nt">&quot;role_scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Owns research framing; does not run evaluation.&quot;</span><span class="p">,</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="nt">&quot;acceptance_summary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;One concrete successor todo plus evidence refs.&quot;</span><span class="p">,</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="nt">&quot;replan_trigger_summary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Frontier exhausted while acceptance remains open.&quot;</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">  </span><span class="nt">&quot;path_delta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="nt">&quot;schema_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;goal_path_delta_v0&quot;</span><span class="p">,</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="nt">&quot;outcome&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;replan&quot;</span><span class="p">,</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="nt">&quot;prior_assumption&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The existing frontier could satisfy acceptance.&quot;</span><span class="p">,</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">    </span><span class="nt">&quot;observed_reality&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;No runnable advancement remains.&quot;</span><span class="p">,</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">    </span><span class="nt">&quot;retained&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Keep verified evidence and the acceptance boundary.&quot;</span><span class="p">],</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="nt">&quot;changed&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Route one new bounded successor.&quot;</span><span class="p">],</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="nt">&quot;stopped&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Stop repeating the exhausted action.&quot;</span><span class="p">],</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="nt">&quot;evidence_refs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;evidence:frontier-review-01&quot;</span><span class="p">]</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">  </span><span class="nt">&quot;todo_delta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create_successor&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;retire_stale_monitor&quot;</span><span class="p">],</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">  </span><span class="nt">&quot;validation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">    </span><span class="nt">&quot;budget_checked&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">    </span><span class="nt">&quot;write_correctness_checked&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>An acknowledgement without a vision, todo, acceptance, or no-follow-up delta is
+a <code>replan_noop</code> and must not clear the obligation.</p>
+<p><code>refresh-state</code> does not treat a caller-supplied delta kind as proof. A
+<code>runnable_todo_set</code> claim must resolve to a scoped open advancement todo. A
+<code>watch_lane_continuation</code> claim must resolve to a scoped monitor with a target,
+parseable cadence and next due time, plus an unexpired expiry or unresolved
+resume condition; it cannot settle a <code>repeat_until_closed</code> vision. Todo scope
+uses the canonical claim, exclusion, and removed-continuation predicate.
+<code>successor_or_supersede</code> must resolve a completed Todo to an existing scoped
+open advancement successor, while <code>no_followup</code> must resolve the canonical
+terminal closure proof. Every frontier-clearing delta kind requires an evidence
+resolver; kinds without one cannot form ACK evidence. Rejected claims remain
+visible in the repair delta contract and the acknowledgement is a no-op when no
+verified frontier delta remains.</p>
+<h3 id="bad-case-ack-hidden-by-scheduler-accounting">Bad Case: ACK Hidden By Scheduler Accounting<a class="headerlink" href="#bad-case-ack-hidden-by-scheduler-accounting" title="Permanent link">&para;</a></h3>
+<p>Observed failure: a monitor-only lane correctly projected
+<code>autonomous_replan_required</code>, then a worker recorded a replan ACK with a
+frontier delta. The next quota check became quiet, but a later neutral spend or
+accounting run replaced the latest status record. Because quota only saw the
+latest run, the same monitor lane was projected as <code>autonomous_replan_required</code>
+again, causing a scheduler/replan loop.</p>
+<p>Root cause: replan ACK state was treated as latest-run detail instead of a
+durable goal-frontier projection. Scheduler/accounting records are useful
+history, but they are not material frontier changes.</p>
+<p>Repair rule: status must project the newest durable replan ACK across neutral
+accounting and monitor-poll runs until a real material transition appears.
+Quota then consumes that compact projection and does not duplicate the history
+scan or let scheduler backoff override the replan state machine.</p>
+<h2 id="projection-contract">Projection Contract<a class="headerlink" href="#projection-contract" title="Permanent link">&para;</a></h2>
+<p>Status, quota, diagnose, and visible multi-agent panes should expose the same
+compact goal-route facts:</p>
+<ul>
+<li><code>normalized_progress</code>: how far the goal has moved relative to acceptance;</li>
+<li><code>remaining_frontier</code>: runnable or replanable next edges;</li>
+<li><code>monitor_only_lanes</code>: lanes that are waiting without advancement;</li>
+<li><code>deferred_successors</code>: successors blocked by handoff, resume, or gate;</li>
+<li><code>acceptance_gaps</code>: missing evidence or contract fields;</li>
+<li><code>autonomy_blockers</code>: concrete blockers to autonomous progress;</li>
+<li><code>vision_budget</code>: current character usage and any rejected overage reason.</li>
+</ul>
+<p>These fields are projections. Writeback still goes through LoopX write APIs,
+not through dashboards, Lark mirrors, or chat text.</p>
+<p>When quota requires an autonomous replan, the required evidence read is scoped
+to the current agent's recent public-safe evidence ledger. A todo-specific
+evidence read may be useful as drill-down, but it is not sufficient as the
+decision basis for watch-lane continuation, no-follow-up, or successor choice.
+If local evidence is empty, stale, or contradictory, the agent may use bounded
+public-safe search as supporting evidence and write back source references.</p>
+<h2 id="write-correction-mechanism">Write / Correction Mechanism<a class="headerlink" href="#write-correction-mechanism" title="Permanent link">&para;</a></h2>
+<p>Vision correction is a normal state-machine transition, not only a
+self-repair fallback. Agents should write a bounded vision patch when:</p>
+<ul>
+<li>a normal progress turn changes the role's acceptance target;</li>
+<li>a user correction narrows or redirects the goal;</li>
+<li>a replan discovers that the current frontier no longer satisfies the
+  acceptance summary;</li>
+<li>a monitor-only lane should remain a watch lane but needs an explicit
+  continuation or expiry condition; or</li>
+<li>a product bottleneck is real but no current todo/frontier projection exposes
+  it.</li>
+</ul>
+<p>The inline flags keep the common path small. A role can update only the fields
+it knows: inline writes merge those fields into that agent's latest active
+vision, preserving omitted durable mainline fields and the current state. A
+todo, PR, capability, or monitor wait should normally update its own todo plus
+<code>replan_trigger_summary</code> or <code>last_patch_summary</code>; it must not replace the
+role's broader <code>vision_summary</code> merely because that dependency is current.</p>
+<p>JSON packets are complete generated updates. During
+<code>--autonomous-replan-recorded</code>, changing an existing <code>vision_summary</code>,
+<code>role_scope</code>, <code>acceptance_summary</code>, or <code>advancement_policy</code> requires a
+<code>goal_path_delta_v0</code> with <code>outcome=replan</code>, regardless of whether the update
+arrived through JSON or inline flags. This keeps a real mainline change
+possible while making the prior assumption, observed reality, and
+retained/changed/stopped route machine-auditable. Unchanged full packets,
+non-replan inline edits, and initial baselines do not need a path delta.</p>
+<p>When no patch is needed, the agent should still close a required checkpoint with
+<code>--vision-unchanged-reason</code>. That reason is per-agent and must explain why the
+existing acceptance and route still cover the material closeout.</p>
+<h2 id="acceptance">Acceptance<a class="headerlink" href="#acceptance" title="Permanent link">&para;</a></h2>
+<p>A change satisfies this contract only when:</p>
+<ul>
+<li>per-agent vision fields are rejected or compacted at the CLI/write boundary;</li>
+<li>inline vision writes require a concrete <code>--agent-id</code>;</li>
+<li>material <code>refresh-state</code> closeouts emit a per-agent <code>vision_checkpoint_v0</code>;</li>
+<li>missing per-agent checkpoints can become agent-scoped replan gaps instead of
+  global goal-level noise;</li>
+<li>quota/status and <code>interaction_contract</code> expose a
+  <code>vision_continuation_audit_v0</code> before todo closeout, no-follow-up,
+  <code>--vision-unchanged-reason</code>, or replan ACK;</li>
+<li>ordinary <code>refresh-state</code> calls can write bounded vision corrections without a
+  separate self-repair-only path;</li>
+<li>replan state is decided from goal-level projection before local quiet/wait
+  classifications;</li>
+<li>replan can clear an obligation only by writing a bounded delta;</li>
+<li>durable replan ACKs survive neutral scheduler/accounting runs until material
+  frontier state changes;</li>
+<li><code>quota.py</code> consumes the resulting projection instead of storing vision logic;</li>
+<li>auto-research remains a thin preset over the reusable kernel; and</li>
+<li>public docs and smokes cover the budget, state machine, and <code>quota.py</code>
+  boundary without private material.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.action.edit", "content.code.copy", "content.tabs.link", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.path", "search.highlight", "search.share", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

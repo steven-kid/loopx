@@ -1,0 +1,3524 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://huangruiteng.github.io/loopx/docs/development/control-plane-course/07-engineering-a-control-plane-rule/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/loopx-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第 7 讲：如何给 Control Plane 增加一条规则 - LoopX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#7-control-plane" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="LoopX" class="md-header__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../../../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LoopX
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第 7 讲：如何给 Control Plane 增加一条规则
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 2c-1.82 0-3.53.5-5 1.35C8 5.08 10 8.3 10 12s-2 6.92-5 8.65C6.47 21.5 8.18 22 10 22a10 10 0 0 0 10-10A10 10 0 0 0 10 2"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../guides/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../concepts/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../operations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Operations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../capabilities/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Capabilities
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../integrations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Integrations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../product/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Product
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../showcases/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Showcases
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="LoopX" class="md-nav__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../../../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    LoopX
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../guides/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/newcomer-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Newcomer Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/custom-agent-runner-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Runner Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/auto-research-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto Research Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../concepts/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concepts/interaction-pattern-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interaction Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../state-interaction-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    State Interaction Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quota-allocation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quota Allocation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../operations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operations/attention-queue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attention Queue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operations/long-task-cadence-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Long Task Cadence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operations/authority-source-registration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority Sources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../capabilities/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capabilities
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Capabilities
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/issue-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Issue Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/change-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Change Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/explore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Explore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/material-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Material Lifecycle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../capabilities/value-connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Value Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../integrations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integrations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integrations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/worker-bridge-install-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Worker Bridge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/lark-kanban-control-plane-adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lark Kanban
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/runtime-connector-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Connector Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../reference/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/benchmark-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testing-and-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing And Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Layout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../benchmark-developer-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control Plane Course
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../product/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Product
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/release-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/surfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Surfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/runtimes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtimes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../showcases/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Showcases
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Showcases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/frontend-surface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend Surface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/cases/0617-blocked-p0-safe-rotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blocked P0 Safe Rotation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/cases/0619-loopx-self-iteration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LoopX Self Iteration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/cases/0624-pr-issue-auto-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PR Issue Auto Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学习目标
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#showcase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本讲怎样使用三个 Showcase
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        先写行为链，不先写类
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bounded-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bounded Context 地图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        新规则的 8 个层次
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="新规则的 8 个层次">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-state-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. State definition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-canonical-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Canonical source
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-read-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Read model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-decision-precedence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Decision precedence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-interaction-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Interaction contract
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-host-effect-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Host effect contract
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Validation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-documentation-and-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Documentation and migration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#formal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Formal 在这里是什么意思
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-study-if-ordered-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case Study：从隐式 if 链到可审计 Ordered Rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-studypeer-supervisor-v0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        进阶 Case Study：Peer Supervisor v0
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="进阶 Case Study：Peer Supervisor v0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        研究来源
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#live-feature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最小 live feature
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#closed-decision-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Closed decision set
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proposal-receipt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposal 与 Receipt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User 与谁交互
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inject-canary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inject 为什么先有 canary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fork-live-enum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么 Fork 还不是 Live Enum
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migration-reader-live-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Migration Reader 与 Live Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        测试策略
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pause_branch-proposal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        练习：设计一个 pause_branch Proposal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peer-supervisor-control-plane" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心代码领读：以 peer supervisor 为例增加一条 control-plane 规则
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="核心代码领读：以 peer supervisor 为例增加一条 control-plane 规则">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-opt-in-overlay-leader" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 配置层只增加 opt-in overlay，不创造 leader 身份
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-contract-user-channel-authority" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Contract 明确 user channel 与 authority 边界
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-observation-packet-public-safe-read-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Observation packet 只消费 public-safe read models
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-decision-normalization-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Decision normalization 把四种行为变成可验证 schema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-proposal-receipt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Proposal 与 receipt 是两种不同事件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-effect-inject-adapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 当前真正落地的 effect 只有 inject adapter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 用这套顺序评审任何新规则
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        断点与检查问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        代码阅读路线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        课后检查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/huangruiteng/loopx/edit/main/docs/development/control-plane-course/07-engineering-a-control-plane-rule.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="7-control-plane">第 7 讲：如何给 Control Plane 增加一条规则<a class="headerlink" href="#7-control-plane" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>本讲结论：</strong> 一条 control-plane 规则必须闭合 source、decision、effect、receipt 与
+validation；没有真实 call site 和兼容合同的未来能力，应停留在文档或 todo。</p>
+</blockquote>
+<p>建议时长：110 分钟。方法讲解 35 分钟、ordered-rule case 35 分钟、进阶 extension case 25 分钟、练习 15 分钟。</p>
+<h2 id="_1">学习目标<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>完成本讲后，开发者应该能够：</p>
+<ol>
+<li>用 bounded context 和 state machine 定位一条规则的归属。</li>
+<li>写出规则的 source、projection、decision、effect、receipt 和 validation 链。</li>
+<li>区分 live runtime schema 与 migration reader。</li>
+<li>使用 characterization smoke 保护共享行为，再提取代码。</li>
+<li>判断一个未来扩展应该进入 production schema，还是只保留 design gate。</li>
+<li>把高风险隐式分支重构为有序、可审计、可反例验证的规则表。</li>
+</ol>
+<h2 id="showcase">本讲怎样使用三个 Showcase<a class="headerlink" href="#showcase" title="Permanent link">&para;</a></h2>
+<p>新增规则前，先判断变化属于领域翻译还是通用 Kernel：</p>
+<table>
+<thead>
+<tr>
+<th>需求</th>
+<th>应落在哪里</th>
+<th>为什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PR 出现 branch/merge blocker 时形成 <code>issue_fix_branch_or_merge_blocker_replan</code> successor</td>
+<td>Issue-Fix Capability + Domain State</td>
+<td>这是 GitHub lifecycle observation 的领域含义</td>
+</tr>
+<tr>
+<td>外部实验结果先检查 revision/window/baseline，再区分 model/infra outcome</td>
+<td>ML Experiment Capability + Domain State</td>
+<td>可比性与 failure attribution 是领域规则</td>
+</tr>
+<tr>
+<td>Harness 根据 Graph refs 与 resource capacity 排序候选，但不得 launch</td>
+<td>Explore Capability 的 read-only planner</td>
+<td>planner 可以复用通用状态，不能拥有 effect authority</td>
+</tr>
+<tr>
+<td>所有普通工作关闭但 acceptance gap 仍开时触发 replan</td>
+<td>Kernel ordered rules</td>
+<td>任何 capability 都需要相同 completion 语义</td>
+</tr>
+<tr>
+<td>Auto Research 增加一种 evaluator evidence</td>
+<td>Auto Research Capability / Domain State</td>
+<td>新增领域事实和 validator，不改变通用 authority</td>
+</tr>
+<tr>
+<td>promotion 必须经过 scoped user/reviewer decision</td>
+<td>Kernel gate contract + preset declaration</td>
+<td>gate、scope 与 authority 不能由 preset 私有实现</td>
+</tr>
+</tbody>
+</table>
+<p>本讲先用 goal-frontier replan 展示怎样重构一条已经在线的 Kernel 规则，再用 Peer
+Supervisor 展示怎样把新的 extension 停在最小边界。前者是主案例；不准备开发
+supervisor 的读者也可以跳过第二个 case study，不影响规则工程方法。</p>
+<h2 id="_2">先写行为链，不先写类<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>任何 control-plane feature 先回答：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Shipped behavior / real call site 是什么？
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Source of truth 在哪里？
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>谁有写权限？
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Status 如何投影？
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Quota 在什么 precedence 读取它？
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>Interaction contract 如何表达？
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Host 是否需要新 capability？
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>执行成功的 receipt 是什么？
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>失败、重试、幂等、rollback 边界是什么？
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>哪个 smoke 证明真实行为？
+</span></code></pre></div>
+<p>如果只能回答“未来也许有用”，先放在设计文档或 todo，不要增加 public enum、CLI flag、event schema 和空 adapter。</p>
+<h2 id="bounded-context">Bounded Context 地图<a class="headerlink" href="#bounded-context" title="Permanent link">&para;</a></h2>
+<p>当前核心上下文包括：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>control_plane/agents
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>control_plane/goals
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>control_plane/handoff
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>control_plane/quota
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>control_plane/runtime
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>control_plane/scheduler
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>control_plane/todos
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>control_plane/work_items
+</span></code></pre></div>
+<p>归属原则不是“哪个文件短”，而是 change reason：</p>
+<ul>
+<li>agent identity/supervisor observation 属于 <code>agents</code>；</li>
+<li>todo lifecycle 属于 <code>todos</code>；</li>
+<li>interaction contract composition 属于 <code>runtime</code>/<code>quota</code>；</li>
+<li>cadence/ACK 属于 <code>scheduler</code>；</li>
+<li>repo/write-scope 选择属于 workspace/work item boundary。</li>
+</ul>
+<p>大文件是 warning signal，不是自动拆分理由。先找一组已经有 parity fixture 的 cohesive rules，再移动到 bounded context。</p>
+<h2 id="8">新规则的 8 个层次<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<h3 id="1-state-definition">1. State definition<a class="headerlink" href="#1-state-definition" title="Permanent link">&para;</a></h3>
+<p>定义合法状态和非法状态：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>states
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>events
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>guards
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>transitions
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>terminal conditions
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>idempotency identity
+</span></code></pre></div>
+<p>优先使用 closed enum/schema，而不是散落 booleans。</p>
+<h3 id="2-canonical-source">2. Canonical source<a class="headerlink" href="#2-canonical-source" title="Permanent link">&para;</a></h3>
+<p>配置写 registry，transition 写 event/API。不要让 status、dashboard 或 prompt 成为写源。</p>
+<h3 id="3-read-model">3. Read model<a class="headerlink" href="#3-read-model" title="Permanent link">&para;</a></h3>
+<p>确定 status 是否需要投影：</p>
+<ul>
+<li>operator first screen；</li>
+<li>agent management；</li>
+<li>attention queue；</li>
+<li>task graph；</li>
+<li>compact evidence。</li>
+</ul>
+<p>不要把 raw payload 直接放入公共 status。</p>
+<h3 id="4-decision-precedence">4. Decision precedence<a class="headerlink" href="#4-decision-precedence" title="Permanent link">&para;</a></h3>
+<p>明确规则进入 quota pipeline 的位置。它是否早于 capability、晚于 gate，还是只影响 scheduler？</p>
+<p>在 <code>docs/product/core-control-plane/rule-seam-map.md</code> 中记录输入、输出和相邻规则。</p>
+<h3 id="5-interaction-contract">5. Interaction contract<a class="headerlink" href="#5-interaction-contract" title="Permanent link">&para;</a></h3>
+<p>把规则转换成 user/agent/CLI channel，不给 host 另一套自定义字段。</p>
+<h3 id="6-host-effect-contract">6. Host effect contract<a class="headerlink" href="#6-host-effect-contract" title="Permanent link">&para;</a></h3>
+<p>如果需要外部动作，定义：</p>
+<ul>
+<li>required capability；</li>
+<li>explicit authority；</li>
+<li>typed request/result；</li>
+<li>dry-run；</li>
+<li>idempotency；</li>
+<li>receipt；</li>
+<li>rollback/compensation boundary。</li>
+</ul>
+<h3 id="7-validation">7. Validation<a class="headerlink" href="#7-validation" title="Permanent link">&para;</a></h3>
+<p>Smoke 应验证 durable behavior，而不是临时 builder 的所有字段。</p>
+<h3 id="8-documentation-and-migration">8. Documentation and migration<a class="headerlink" href="#8-documentation-and-migration" title="Permanent link">&para;</a></h3>
+<p>文档说明 live model、default、opt-in、failure behavior。Migration reader 保留旧输入的 exactly-once 转换，但不能让旧字段继续出现在 canonical output。</p>
+<h2 id="formal">Formal 在这里是什么意思<a class="headerlink" href="#formal" title="Permanent link">&para;</a></h2>
+<p>Control plane 中的 “formal” 不一定意味着马上写数学证明。它首先表示把自然语言意图变成可检查对象：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>intent
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  -&gt; typed state
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  -&gt; invariant
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>  -&gt; guard
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>  -&gt; transition
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>  -&gt; proof obligation / receipt
+</span></code></pre></div>
+<p>例如：“只有所有后续都关闭才能停”可以写成不变量：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>terminal_no_followup =&gt;
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  open_todos = 0
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  and due_monitors = 0
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>  and pending_successors = 0
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>  and replan_obligations = 0
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>  and acceptance_gaps = 0
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>  and retryable_postconditions = 0
+</span></code></pre></div>
+<p>普通 Python smoke 可以检查有限案例；property-based test 可以搜索更多组合；TLA+/Alloy 可以检查状态机；Lean 可以把状态、transition 和 theorem 写进依赖类型系统，并由 kernel 检查 proof term。</p>
+<p>Lean 的价值不是“让 agent 写更多形式化文本”，而是对少量高价值 invariants 给出机器证明，例如：</p>
+<ul>
+<li>执行过的 supervisor action 必然有 capability-matched receipt；</li>
+<li>terminal state 不可能同时有 runnable successor；</li>
+<li>lease loss 后 transition 不能提交；</li>
+<li>proposal 不可被误投影为 executed。</li>
+</ul>
+<p>不应尝试把整个 Python CLI 一次性翻译成 Lean。先让 schema、enum、transition helper 和 smoke 足够清晰，再选择最关键的不变量形式化。</p>
+<h2 id="case-study-if-ordered-rules">Case Study：从隐式 <code>if</code> 链到可审计 Ordered Rules<a class="headerlink" href="#case-study-if-ordered-rules" title="Permanent link">&para;</a></h2>
+<p>规则工程不只发生在“增加新行为”时。一个高风险 reducer 可能已经正确运行，却把优先级
+散落在长函数的 early return 中。此时目标是<strong>保持 public behavior 不变，同时让政策顺序
+成为可检查对象</strong>。</p>
+<p>Goal-frontier replan 就是一个例子（见
+<a href="https://github.com/huangruiteng/loopx/pull/2320">PR #2320</a>）。它需要同时回答：已有 obligation 是否继续有效、handoff
+gate 是否占据下一 transition、是否已有可运行 successor、当前 agent 的 vision 是否缺少
+满足项、monitor-only frontier 是否耗尽。重构后的核心先冻结输入 facts，再执行 first-match：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">GoalFrontierReplanRule</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">EXISTING_OBLIGATION</span> <span class="o">=</span> <span class="s2">&quot;existing_obligation&quot;</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">BLOCKING_HANDOFF_GATE</span> <span class="o">=</span> <span class="s2">&quot;blocking_handoff_gate&quot;</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">READY_DEFERRED_SUCCESSOR</span> <span class="o">=</span> <span class="s2">&quot;ready_deferred_successor&quot;</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="n">OPEN_USER_TODO</span> <span class="o">=</span> <span class="s2">&quot;open_user_todo&quot;</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="n">TODO_SUCCESSION_GAP</span> <span class="o">=</span> <span class="s2">&quot;todo_succession_gap&quot;</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="n">VISION_ACCEPTANCE_GAP</span> <span class="o">=</span> <span class="s2">&quot;vision_acceptance_gap&quot;</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="n">LONG_TODO_CHAIN</span> <span class="o">=</span> <span class="s2">&quot;long_todo_chain&quot;</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="n">LONG_TODO_CHAIN_ACKNOWLEDGED</span> <span class="o">=</span> <span class="s2">&quot;long_todo_chain_acknowledged&quot;</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="n">WATCH_LANE_CONTINUATION_ACKNOWLEDGED</span> <span class="o">=</span> <span class="s2">&quot;watch_lane_continuation_acknowledged&quot;</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    <span class="n">NOT_MONITOR_ONLY</span> <span class="o">=</span> <span class="s2">&quot;not_monitor_only&quot;</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    <span class="n">NO_OPEN_MONITOR</span> <span class="o">=</span> <span class="s2">&quot;no_open_monitor&quot;</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="n">ADVANCEMENT_REMAINS</span> <span class="o">=</span> <span class="s2">&quot;advancement_remains&quot;</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>    <span class="n">MONITOR_FRONTIER_EXHAUSTED</span> <span class="o">=</span> <span class="s2">&quot;monitor_frontier_exhausted&quot;</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="k">class</span><span class="w"> </span><span class="nc">GoalFrontierReplanFacts</span><span class="p">:</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>    <span class="n">blocking_handoff_gate_count</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>    <span class="n">ready_deferred_successor_count</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>    <span class="n">acceptance_gap_count</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>    <span class="n">agent_advancement_count</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>    <span class="n">monitor_only_lane</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>    <span class="n">monitor_count</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>
+</span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="k">def</span><span class="w"> </span><span class="nf">select_goal_frontier_replan_rule</span><span class="p">(</span><span class="n">facts</span><span class="p">):</span>
+</span><span id="__span-5-26"><a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>    <span class="n">ordered_rules</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>        <span class="p">(</span><span class="n">GoalFrontierReplanRule</span><span class="o">.</span><span class="n">EXISTING_OBLIGATION</span><span class="p">,</span>
+</span><span id="__span-5-28"><a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>         <span class="n">facts</span><span class="o">.</span><span class="n">existing_replan_required</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;existing obligation&quot;</span><span class="p">),</span>
+</span><span id="__span-5-29"><a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>        <span class="p">(</span><span class="n">GoalFrontierReplanRule</span><span class="o">.</span><span class="n">BLOCKING_HANDOFF_GATE</span><span class="p">,</span>
+</span><span id="__span-5-30"><a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a>         <span class="n">facts</span><span class="o">.</span><span class="n">blocking_handoff_gate_count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;handoff owns transition&quot;</span><span class="p">),</span>
+</span><span id="__span-5-31"><a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a>        <span class="p">(</span><span class="n">GoalFrontierReplanRule</span><span class="o">.</span><span class="n">READY_DEFERRED_SUCCESSOR</span><span class="p">,</span>
+</span><span id="__span-5-32"><a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a>         <span class="n">facts</span><span class="o">.</span><span class="n">ready_deferred_successor_count</span> <span class="o">&gt;</span> <span class="mi">0</span>
+</span><span id="__span-5-33"><a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a>         <span class="ow">and</span> <span class="ow">not</span> <span class="n">facts</span><span class="o">.</span><span class="n">successor_vision_required</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;successor is runnable&quot;</span><span class="p">),</span>
+</span><span id="__span-5-34"><a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a>        <span class="p">(</span><span class="n">GoalFrontierReplanRule</span><span class="o">.</span><span class="n">OPEN_USER_TODO</span><span class="p">,</span>
+</span><span id="__span-5-35"><a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a>         <span class="n">facts</span><span class="o">.</span><span class="n">user_open_count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;user work owns frontier&quot;</span><span class="p">),</span>
+</span><span id="__span-5-36"><a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a>        <span class="c1"># succession gap, vision gap, long-chain and acknowledgement rules</span>
+</span><span id="__span-5-37"><a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a>        <span class="p">(</span><span class="n">GoalFrontierReplanRule</span><span class="o">.</span><span class="n">ADVANCEMENT_REMAINS</span><span class="p">,</span>
+</span><span id="__span-5-38"><a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a>         <span class="n">facts</span><span class="o">.</span><span class="n">agent_advancement_count</span> <span class="o">&gt;</span> <span class="mi">0</span>
+</span><span id="__span-5-39"><a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a>         <span class="ow">or</span> <span class="n">facts</span><span class="o">.</span><span class="n">total_frontier_advancement</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;advancement remains&quot;</span><span class="p">),</span>
+</span><span id="__span-5-40"><a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a>        <span class="p">(</span><span class="n">GoalFrontierReplanRule</span><span class="o">.</span><span class="n">MONITOR_FRONTIER_EXHAUSTED</span><span class="p">,</span>
+</span><span id="__span-5-41"><a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a>         <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;only monitor work remains&quot;</span><span class="p">),</span>
+</span><span id="__span-5-42"><a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a>    <span class="p">)</span>
+</span><span id="__span-5-43"><a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a>    <span class="k">for</span> <span class="n">rule</span><span class="p">,</span> <span class="n">matches</span><span class="p">,</span> <span class="n">derives_obligation</span><span class="p">,</span> <span class="n">reason</span> <span class="ow">in</span> <span class="n">ordered_rules</span><span class="p">:</span>
+</span><span id="__span-5-44"><a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a>        <span class="k">if</span> <span class="n">matches</span><span class="p">:</span>
+</span><span id="__span-5-45"><a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a>            <span class="k">return</span> <span class="n">GoalFrontierReplanRuleDecision</span><span class="p">(</span>
+</span><span id="__span-5-46"><a id="__codelineno-5-46" name="__codelineno-5-46" href="#__codelineno-5-46"></a>                <span class="n">rule</span><span class="o">=</span><span class="n">rule</span><span class="p">,</span>
+</span><span id="__span-5-47"><a id="__codelineno-5-47" name="__codelineno-5-47" href="#__codelineno-5-47"></a>                <span class="n">derives_obligation</span><span class="o">=</span><span class="n">derives_obligation</span><span class="p">,</span>
+</span><span id="__span-5-48"><a id="__codelineno-5-48" name="__codelineno-5-48" href="#__codelineno-5-48"></a>                <span class="n">reason</span><span class="o">=</span><span class="n">reason</span><span class="p">,</span>
+</span><span id="__span-5-49"><a id="__codelineno-5-49" name="__codelineno-5-49" href="#__codelineno-5-49"></a>            <span class="p">)</span>
+</span></code></pre></div>
+<p>这里 <code>False</code> 决策和 <code>True</code> 决策同样重要。<code>BLOCKING_HANDOFF_GATE</code>、
+<code>READY_DEFERRED_SUCCESSOR</code>、<code>OPEN_USER_TODO</code> 和 <code>ADVANCEMENT_REMAINS</code> 都是负向规则：
+它们证明已有 transition owner 或可执行工作时，不应凭空创建 replan obligation。若只提取
+“哪些情况要 replan”，会丢失这些抑制条件，改变 precedence。</p>
+<p>重构按四层验证：</p>
+<ol>
+<li>13 行 decision table 让每条 rule 都成为 first match，并故意叠加低优先级事实；</li>
+<li>metamorphic test 把其他 agent 的 backlog 从 1 改成 2、8，当前 agent 的 vision gap
+   仍不能被满足；加入当前 agent 自己的 runnable advancement 后，replan 必须消失；</li>
+<li>quota smoke 串起 peer-only、own-frontier、monitor-only 三条真实路由；</li>
+<li>quality surface catalog 将它标为 high risk，要求 unit、smoke、canary 和 release gate；
+   模型行为层记为 <code>not_applicable</code>，因为确定性 precedence 不应交给模型裁判。</li>
+</ol>
+<p>这个案例的评审重点不是“新模块是否更漂亮”，而是：facts 是否来自同一 canonical
+projection、rule order 是否完整、每条负向规则是否有反例、runtime payload builder 是否
+仍复用原实现。只有这四点成立，代码移动才是行为保持的重构。</p>
+<h2 id="case-studypeer-supervisor-v0">进阶 Case Study：Peer Supervisor v0<a class="headerlink" href="#case-studypeer-supervisor-v0" title="Permanent link">&para;</a></h2>
+<h3 id="_3">研究来源<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>Shepherd 和 CooperBench 的公开研究给出一个直接启发：多个 worker 并行时，较强 supervisor 可以读取 effect stream，并可能执行以下动作。LoopX 对这组研究的产品化边界记录在 <code>docs/reference/protocols/peer-supervisor-v0.md</code>：</p>
+<ul>
+<li><code>inject</code>：给现有 session 注入有界信息；</li>
+<li><code>handoff</code>：让另一个执行者从某个版本化状态继续；</li>
+<li><code>discard</code>：终止失败分支并保留证据。</li>
+</ul>
+<p>LoopX 面临额外约束：</p>
+<ul>
+<li>peer 是 equal identity，不能恢复 primary/side hierarchy；</li>
+<li>LoopX 有 registry、todo、quota、gate、evidence 等丰富状态；</li>
+<li>host 能力不统一；</li>
+<li>user 可以和 supervisor 交互，也必须能直接和任一 peer 交互；</li>
+<li>supervisor transcript 不能成为隐藏 authority source。</li>
+</ul>
+<h3 id="live-feature">最小 live feature<a class="headerlink" href="#live-feature" title="Permanent link">&para;</a></h3>
+<p>配置必须显式、default-off，supervisor 本身必须已经是 registered peer：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>loopx<span class="w"> </span>configure-goal<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span>--supervisor-agent<span class="w"> </span>&lt;registered-agent-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span>--supervised-agent<span class="w"> </span>&lt;peer-a&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span>--supervised-agent<span class="w"> </span>&lt;peer-b&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span>--execute
+</span></code></pre></div>
+<p>Registry 保存：</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">{</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nt">&quot;coordination&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nt">&quot;agent_model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;peer_v1&quot;</span><span class="p">,</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="nt">&quot;supervisor&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">      </span><span class="nt">&quot;schema_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;peer_supervisor_v0&quot;</span><span class="p">,</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">      </span><span class="nt">&quot;agent_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;peer&gt;&quot;</span><span class="p">,</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">      </span><span class="nt">&quot;supervised_agents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&lt;peer-a&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&lt;peer-b&gt;&quot;</span><span class="p">],</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">      </span><span class="nt">&quot;execution_mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;proposal_only&quot;</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>关键是 <code>proposal_only</code>。</p>
+<h3 id="observation">Observation<a class="headerlink" href="#observation" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>loopx<span class="w"> </span>supervisor-prompt<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span>--agent-id<span class="w"> </span>&lt;supervisor-agent&gt;
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>loopx<span class="w"> </span>supervisor-observe<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">  </span>--agent-id<span class="w"> </span>&lt;supervisor-agent&gt;
+</span></code></pre></div>
+<p>Observation 只折叠现有 public-safe projection：</p>
+<ul>
+<li>goal status / user gates；</li>
+<li>peer current todo、state、next action；</li>
+<li>workspace/handoff refs；</li>
+<li>thin evidence rows；</li>
+<li>compact effect refs。</li>
+</ul>
+<p>它不运行别的 peer 的 quota，不读 raw transcript，不获得写权限。缺 peer status/evidence 时：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>decision_input_complete=false
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>warnings=[...]
+</span></code></pre></div>
+<h3 id="closed-decision-set">Closed decision set<a class="headerlink" href="#closed-decision-set" title="Permanent link">&para;</a></h3>
+<p>当前 <code>SupervisorDecisionKind</code>：</p>
+<table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Required host capability</th>
+<th>v0 状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>observe</code></td>
+<td>none</td>
+<td>可记录 proposal</td>
+</tr>
+<tr>
+<td><code>inject</code></td>
+<td><code>session_message_injection</code></td>
+<td>有 opt-in Python host adapter canary</td>
+</tr>
+<tr>
+<td><code>handoff</code></td>
+<td><code>session_state_fork</code> + <code>workspace_state_transfer</code></td>
+<td>proposal-only</td>
+</tr>
+<tr>
+<td><code>discard</code></td>
+<td><code>session_termination</code></td>
+<td>proposal-only</td>
+</tr>
+</tbody>
+</table>
+<p>Decision 必须带 stable id、reason codes、evidence refs 和 conditional fields。</p>
+<h3 id="proposal-receipt">Proposal 与 Receipt<a class="headerlink" href="#proposal-receipt" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>loopx<span class="w"> </span>supervisor-event<span class="w"> </span>propose<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span>--goal-id<span class="w"> </span>&lt;goal-id&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span>--agent-id<span class="w"> </span>&lt;supervisor-agent&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span>--decision-json<span class="w"> </span>&lt;decision.json&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">  </span>--execute
+</span></code></pre></div>
+<p>这只证明 supervisor 提出了建议。</p>
+<p>Executed receipt 必须由 host adapter API 提供：</p>
+<ul>
+<li>verified capabilities，不从可编辑 JSON 自报；</li>
+<li>authority ref；</li>
+<li>compact evidence refs；</li>
+<li>rollback boundary；</li>
+<li>idempotent receipt id。</li>
+</ul>
+<p>普通 CLI 只能记录 rejected/failed attempt，不能把 proposal 提升成 executed。</p>
+<h3 id="user">User 与谁交互<a class="headerlink" href="#user" title="Permanent link">&para;</a></h3>
+<p>Supervisor contract 推荐把 supervisor task 作为 synthesis channel，因为用户只需看一个综合视图。但：</p>
+<ul>
+<li>用户仍可和任一 peer 直接交互；</li>
+<li>所有改变 authority 的决定仍写成 LoopX user todo/gate；</li>
+<li>supervisor 不能 claim 其他 peer 的 todo；</li>
+<li>supervisor 不能花其他 peer 的 quota；</li>
+<li>supervisor 不是隐藏 review owner。</li>
+</ul>
+<h3 id="inject-canary">Inject 为什么先有 canary<a class="headerlink" href="#inject-canary" title="Permanent link">&para;</a></h3>
+<p><code>loopx/control_plane/agents/supervisor_inject.py</code> 提供一个很窄的 Python seam：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>recorded proposal
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>  -&gt; validate kind=inject
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>  -&gt; validate host capability
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>  -&gt; validate authority and rollback policy
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>  -&gt; dry-run request
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>  -&gt; adapter.inject(request)
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>  -&gt; typed result
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>  -&gt; durable executed receipt
+</span></code></pre></div>
+<p>重复执行先检查已有 receipt，避免 host 被调用两次。</p>
+<p>它没有默认 adapter，也没有打开 CLI 自动注入开关。</p>
+<h2 id="fork-live-enum">为什么 Fork 还不是 Live Enum<a class="headerlink" href="#fork-live-enum" title="Permanent link">&para;</a></h2>
+<p>Shepherd-style fork 合理，但当前只落在 future extension gate，因为没有完整 host/scheduler call site。</p>
+<p>Fork 与 handoff 不同：</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Source 是否继续</th>
+<th>资源影响</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>handoff</td>
+<td>通常完成或 yield</td>
+<td>转移 continuation，不默认增加 branch 数</td>
+</tr>
+<tr>
+<td>fork</td>
+<td>继续</td>
+<td>新增临时 execution branch，需要 capacity reservation</td>
+</tr>
+</tbody>
+</table>
+<p>正确未来模型不是复制长期 peer identity，而是：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>source_agent_id
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>source_state_ref (immutable)
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>execution_branch_id
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>executor_agent_id (existing idle registered peer)
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>branch_lease_id
+</span></code></pre></div>
+<p>调度器像 Raft 所描述的 persistent-agent workspace 一样，选择一个空闲、capability-matched 的现有 agent 执行 branch。它不能注册“clone-agent-2”，也不能复制 durable memory 成新身份。</p>
+<p>最低 lifecycle：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>proposal_only -&gt; admitted -&gt; leased -&gt; running -&gt; held_result
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>                                                -&gt; failed
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>                                                -&gt; expired
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>held_result -&gt; selected | discarded
+</span></code></pre></div>
+<p>Branch 完成不自动合并。<code>selected</code> 仍要经过普通 todo ownership、validation、review、merge 和 gate。</p>
+<p>只有真实 scheduler/host adapter 能证明以下能力后，才应把 <code>fork</code> 加进 public enum：</p>
+<ul>
+<li>versioned execution state；</li>
+<li>copy-on-write workspace；</li>
+<li>idle peer selection；</li>
+<li>capacity reservation；</li>
+<li>branch lease；</li>
+<li>held result settlement；</li>
+<li>expiry/cancel/idempotency/partial failure recovery。</li>
+</ul>
+<p>这就是 right-sized scope：文档把未来 invariant 讲清楚，但 production schema 不为没有 call site 的能力提前膨胀。</p>
+<h2 id="migration-reader-live-model">Migration Reader 与 Live Model<a class="headerlink" href="#migration-reader-live-model" title="Permanent link">&para;</a></h2>
+<p>升级兼容需要同时满足两个要求：旧版主/辅层级配置仍能被读取和迁移，迁移完成后的
+live model 不再暴露这些层级字段。</p>
+<p>正确分层：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>legacy input
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>  -&gt; exactly-once migration detection/reader
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>  -&gt; canonical peer_v1 config
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>  -&gt; live output never emits hierarchy fields
+</span></code></pre></div>
+<p>错误方案：</p>
+<ul>
+<li>删除 migration reader，导致旧用户无法升级；</li>
+<li>在 live validation 中继续接受 hierarchy 字段，导致旧模型永久存活；</li>
+<li>把 migration detection 的字段名误当作当前配置 UI。</li>
+</ul>
+<p>Smoke 应同时证明：</p>
+<ul>
+<li>legacy fixture 能迁移；</li>
+<li>canonical registry 没有旧字段；</li>
+<li>runtime selection 始终是 <code>peer_v1</code>；</li>
+<li>supervisor overlay 不引入 hierarchy。</li>
+</ul>
+<h2 id="_4">测试策略<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>本讲只保留规则开发的入口；完整分层、频率、模型行为门和发布门见<a href="../08-autonomous-agent-quality-gates/">第 8 讲</a>。</p>
+<p>测试先回答“这个状态和规则合理吗”，再验证实现是否符合。共享 quota/status/todo 行为可以先加 parity fixture 描述现状，但 fixture 不是授权书；如果现状与 independently reviewed invariant 冲突，应修规则并增加负向或 mutation coverage，不能刷新 golden 把错误合法化。</p>
+<p>例如 gate lifecycle 至少要先写出这张语义表，再决定 schema 和 transition：</p>
+<table>
+<thead>
+<tr>
+<th>用户结果</th>
+<th>gate 问题是否结束</th>
+<th>required decision scope 是否满足</th>
+<th>blocked delivery</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>granted</td>
+<td>是</td>
+<td>是</td>
+<td>可按其余 guard 重算</td>
+</tr>
+<tr>
+<td>denied</td>
+<td>是</td>
+<td>否</td>
+<td>保持 blocked，或显式 supersede</td>
+</tr>
+<tr>
+<td>cancelled</td>
+<td>是，原问题撤回</td>
+<td>否</td>
+<td>保持 blocked，或显式 supersede/defer</td>
+</tr>
+<tr>
+<td>pending / undecided</td>
+<td>否</td>
+<td>否</td>
+<td>保持 blocked</td>
+</tr>
+</tbody>
+</table>
+<p>如果当前状态只能表达 <code>done=true</code>，却无法区分 granted 与 denied，那么缺的是状态模型；录制当前 <code>todo complete</code> 输出只会把歧义固化成金标。</p>
+<p>一条跨层规则通常至少需要 unit/contract、focused smoke、public-safe decision replay 和 catalog-informed canary。Smoke 应覆盖交叉规则，而不只覆盖单概念 happy path。典型组合包括：</p>
+<ul>
+<li>due monitor 产生 gate 后又触发 replan，最终 scheduler identity 必须变化；</li>
+<li>non-blocking <code>user_action</code> 经过 compact reducer 后仍不能满足 <code>required_decision_scopes</code>；</li>
+<li>capability matched 但 workspace 不匹配时，只允许 workspace repair，不允许 normal delivery；</li>
+<li>todos 全 done 但 acceptance gap 或 active monitor 尚存时，terminal closure 必须为 false。</li>
+</ul>
+<p>非平凡 LoopX 变更还需要：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>loopx<span class="w"> </span>canary<span class="w"> </span>premerge<span class="w"> </span>--from-git-diff
+</span></code></pre></div>
+<p>一个 hand-picked smoke 不足以覆盖 runtime/quota/scheduler/todo/install/dashboard 边界。是否增加 output budget、actual-default model qualification、full-public 或 outcome baseline，由第 8 讲的风险门禁决定，不能让每个小 patch 都等待最高成本矩阵。</p>
+<h2 id="pause_branch-proposal">练习：设计一个 <code>pause_branch</code> Proposal<a class="headerlink" href="#pause_branch-proposal" title="Permanent link">&para;</a></h2>
+<p>不要写代码，先写 contract：</p>
+<ol>
+<li>它与 <code>discard</code> 的语义差别是什么？</li>
+<li>需要什么 host capability？</li>
+<li>Source state 和 branch identity 是什么？</li>
+<li>Pause 后 lease 如何处理？</li>
+<li>Resume 是否需要新 authority？</li>
+<li>Proposal、attempt、executed receipt 如何区分？</li>
+<li>哪些状态下 fail closed？</li>
+<li>是否已有真实 call site？如果没有，应停在文档还是进入 enum？</li>
+</ol>
+<p>最后用 scope-fit review 决定是否实现。合理答案很可能是先保持设计 proposal，不扩 public schema。</p>
+<h2 id="peer-supervisor-control-plane">核心代码领读：以 peer supervisor 为例增加一条 control-plane 规则<a class="headerlink" href="#peer-supervisor-control-plane" title="Permanent link">&para;</a></h2>
+<p>这一节既是 supervisor 实现领读，也是 contributor 模板。先把一条危险规则拆成六层：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>config
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>  -&gt; read-only observation
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>  -&gt; normalized decision
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>  -&gt; durable proposal event
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>  -&gt; explicit host adapter effect
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>  -&gt; durable receipt / projection
+</span></code></pre></div>
+<p>只要中间缺一层，就不能把 proposal 写成 executed。</p>
+<h3 id="1-opt-in-overlay-leader">1. 配置层只增加 opt-in overlay，不创造 leader 身份<a class="headerlink" href="#1-opt-in-overlay-leader" title="Permanent link">&para;</a></h3>
+<p><code>loopx/control_plane/agents/supervisor.py</code> 的 live enum 是：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">SupervisorDecisionKind</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="n">OBSERVE</span> <span class="o">=</span> <span class="s2">&quot;observe&quot;</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    <span class="n">INJECT</span> <span class="o">=</span> <span class="s2">&quot;inject&quot;</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>    <span class="n">HANDOFF</span> <span class="o">=</span> <span class="s2">&quot;handoff&quot;</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    <span class="n">DISCARD</span> <span class="o">=</span> <span class="s2">&quot;discard&quot;</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="n">HOST_CAPABILITIES_BY_DECISION</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>    <span class="s2">&quot;observe&quot;</span><span class="p">:</span> <span class="p">[],</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>    <span class="s2">&quot;inject&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;session_message_injection&quot;</span><span class="p">],</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>    <span class="s2">&quot;handoff&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;session_state_fork&quot;</span><span class="p">,</span> <span class="s2">&quot;workspace_state_transfer&quot;</span><span class="p">],</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>    <span class="s2">&quot;discard&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;session_termination&quot;</span><span class="p">],</span>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><code>normalize_peer_supervisor</code> 的关键不是 enum，而是身份约束：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">if</span> <span class="n">raw</span> <span class="ow">in</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="p">{})</span> <span class="ow">or</span> <span class="n">raw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;enabled&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    <span class="k">return</span> <span class="kc">None</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="k">if</span> <span class="n">agent_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">registered_agents</span><span class="p">:</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;supervisor ... is not registered&quot;</span><span class="p">)</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="k">if</span> <span class="n">agent_id</span> <span class="ow">in</span> <span class="n">supervised_agents</span><span class="p">:</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;a supervisor cannot supervise its own agent session&quot;</span><span class="p">)</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="k">if</span> <span class="ow">not</span> <span class="n">supervised_agents</span><span class="p">:</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;a supervisor requires at least one other supervised peer&quot;</span><span class="p">)</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="k">return</span> <span class="p">{</span>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>    <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>    <span class="s2">&quot;agent_id&quot;</span><span class="p">:</span> <span class="n">agent_id</span><span class="p">,</span>
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>    <span class="s2">&quot;supervised_agents&quot;</span><span class="p">:</span> <span class="n">supervised_agents</span><span class="p">,</span>
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>    <span class="s2">&quot;execution_mode&quot;</span><span class="p">:</span> <span class="s2">&quot;proposal_only&quot;</span><span class="p">,</span>
+</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><code>supervisor</code> 是某个已注册 peer 的额外职责，不是新的 primary/side hierarchy。默认空配置直接返回 <code>None</code>，所以实验功能不会默认开启。</p>
+<h3 id="2-contract-user-channel-authority">2. Contract 明确 user channel 与 authority 边界<a class="headerlink" href="#2-contract-user-channel-authority" title="Permanent link">&para;</a></h3>
+<p><code>build_peer_supervisor_contract</code> 里最重要的字段不是 prompt 文案，而是权力模型：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="p">{</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>    <span class="s2">&quot;peer_authority&quot;</span><span class="p">:</span> <span class="s2">&quot;equal_identity_authority&quot;</span><span class="p">,</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>    <span class="s2">&quot;supervisor_authority&quot;</span><span class="p">:</span> <span class="s2">&quot;proposal_only&quot;</span><span class="p">,</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>    <span class="s2">&quot;user_interaction&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>        <span class="s2">&quot;recommended_channel&quot;</span><span class="p">:</span> <span class="n">supervisor_agent_id</span><span class="p">,</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>        <span class="s2">&quot;user_may_interact_with_any_peer&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>        <span class="s2">&quot;user_gates_remain_loopx_state&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>    <span class="p">},</span>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>    <span class="s2">&quot;execution_policy&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>        <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;proposal_only&quot;</span><span class="p">,</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>        <span class="s2">&quot;missing_capability_behavior&quot;</span><span class="p">:</span> <span class="s2">&quot;leave proposal unexecuted&quot;</span><span class="p">,</span>
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>        <span class="s2">&quot;destructive_actions_require_explicit_host_authority&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>        <span class="s2">&quot;durable_proposal_required&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-19-14"><a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>        <span class="s2">&quot;host_receipt_required_for_executed_status&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-19-15"><a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>        <span class="s2">&quot;proposal_is_execution_evidence&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-19-16"><a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a>    <span class="p">},</span>
+</span><span id="__span-19-17"><a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>用户可以把 supervisor 当作首选汇总入口，但真正 gate 必须写回 LoopX state，其他 peer 才能看到同一 authority。</p>
+<h3 id="3-observation-packet-public-safe-read-models">3. Observation packet 只消费 public-safe read models<a class="headerlink" href="#3-observation-packet-public-safe-read-models" title="Permanent link">&para;</a></h3>
+<p><code>build_supervisor_observation_packet</code> 不读取原始 transcript：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">contract</span> <span class="o">=</span> <span class="n">build_peer_supervisor_contract</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="n">attention</span> <span class="o">=</span> <span class="n">_goal_attention_item</span><span class="p">(</span><span class="n">status_payload</span><span class="p">,</span> <span class="n">goal_id</span><span class="p">)</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">members</span> <span class="o">=</span> <span class="n">_agent_management_items</span><span class="p">(</span><span class="n">status_payload</span><span class="p">)</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="k">for</span> <span class="n">agent_id</span> <span class="ow">in</span> <span class="n">contract</span><span class="p">[</span><span class="s2">&quot;supervised_agents&quot;</span><span class="p">]:</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>    <span class="n">member</span> <span class="o">=</span> <span class="n">members</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">agent_id</span><span class="p">,</span> <span class="p">{})</span>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>    <span class="n">evidence</span> <span class="o">=</span> <span class="n">evidence_logs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">agent_id</span><span class="p">,</span> <span class="p">{})</span>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>    <span class="n">peer_rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>        <span class="s2">&quot;agent_id&quot;</span><span class="p">:</span> <span class="n">agent_id</span><span class="p">,</span>
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>        <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="n">member</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;state&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;unknown&quot;</span><span class="p">,</span>
+</span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>        <span class="s2">&quot;current_todo&quot;</span><span class="p">:</span> <span class="n">member</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;current_todo&quot;</span><span class="p">),</span>
+</span><span id="__span-20-12"><a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>        <span class="s2">&quot;workspace_ref&quot;</span><span class="p">:</span> <span class="n">member</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;workspace_ref&quot;</span><span class="p">),</span>
+</span><span id="__span-20-13"><a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>        <span class="s2">&quot;handoff_refs&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">member</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;handoff_refs&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">[])[:</span><span class="mi">4</span><span class="p">],</span>
+</span><span id="__span-20-14"><a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>        <span class="s2">&quot;evidence&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-20-15"><a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a>            <span class="s2">&quot;latest_rows&quot;</span><span class="p">:</span> <span class="n">ledger</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span>
+</span><span id="__span-20-16"><a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a>            <span class="s2">&quot;effect_refs&quot;</span><span class="p">:</span> <span class="n">_evidence_refs</span><span class="p">(</span><span class="n">member</span><span class="p">,</span> <span class="n">evidence</span><span class="p">),</span>
+</span><span id="__span-20-17"><a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a>        <span class="p">},</span>
+</span><span id="__span-20-18"><a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a>    <span class="p">})</span>
+</span><span id="__span-20-19"><a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a>
+</span><span id="__span-20-20"><a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a><span class="k">return</span> <span class="p">{</span>
+</span><span id="__span-20-21"><a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a>    <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;read_only&quot;</span><span class="p">,</span>
+</span><span id="__span-20-22"><a id="__codelineno-20-22" name="__codelineno-20-22" href="#__codelineno-20-22"></a>    <span class="s2">&quot;decision_input_complete&quot;</span><span class="p">:</span> <span class="ow">not</span> <span class="n">warnings</span><span class="p">,</span>
+</span><span id="__span-20-23"><a id="__codelineno-20-23" name="__codelineno-20-23" href="#__codelineno-20-23"></a>    <span class="s2">&quot;peers&quot;</span><span class="p">:</span> <span class="n">peer_rows</span><span class="p">,</span>
+</span><span id="__span-20-24"><a id="__codelineno-20-24" name="__codelineno-20-24" href="#__codelineno-20-24"></a>    <span class="s2">&quot;boundary&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-20-25"><a id="__codelineno-20-25" name="__codelineno-20-25" href="#__codelineno-20-25"></a>        <span class="s2">&quot;raw_logs_included&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-20-26"><a id="__codelineno-20-26" name="__codelineno-20-26" href="#__codelineno-20-26"></a>        <span class="s2">&quot;raw_trajectories_included&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-20-27"><a id="__codelineno-20-27" name="__codelineno-20-27" href="#__codelineno-20-27"></a>        <span class="s2">&quot;raw_transcripts_included&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-20-28"><a id="__codelineno-20-28" name="__codelineno-20-28" href="#__codelineno-20-28"></a>        <span class="s2">&quot;write_authority&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+</span><span id="__span-20-29"><a id="__codelineno-20-29" name="__codelineno-20-29" href="#__codelineno-20-29"></a>    <span class="p">},</span>
+</span><span id="__span-20-30"><a id="__codelineno-20-30" name="__codelineno-20-30" href="#__codelineno-20-30"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>状态或 evidence 缺失时产生 warning，并把 <code>decision_input_complete</code> 置为 false。supervisor 不能用“我大概知道另一个 session 在干什么”补齐缺口。</p>
+<h3 id="4-decision-normalization-schema">4. Decision normalization 把四种行为变成可验证 schema<a class="headerlink" href="#4-decision-normalization-schema" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">kind</span> <span class="o">=</span> <span class="n">SupervisorDecisionKind</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kind&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">decision_id</span> <span class="o">=</span> <span class="n">normalize_todo_claimed_by</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;decision_id&quot;</span><span class="p">))</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="k">if</span> <span class="ow">not</span> <span class="n">decision_id</span><span class="p">:</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;decision_id must be a public-safe token&quot;</span><span class="p">)</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="n">supervised</span> <span class="o">=</span> <span class="n">normalize_registered_agents</span><span class="p">(</span><span class="n">supervisor</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;supervised_agents&quot;</span><span class="p">))</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="n">result</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>    <span class="s2">&quot;decision_id&quot;</span><span class="p">:</span> <span class="n">decision_id</span><span class="p">,</span>
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>    <span class="s2">&quot;kind&quot;</span><span class="p">:</span> <span class="n">kind</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>    <span class="s2">&quot;reason_codes&quot;</span><span class="p">:</span> <span class="n">_normalized_tokens</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;reason_codes&quot;</span><span class="p">),</span> <span class="n">field</span><span class="o">=</span><span class="s2">&quot;reason_codes&quot;</span><span class="p">),</span>
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>    <span class="s2">&quot;evidence_refs&quot;</span><span class="p">:</span> <span class="n">_normalized_tokens</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;evidence_refs&quot;</span><span class="p">),</span> <span class="n">field</span><span class="o">=</span><span class="s2">&quot;evidence_refs&quot;</span><span class="p">),</span>
+</span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>    <span class="s2">&quot;execution_status&quot;</span><span class="p">:</span> <span class="s2">&quot;proposal_only&quot;</span><span class="p">,</span>
+</span><span id="__span-21-12"><a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>    <span class="s2">&quot;required_host_capabilities&quot;</span><span class="p">:</span> <span class="n">HOST_CAPABILITIES_BY_DECISION</span><span class="p">[</span><span class="n">kind</span><span class="o">.</span><span class="n">value</span><span class="p">],</span>
+</span><span id="__span-21-13"><a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a><span class="p">}</span>
+</span><span id="__span-21-14"><a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a><span class="k">if</span> <span class="n">kind</span> <span class="ow">is</span> <span class="n">SupervisorDecisionKind</span><span class="o">.</span><span class="n">OBSERVE</span><span class="p">:</span>
+</span><span id="__span-21-15"><a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a>    <span class="k">return</span> <span class="n">result</span>
+</span><span id="__span-21-16"><a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a>
+</span><span id="__span-21-17"><a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a><span class="n">target_agent_id</span> <span class="o">=</span> <span class="n">normalize_todo_claimed_by</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;target_agent_id&quot;</span><span class="p">))</span>
+</span><span id="__span-21-18"><a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a><span class="k">if</span> <span class="n">target_agent_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">supervised</span><span class="p">:</span>
+</span><span id="__span-21-19"><a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a>    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;target_agent_id must be one of the configured supervised peers&quot;</span><span class="p">)</span>
+</span><span id="__span-21-20"><a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a><span class="n">result</span><span class="p">[</span><span class="s2">&quot;target_agent_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">target_agent_id</span>
+</span><span id="__span-21-21"><a id="__codelineno-21-21" name="__codelineno-21-21" href="#__codelineno-21-21"></a><span class="k">if</span> <span class="n">kind</span> <span class="ow">is</span> <span class="n">SupervisorDecisionKind</span><span class="o">.</span><span class="n">INJECT</span><span class="p">:</span>
+</span><span id="__span-21-22"><a id="__codelineno-21-22" name="__codelineno-21-22" href="#__codelineno-21-22"></a>    <span class="n">result</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_required_text</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">)</span>
+</span><span id="__span-21-23"><a id="__codelineno-21-23" name="__codelineno-21-23" href="#__codelineno-21-23"></a><span class="k">elif</span> <span class="n">kind</span> <span class="ow">is</span> <span class="n">SupervisorDecisionKind</span><span class="o">.</span><span class="n">HANDOFF</span><span class="p">:</span>
+</span><span id="__span-21-24"><a id="__codelineno-21-24" name="__codelineno-21-24" href="#__codelineno-21-24"></a>    <span class="n">source_agent_id</span> <span class="o">=</span> <span class="n">normalize_todo_claimed_by</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;source_agent_id&quot;</span><span class="p">))</span>
+</span><span id="__span-21-25"><a id="__codelineno-21-25" name="__codelineno-21-25" href="#__codelineno-21-25"></a>    <span class="k">if</span> <span class="n">source_agent_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">supervised</span> <span class="ow">or</span> <span class="n">source_agent_id</span> <span class="o">==</span> <span class="n">target_agent_id</span><span class="p">:</span>
+</span><span id="__span-21-26"><a id="__codelineno-21-26" name="__codelineno-21-26" href="#__codelineno-21-26"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;handoff source and target must be different supervised peers&quot;</span><span class="p">)</span>
+</span><span id="__span-21-27"><a id="__codelineno-21-27" name="__codelineno-21-27" href="#__codelineno-21-27"></a>    <span class="n">result</span><span class="p">[</span><span class="s2">&quot;source_agent_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">source_agent_id</span>
+</span><span id="__span-21-28"><a id="__codelineno-21-28" name="__codelineno-21-28" href="#__codelineno-21-28"></a>    <span class="n">result</span><span class="p">[</span><span class="s2">&quot;state_ref&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_required_text</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="s2">&quot;state_ref&quot;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">240</span><span class="p">)</span>
+</span><span id="__span-21-29"><a id="__codelineno-21-29" name="__codelineno-21-29" href="#__codelineno-21-29"></a><span class="k">elif</span> <span class="n">kind</span> <span class="ow">is</span> <span class="n">SupervisorDecisionKind</span><span class="o">.</span><span class="n">DISCARD</span><span class="p">:</span>
+</span><span id="__span-21-30"><a id="__codelineno-21-30" name="__codelineno-21-30" href="#__codelineno-21-30"></a>    <span class="n">result</span><span class="p">[</span><span class="s2">&quot;state_ref&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_required_text</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="s2">&quot;state_ref&quot;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">240</span><span class="p">)</span>
+</span></code></pre></div>
+<p>这里的 <code>handoff</code> 是“等待 source 形成可引用状态，再建议 target 从该 state 继续”；<code>discard</code> 是“建议 host 终止失败分支”。二者都要求具体 state ref，不能只凭模型印象操作 session。</p>
+<h3 id="5-proposal-receipt">5. Proposal 与 receipt 是两种不同事件<a class="headerlink" href="#5-proposal-receipt" title="Permanent link">&para;</a></h3>
+<p><code>supervisor_events.py</code> 先把 decision 写成 durable proposal：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">normalized</span> <span class="o">=</span> <span class="n">normalize_supervisor_decision</span><span class="p">(</span><span class="n">decision</span><span class="p">,</span> <span class="n">supervisor</span><span class="o">=</span><span class="n">supervisor</span><span class="p">)</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="k">return</span> <span class="n">make_state_event</span><span class="p">(</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>    <span class="n">event_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;supervisor-proposal-</span><span class="si">{</span><span class="n">decision_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>    <span class="n">event_type</span><span class="o">=</span><span class="n">SUPERVISOR_PROPOSED</span><span class="p">,</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>    <span class="n">payload</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;decision&quot;</span><span class="p">:</span> <span class="n">normalized</span><span class="p">},</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>    <span class="n">privacy</span><span class="o">=</span><span class="n">LOCAL_PRIVATE_PRIVACY</span><span class="p">,</span>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="p">)</span>
+</span></code></pre></div>
+<p>host receipt 则必须引用 proposal，并在 <code>outcome=executed</code> 时证明 capability、authority 与 rollback boundary：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">missing</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">required_capabilities</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">host_capabilities</span><span class="p">)</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="k">if</span> <span class="n">outcome</span> <span class="ow">is</span> <span class="n">EXECUTED</span><span class="p">:</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>    <span class="k">if</span> <span class="n">missing</span><span class="p">:</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;executed receipt is missing required host capabilities&quot;</span><span class="p">)</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">authority_ref</span><span class="p">:</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;executed receipt requires authority_ref&quot;</span><span class="p">)</span>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>    <span class="k">if</span> <span class="n">rollback_boundary</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;executed receipt requires rollback_boundary&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p>同一个 <code>decision_id</code> 的 proposal 可幂等重放；receipt 不能在没有 proposal 的情况下出现。这是 effect attribution 的最小 proof boundary。</p>
+<h3 id="6-effect-inject-adapter">6. 当前真正落地的 effect 只有 inject adapter<a class="headerlink" href="#6-effect-inject-adapter" title="Permanent link">&para;</a></h3>
+<p><code>loopx/control_plane/agents/supervisor_inject.py::execute_supervisor_inject</code> 展示了完整 effect 路径：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">proposal_event</span> <span class="o">=</span> <span class="n">_proposal</span><span class="p">(</span><span class="n">log_path</span><span class="p">,</span> <span class="n">goal_id</span><span class="o">=</span><span class="n">goal_id</span><span class="p">,</span> <span class="n">decision_id</span><span class="o">=</span><span class="n">decision_id</span><span class="p">)</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="n">decision</span> <span class="o">=</span> <span class="n">proposal_event</span><span class="p">[</span><span class="s2">&quot;payload&quot;</span><span class="p">][</span><span class="s2">&quot;decision&quot;</span><span class="p">]</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="k">if</span> <span class="n">decision</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kind&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;inject&quot;</span><span class="p">:</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;... only accepts inject proposals&quot;</span><span class="p">)</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="k">if</span> <span class="n">decision</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;required_host_capabilities&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="p">[</span><span class="s2">&quot;session_message_injection&quot;</span><span class="p">]:</span>
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;inject proposal capability contract is not canonical&quot;</span><span class="p">)</span>
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="k">if</span> <span class="n">prior</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;host_called&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;already_executed&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="o">...</span><span class="p">}</span>
+</span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="k">if</span> <span class="ow">not</span> <span class="n">execute</span><span class="p">:</span>
+</span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;host_called&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;would_execute&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="o">...</span><span class="p">}</span>
+</span><span id="__span-24-12"><a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>
+</span><span id="__span-24-13"><a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a><span class="n">result</span> <span class="o">=</span> <span class="n">adapter</span><span class="o">.</span><span class="n">inject</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+</span><span id="__span-24-14"><a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a><span class="n">receipt</span> <span class="o">=</span> <span class="n">record_supervisor_receipt</span><span class="p">(</span>
+</span><span id="__span-24-15"><a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a>    <span class="n">receipt</span><span class="o">=</span><span class="p">{</span>
+</span><span id="__span-24-16"><a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a>        <span class="s2">&quot;decision_id&quot;</span><span class="p">:</span> <span class="n">decision_id</span><span class="p">,</span>
+</span><span id="__span-24-17"><a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a>        <span class="s2">&quot;authority_ref&quot;</span><span class="p">:</span> <span class="n">authority_ref</span><span class="p">,</span>
+</span><span id="__span-24-18"><a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a>        <span class="s2">&quot;rollback_boundary&quot;</span><span class="p">:</span> <span class="n">adapter_contract</span><span class="p">[</span><span class="s2">&quot;rollback_boundary&quot;</span><span class="p">],</span>
+</span><span id="__span-24-19"><a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a>        <span class="o">...</span><span class="p">,</span>
+</span><span id="__span-24-20"><a id="__codelineno-24-20" name="__codelineno-24-20" href="#__codelineno-24-20"></a>    <span class="p">},</span>
+</span><span id="__span-24-21"><a id="__codelineno-24-21" name="__codelineno-24-21" href="#__codelineno-24-21"></a>    <span class="n">host_capabilities</span><span class="o">=</span><span class="n">adapter</span><span class="o">.</span><span class="n">capabilities</span><span class="p">,</span>
+</span><span id="__span-24-22"><a id="__codelineno-24-22" name="__codelineno-24-22" href="#__codelineno-24-22"></a>    <span class="n">execute</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-24-23"><a id="__codelineno-24-23" name="__codelineno-24-23" href="#__codelineno-24-23"></a><span class="p">)</span>
+</span></code></pre></div>
+<p>截至本讲对应源码版本：<code>inject</code> 有专用 host adapter；<code>handoff</code> 与 <code>discard</code> 已有 proposal schema 和 capability contract，但没有等价的通用执行 adapter。因此讲义只能说“可提出 handoff/discard”，不能声称 LoopX 已能跨任意 host 自动 fork 或 kill session。</p>
+<h3 id="7">7. 用这套顺序评审任何新规则<a class="headerlink" href="#7" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>先定义 source -&gt; projection -&gt; decision -&gt; effect -&gt; receipt
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>再问 active call site 在哪里
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>再写 decision table / focused smoke
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>最后才扩 enum、CLI 或 public protocol
+</span></code></pre></div>
+<p>若想加入 Shepherd 风格 <code>fork</code>，当前更合理的语义是让调度器把临时 execution branch 分配给空闲 peer；它不创建新的长期 agent identity。没有真实 allocator/lease/cleanup call site 前，应停在设计或 todo，不扩一个看起来已经可执行的 public enum。</p>
+<h3 id="_5">断点与检查问题<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>normalize_peer_supervisor:72</code>：未注册/self-supervision/default-off；</li>
+<li><code>build_supervisor_observation_packet:250</code>：缺 status/evidence 的 warning；</li>
+<li><code>normalize_supervisor_decision:366</code>：四种 kind 的 conditional fields；</li>
+<li><code>normalize_supervisor_receipt:153</code>：executed proof 三件套；</li>
+<li><code>execute_supervisor_inject:145</code>：幂等、dry-run、真实 host call 三条路。</li>
+</ul>
+<p>读完应能回答：proposal 为什么不是 effect、receipt 为什么需要 rollback boundary、handoff 为什么仍是 proposal-only、fork 为什么应复用空闲 peer 而不是复制身份。</p>
+<h2 id="_6">代码阅读路线<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ol>
+<li><code>docs/product/core-control-plane/bounded-context-layout.md</code></li>
+<li><code>docs/product/core-control-plane/rule-seam-map.md</code></li>
+<li><code>docs/product/core-control-plane/state-machine.md</code></li>
+<li><code>docs/reference/protocols/peer-supervisor-v0.md</code></li>
+<li><code>loopx/control_plane/agents/supervisor.py</code></li>
+<li><code>loopx/control_plane/agents/supervisor_events.py</code></li>
+<li><code>loopx/control_plane/agents/supervisor_inject.py</code></li>
+<li><code>loopx/control_plane/agents/runtime_model.py</code></li>
+<li><code>loopx/control_plane/goals/goal_frontier_replan_rules.py</code></li>
+<li><code>tests/control_plane/test_goal_frontier_replan_rules.py</code></li>
+<li><code>examples/control_plane/goal-frontier-replan-rules-smoke.py</code></li>
+</ol>
+<h2 id="_7">课后检查<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<ol>
+<li>新规则为什么要先定义 source 和 receipt？</li>
+<li>Proposal 与 executed effect 的 proof boundary 是什么？</li>
+<li>Fork 为什么不能复制成新的长期 peer identity？</li>
+<li>Migration reader 为什么应保留，但旧字段不能继续出现在 live config？</li>
+<li>哪类 invariant 值得未来用 Lean/TLA+，哪类只需 focused smoke？</li>
+</ol>
+<p>下一讲把这套工程顺序扩成自主交付门禁：什么必须进入 PR 快速门，什么适合 canary、低频模型行为验证或 release gate，以及 agent 何时必须停止自动合并。扩展层顺延到第 9 讲。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.action.edit", "content.code.copy", "content.tabs.link", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.path", "search.highlight", "search.share", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

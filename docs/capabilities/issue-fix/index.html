@@ -1,0 +1,4104 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://huangruiteng.github.io/loopx/docs/capabilities/issue-fix/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../change-quality/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/loopx-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Issue Fix - LoopX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#issue-fix-capability" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="LoopX" class="md-header__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LoopX
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Issue Fix
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 2c-1.82 0-3.53.5-5 1.35C8 5.08 10 8.3 10 12s-2 6.92-5 8.65C6.47 21.5 8.18 22 10 22a10 10 0 0 0 10-10A10 10 0 0 0 10 2"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../concepts/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../operations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Operations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Capabilities
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../integrations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Integrations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../development/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../product/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Product
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../showcases/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Showcases
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="LoopX" class="md-nav__button md-logo" aria-label="LoopX" data-md-component="logo">
+      
+  <img src="../../assets/loopx-logo.png" alt="logo">
+
+    </a>
+    LoopX
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/huangruiteng/loopx" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../guides/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/newcomer-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Newcomer Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/custom-agent-runner-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Runner Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/auto-research-command-path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto Research Command Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../concepts/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/interaction-pattern-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interaction Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../state-interaction-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    State Interaction Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quota-allocation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quota Allocation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../operations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/attention-queue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attention Queue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/long-task-cadence-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Long Task Cadence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/authority-source-registration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority Sources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capabilities
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Capabilities
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Issue Fix
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Issue Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-loopx-provides-underneath" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What LoopX Provides Underneath
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#product-position" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product Position
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#end-to-end-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        End-To-End Design
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="End-To-End Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-candidate-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Candidate selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-repository-grounded-understanding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Repository-grounded understanding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-reproduction-before-modification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Reproduction before modification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-focused-patch-and-regression-proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Focused patch and regression proof
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-reviewer-recommendation-and-default-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Reviewer recommendation and default request
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-pr-publication-and-public-write-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. PR publication and public-write boundary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-continuous-pr-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Continuous PR lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../change-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Change Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Explore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../material-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Material Lifecycle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../value-connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Value Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../integrations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integrations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integrations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/worker-bridge-install-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Worker Bridge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/lark-kanban-control-plane-adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lark Kanban
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/runtime-connector-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Connector Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/benchmark-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../development/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/testing-and-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing And Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/documentation-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Layout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/benchmark-developer-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/control-plane-course/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control Plane Course
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../product/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Product
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product/vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product/release-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product/surfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Surfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product/runtimes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtimes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product/foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../showcases/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Showcases
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Showcases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcases/frontend-surface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend Surface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcases/cases/0617-blocked-p0-safe-rotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blocked P0 Safe Rotation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcases/cases/0619-loopx-self-iteration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LoopX Self Iteration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcases/cases/0624-pr-issue-auto-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PR Issue Auto Fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-loopx-provides-underneath" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What LoopX Provides Underneath
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#product-position" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product Position
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#end-to-end-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        End-To-End Design
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="End-To-End Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-candidate-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Candidate selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-repository-grounded-understanding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Repository-grounded understanding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-reproduction-before-modification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Reproduction before modification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-focused-patch-and-regression-proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Focused patch and regression proof
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-reviewer-recommendation-and-default-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Reviewer recommendation and default request
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-pr-publication-and-public-write-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. PR publication and public-write boundary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-continuous-pr-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Continuous PR lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Capabilities
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/huangruiteng/loopx/edit/main/docs/capabilities/issue-fix/README.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="issue-fix-capability">Issue-Fix Capability<a class="headerlink" href="#issue-fix-capability" title="Permanent link">&para;</a></h1>
+<p><a href="README.zh-CN/">中文</a> · <a href="../">Capability index</a> ·
+<a href="state-kernel-domain-state-case-study.zh-CN/">State Kernel/domain-state case study (中文)</a> ·
+<a href="protocols/issue-fix-workflow-contract-v0/">Workflow contract</a> ·
+<a href="protocols/issue-fix-discovered-issue-promotion-v0/">Discovered issue promotion</a> ·
+<a href="protocols/issue-fix-acceptance-loop-v0/">Acceptance loop</a> ·
+<a href="../../reference/protocols/ark-managed-agent-issue-fix-qualification-v0/">Ark Managed Agent qualification</a> ·
+<a href="protocols/issue-fix-reviewer-recommendation-v0/">Reviewer recommendation</a> ·
+<a href="protocols/issue-fix-reviewer-request-v0/">Reviewer request</a> ·
+<a href="protocols/issue-fix-reviewer-notification-sinks-v0/">Reviewer notification sinks</a> ·
+<a href="../lark-event-inbox/">Lark feedback inbox</a></p>
+<p>Issue-fix is LoopX's product path for turning a public repository issue into a
+small, validated, reviewable pull request and then keeping that PR moving until
+its lifecycle has a clear outcome. The capability is designed for a
+long-running issue-to-PR employee, not for a one-shot code generator: LoopX
+keeps goal state, todos, authority, repository evidence, validation, reviewer
+routing, monitors, human gates, and terminal closeout outside any single chat
+turn.</p>
+<p>The core product outcome is a focused fix PR when the issue is suitable. A
+public comment or justified triage remains useful for rejecting unsuitable
+candidates or recording a concrete blocker, but it is not a substitute for the
+fix-PR path when that path is feasible.</p>
+<h2 id="what-loopx-provides-underneath">What LoopX Provides Underneath<a class="headerlink" href="#what-loopx-provides-underneath" title="Permanent link">&para;</a></h2>
+<p>You do not need to know LoopX before using this capability. The shortest mental
+model is: a coding agent can inspect and change a repository, while LoopX is the
+local-first control plane that remembers what the agent is trying to achieve,
+decides what may run next, exposes progress to people, and keeps the work alive
+across chat turns and external waits.</p>
+<p>GitHub remains the source of truth for issues, code, checks, reviews, and merge
+state. LoopX adds the missing employee-control layer between a host agent and
+GitHub:</p>
+<table>
+<thead>
+<tr>
+<th>LoopX foundation</th>
+<th>What it contributes to issue/PR fixing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Durable goal state</td>
+<td>Keeps the objective, acceptance target, current status, next action, and compact outcome evidence after one model turn ends.</td>
+</tr>
+<tr>
+<td>Todo ownership and routing</td>
+<td>Separates agent work from concrete human decisions; records priority, <code>claimed_by</code>, blockers, successors, handoffs, and monitor work so two agents do not silently do the same task.</td>
+</tr>
+<tr>
+<td>Kanban/status projection</td>
+<td>Projects the same todo truth into a human-visible board or dashboard without making the board a second state machine. People can see who owns the issue, what was produced, and what is waiting.</td>
+</tr>
+<tr>
+<td>Quota and scheduler policy</td>
+<td>Uses <code>quota should-run</code> to decide whether a bounded work segment should run now, wait, repair state, or stay quiet. Unchanged polling backs off and does not count as delivery progress.</td>
+</tr>
+<tr>
+<td>Authority and interaction gates</td>
+<td>Separates technical capability from permission. Private material, public comments, push, PR creation, review requests, merge, and production actions can each require explicit recorded authority.</td>
+</tr>
+<tr>
+<td>Evidence and repository context</td>
+<td>Pins conclusions to a repository revision, source trust, freshness, repo-relative references, reproduction, and validation. Compact evidence survives; raw logs, credentials, and private bodies do not leak into public state.</td>
+</tr>
+<tr>
+<td>Replan and handoff contracts</td>
+<td>Converts CI failure, reviewer correction, missing information, or a stale branch into a runnable successor, a concrete blocker, or a scoped human question instead of losing the correction in chat.</td>
+</tr>
+<tr>
+<td>Continuous monitors</td>
+<td>Watches CI, review, mergeability, maintainer comments, stale branches, merged, and closed states; writes back only material transitions and terminates with an explicit outcome.</td>
+</tr>
+<tr>
+<td>Event-backed wait and resume</td>
+<td>Converts authoritative external transitions such as a merged PR into idempotent public-safe rollout events. Todos waiting on <code>resume_when=pr_merged:#123</code> become runnable through normal status/quota projection instead of relying on chat memory or directly executing code from a webhook.</td>
+</tr>
+<tr>
+<td>Public/private boundary checks</td>
+<td>Scans public artifacts and keeps local paths, credentials, runtime state, raw transcripts, tool logs, and private evidence out of commits and PRs.</td>
+</tr>
+</tbody>
+</table>
+<p>The issue-fix capability composes these generic foundations into domain packets
+and CLI commands. The host agent still reads code, edits the worktree, runs
+tests, and performs separately authorized GitHub actions. This division is what
+turns “generate a patch once” into a visible, resumable issue-to-PR employee:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>public issue
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  -&gt; durable goal and claimed todo
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  -&gt; revision-pinned evidence and reproduction
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  -&gt; focused patch and validation
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  -&gt; explainable reviewer route and authority gate
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  -&gt; PR monitor and material-transition replan
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  -&gt; merged/closed evidence and idempotent rollout event
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  -&gt; resumed successor, next issue, or explicit no-follow-up
+</span></code></pre></div>
+<h2 id="product-position">Product Position<a class="headerlink" href="#product-position" title="Permanent link">&para;</a></h2>
+<p>LoopX is the control plane, not the coding model or GitHub itself.</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Host agent/runtime</td>
+<td>Read code, reproduce the bug, edit files, run tests, and perform explicitly authorized git/GitHub actions.</td>
+</tr>
+<tr>
+<td>Issue-fix capability</td>
+<td>Build public-safe workflow, feasibility, repository-context, reviewer, validation, and PR-lifecycle packets.</td>
+</tr>
+<tr>
+<td>LoopX kernel</td>
+<td>Persist goal/todo ownership, quota, authority, evidence, monitor, replan, and human-interaction state.</td>
+</tr>
+<tr>
+<td>Repository/GitHub</td>
+<td>Remain authoritative for code, policy, CI, review, mergeability, and terminal PR state.</td>
+</tr>
+<tr>
+<td>Human maintainer</td>
+<td>Own design judgment, repository policy, sensitive/private context, and any action outside recorded authority.</td>
+</tr>
+</tbody>
+</table>
+<p>The issue-fix packet builders do not silently publish. A host agent may create
+or update a PR only when the current LoopX boundary records that authority and
+repository policy allows it. Merge remains a separate decision unless it is
+explicitly authorized.</p>
+<h2 id="end-to-end-design">End-To-End Design<a class="headerlink" href="#end-to-end-design" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>flowchart LR
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  I[&quot;Public issue candidates&quot;] --&gt; S[&quot;Selection and feasibility&quot;]
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  S --&gt; C[&quot;Revision-pinned repository context&quot;]
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  C --&gt; R[&quot;Reproduction&quot;]
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  R --&gt; F[&quot;Focused patch and regression test&quot;]
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>  F --&gt; V[&quot;Layered validation&quot;]
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>  V --&gt; O[&quot;Reviewer recommendation&quot;]
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>  O --&gt; P[&quot;Authority-gated PR publication&quot;]
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>  P --&gt; M[&quot;CI/review/mergeability monitor&quot;]
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>  M --&gt; T[&quot;Merged/closed terminal closeout&quot;]
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>  T --&gt; E[&quot;Idempotent rollout event&quot;]
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>  E --&gt; N[&quot;Resume successor, next issue, or no-follow-up&quot;]
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>  H[&quot;Human judgment&quot;] --&gt; S
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>  H --&gt; O
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>  H --&gt; P
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>  H --&gt; M
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>  LX[&quot;LoopX goal/todo/quota/evidence&quot;] --&gt; S
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>  LX --&gt; C
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>  LX --&gt; V
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>  LX --&gt; M
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>  E --&gt; LX
+</span></code></pre></div>
+<h3 id="1-candidate-selection">1. Candidate selection<a class="headerlink" href="#1-candidate-selection" title="Permanent link">&para;</a></h3>
+<p>The first round should select one issue. Prefer public open issues with a
+traceback, failing test, minimal reproduction, bounded change scope, and a
+repository-native focused validation surface. Avoid issues that require
+private data, credentials, production systems, large design debates, or broad
+semantic changes.</p>
+<p>Every candidate should receive one explicit route:</p>
+<ul>
+<li><code>fix_pr</code>: reproduction and validation are credible and scope is bounded;</li>
+<li><code>comment_only</code>: a public clarification or diagnosis adds value, but a safe
+  patch is not ready;</li>
+<li><code>triage_only</code>: evidence is insufficient, scope is oversized, or following up
+  would not add value.</li>
+</ul>
+<p>The long-running employee's primary acceptance target is <code>fix_pr</code>; the other
+routes protect quality and maintainer attention.</p>
+<h3 id="2-repository-grounded-understanding">2. Repository-grounded understanding<a class="headerlink" href="#2-repository-grounded-understanding" title="Permanent link">&para;</a></h3>
+<p>The authority order is:</p>
+<ol>
+<li>current checkout evidence;</li>
+<li>repository-scoped historical memory;</li>
+<li>external expert or bot advice.</li>
+</ol>
+<p>Read repository policy, architecture, nearby source and tests, validation
+commands, and recent related fixes at the pinned revision. Compact this into
+<code>issue_fix_repository_context_input_v0</code>, including revision, repo-relative
+source references, evidence aspect, source trust, and freshness. Memory and
+expert conclusions are advisory until verified in the current checkout.</p>
+<h3 id="3-reproduction-before-modification">3. Reproduction before modification<a class="headerlink" href="#3-reproduction-before-modification" title="Permanent link">&para;</a></h3>
+<p>Separate four outcomes instead of flattening every failure into a product bug:</p>
+<ul>
+<li>product bug reproduced;</li>
+<li>test or fixture bug;</li>
+<li>environment/dependency failure;</li>
+<li>report remains under-specified or cannot currently be reproduced.</li>
+</ul>
+<p>When possible, make the existing focused test fail for the reported contract
+before changing production code. Preserve compact pass/fail and command-label
+evidence, not raw logs or local paths.</p>
+<h3 id="4-focused-patch-and-regression-proof">4. Focused patch and regression proof<a class="headerlink" href="#4-focused-patch-and-regression-proof" title="Permanent link">&para;</a></h3>
+<p>Use a clean worktree and branch from the latest approved base revision. Keep
+the patch small, explainable, and consistent with nearby repository patterns.
+Add or adjust a focused test that would fail without the fix. Expand validation
+only in proportion to risk.</p>
+<h3 id="5-reviewer-recommendation-and-default-request">5. Reviewer recommendation and default request<a class="headerlink" href="#5-reviewer-recommendation-and-default-request" title="Permanent link">&para;</a></h3>
+<p>Reviewer selection is part of the control plane because a correct patch can
+still stall when the wrong person is asked to review it. LoopX now provides:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>loopx<span class="w"> </span>issue-fix<span class="w"> </span>reviewer-plan<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span>--repo-path<span class="w"> </span>/path/to/approved/repo<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span>--repo<span class="w"> </span>owner/repo<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span>--base-ref<span class="w"> </span>origin/main<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span>--exclude-reviewer<span class="w"> </span>@pull-request-author<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span>--exclude-author-name<span class="w"> </span><span class="s2">&quot;PR Author Git Name&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span>--reviewer-sources-json<span class="w"> </span>reviewer-sources.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span>--execute<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span>--format<span class="w"> </span>json
+</span></code></pre></div>
+<p>After the PR exists, a host with standing <code>external_review_request</code> or
+<code>publish</code> authority should notify the default reviewer directly:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>loopx<span class="w"> </span>issue-fix<span class="w"> </span>reviewer-request<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span>--url<span class="w"> </span>https://github.com/owner/repo/pull/123<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>--repo-path<span class="w"> </span>/path/to/approved/repo<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span>--base-ref<span class="w"> </span>origin/main<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span>--reviewer-sources-json<span class="w"> </span>reviewer-sources.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span>--notification-sinks-json<span class="w"> </span>local-private-notification-sinks.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span>--execute<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span>--format<span class="w"> </span>json
+</span></code></pre></div>
+<p>The current evidence order is deliberately conservative:</p>
+<ol>
+<li>repository <code>CODEOWNERS</code> matches for each changed path;</li>
+<li>caller-verified public maintainer maps whose most-specific path route names
+   a primary contact;</li>
+<li>commit history for the exact changed path;</li>
+<li>nearest module-directory history when a new file has no usable path
+   history;</li>
+<li>maintainer-map fallback or cross-module contacts when no scoped route
+   applies or the primary contact is excluded.</li>
+</ol>
+<p>The packet ranks candidates with source kinds, reason codes, changed-path
+coverage, history counts, recency, confidence, public <code>source_refs</code>, compact
+matched-route evidence, and whether a GitHub handle is actually requestable.
+It never captures the maintainer-map body or commit email addresses, never
+records the local repo path, and <code>reviewer-plan</code> never sends a review request.
+<code>reviewer-request</code> fetches the live PR author, existing review requests,
+completed reviews, LoopX-marked reviewer comments, and live comments that
+explicitly mention a reviewer and ask for review; excludes them
+automatically; and asks the top remaining requestable candidate. It first uses
+a formal GitHub review request. Only when GitHub confirms that this action lacks
+permission does it fall back to one concise PR comment mentioning the same
+reviewer. The command reads the PR again and verifies either provider state or
+the fallback comment's semantic review intent plus public URL before claiming
+success. A retry recognizes either a legacy marker or a bounded explicit review-request comment and
+sends no duplicate comment; ordinary mentions and discussion do not suppress a
+request. Network and unknown provider errors remain blockers rather than
+triggering comments. History is
+read at the base revision so feature-branch commits do not recommend the
+author; <code>--exclude-author-name</code> covers unresolved git-name aliases.
+The permission fallback is reviewer-facing product copy, not an internal
+receipt. It names the linked issue and compact PR-title change summary, points
+to the PR description for motivation, validation, and risk, and does not expose
+an idempotency marker.
+The workflow plan also projects an <code>issue_fix_pr_description_contract_v0</code>
+template adapted from the PR-review five-block structure. Code changes add two
+reviewer-context sections: the smallest key-code or pseudocode slice, and a
+post-fix reproduction using the repository CLI or focused code/test surface.
+Motivation, approach, concrete changes, validation, and main-branch
+risk/uncovered scope remain required. An infographic is optional only for a
+complex change and never replaces textual evidence. The reviewer's verdict
+section remains review-only and is not authored into the PR description.</p>
+<p>Issue-backed PRs also carry an explicit <code>关联 Issue</code> / <code>Related Issues</code> block.
+For a complete fix, the builder defaults to one standalone <code>Fixes #N</code> line per
+issue (or <code>Fixes owner/repository#N</code> across repositories). For partial work it
+uses <code>Related to #N</code>, which creates a normal reference without promising
+automatic closure. GitHub accepts the <code>close</code>, <code>fix</code>, and <code>resolve</code> keyword
+families, including their documented inflections, but LoopX normalizes them to
+<code>Closes</code>, <code>Fixes</code>, or <code>Resolves</code> for stable output. Closing references require
+an explicit assertion that the PR targets the default branch, because GitHub
+ignores closing keywords on other base branches. The functional block is
+applied after semantic preferences and PR lifecycle should verify it through
+<code>closingIssuesReferences</code>. Closing keywords in commit messages can close an
+issue, but GitHub does not then list the containing PR as the linked PR, so the
+Issue Fix format keeps the keyword in the PR body rather than relying on commit
+copy. Comments are not part of this closing contract. See GitHub's
+<a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue">linked-issue contract</a>.
+When a human confirms that an unresolved git display name belongs to a specific
+GitHub account, <code>--identity-map-json</code> records that compact mapping as verified
+identity evidence and reranks the same repository-native contribution evidence.</p>
+<p><code>--notification-sinks-json</code> optionally adds a parallel reviewer channel. A
+configured GitHub request and configured Lark notification are independent
+obligations: LoopX attempts both, while the permission-only GitHub comment
+remains a fallback for the GitHub request itself. The first Lark adapter uses an explicitly
+named, project-dedicated Lark/Feishu bot profile to mention the same reviewer in
+an approved group and read the message back. It rejects default/shared bot
+identities, never selects a different reviewer, and never copies the local bot
+profile, destination, member mapping, or raw provider response into public
+state. A stable hashed receipt prevents duplicate sends across retries.</p>
+<p>When a connected goal explicitly enables the agent-scoped Reward Memory
+experiment for <code>reviewer_artifact.summary</code> and its v1 config sets
+<code>automation.automatic_recall=true</code>, <code>reviewer-request</code> invokes the shared
+automatic hook and previews the application independently of secondary-sink
+availability. With the flag off it performs zero provider calls. This
+lets a fixer verify recall, current-artifact identity, and the proposed concise
+Chinese summary with zero external writes while per-PR secondary notifications
+are paused. A configured secondary notification additionally requires that
+verified application receipt before sending. The caller must identify itself
+with <code>--agent-id</code> and supply the summary plus its application reasoning:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>loopx<span class="w"> </span>issue-fix<span class="w"> </span>reviewer-request<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span>--url<span class="w"> </span>https://github.com/owner/repo/pull/123<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span>--repo-path<span class="w"> </span>/path/to/approved/repo<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span>--goal-id<span class="w"> </span>example-goal<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span>--project<span class="w"> </span>/path/to/connected/project<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span>--agent-id<span class="w"> </span>registered-fixer<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span>--reviewer-summary<span class="w"> </span><span class="s1">&#39;修复请求生命周期中的重复通知，并保留回读验证。&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span>--reviewer-summary-reasoning<span class="w"> </span><span class="s1">&#39;当前 PR 与召回的幂等通知经验作用域一致。&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">  </span>--execute<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">  </span>--format<span class="w"> </span>json
+</span></code></pre></div>
+<p>This is a thin consumer of the shared Reward Memory core, not an Issue Fix
+memory implementation. It verifies the exact surface, current PR identity,
+current-artifact check, memory readback, attribution digests, and non-empty
+summary before the secondary send. It never infers another peer's agent id and
+does not hard-code OpenViking: the experiment resolves the surface's explicit
+corpus set from the goal's ignored project provider config and uses that
+surface's recall profile. Compatible corpora are attempted in declared order
+until the first exact hit, with one query per corpus at this function boundary;
+telemetry records the bounded provider calls. It never scans unrelated project
+corpora. Read
+authority combines the normalized corpus read-authority
+kind with <code>standing_policy.authority_source_ref</code>; it is never inferred from a
+provider or repository name. A successful no-sink preview is returned as
+<code>reviewer_artifact_reward_memory_preview</code> and remains read-only. The canonical
+GitHub reviewer request remains fail-open and runs first; only the explicitly
+configured secondary notification fails closed when this receipt is missing or
+stale.</p>
+<p>A second, independent surface can be enabled at
+<code>reviewer_notification.before_send</code>. Immediately before the configured Lark
+CLI adapter would send, LoopX performs one bounded recall and accepts only one
+exact, structured <code>hard_policy</code> delivery window. A passed application receipt
+feeds that policy into the existing send-or-queue path; the sink continues to
+own deduplication, restart-safe queue receipts, provider execution, and remote
+readback. Disabled or unavailable recall, no compatible memory, and conflicting
+policies all fail open to the caller's current sink policy. If neither source
+provides a policy, delivery is unrestricted. This surface does not create a
+generic preflight router or grant notification authority.</p>
+<p>Long-running goals can register the local-private sink pointer once with
+<code>configure-goal --issue-fix-reviewer-notification-config</code>. Subsequent
+<code>reviewer-request --goal-id ... --project ...</code> calls discover it automatically,
+use explicit reader/user and sender/bot profiles without changing the machine
+default, verify mapped reviewer <code>open_id</code> values with the sender app before
+sending, and persist only new
+<code>sha256:</code> receipts in the PR lifecycle row. If that row is missing, execute
+mode auto-materializes it from a fresh compact GitHub lifecycle read before
+the external notification. Restart/retry returns <code>already_notified</code>; no
+notification ledger or public config path is added.</p>
+<p>The same local-private sink config may reference a generic
+<code>lark_event_inbox_config_v0</code>. When a reviewer group is configured, issue-fix
+auto-binds that inbox through <code>reviewer-feedback-inbox</code>; host collection runs
+without an agent, and heartbeats periodically drain messages addressed to the
+dedicated bot. A message is acknowledged only after its PR/todo/vision effect
+or no-follow-up rationale is written back.</p>
+<p><code>--reviewer-sources-json</code> is the bridge for repository-specific public routing
+knowledge. The host reads an approved public source, such as a maintainer-map
+issue or repository document, and supplies only stable source id, public URL,
+trust, freshness, observation time, path-prefix/glob routes, and
+primary/fallback handles. LoopX
+does not fetch or persist the raw page. The output keeps the URL beside each
+candidate so a maintainer can audit why that person was selected.</p>
+<p><code>CODEOWNERS</code> remains the strongest repository-native signal. Commit volume is
+only evidence of familiarity; it is not proof of maintainership, availability,
+or review authority. See the <a href="protocols/issue-fix-reviewer-recommendation-v0/">reviewer recommendation
+contract</a> for scoring,
+identity, and future-signal details, and the <a href="protocols/issue-fix-reviewer-request-v0/">reviewer request
+contract</a> for the external-write,
+idempotency, and verification rules. Secondary delivery, dedicated-bot
+isolation, local-private identity mapping, and readback are defined by the
+<a href="protocols/issue-fix-reviewer-notification-sinks-v0/">reviewer notification sink
+contract</a>.</p>
+<h3 id="6-pr-publication-and-public-write-boundary">6. PR publication and public-write boundary<a class="headerlink" href="#6-pr-publication-and-public-write-boundary" title="Permanent link">&para;</a></h3>
+<p>Before an external write, prepare a public-safe package containing:</p>
+<ul>
+<li>problem and root cause;</li>
+<li>bounded diff summary;</li>
+<li>focused and expanded validation;</li>
+<li>risk and omissions;</li>
+<li>reviewer evidence;</li>
+<li>PR body or comment draft.</li>
+</ul>
+<p>PR creation, public comments, push, merge, and publish are external writes.
+The host agent may perform only the actions covered by current boundary
+authority. Reviewer notification is also an external write, but a standing
+<code>external_review_request</code> or <code>publish</code> authority lets the agent perform the
+formal request and its permission-only comment fallback automatically without
+another user prompt. This does not authorize arbitrary comments.
+Recommendation packets themselves remain read-only.</p>
+<h3 id="7-continuous-pr-lifecycle">7. Continuous PR lifecycle<a class="headerlink" href="#7-continuous-pr-lifecycle" title="Permanent link">&para;</a></h3>
+<p>After a PR exists, create a <code>continuous_monitor</code> todo with a stable target and
+cadence. <code>loopx issue-fix pr-lifecycle</code> projects compact public PR metadata
+into one of four decisions:</p>
+<ul>
+<li><code>runnable_successor</code>: CI failed, review requested changes, or the branch
+  needs an actionable replan;</li>
+<li><code>monitor_continuation</code>: checks/review are still pending or nothing material
+  changed;</li>
+<li><code>user_gate</code>: an explicit human decision is required;</li>
+<li><code>no_followup</code>: the PR is merged or closed and the monitor can terminate.</li>
+</ul>
+<p>With <code>--fetch-metadata</code>, a <code>CHANGES_REQUESTED</code> observation also reads a compact
+review-response summary: thread counts, the latest changes-requested time, and
+the head commit time. LoopX waits for re-review instead of creating another
+patch successor only when at least one fetched thread exists, every fetched
+thread is resolved, pagination is complete, and the head commit is newer than
+the review. Missing, partial, or older evidence fails closed to the actionable
+replan route. Review and thread bodies are never captured.</p>
+<p>Identical polls should not create work, consume delivery quota, or spam the
+maintainer. Material transitions must produce a successor, concrete blocker,
+or structured no-follow-up; the agent must not stop silently in monitor-only
+state.</p>
+<p>When a review or public maintainer comment contains a concrete correction, the
+host compacts it into <code>issue_fix_maintainer_correction_input_v0</code> and passes it
+to <code>pr-lifecycle</code>. The compact input keeps only the correction kind, a public
+source reference, a bounded summary, and one of: verification plus PR update
+path, a concrete ambiguity question, or missing authority scopes. It never
+copies the raw review/comment body.</p>
+<p>With <code>--execute-transition</code>, an <code>actionable_patch</code> creates exactly one
+<code>issue_fix_maintainer_correction_patch</code> todo claimed by the registered agent.
+<code>semantic_ambiguity</code> and <code>missing_authority</code> create a concrete user gate that
+blocks that same agent. <code>unchanged</code> creates no todo. The normalized correction
+fingerprint and deterministic todo text make retries idempotent, while terminal
+merged/closed state still takes precedence over late feedback.</p>
+<p>When a connected lifecycle writeback observes <code>MERGED</code>, LoopX also appends one
+repository-qualified, public-safe, idempotent <code>pr_merge</code> rollout event. This is
+the event consumed by todo resume projection. A dependent todo such as
+<code>resume_when=pr_merged:#123</code> then becomes <code>resume_ready=true</code> when its GitHub
+<code>task_repository</code> matches the event repository; a cross-repository dependency
+must use <code>resume_when=pr_merged:owner/repo#123</code>. Missing repository identity
+fails closed with an ambiguity diagnostic. The next <code>status</code> / <code>quota
+should-run</code> pass can select a matched todo as ordinary runnable work.
+Replaying the same merged observation reuses the stable event id and creates no
+second transition.</p>
+<p>This is deliberately event-backed rather than webhook-code coupling:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>GitHub reports MERGED
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>  -&gt; issue-fix lifecycle persists terminal evidence
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>  -&gt; LoopX emits idempotent pr_merge rollout event
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>  -&gt; resume_when projection becomes ready
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>  -&gt; quota selects the successor on a later bounded turn
+</span></code></pre></div>
+<p>The merged PR does not directly execute an arbitrary callback, and the rollout
+event does not grant new write authority. [LoopX PR</p>
+<h1 id="1883httpsgithubcomhuangruitengloopxpull1883-is-the-implementation">1883](https://github.com/huangruiteng/loopx/pull/1883) is the implementation<a class="headerlink" href="#1883httpsgithubcomhuangruitengloopxpull1883-is-the-implementation" title="Permanent link">&para;</a></h1>
+<p>and regression evidence for this contract.</p>
+<h3 id="8-terminal-closeout-and-repeatability">8. Terminal closeout and repeatability<a class="headerlink" href="#8-terminal-closeout-and-repeatability" title="Permanent link">&para;</a></h3>
+<p>At merged/closed state, persist compact lifecycle evidence, close the monitor,
+sync the management surface, record residual risk, and choose one of:</p>
+<ul>
+<li>next issue selection;</li>
+<li>a concrete rollout/follow-up todo;</li>
+<li>a blocker or superseding route;</li>
+<li>structured no-follow-up.</li>
+</ul>
+<p>One merged PR proves a delivery slice. Repeating the loop on independent issues
+tests whether the system is a durable employee rather than a scripted demo.</p>
+<h2 id="public-github-signal-provider">Public GitHub Signal Provider<a class="headerlink" href="#public-github-signal-provider" title="Permanent link">&para;</a></h2>
+<p>Issue-fix owns the body-free public GitHub probe and reply-monitor provider in
+<code>loopx.capabilities.issue_fix.github_public</code>. Existing CLI callers keep using
+the compatibility commands:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>loopx<span class="w"> </span>value-connectors<span class="w"> </span>github-public-probe<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span>--url<span class="w"> </span>https://github.com/owner/repo/issues/1<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span>--fetch-metadata<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span>--format<span class="w"> </span>json
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>loopx<span class="w"> </span>value-connectors<span class="w"> </span>github-reply-monitor<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">  </span>--issue-url<span class="w"> </span>https://github.com/owner/repo/issues/1<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">  </span>--after-comment-url<span class="w"> </span>https://github.com/owner/repo/issues/1#issuecomment-123<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">  </span>--fetch-metadata<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">  </span>--format<span class="w"> </span>json
+</span></code></pre></div>
+<p>The CLI name and packet schemas remain stable. Only implementation ownership
+moved: probes and monitor signals now evolve with the issue-to-PR outcome they
+feed, while connector installation and generic approval planning remain in the
+compatibility facade.</p>
+<h2 id="implemented-surfaces">Implemented Surfaces<a class="headerlink" href="#implemented-surfaces" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>Command or path</th>
+<th>Current responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AgentLoop host entry</td>
+<td><code>/loopx Fix &lt;issue-url&gt;</code>, guided start/command pack</td>
+<td>Hand the same objective to Codex, Claude Code, or another host agent; LoopX constrains the delivery protocol without binding one model.</td>
+</tr>
+<tr>
+<td>State kernel</td>
+<td><code>loopx todo</code>, <code>quota</code>, <code>refresh-state</code>, scheduler/monitor</td>
+<td>Persist ownership, authority, bounded compute, replan, wait/resume, and terminal closeout.</td>
+</tr>
+<tr>
+<td>OpenViking memory hook</td>
+<td><code>--repository-memory-*</code>, <code>repository-memory-sync</code></td>
+<td>Retrieve bounded advisory evidence from a stable rolling default-branch index; allow decision influence only after current-checkout verification, and authorize manual resource sync and reusable-knowledge writeback separately.</td>
+</tr>
+<tr>
+<td>Semantic preference hook</td>
+<td><code>loopx semantic-preference recall</code>, stateless receipt</td>
+<td>Optionally recall workspace-scoped user/reviewer preferences before a configured surface; the domain applies them, while LoopX retains only compact application evidence rather than raw memory.</td>
+</tr>
+<tr>
+<td>Reward-memory experiment</td>
+<td><code>loopx configure-goal --reward-memory-config ... --reward-memory-agent ...</code>, <code>loopx reward-memory experiment-status</code>, <code>run_issue_fix_patch_planning_reward_memory</code>, <code>run_issue_fix_reviewer_artifact_reward_memory</code>, <code>run_issue_fix_reviewer_notification_automatic_reward_memory</code></td>
+<td>Default off. Allow one registered fixer lane to use an ignored provider binding and exact reviewed surfaces such as <code>issue_fix.patch_planning</code>, <code>reviewer_artifact.summary</code>, and <code>reviewer_notification.before_send</code>; OpenViking is the current provider, not a global dependency. Planning stays fail-open. Reviewer-artifact application remains previewable with no sink and zero external writes. The pre-send surface accepts only a verified structured hard-policy receipt and reuses the existing send/queue/readback path; disabled, unavailable, or empty recall adds no time restriction. The canonical GitHub request remains unaffected.</td>
+</tr>
+<tr>
+<td>Generic inbound feedback</td>
+<td><code>loopx lark-inbox</code> collector/install/status/drain</td>
+<td>Run a project-configured host collector independently of the agent process, durably project bounded inbound events, and require domain writeback before ACK; outbound messages remain a separate configured authority.</td>
+</tr>
+<tr>
+<td>Issue-fix domain state</td>
+<td><code>loopx/domain_packs/issue_fix.py</code>, <code>issue-fix outcome</code></td>
+<td>Retain candidate preflight, feasibility, PR lifecycle, compact delivery evidence, and stable outcomes inside the existing goal rather than a parallel workflow ledger.</td>
+</tr>
+<tr>
+<td>Candidate preflight</td>
+<td><code>loopx issue-fix workflow-plan --fetch-candidate-evidence --goal-id &lt;goal-id&gt;</code></td>
+<td>Before patch planning, persist strict issue-specific evidence. Missing evidence projects <code>evidence_required</code>; cross-references, closed PRs, and maintainer comments project source-bound verification successors. Only <code>admitted + proceed</code> enters feasibility. <code>--candidate-resolution-json</code> binds compact outcomes to the current PR head or comment <code>updatedAt</code> revision; <code>--candidate-preflight-json</code> remains the provider-neutral adapter/test seam.</td>
+</tr>
+<tr>
+<td>Workflow plan</td>
+<td><code>loopx issue-fix workflow-plan</code></td>
+<td>Compose body-free metadata, intake, branch plan, validation label, ordered todo previews, gates, and PR-readiness blockers.</td>
+</tr>
+<tr>
+<td>Repository context</td>
+<td><code>--repository-context-json</code></td>
+<td>Pin policy, architecture, change-scope, reproduction, and validation evidence with trust and freshness.</td>
+</tr>
+<tr>
+<td>Feasibility</td>
+<td><code>loopx issue-fix feasibility</code></td>
+<td>Select exactly one <code>fix_pr</code>, <code>comment_only</code>, or <code>triage_only</code> route and optionally persist compact domain state.</td>
+</tr>
+<tr>
+<td>Discovered issue promotion</td>
+<td><a href="protocols/issue-fix-discovered-issue-promotion-v0/"><code>loopx issue-fix promote-discovered-issue</code></a></td>
+<td>After a real defect is reproduced during adjacent work, require open-and-closed duplicate-search evidence, create or reuse one canonical public issue under <code>publish</code> authority, verify the PR closing reference, and atomically replace the <code>discovered-*</code> placeholder so Kanban and metrics retain one case.</td>
+</tr>
+<tr>
+<td>Reviewer plan</td>
+<td><code>loopx issue-fix reviewer-plan</code></td>
+<td>Rank explainable reviewer candidates from CODEOWNERS, caller-verified public maintainer maps, and changed-path/module history without requesting review.</td>
+</tr>
+<tr>
+<td>Reviewer notification</td>
+<td><code>loopx issue-fix reviewer-request</code></td>
+<td>Under standing authority, exclude the live PR author and existing coverage, request the top candidate, fall back to one verified <code>@reviewer</code> comment only on permission denial, and avoid duplicates.</td>
+</tr>
+<tr>
+<td>PR lifecycle</td>
+<td><code>loopx issue-fix pr-lifecycle</code></td>
+<td>Project CI, review, merge state, draft, merged, and closed signals into monitor transitions.</td>
+</tr>
+<tr>
+<td>Merge-triggered resume</td>
+<td><code>pr_merge</code> rollout event + todo <code>resume_when</code></td>
+<td>Turn connected terminal merge evidence into one idempotent event so blocked/deferred successors become runnable through status/quota.</td>
+</tr>
+<tr>
+<td>Maintainer correction</td>
+<td><code>loopx issue-fix pr-lifecycle --maintainer-correction-json ... --execute-transition</code></td>
+<td>Turn bounded public review feedback into one claimed patch successor, a concrete user gate, or a quiet unchanged poll.</td>
+</tr>
+<tr>
+<td>Metrics projection</td>
+<td><a href="protocols/issue-fix-metrics-projection-v0/"><code>loopx issue-fix metrics</code></a></td>
+<td>Keep repository baseline separate from attributable agent output, combine existing feasibility/PR lifecycle rows with caller-supplied public snapshots, and report deltas, ratios, inventory, and missing data without another ledger.</td>
+</tr>
+<tr>
+<td>Repository snapshot</td>
+<td><code>loopx issue-fix repository-snapshot</code></td>
+<td>Explicitly collect bounded public GitHub stock/flow and known issue/PR state; optionally retain only material daily changes in the existing issue-fix domain state.</td>
+</tr>
+<tr>
+<td>Metrics supplement</td>
+<td><code>loopx issue-fix metrics-supplement</code></td>
+<td>Derive screened issues, triage outcomes, automatic terminal closeouts, complete-coverage first-push CI, and explicit memory evidence from existing issue-fix state; compose coverage-gated human interventions and typed capability-gap todo transitions from existing rollout evidence, while accepting a compact event batch for other lifecycle counts and preserving honest missing-data semantics.</td>
+</tr>
+<tr>
+<td>Explore progress graph</td>
+<td><code>explore_graph.enabled</code> + material <code>refresh-state</code></td>
+<td>Idempotently project material issue selection, reproduction, PR publication/terminal state, capability-gap lifecycle, and todo supersession into the two delivery/capability graph lanes; update configured row/visual sinks only when their semantic digests change.</td>
+</tr>
+<tr>
+<td>Acceptance fixture</td>
+<td><code>loopx issue-fix acceptance-fixture</code></td>
+<td>Prove failure-before, minimal patch, and pass-after in a deterministic fixture.</td>
+</tr>
+<tr>
+<td>Git branch fixture</td>
+<td><code>loopx issue-fix repo-branch-fixture</code></td>
+<td>Exercise the same repair contract through a temporary git branch.</td>
+</tr>
+<tr>
+<td>Caller repo branch</td>
+<td><code>loopx issue-fix caller-repo-branch</code></td>
+<td>Inspect an approved local repo, create/claim an issue branch, and run caller-declared validation.</td>
+</tr>
+<tr>
+<td>Content bridge</td>
+<td><code>loopx content-ops issue-fix-*</code></td>
+<td>Reuse body-free public metadata/intake boundaries.</td>
+</tr>
+<tr>
+<td>Visible projection</td>
+<td><code>status</code>, <code>lark-kanban</code>, dashboard</td>
+<td>Derive human-visible issue work, outcomes, gates, and Monthly Impact from the same kernel/domain state without becoming a second source of truth.</td>
+</tr>
+<tr>
+<td>Projection source reconcile</td>
+<td><code>lark-kanban sync-projection --reconcile-source</code></td>
+<td>Keep normal sync non-destructive; only a caller-attested complete source snapshot may preview and explicitly retire remote orphan rows plus stale local record mappings within that exact namespace.</td>
+</tr>
+</tbody>
+</table>
+<p>The capability module lives at <code>loopx/capabilities/issue_fix/</code>; domain-state
+rows live in the existing issue-fix domain pack rather than a parallel context
+ledger.</p>
+<h3 id="automatic-progress-graph">Automatic progress graph<a class="headerlink" href="#automatic-progress-graph" title="Permanent link">&para;</a></h3>
+<p>When a goal enables <code>explore_graph.enabled</code>, each material <code>refresh-state</code>
+transaction composes a public-safe Explore projection from issue-fix domain
+state, todo metadata, and rollout events, then runs configured sinks. Stable
+result ids make retries idempotent. Poll timestamps and unchanged monitor
+observations are excluded from the semantic digest, so they do not rewrite the
+graph. A configured row sink advances its digest only after row/result-id
+readback verifies the write. An authorized refresh returns a failed delivery
+postcondition when sync/readback fails, so the closeout cannot call the remote
+board current.</p>
+<p>If the current run is allowed to update local LoopX state but external writes
+are temporarily forbidden, use <code>refresh-state --suppress-external-sinks</code>.
+Canonical issue-fix/Explore projection still runs locally; configured row and
+visual sink digests do not advance and remain retryable on a later authorized
+refresh. The local refresh may succeed, but the unsatisfied postcondition must
+become a concrete authorized-sync successor before final delivery.</p>
+<p><code>explore_graph.enabled</code> and <code>explore_harness.enabled</code> are independent switches.
+The graph is an operator projection and may be on while the harness remains
+off; the harness is a separate opt-in worker-planning facility. LoopX still
+treats issue-fix domain state and rollout events as facts, while the graph
+presents two connected stories even between PRs: repository delivery and
+reusable agent capability improvement.</p>
+<p>The canonical Base rows and owner-facing Docx stage boards are separate
+configured sinks. A project may place the Docx as a root-level resource in the
+same Base as the Kanban, then register its first whiteboard and Docx token with
+<code>loopx explore feishu-visual-configure</code>. Every bounded Evidence Stage gets a
+matching document section and independent whiteboard. The issue-fix projection
+groups PR delivery and LoopX capability nodes into two lanes on each stage and
+draws their real cross-lane relations; a single-lane project remains a natural
+single-lane board. Capacity is configurable from 10 to 20, defaulting to 14.
+Automatic sync records independent row and visual digests, so a successful row
+update can never be reported as visual publication. A failed stage-board update
+remains runnable and retries without rewriting unchanged Nodes, Edges, or
+Findings.</p>
+<h2 id="truth-and-evidence-model">Truth And Evidence Model<a class="headerlink" href="#truth-and-evidence-model" title="Permanent link">&para;</a></h2>
+<h3 id="revision-pinned-repository-context">Revision-pinned repository context<a class="headerlink" href="#revision-pinned-repository-context" title="Permanent link">&para;</a></h3>
+<p>Repository context should answer:</p>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Required evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What revision is authoritative?</td>
+<td>Full base revision and branch relationship.</td>
+</tr>
+<tr>
+<td>What can change?</td>
+<td>Repo-relative source/test references and nearby patterns.</td>
+</tr>
+<tr>
+<td>How is the issue reproduced?</td>
+<td>Focused command or compact observed contract.</td>
+</tr>
+<tr>
+<td>How is the fix validated?</td>
+<td>Repository-native focused validation and risk-based expansion.</td>
+</tr>
+<tr>
+<td>Which source is trusted?</td>
+<td>Repository policy/current code first; memory/expert sources marked advisory.</td>
+</tr>
+<tr>
+<td>Is the evidence fresh?</td>
+<td>Revision or timestamp tied to the current checkout.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="public-safe-evidence">Public-safe evidence<a class="headerlink" href="#public-safe-evidence" title="Permanent link">&para;</a></h3>
+<p>Packets preserve compact classifications and references. They do not preserve:</p>
+<ul>
+<li>raw issue/comment bodies by default;</li>
+<li>raw validation, git, provider, or expert output;</li>
+<li>local absolute paths;</li>
+<li>credentials or private material;</li>
+<li>transcript/tool capture or automatic memory writeback without an approved
+  isolation boundary.</li>
+</ul>
+<h3 id="environment-vs-product-attribution">Environment vs product attribution<a class="headerlink" href="#environment-vs-product-attribution" title="Permanent link">&para;</a></h3>
+<p>An unavailable dependency, killed process, or missing service is environment
+evidence. It may block a validation surface without refuting the product bug.
+Conversely, a failing legacy test does not prove the new patch caused the
+failure; compare the pinned base and changed hunks before attribution.</p>
+<h2 id="reviewer-routing-contract">Reviewer Routing Contract<a class="headerlink" href="#reviewer-routing-contract" title="Permanent link">&para;</a></h2>
+<p>The reviewer recommendation layer separates three concepts:</p>
+<ol>
+<li><strong>ownership evidence</strong>: CODEOWNERS, caller-verified public maintainer maps,
+   and path/module contribution history;</li>
+<li><strong>review recommendation</strong>: explainable ranked candidates;</li>
+<li><strong>review request</strong>: a default post-PR action governed by repository policy
+   and explicit or standing boundary authority.</li>
+</ol>
+<p>Current scoring gives CODEOWNERS matches dominant weight. A current verified
+maintainer-map primary contact ranks above history-only familiarity, while map
+fallback contacts rank below primary routing. Trust and freshness reduce map
+weight. A new file falls back to its nearest module directory only when no
+non-excluded exact-path history is usable. The packet exposes matched routes,
+source links, and reason codes instead of presenting a score as authority.</p>
+<p>The default policy requests one top requestable candidate when authority is
+active. Existing requested or completed review counts toward that limit. The
+request is complete only after provider readback confirms it.</p>
+<p>Important safeguards:</p>
+<ul>
+<li>fetch and exclude the live PR author, existing reviewers, and explicitly
+  unavailable reviewers;</li>
+<li>do not expose commit email addresses;</li>
+<li>do not treat bots, anonymous identities, or unresolved names as requestable;</li>
+<li>cap candidates and show path coverage;</li>
+<li>retain public source references while rejecting local/private source URLs and
+  raw maintainer-map bodies;</li>
+<li>keep team handles distinct from individual handles;</li>
+<li>respect required-review and branch-protection policy outside the ranking;</li>
+<li>never infer merge authority from reviewer familiarity.</li>
+</ul>
+<p>Planned signals, added only with real call sites and public-safe evidence:</p>
+<ul>
+<li>automatic discovery of checked-in package/module maintainer metadata beyond
+  caller-supplied source packets;</li>
+<li>recent review participation and accepted-review history;</li>
+<li>reviewer load, stale request detection, and fallback routing;</li>
+<li>bus-factor/risk hints when one person dominates a critical module;</li>
+<li>GitHub identity resolution for public git authors without noreply handles;</li>
+<li>explicit repository allow/deny lists and team membership verification.</li>
+</ul>
+<h2 id="human-interaction-model">Human Interaction Model<a class="headerlink" href="#human-interaction-model" title="Permanent link">&para;</a></h2>
+<p>Humans should be interrupted for decisions, not routine progress. Typical
+concrete user gates are:</p>
+<ul>
+<li>private reproduction material or credentials are required;</li>
+<li>architecture or behavior scope is genuinely ambiguous;</li>
+<li>repository policy requires a specific reviewer or owner approval;</li>
+<li>public write authority is missing;</li>
+<li>maintainer feedback changes the intended behavior;</li>
+<li>merge or production authority is not recorded.</li>
+</ul>
+<p>CI pending, unchanged monitor polls, routine reviewer evidence collection, and
+repository-native focused validation remain agent work. A visible Kanban can
+project todo ownership, status, evidence, blockers, and outputs without becoming
+a second source of truth.</p>
+<h2 id="public-openviking-usage-and-evidence">Public OpenViking Usage And Evidence<a class="headerlink" href="#public-openviking-usage-and-evidence" title="Permanent link">&para;</a></h2>
+<p>OpenViking is both the public repository used for the first sustained issue-fix
+pilot and an optional repository-memory provider behind the generic LoopX
+context-provider boundary. The integration does not make OpenViking the source
+of truth for a patch: current checkout source and tests still outrank retrieved
+knowledge.</p>
+<h3 id="three-openviking-knowledge-lanes">Three OpenViking knowledge lanes<a class="headerlink" href="#three-openviking-knowledge-lanes" title="Permanent link">&para;</a></h3>
+<p>The integration keeps these lanes separate:</p>
+<table>
+<thead>
+<tr>
+<th>Lane</th>
+<th>What is stored and read</th>
+<th>How Issue-Fix may use it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rolling repository resources</td>
+<td>A low-frequency watched public default branch for architecture, modules, files, and current patterns.</td>
+<td>Advisory navigation only; every used hit is re-read from the current checkout before it can influence reproduction, scope, patch, or validation.</td>
+</tr>
+<tr>
+<td>Revision-stamped learning cards</td>
+<td>Compact reusable knowledge learned while fixing a PR: symptom, root cause, violated invariant, repair pattern, validation, observed revision, and applicability boundary.</td>
+<td>Historical hypotheses that may be stale; retrieval alone has zero authority, and decision influence is recorded only after current-checkout confirmation.</td>
+</tr>
+<tr>
+<td>Workspace-scoped user memory</td>
+<td>Stable reviewer/user preferences such as PR language, section structure, and response style.</td>
+<td>Recalled only for configured surfaces such as <code>issue_fix.pr_description</code>; raw semantic content stays with the provider and LoopX writes a stateless hashed receipt through existing evidence/state.</td>
+</tr>
+</tbody>
+</table>
+<p>These lanes are not interchangeable. Repository resources answer “where and
+how does current public <code>main</code> work?”, learning cards answer “what did a prior
+fix teach at a named revision?”, and user memory answers “how should this
+reviewer-facing artifact be presented?”.</p>
+<p>Representative public issue/PR cases now cover independent code paths:</p>
+<table>
+<thead>
+<tr>
+<th>Public case</th>
+<th>Focused outcome</th>
+<th>Capability evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/volcengine/OpenViking/issues/3102">issue #3102</a> → <a href="https://github.com/volcengine/OpenViking/pull/3115">merged PR #3115</a></td>
+<td>Send <code>peer_id</code> for OpenClaw session messages.</td>
+<td>First end-to-end fix, focused validation, publication, review, merge monitor, terminal closeout, and Kanban outcome.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/volcengine/OpenViking/issues/3090">issue #3090</a> → <a href="https://github.com/volcengine/OpenViking/pull/3121">merged PR #3121</a></td>
+<td>Accept sparse indexed rerank results.</td>
+<td>A second independent module, repository-native reviewer routing, review notification fallback, and repeated lifecycle handling.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/volcengine/OpenViking/issues/3124">issue #3124</a> → <a href="https://github.com/volcengine/OpenViking/pull/3148">merged PR #3148</a></td>
+<td>Show configured VLM identity before usage telemetry exists.</td>
+<td>Reusable knowledge distilled from a validated outcome and recovered by a future-style symptom query without falsely claiming decision influence.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/volcengine/OpenViking/issues/3152">issue #3152</a> → <a href="https://github.com/volcengine/OpenViking/pull/3176">PR #3176</a></td>
+<td>Anchor user-scoped nested resource writes at the direct parent.</td>
+<td>First fresh-issue rolling-index dogfood with decision influence and staleness recorded separately from retrieval volume.</td>
+</tr>
+</tbody>
+</table>
+<p>An earlier learning-card validation used a revision-scoped public
+<code>viking://resources/.../&lt;git-revision&gt;</code> namespace. After the #3148 delivery
+commit was proven to be an ancestor of the pinned revision, LoopX wrote one
+<code>issue_fix_reusable_knowledge_input_v0</code> fact containing symptom, reproduction,
+root cause, violated invariant, repair pattern, focused validation, and
+applicability boundaries. A query equivalent to “configured model missing from
+status when usage telemetry is empty” returned the knowledge overview and body;
+an exact read recovered the causal and boundary fields. That proves
+discoverability, not future patch value, so decision influence remains zero
+until a different issue actually uses the result.</p>
+<p>The first fresh-issue rolling-index dogfood was deliberately mixed rather than
+reported as a blanket success. For issue #3152, a symptom/module query located
+the relevant source and nearby tests, and a later validation query recovered
+the focused test surface. A causal query was weak and did not determine the
+patch. Every used locator was re-read and confirmed in the current checkout at
+revision <code>5bfa9b617ecff478f825ca435a35bc4222b30582</code>; the reproduction and code
+change were derived from that checkout. The resulting accounting is therefore:
+useful <code>change_scope</code> and <code>validation</code> influence, zero memory patch authority,
+and no stale result allowed into the compact repository context. This measured
+positive-but-mixed result keeps rolling-main retrieval optional and fail-open
+until repeated independent issues show stronger value.</p>
+<p>The pilot has also produced generic LoopX fixes: [PR</p>
+<h1 id="1784httpsgithubcomhuangruitengloopxpull1784-established-early">1784](https://github.com/huangruiteng/loopx/pull/1784) established early<a class="headerlink" href="#1784httpsgithubcomhuangruitengloopxpull1784-established-early" title="Permanent link">&para;</a></h1>
+<p>control-plane groundwork, [PR</p>
+<h1 id="1883httpsgithubcomhuangruitengloopxpull1883-made-merged-pr-evidence">1883](https://github.com/huangruiteng/loopx/pull/1883) made merged PR evidence<a class="headerlink" href="#1883httpsgithubcomhuangruitengloopxpull1883-made-merged-pr-evidence" title="Permanent link">&para;</a></h1>
+<p>resume dependent todos, and [PR</p>
+<h1 id="1887httpsgithubcomhuangruitengloopxpull1887-separated-reusable">1887](https://github.com/huangruiteng/loopx/pull/1887) separated reusable<a class="headerlink" href="#1887httpsgithubcomhuangruitengloopxpull1887-separated-reusable" title="Permanent link">&para;</a></h1>
+<p>repository knowledge from audit-only delivery outcomes. Later slices added the
+provider-neutral semantic-preference hook in [PR</p>
+<h1 id="1991httpsgithubcomhuangruitengloopxpull1991-independent-automatic">1991](https://github.com/huangruiteng/loopx/pull/1991), independent automatic<a class="headerlink" href="#1991httpsgithubcomhuangruitengloopxpull1991-independent-automatic" title="Permanent link">&para;</a></h1>
+<p>Explore Graph activation in [PR</p>
+<h1 id="1995httpsgithubcomhuangruitengloopxpull1995-and-the-generic">1995](https://github.com/huangruiteng/loopx/pull/1995), and the generic<a class="headerlink" href="#1995httpsgithubcomhuangruitengloopxpull1995-and-the-generic" title="Permanent link">&para;</a></h1>
+<p>host-managed Lark event collector lifecycle in [PR</p>
+<h1 id="2000httpsgithubcomhuangruitengloopxpull2000-the-merged-loopx">2000](https://github.com/huangruiteng/loopx/pull/2000). The merged LoopX<a class="headerlink" href="#2000httpsgithubcomhuangruitengloopxpull2000-the-merged-loopx" title="Permanent link">&para;</a></h1>
+<p>revision and focused smokes, not the pilot narrative, remain authoritative.</p>
+<h2 id="roadmap">Roadmap<a class="headerlink" href="#roadmap" title="Permanent link">&para;</a></h2>
+<h3 id="current-stage">Current stage<a class="headerlink" href="#current-stage" title="Permanent link">&para;</a></h3>
+<ul>
+<li>public metadata and route selection;</li>
+<li>repository-context provenance;</li>
+<li>deterministic and caller-repo repair artifacts;</li>
+<li>focused validation evidence;</li>
+<li>reviewer recommendation from CODEOWNERS, public repository-declared routing
+  sources, and repository-native contribution evidence;</li>
+<li>authority-gated, idempotent reviewer notification with formal-request-first,
+  permission-only comment fallback, and PR readback;</li>
+<li>PR lifecycle projection and provider-neutral maintainer-correction succession;</li>
+<li>idempotent <code>pr_merge</code> event projection and todo <code>resume_when</code> recovery;</li>
+<li>issue/outcome Kanban projection, repository snapshots, attributable impact
+  metrics, and <code>Monthly Impact</code> rows;</li>
+<li>rolling-default-branch OpenViking retrieval, one fresh-issue measured
+  dogfood, and explicit reusable-knowledge writeback with honest
+  decision-influence accounting;</li>
+<li>an explicit, default-off <code>build_issue_fix_pr_description()</code> boundary for
+  reviewer-facing descriptions. When configured, it performs at most one
+  <code>issue_fix.pr_description</code> recall, passes results only to a caller-supplied
+  applier, preserves the base description on fail-open or unattributed changes,
+  and returns a stateless compact receipt for existing evidence/state writeback.
+  Independently, its deterministic issue-reference block runs after semantic
+  prose: complete fixes use <code>Fixes</code>, partial work uses <code>Related to</code>, and closing
+  metadata requires explicit default-branch targeting;</li>
+<li>goal-scoped <code>explore_graph.enabled</code> projection at material refresh boundaries,
+  independent from <code>explore_harness.enabled</code>, with separate row and visual sink
+  digests;</li>
+<li>generic host-managed Lark inbound collection with install/status/health and
+  durable inbox drain/ACK; domains configure routing, while outbound remains a
+  separate authority;</li>
+<li>LoopX todo/quota/monitor/Kanban integration through the host agent.</li>
+</ul>
+<h3 id="next-stage">Next stage<a class="headerlink" href="#next-stage" title="Permanent link">&para;</a></h3>
+<ul>
+<li>trigger the goal-default reviewer request directly from PR-ready transitions;</li>
+<li>resolve public GitHub identities and repository teams without leaking email;</li>
+<li>make publication authority visible per external action;</li>
+<li>make unchanged lifecycle observations physically idempotent everywhere;</li>
+<li>repeat two-stage repository-memory retrieval on independent fresh issues and record
+  confirmed/refuted/stale results plus concrete reproduction, scope, patch, or
+  validation influence;</li>
+<li>add revision-lineage supersession and stale quarantine for reusable knowledge;</li>
+<li>add a reusable terminal acceptance report across repeated issues.</li>
+</ul>
+<h3 id="longer-term-stage">Longer-term stage<a class="headerlink" href="#longer-term-stage" title="Permanent link">&para;</a></h3>
+<ul>
+<li>multi-repository issue portfolios with bounded concurrency;</li>
+<li>maintainer preference learning from public accepted/rejected outcomes;</li>
+<li>reviewer load balancing and bus-factor awareness;</li>
+<li>decide packaged-default memory behavior only after repeated fresh-issue
+  decision influence with no harmful stale guidance;</li>
+<li>Open Knowledge Format interoperability after the repository-context contract
+  stabilizes;</li>
+<li>bounded multi-repository reporting and portfolio rollups over the implemented
+  daily snapshot and Monthly Impact projection.</li>
+</ul>
+<h2 id="success-metrics">Success Metrics<a class="headerlink" href="#success-metrics" title="Permanent link">&para;</a></h2>
+<p>Track outcomes, not agent activity:</p>
+<ul>
+<li>selected issues that reach a focused PR;</li>
+<li>focused PRs accepted or merged;</li>
+<li>failure-before/pass-after proof rate;</li>
+<li>unrelated regression rate;</li>
+<li>time from issue selection to review-ready and terminal state;</li>
+<li>number and type of human interventions;</li>
+<li>reviewer recommendation acceptance/override rate;</li>
+<li>unchanged monitor polls skipped;</li>
+<li>public/private boundary incidents;</li>
+<li>LoopX generic gaps fixed or converted into concrete claimed todos.</li>
+</ul>
+<p><code>loopx issue-fix metrics</code> is the read-only reporting seam for these measures.
+The period-start repository snapshot describes repository stock only; agent
+output starts at zero and is attributed from the goal's existing feasibility
+and PR lifecycle rows. The current public snapshot supplies repository flow and
+may refresh current PR/issue state without rewriting lifecycle history. Optional
+supplement counts cover evidence that is not yet native to those rows, such as
+human interventions, first-push CI, capability deltas, and memory leverage.
+Absent evidence is emitted as <code>not_available</code> plus a reason code, never as zero.
+Memory impact deliberately separates <code>memory_retrievals</code>,
+<code>memory_verified_decision_influence</code>, <code>memory_verified_patch_influence</code>, and
+<code>memory_stale_results</code>; retrieving or confirming a result does not by itself
+prove that it changed an issue-fix decision.
+The same packet exposes stable <code>impact_rows</code>; the generic Lark sink maps them to
+the <code>Monthly Impact</code> view with baseline, current, delta, ratio lineage, source,
+freshness, and missing-data columns. Capability impact keeps found, fixed, and
+real-callsite-verified gaps as separate rows so delivery volume is not confused
+with product-path proof.</p>
+<h2 id="conversational-loopx-entry">Conversational <code>/loopx</code> Entry<a class="headerlink" href="#conversational-loopx-entry" title="Permanent link">&para;</a></h2>
+<p>On a host with the LoopX slash entry, start the long-running goal directly:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>/loopx --capability-route issue-fix Fix https://github.com/owner/repo/issues/123
+</span></code></pre></div>
+<p>For a manually integrated host, inspect the command pack and then start the
+same exact goal text through the guided CLI transaction:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>loopx<span class="w"> </span>bootstrap-command-pack<span class="w"> </span>--project<span class="w"> </span>.
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>loopx<span class="w"> </span>start-goal<span class="w"> </span>--guided<span class="w"> </span>--project<span class="w"> </span>.<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span>--capability-route<span class="w"> </span>issue-fix<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span>--goal-text<span class="w"> </span><span class="s2">&quot;Fix https://github.com/owner/repo/issues/123&quot;</span>
+</span></code></pre></div>
+<p>The explicit route switch does not bypass issue selection, authority, or
+validation. Without it, goal text never activates issue-fix. With it, the
+guided transaction creates the goal/todo/host-loop route from which the
+capability-owned admission commands below can be executed.</p>
+<h2 id="feasibility-decision">Feasibility Decision<a class="headerlink" href="#feasibility-decision" title="Permanent link">&para;</a></h2>
+<p><code>loopx issue-fix feasibility</code> selects exactly one of <code>fix_pr</code>, <code>comment_only</code>,
+or <code>triage_only</code>. A <code>fix_pr</code> decision requires bounded change scope plus a
+named reproduction and validation surface. The compact decision belongs in the
+existing issue-fix domain state before writing todos for the chosen route; it
+does not create a parallel workflow ledger.</p>
+<h2 id="repository-context">Repository Context<a class="headerlink" href="#repository-context" title="Permanent link">&para;</a></h2>
+<p>Both workflow planning and feasibility accept
+<code>--repository-context-json &lt;compact-context.json&gt;</code>. The input must pin the
+current revision and keep source references repo-relative. Current checkout
+evidence remains authoritative; memory and expert conclusions stay advisory
+until verified. The public
+<a href="openviking-pilot-handoff/">OpenViking pilot handoff</a> shows how the real
+pilot applies that evidence order without introducing a repository-specific
+control path.</p>
+<p>They also accept either <code>--repository-memory-json
+&lt;compact-search-read-result.json&gt;</code> or a configured context provider. The
+provider path is deliberately layered: the reusable LoopX context-provider
+module owns OpenViking CLI/version/service preflight, bounded explicit
+<code>search -&gt; read</code>, time/result caps, fail-open errors, and authority-gated
+resource sync. Issue-fix owns the domain query, stable repository scope,
+mapping retrieved resources back to repo-relative files, and exact current
+checkout verification. There is no repository-name special case.</p>
+<p>Set <code>LOOPX_ISSUE_FIX_REPOSITORY_MEMORY_PROVIDER_CONFIG</code> to a local-private
+<code>issue_fix_repository_memory_provider_config_v0</code> file, or pass
+<code>--repository-memory-provider-json</code>. When the configured provider, public
+scope, current revision, and caller-approved checkout are available,
+<code>workflow-plan</code> and <code>feasibility</code> run the provider by default. An explicit
+<code>--repository-memory-json</code> still overrides the environment default. LoopX
+hashes provider references, keeps every memory source advisory, allows patch
+influence only for canonical-text exact matches or parser chunks whose
+non-empty lines match the current checkout at least 98% (transport line
+endings and one terminal newline are normalised), and
+persists only the compact hook projection in the existing repository context.
+Unverified hits contribute counts only; their summaries are not persisted.
+Provider unavailability, empty retrieval, or a missing checkout is fail-open;
+raw memory bodies, automatic transcript capture, private namespaces,
+credentials, and provider config paths are never retained.</p>
+<p>Set <code>repository_identity</code> when the provider scope belongs to one canonical
+repository. LoopX normalises that identity and the checkout's Git <code>origin</code>
+before any provider call. A missing or different origin produces a compact
+<code>repository_identity_unavailable</code> or <code>repository_identity_mismatch</code> result:
+read-only Issue Fix delivery fails open without memory, while resource sync
+and validated-outcome writeback remain blocked with zero provider writes.
+Only identity digests enter provider receipts. A stale <code>pinned</code> revision is
+handled the same way for retrieval (<code>provider_revision_mismatch</code>) instead of
+turning the optional provider into a whole-workflow exception.</p>
+<p>The default long-running setup uses one stable provider-managed index for the
+public default branch. The current checkout revision is supplied by the
+issue-fix caller for verification; it is not encoded into the provider scope:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">{</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nt">&quot;schema_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;issue_fix_repository_memory_provider_config_v0&quot;</span><span class="p">,</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openviking&quot;</span><span class="p">,</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span><span class="nt">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;public-repository&quot;</span><span class="p">,</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">  </span><span class="nt">&quot;visibility&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;public&quot;</span><span class="p">,</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">  </span><span class="nt">&quot;repository_identity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;git:github.com/owner/repo&quot;</span><span class="p">,</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">  </span><span class="nt">&quot;revision_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rolling_default_branch&quot;</span><span class="p">,</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">  </span><span class="nt">&quot;scope_ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;viking://resources/public-repository/owner-repo/main&quot;</span><span class="p">,</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">  </span><span class="nt">&quot;max_results&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">  </span><span class="nt">&quot;timeout_seconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">  </span><span class="nt">&quot;sync_timeout_seconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">  </span><span class="nt">&quot;resource_references&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;src/module.py&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tests/test_module.py&quot;</span><span class="p">],</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">  </span><span class="nt">&quot;service_ownership_receipt_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;.loopx/context-provider-service.json&quot;</span><span class="p">,</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">  </span><span class="nt">&quot;writeback_enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">  </span><span class="nt">&quot;writeback_scope_ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;viking://resources/public-repository/owner-repo/outcomes/&lt;git-revision&gt;&quot;</span><span class="p">,</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">  </span><span class="nt">&quot;workspace_scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;owner-repo&quot;</span><span class="p">,</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">  </span><span class="nt">&quot;peer_scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;issue-fix-agent&quot;</span>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>The provider owns refresh cadence. For OpenViking this can be a low-frequency
+native full-repository watch on public <code>main</code>: the first import builds the
+index, and later runs reconcile the same stable target. LoopX does not derive a
+new resource scope per checkout, persist an active revision, or block retrieval
+on an activation receipt. A hit from the rolling index remains advisory: LoopX
+maps it to a repo-relative file and verifies it against the current checkout
+before it can influence reproduction, change scope, patch, or validation.
+Unverified or stale hits remain counts only.</p>
+<p>Retrieval and a provider-owned watch do not need a LoopX process lease. A
+LoopX-triggered rolling sync is different because it can start a long external
+write from a short-lived agent host. Before that write, LoopX requires a local
+<code>context_provider_service_ownership_receipt_v0</code> from a persistent external
+service or supervisor. The receipt names the provider, an opaque service
+identity, its generation, and a live process id. LoopX reads it before and
+after the sync, never publishes its path or process id, and blocks with zero
+writes when ownership is absent. If the generation or process changes during
+the call, the result is <code>restart_detected_no_resume</code>: completed or pending
+writes and elapsed time remain recorded as an additional attempt rather than
+being reported as resumed progress. This contract is provider-neutral and
+does not make LoopX a provider process manager.</p>
+<p><code>pinned</code> remains available for an intentionally immutable corpus. In that
+compatibility mode, <code>repository_revision</code> must match the caller checkout and
+the revision must appear in <code>scope_ref</code>:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="p">{</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="nt">&quot;schema_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;issue_fix_repository_memory_provider_config_v0&quot;</span><span class="p">,</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openviking&quot;</span><span class="p">,</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">  </span><span class="nt">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;public-repository&quot;</span><span class="p">,</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">  </span><span class="nt">&quot;visibility&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;public&quot;</span><span class="p">,</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">  </span><span class="nt">&quot;repository_identity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;git:github.com/owner/repo&quot;</span><span class="p">,</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">  </span><span class="nt">&quot;revision_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pinned&quot;</span><span class="p">,</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">  </span><span class="nt">&quot;scope_ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;viking://resources/public-repository/owner-repo/&lt;git-revision&gt;&quot;</span><span class="p">,</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">  </span><span class="nt">&quot;repository_revision&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;full-git-revision&gt;&quot;</span><span class="p">,</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">  </span><span class="nt">&quot;resource_references&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;src/module.py&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tests/test_module.py&quot;</span><span class="p">]</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Resource indexing is intentionally separate from retrieval. Use
+<code>loopx issue-fix repository-memory-sync</code> to preview a bounded set of
+repo-relative public files only for an explicit manual sync; add <code>--execute</code>
+only after the provider-resource write is authorized. The rolling default path
+normally relies on the provider watch instead. A transport failure after an
+explicit provider commit is reconciled by bounded target readback before any
+retry. Retrieval and resource sync use separate bounded timeouts because
+semantic indexing can legitimately take longer than read-only search.</p>
+<p>Validated-outcome writeback is a separate, default-off hook. It runs only when
+the caller explicitly adds <code>--write-repository-memory</code>, the local provider
+config independently sets <code>writeback_enabled: true</code>, delivery evidence says
+<code>completed</code>, validation says <code>passed</code>, the delivery evidence has a stable
+<code>recorded_at</code>, the outcome revision matches the configured public resource
+scope, and <code>--repo-path</code> proves with git that delivery <code>commit_ref</code> is an
+ancestor of that pinned revision. Divergent, missing, or unresolved commits
+block before the provider is called. Squash flows should record the final
+merge/squash commit, not a superseded feature-branch commit. The checkout path
+and raw git output are never retained. LoopX writes one distilled fact containing
+revision, provenance, freshness, public outputs, risks, a stable supersession
+key, and explicit workspace/peer scopes. A content hash selects the immutable
+target, so an identical retry reads and accepts the existing fact without a
+second write; conflicting content stops instead of overwriting. Raw
+transcripts, tool logs/results, expert answers, credentials, private material,
+and captured local paths are rejected. The provider packet retains only opaque
+refs and compact receipts.</p>
+<p>An outcome without <code>reusable_knowledge</code> remains an audit fact: it proves what
+was delivered, but it is not promoted as patch guidance. The compatibility
+<code>issue_fix_reusable_knowledge_input_v0</code> contract remains available for existing
+callers. New terminal outcomes should use
+<code>issue_fix_repository_learning_card_input_v0</code>; LoopX accepts it only after the
+issue-fix stage is merged, comment-published, or triage-complete, and writes it
+to the separate <code>repository-learning-cards</code> collection. Both contracts require:</p>
+<ul>
+<li>a searchable symptom signature and a focused reproduction contract;</li>
+<li>the checkout-verified root cause and violated invariant;</li>
+<li>the repair pattern, focused validation contract, and repository-relative
+  verification references;</li>
+<li>explicit applicability and non-applicability boundaries.</li>
+</ul>
+<p>A repository learning card additionally requires explicit confidence,
+repo-relative affected modules, bounded invalidation conditions, a
+revalidation contract, and <code>current_checkout_verification_required: true</code>.
+The stored card combines those fields with the source revision, outcome
+<code>observed_at</code>, public evidence URLs, validation result, commit, and provenance
+already enforced by the writeback envelope. Writeback also stores SHA-256
+digests of the cited verification references, never their raw contents. On
+retrieval, LoopX exposes only bounded card metadata and marks the hit confirmed
+when every cited file still has the same digest in the current checkout;
+missing or changed references leave it unverified. The card is therefore
+searchable as a historical hypothesis but never self-authorizing: retrieval
+starts with zero decision influence, and a later issue must inspect the stated
+invalidation conditions and complete the revalidation contract before
+recording reproduction, scope, patch, or validation influence.</p>
+<p>This distinction prevents PR titles, changed-file lists, and passing-test
+labels from being mistaken for reusable diagnosis. Confirmation against the
+current checkout also does not by itself prove value. A retrieval records
+decision influence only when it names the concrete decision it changed
+(<code>reproduction</code>, <code>change_scope</code>, <code>patch</code>, or <code>validation</code>); provider retrieval
+alone records zero influence.</p>
+<p>Use retrieval at three bounded points. Before diagnosis, search by symptom and
+module to discover candidate incidents. After reproducing locally, search by
+the observed causal path or invariant and confirm or refute each hit in the
+current checkout. Before closeout, search the changed module and invariant for
+prior validation surfaces and negative boundaries. Repository source, tests,
+and current documentation remain authoritative throughout.</p>
+<p>Do not write whole source files, raw issue or PR discussions, transcripts,
+tool output, unverified hypotheses, reviewer identity mappings, or LoopX
+control-plane state as reusable repository knowledge. Current source belongs
+in the rolling repository resource index; reviewer routing comes from live
+repository ownership signals; LoopX operating lessons remain in LoopX state.</p>
+<p>The OpenViking adapter deliberately uses deterministic <code>viking://resources/</code>
+writeback for this first contract. It does not call experimental <code>ov
+add-memory</code>, because that command creates a fresh session and currently accepts
+no idempotency key. Conversation/session capture therefore remains out of
+scope and requires a separate owner decision even when validated-outcome
+writeback is enabled.</p>
+<p>Default enablement is an evidence decision rather than an installation side
+effect. A project should first dogfood the hook across several independent
+issue/context runs and a restart boundary. Make it a packaged default only
+when it repeatedly changes a concrete issue-fix decision with novel,
+checkout-verified evidence and without stale, misleading, or boundary-unsafe
+retrieval. Retrieval count alone is not success; otherwise keep it explicit
+opt-in with the same fail-open behavior.</p>
+<h2 id="pr-lifecycle-monitor">PR Lifecycle Monitor<a class="headerlink" href="#pr-lifecycle-monitor" title="Permanent link">&para;</a></h2>
+<p>After publication, <code>loopx issue-fix pr-lifecycle</code> and a <code>continuous_monitor</code>
+todo keep CI, review, maintainer correction, mergeability, stale branch, and
+terminal status visible. Publication, review requests, merge, and access to
+private material remain explicit gates. Each material transition must yield a
+<code>runnable_successor</code>, concrete blocker, or structured no-follow-up; unchanged
+polls remain quiet and do not spend delivery quota.</p>
+<p>Pass <code>--issue-ref</code> when persisting PR lifecycle state. This explicit public-safe
+link lets the outcome read model join the PR to its issue without guessing from
+branch names, titles, or text.</p>
+<p>To convert bounded feedback into durable work, supply a compact correction and
+explicitly execute the transition:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>loopx<span class="w"> </span>issue-fix<span class="w"> </span>pr-lifecycle<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span>--url<span class="w"> </span>https://github.com/owner/repo/pull/123<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span>--issue-ref<span class="w"> </span>issues_100<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">  </span>--metadata-json<span class="w"> </span>pr-metadata.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">  </span>--maintainer-correction-json<span class="w"> </span>correction.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">  </span>--goal-id<span class="w"> </span>issue-fix-goal<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">  </span>--project<span class="w"> </span>/path/to/approved/repo<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">  </span>--claimed-by<span class="w"> </span>issue-fix-agent<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">  </span>--execute-transition<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">  </span>--format<span class="w"> </span>json
+</span></code></pre></div>
+<p>The correction source is provider-neutral: any public HTTPS or repo-relative
+reference may be used, while the current PR monitor remains the authoritative
+lifecycle source. Exact retries neither add another successor nor rewrite the
+same lifecycle row.</p>
+<h2 id="status-and-output-view">Status And Output View<a class="headerlink" href="#status-and-output-view" title="Permanent link">&para;</a></h2>
+<p>Todo cards answer <strong>what the agent should do next</strong>. They do not, by
+themselves, answer <strong>what happened to one issue</strong>. <code>loopx issue-fix outcome</code>
+fills that read-model gap without creating another ledger or lifecycle state
+machine. It derives one stable <code>issue_fix_outcome_projection_v0</code> case from the
+existing feasibility row, revision-pinned repository context, optional compact
+delivery evidence, and optional PR lifecycle row.</p>
+<p>Compact delivery evidence uses <code>outcome_status=in_progress|completed|blocked</code>
+and <code>validation_status=passed|failed|partial|not_run</code>. Terminal PR state still
+takes precedence, while an explicit blocked delivery remains visible over a
+non-terminal wait such as pending CI.</p>
+<p>A delivery that names <code>commit_ref</code> cannot be projected as validated or
+publication-ready merely because its JSON says <code>passed</code> or <code>completed</code>. For
+those states, writeback requires <code>--repo-path</code> plus a full
+<code>--repository-ref</code> under <code>refs/heads</code>, <code>refs/remotes</code>, or <code>refs/tags</code>. LoopX
+checks that the checkout has a GitHub remote matching <code>--repo</code>, resolves the
+pinned repository revision and commit objects, proves ancestry, and requires
+the recovery ref to resolve exactly to the pinned revision. The persisted
+<code>issue_fix_repository_commit_evidence_v0</code> keeps the full object ids, recovery
+ref, and a clone-stable repository fingerprint, but no checkout path, remote
+URL, or raw git output. Legacy evidence without that proof remains visible but
+is downgraded to <code>validation=unverified</code> and
+<code>stage=delivery_evidence_unverified</code> until it is re-resolved.</p>
+<p>The case card exposes the selected route and current stage; issue and PR links;
+repository revision and context fingerprint; reproduction and validation
+status; repo-relative changed files and commit ref when explicitly supplied;
+checks, review, mergeability, and terminal result; remaining risks; and the next
+action. Missing delivery evidence remains <code>declared</code> or unknown—PR existence is
+never treated as proof that focused validation passed.</p>
+<p>The packet is directly consumable by <code>loopx lark-kanban sync-projection</code>.
+Execution todos remain separate cards, while the stable outcome card is keyed
+by repository and issue. A merged, closed, or triaged terminal card remains
+visible by default so the board shows outputs instead of only active work.
+Shared sinks continue to apply the existing local-path, private-link, and
+private-reference redaction boundary.</p>
+<p>The default <code>loopx lark-kanban sync-loopx-todos</code> path also derives all issue
+outcomes from the goal's existing feasibility and PR lifecycle domain state and
+upserts them beside todo rows. A feasibility row therefore appears as issue work
+even before a PR exists; a PR enriches that row only when its lifecycle
+observation carries the matching <code>repo</code> and explicit <code>issue_ref</code>. Numeric issue
+aliases (<code>#123</code>, <code>issue_123</code>, <code>issues/123</code>) canonicalize to <code>issues_123</code> on
+write and when reading legacy rows, so equivalent explicit links cannot silently
+fall into the unlinked count. The command's <code>--limit</code> applies only to active todo
+rows; all derived outcome rows remain in scope, and the receipt exposes the
+split through <code>limit_policy</code>. This automatic closeout projection adds no outcome
+ledger or second state machine.</p>
+<p>Supplying <code>--delivery-evidence-json</code> alone is a read-only preview. Add
+<code>--write-delivery-evidence</code> after focused validation to store its validated,
+public-safe compact form inside the existing feasibility row. Later default
+outcome and Kanban syncs then retain the validation, changed files, commit, output
+links, and risks instead of falling back to the feasibility declaration. The
+write flag rejects an ad hoc <code>--feasibility-json</code> source so the destination is
+always the stable goal-scoped row.
+Passed or completed evidence that includes a commit also needs the approved
+checkout and recoverable ref described above. A missing, divergent, or stale
+commit fails before ledger mutation. Repeating the same material proof is an
+unchanged, no-write operation even when its verification timestamp is newer.</p>
+<p>The Lark adapter renders this as a first-class issue dimension rather than
+only flattening the packet into <code>Evidence</code>. Outcome rows set
+<code>Work Item Type=Issue Fix</code> and populate <code>Repository</code>, <code>Issue</code>, <code>Pull Request</code>,
+<code>Route</code>, <code>Stage</code>, <code>Validation</code>, <code>Outcome</code>, and <code>Context Tags</code>. The bounded
+multi-select tags expose route, stage, reproduction/validation status, test
+changes, multi-file scope, and grounded repository context without copying
+free-form evidence. <code>Issue Fix Outcomes</code> provides the table view; <code>Issue Fix
+Kanban</code> groups the same rows by <code>Stage</code>. Existing boards gain the missing fields
+and views through idempotent <code>lark-kanban setup --execute</code> schema reconciliation.</p>
+<h2 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Preview the complete issue-fix workflow.</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>loopx<span class="w"> </span>issue-fix<span class="w"> </span>workflow-plan<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span>--url<span class="w"> </span>https://github.com/owner/repo/issues/123<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">  </span>--repo-path<span class="w"> </span>/path/to/approved/repo<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">  </span>--repository-context-json<span class="w"> </span>context.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">  </span>--repository-memory-json<span class="w"> </span>compact-search-read-result.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">  </span>--fetch-candidate-evidence<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">  </span>--goal-id<span class="w"> </span>example-goal<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">  </span>--validation-label<span class="w"> </span><span class="s2">&quot;focused unit test&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">  </span>--format<span class="w"> </span>json
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="c1"># Or configure the reusable OpenViking provider once. The config stays local</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="c1"># and binds one stable public default-branch scope; checkout revision is</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="c1"># supplied separately for verification.</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="nb">export</span><span class="w"> </span><span class="nv">LOOPX_ISSUE_FIX_REPOSITORY_MEMORY_PROVIDER_CONFIG</span><span class="o">=</span>/path/to/provider.json
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>loopx<span class="w"> </span>issue-fix<span class="w"> </span>workflow-plan<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="w">  </span>--url<span class="w"> </span>https://github.com/owner/repo/issues/123<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="w">  </span>--repo-path<span class="w"> </span>/path/to/approved/repo<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="w">  </span>--repository-context-json<span class="w"> </span>context.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="w">  </span>--repository-memory-query<span class="w"> </span><span class="s2">&quot;affected module reproduction validation&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="w">  </span>--fetch-candidate-evidence<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="w">  </span>--goal-id<span class="w"> </span>example-goal<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="w">  </span>--validation-label<span class="w"> </span><span class="s2">&quot;focused unit test&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a><span class="w">  </span>--format<span class="w"> </span>json
+</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a>
+</span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a><span class="c1"># Low-level provider preflight. Normal Issue-Fix callers use</span>
+</span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a><span class="c1"># build_issue_fix_pr_description() so recall, fail-open, and receipt attribution</span>
+</span><span id="__span-12-28"><a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a><span class="c1"># stay on one explicit artifact boundary. Semantic content remains provider-owned.</span>
+</span><span id="__span-12-29"><a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a>loopx<span class="w"> </span>semantic-preference<span class="w"> </span>recall<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-30"><a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a><span class="w">  </span>--project<span class="w"> </span>.<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-31"><a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a><span class="w">  </span>--config<span class="w"> </span>.loopx/config/semantic-preference.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-32"><a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a><span class="w">  </span>--surface<span class="w"> </span>issue_fix.pr_description<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-33"><a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a><span class="w">  </span>--context<span class="w"> </span><span class="nv">repository</span><span class="o">=</span>owner/repo<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-34"><a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a><span class="w">  </span>--execute<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-35"><a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a><span class="w">  </span>--format<span class="w"> </span>json
+</span><span id="__span-12-36"><a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a>
+</span><span id="__span-12-37"><a id="__codelineno-12-37" name="__codelineno-12-37" href="#__codelineno-12-37"></a><span class="c1"># If inbound feedback is configured, install the generic host collector once,</span>
+</span><span id="__span-12-38"><a id="__codelineno-12-38" name="__codelineno-12-38" href="#__codelineno-12-38"></a><span class="c1"># inspect health, and drain durable events before acknowledging them.</span>
+</span><span id="__span-12-39"><a id="__codelineno-12-39" name="__codelineno-12-39" href="#__codelineno-12-39"></a>loopx<span class="w"> </span>lark-inbox<span class="w"> </span>collector-install<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-40"><a id="__codelineno-12-40" name="__codelineno-12-40" href="#__codelineno-12-40"></a><span class="w">  </span>--project<span class="w"> </span>.<span class="w"> </span>--config<span class="w"> </span>.loopx/config/lark/collector.json<span class="w"> </span>--execute<span class="w"> </span>--format<span class="w"> </span>json
+</span><span id="__span-12-41"><a id="__codelineno-12-41" name="__codelineno-12-41" href="#__codelineno-12-41"></a>loopx<span class="w"> </span>lark-inbox<span class="w"> </span>collector-status<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-42"><a id="__codelineno-12-42" name="__codelineno-12-42" href="#__codelineno-12-42"></a><span class="w">  </span>--project<span class="w"> </span>.<span class="w"> </span>--config<span class="w"> </span>.loopx/config/lark/collector.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-43"><a id="__codelineno-12-43" name="__codelineno-12-43" href="#__codelineno-12-43"></a><span class="w">  </span>--probe-event-bus<span class="w"> </span>--format<span class="w"> </span>json
+</span><span id="__span-12-44"><a id="__codelineno-12-44" name="__codelineno-12-44" href="#__codelineno-12-44"></a>loopx<span class="w"> </span>lark-inbox<span class="w"> </span>drain<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-45"><a id="__codelineno-12-45" name="__codelineno-12-45" href="#__codelineno-12-45"></a><span class="w">  </span>--project<span class="w"> </span>.<span class="w"> </span>--config<span class="w"> </span>.loopx/config/lark/event-inbox.json<span class="w"> </span>--format<span class="w"> </span>json
+</span><span id="__span-12-46"><a id="__codelineno-12-46" name="__codelineno-12-46" href="#__codelineno-12-46"></a>
+</span><span id="__span-12-47"><a id="__codelineno-12-47" name="__codelineno-12-47" href="#__codelineno-12-47"></a><span class="c1"># Select one route and persist compact goal-scoped feasibility state.</span>
+</span><span id="__span-12-48"><a id="__codelineno-12-48" name="__codelineno-12-48" href="#__codelineno-12-48"></a>loopx<span class="w"> </span>issue-fix<span class="w"> </span>feasibility<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-49"><a id="__codelineno-12-49" name="__codelineno-12-49" href="#__codelineno-12-49"></a><span class="w">  </span>--url<span class="w"> </span>https://github.com/owner/repo/issues/123<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-50"><a id="__codelineno-12-50" name="__codelineno-12-50" href="#__codelineno-12-50"></a><span class="w">  </span>--reproduction-status<span class="w"> </span>confirmed<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-51"><a id="__codelineno-12-51" name="__codelineno-12-51" href="#__codelineno-12-51"></a><span class="w">  </span>--reproduction-label<span class="w"> </span><span class="s2">&quot;focused contract repro&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-52"><a id="__codelineno-12-52" name="__codelineno-12-52" href="#__codelineno-12-52"></a><span class="w">  </span>--scope-class<span class="w"> </span>bounded<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-53"><a id="__codelineno-12-53" name="__codelineno-12-53" href="#__codelineno-12-53"></a><span class="w">  </span>--validation-label<span class="w"> </span><span class="s2">&quot;focused unit test&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-54"><a id="__codelineno-12-54" name="__codelineno-12-54" href="#__codelineno-12-54"></a><span class="w">  </span>--repository-context-json<span class="w"> </span>context.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-55"><a id="__codelineno-12-55" name="__codelineno-12-55" href="#__codelineno-12-55"></a><span class="w">  </span>--repository-memory-json<span class="w"> </span>compact-search-read-result.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-56"><a id="__codelineno-12-56" name="__codelineno-12-56" href="#__codelineno-12-56"></a><span class="w">  </span>--goal-id<span class="w"> </span>example-goal<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-57"><a id="__codelineno-12-57" name="__codelineno-12-57" href="#__codelineno-12-57"></a><span class="w">  </span>--format<span class="w"> </span>json
+</span><span id="__span-12-58"><a id="__codelineno-12-58" name="__codelineno-12-58" href="#__codelineno-12-58"></a>
+</span><span id="__span-12-59"><a id="__codelineno-12-59" name="__codelineno-12-59" href="#__codelineno-12-59"></a><span class="c1"># Promote a reproducible defect found during real work into one canonical issue.</span>
+</span><span id="__span-12-60"><a id="__codelineno-12-60" name="__codelineno-12-60" href="#__codelineno-12-60"></a><span class="c1"># The structured input records open/closed duplicate-search evidence and the</span>
+</span><span id="__span-12-61"><a id="__codelineno-12-61" name="__codelineno-12-61" href="#__codelineno-12-61"></a><span class="c1"># revision-pinned public facts; retries do not create another issue or row.</span>
+</span><span id="__span-12-62"><a id="__codelineno-12-62" name="__codelineno-12-62" href="#__codelineno-12-62"></a>loopx<span class="w"> </span>issue-fix<span class="w"> </span>promote-discovered-issue<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-63"><a id="__codelineno-12-63" name="__codelineno-12-63" href="#__codelineno-12-63"></a><span class="w">  </span>--goal-id<span class="w"> </span>example-goal<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-64"><a id="__codelineno-12-64" name="__codelineno-12-64" href="#__codelineno-12-64"></a><span class="w">  </span>--project<span class="w"> </span>/path/to/connected/project<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-65"><a id="__codelineno-12-65" name="__codelineno-12-65" href="#__codelineno-12-65"></a><span class="w">  </span>--promotion-json<span class="w"> </span>discovered-issue-promotion.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-66"><a id="__codelineno-12-66" name="__codelineno-12-66" href="#__codelineno-12-66"></a><span class="w">  </span>--execute<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-67"><a id="__codelineno-12-67" name="__codelineno-12-67" href="#__codelineno-12-67"></a><span class="w">  </span>--format<span class="w"> </span>json
+</span><span id="__span-12-68"><a id="__codelineno-12-68" name="__codelineno-12-68" href="#__codelineno-12-68"></a>
+</span><span id="__span-12-69"><a id="__codelineno-12-69" name="__codelineno-12-69" href="#__codelineno-12-69"></a><span class="c1"># Project repository impact and attributed outputs without writing state.</span>
+</span><span id="__span-12-70"><a id="__codelineno-12-70" name="__codelineno-12-70" href="#__codelineno-12-70"></a>loopx<span class="w"> </span>issue-fix<span class="w"> </span>metrics<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-71"><a id="__codelineno-12-71" name="__codelineno-12-71" href="#__codelineno-12-71"></a><span class="w">  </span>--goal-id<span class="w"> </span>public-issue-fix-goal<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-72"><a id="__codelineno-12-72" name="__codelineno-12-72" href="#__codelineno-12-72"></a><span class="w">  </span>--project<span class="w"> </span>/path/to/connected/project<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-73"><a id="__codelineno-12-73" name="__codelineno-12-73" href="#__codelineno-12-73"></a><span class="w">  </span>--repo<span class="w"> </span>owner/repo<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-74"><a id="__codelineno-12-74" name="__codelineno-12-74" href="#__codelineno-12-74"></a><span class="w">  </span>--repository-baseline-json<span class="w"> </span>baseline.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-75"><a id="__codelineno-12-75" name="__codelineno-12-75" href="#__codelineno-12-75"></a><span class="w">  </span>--repository-current-json<span class="w"> </span>current.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-76"><a id="__codelineno-12-76" name="__codelineno-12-76" href="#__codelineno-12-76"></a><span class="w">  </span>--supplement-json<span class="w"> </span>optional-public-counts.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-77"><a id="__codelineno-12-77" name="__codelineno-12-77" href="#__codelineno-12-77"></a><span class="w">  </span>--format<span class="w"> </span>json
+</span><span id="__span-12-78"><a id="__codelineno-12-78" name="__codelineno-12-78" href="#__codelineno-12-78"></a>
+</span><span id="__span-12-79"><a id="__codelineno-12-79" name="__codelineno-12-79" href="#__codelineno-12-79"></a><span class="c1"># Recommend reviewers without requesting external review.</span>
+</span><span id="__span-12-80"><a id="__codelineno-12-80" name="__codelineno-12-80" href="#__codelineno-12-80"></a>loopx<span class="w"> </span>issue-fix<span class="w"> </span>reviewer-plan<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-81"><a id="__codelineno-12-81" name="__codelineno-12-81" href="#__codelineno-12-81"></a><span class="w">  </span>--repo-path<span class="w"> </span>/path/to/approved/repo<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-82"><a id="__codelineno-12-82" name="__codelineno-12-82" href="#__codelineno-12-82"></a><span class="w">  </span>--repo<span class="w"> </span>owner/repo<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-83"><a id="__codelineno-12-83" name="__codelineno-12-83" href="#__codelineno-12-83"></a><span class="w">  </span>--base-ref<span class="w"> </span>origin/main<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-84"><a id="__codelineno-12-84" name="__codelineno-12-84" href="#__codelineno-12-84"></a><span class="w">  </span>--exclude-reviewer<span class="w"> </span>@pull-request-author<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-85"><a id="__codelineno-12-85" name="__codelineno-12-85" href="#__codelineno-12-85"></a><span class="w">  </span>--exclude-author-name<span class="w"> </span><span class="s2">&quot;PR Author Git Name&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-86"><a id="__codelineno-12-86" name="__codelineno-12-86" href="#__codelineno-12-86"></a><span class="w">  </span>--reviewer-sources-json<span class="w"> </span>reviewer-sources.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-87"><a id="__codelineno-12-87" name="__codelineno-12-87" href="#__codelineno-12-87"></a><span class="w">  </span>--execute<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-88"><a id="__codelineno-12-88" name="__codelineno-12-88" href="#__codelineno-12-88"></a><span class="w">  </span>--format<span class="w"> </span>json
+</span><span id="__span-12-89"><a id="__codelineno-12-89" name="__codelineno-12-89" href="#__codelineno-12-89"></a>
+</span><span id="__span-12-90"><a id="__codelineno-12-90" name="__codelineno-12-90" href="#__codelineno-12-90"></a><span class="c1"># Notify the default top non-author reviewer and verify the formal request or permission fallback.</span>
+</span><span id="__span-12-91"><a id="__codelineno-12-91" name="__codelineno-12-91" href="#__codelineno-12-91"></a>loopx<span class="w"> </span>issue-fix<span class="w"> </span>reviewer-request<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-92"><a id="__codelineno-12-92" name="__codelineno-12-92" href="#__codelineno-12-92"></a><span class="w">  </span>--url<span class="w"> </span>https://github.com/owner/repo/pull/456<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-93"><a id="__codelineno-12-93" name="__codelineno-12-93" href="#__codelineno-12-93"></a><span class="w">  </span>--repo-path<span class="w"> </span>/path/to/approved/repo<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-94"><a id="__codelineno-12-94" name="__codelineno-12-94" href="#__codelineno-12-94"></a><span class="w">  </span>--base-ref<span class="w"> </span>origin/main<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-95"><a id="__codelineno-12-95" name="__codelineno-12-95" href="#__codelineno-12-95"></a><span class="w">  </span>--reviewer-sources-json<span class="w"> </span>reviewer-sources.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-96"><a id="__codelineno-12-96" name="__codelineno-12-96" href="#__codelineno-12-96"></a><span class="w">  </span>--goal-id<span class="w"> </span>example-goal<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-97"><a id="__codelineno-12-97" name="__codelineno-12-97" href="#__codelineno-12-97"></a><span class="w">  </span>--project<span class="w"> </span>/path/to/approved/repo<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-98"><a id="__codelineno-12-98" name="__codelineno-12-98" href="#__codelineno-12-98"></a><span class="w">  </span>--execute<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-99"><a id="__codelineno-12-99" name="__codelineno-12-99" href="#__codelineno-12-99"></a><span class="w">  </span>--format<span class="w"> </span>json
+</span><span id="__span-12-100"><a id="__codelineno-12-100" name="__codelineno-12-100" href="#__codelineno-12-100"></a>
+</span><span id="__span-12-101"><a id="__codelineno-12-101" name="__codelineno-12-101" href="#__codelineno-12-101"></a><span class="c1"># Project PR lifecycle into LoopX continuation state.</span>
+</span><span id="__span-12-102"><a id="__codelineno-12-102" name="__codelineno-12-102" href="#__codelineno-12-102"></a>loopx<span class="w"> </span>issue-fix<span class="w"> </span>pr-lifecycle<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-103"><a id="__codelineno-12-103" name="__codelineno-12-103" href="#__codelineno-12-103"></a><span class="w">  </span>--url<span class="w"> </span>https://github.com/owner/repo/pull/456<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-104"><a id="__codelineno-12-104" name="__codelineno-12-104" href="#__codelineno-12-104"></a><span class="w">  </span>--issue-ref<span class="w"> </span>issues_123<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-105"><a id="__codelineno-12-105" name="__codelineno-12-105" href="#__codelineno-12-105"></a><span class="w">  </span>--fetch-metadata<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-106"><a id="__codelineno-12-106" name="__codelineno-12-106" href="#__codelineno-12-106"></a><span class="w">  </span>--goal-id<span class="w"> </span>example-goal<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-107"><a id="__codelineno-12-107" name="__codelineno-12-107" href="#__codelineno-12-107"></a><span class="w">  </span>--format<span class="w"> </span>json
+</span><span id="__span-12-108"><a id="__codelineno-12-108" name="__codelineno-12-108" href="#__codelineno-12-108"></a>
+</span><span id="__span-12-109"><a id="__codelineno-12-109" name="__codelineno-12-109" href="#__codelineno-12-109"></a><span class="c1"># Derive one issue status/output projection from existing domain state.</span>
+</span><span id="__span-12-110"><a id="__codelineno-12-110" name="__codelineno-12-110" href="#__codelineno-12-110"></a>loopx<span class="w"> </span>issue-fix<span class="w"> </span>outcome<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-111"><a id="__codelineno-12-111" name="__codelineno-12-111" href="#__codelineno-12-111"></a><span class="w">  </span>--goal-id<span class="w"> </span>example-goal<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-112"><a id="__codelineno-12-112" name="__codelineno-12-112" href="#__codelineno-12-112"></a><span class="w">  </span>--project<span class="w"> </span>/path/to/approved/repo<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-113"><a id="__codelineno-12-113" name="__codelineno-12-113" href="#__codelineno-12-113"></a><span class="w">  </span>--repo<span class="w"> </span>owner/repo<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-114"><a id="__codelineno-12-114" name="__codelineno-12-114" href="#__codelineno-12-114"></a><span class="w">  </span>--issue-ref<span class="w"> </span>issues_123<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-115"><a id="__codelineno-12-115" name="__codelineno-12-115" href="#__codelineno-12-115"></a><span class="w">  </span>--pr-ref<span class="w"> </span>pull_456<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-116"><a id="__codelineno-12-116" name="__codelineno-12-116" href="#__codelineno-12-116"></a><span class="w">  </span>--delivery-evidence-json<span class="w"> </span>delivery-evidence.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-117"><a id="__codelineno-12-117" name="__codelineno-12-117" href="#__codelineno-12-117"></a><span class="w">  </span>--write-delivery-evidence<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-118"><a id="__codelineno-12-118" name="__codelineno-12-118" href="#__codelineno-12-118"></a><span class="w">  </span>--repository-memory-provider-json<span class="w"> </span>provider.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-119"><a id="__codelineno-12-119" name="__codelineno-12-119" href="#__codelineno-12-119"></a><span class="w">  </span>--write-repository-memory<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-120"><a id="__codelineno-12-120" name="__codelineno-12-120" href="#__codelineno-12-120"></a><span class="w">  </span>--repo-path<span class="w"> </span>/path/to/approved/repo<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-121"><a id="__codelineno-12-121" name="__codelineno-12-121" href="#__codelineno-12-121"></a><span class="w">  </span>--repository-ref<span class="w"> </span>refs/remotes/origin/main<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-122"><a id="__codelineno-12-122" name="__codelineno-12-122" href="#__codelineno-12-122"></a><span class="w">  </span>--agent-id<span class="w"> </span>codex-issue-fix<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-123"><a id="__codelineno-12-123" name="__codelineno-12-123" href="#__codelineno-12-123"></a><span class="w">  </span>--format<span class="w"> </span>json
+</span></code></pre></div>
+<h2 id="validation">Validation<a class="headerlink" href="#validation" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>python3<span class="w"> </span>examples/issue-fix-capability-guide-smoke.py
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>python3<span class="w"> </span>examples/issue-fix-reviewer-recommendation-smoke.py
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>python3<span class="w"> </span>examples/issue-fix-reviewer-request-smoke.py
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>python3<span class="w"> </span>examples/issue-fix-reviewer-notification-sink-smoke.py
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>python3<span class="w"> </span>examples/issue-fix-workflow-plan-smoke.py
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>python3<span class="w"> </span>examples/issue-fix-workflow-contract-smoke.py
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>python3<span class="w"> </span>examples/issue-fix-repository-context-smoke.py
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>python3<span class="w"> </span>examples/issue-fix-repository-memory-smoke.py
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>python3<span class="w"> </span>examples/issue-fix-validated-memory-writeback-smoke.py
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>python3<span class="w"> </span>examples/issue-fix-feasibility-smoke.py
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>python3<span class="w"> </span>examples/issue-fix-discovered-issue-promotion-smoke.py
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>python3<span class="w"> </span>examples/issue-fix-pr-lifecycle-smoke.py
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>python3<span class="w"> </span>examples/issue-fix-metrics-projection-smoke.py
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>python3<span class="w"> </span>examples/issue-fix-repository-snapshot-smoke.py
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>python3<span class="w"> </span>examples/issue-fix-metrics-supplement-smoke.py
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>python3<span class="w"> </span>examples/issue-fix-capability-gap-metrics-smoke.py
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>python3<span class="w"> </span>examples/issue-fix-maintainer-correction-smoke.py
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>python3<span class="w"> </span>examples/issue-fix-outcome-projection-smoke.py
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>python3<span class="w"> </span>examples/issue-fix-explore-projection-smoke.py
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>python3<span class="w"> </span>examples/issue-fix-acceptance-loop-smoke.py
+</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>loopx<span class="w"> </span>canary<span class="w"> </span>premerge<span class="w"> </span>--from-git-diff
+</span></code></pre></div>
+<h2 id="non-goals">Non-Goals<a class="headerlink" href="#non-goals" title="Permanent link">&para;</a></h2>
+<ul>
+<li>LoopX does not bypass repository review or branch protection.</li>
+<li>Reviewer recommendation is not reviewer assignment or availability proof.</li>
+<li>The capability does not default to automatic merge or production actions.</li>
+<li>It does not store raw transcripts, tool logs, expert answers, credentials, or
+  private issue material in public state.</li>
+<li>It does not add repository-specific branches such as <code>if repo == ...</code> to the
+  generic control plane.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.action.edit", "content.code.copy", "content.tabs.link", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.path", "search.highlight", "search.share", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
