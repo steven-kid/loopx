@@ -102,6 +102,11 @@ from loopx.benchmark_adapters.skillsbench_batch import (  # noqa: E402
 from loopx.benchmark_adapters.skillsbench_task_source import (  # noqa: E402
     classify_missing_task_source,
 )
+from loopx.benchmark_adapters.skillsbench_matched_pair import (  # noqa: E402
+    build_skillsbench_matched_pair_contract,
+    skillsbench_scored_goal_trace_satisfied,
+    skillsbench_task_packet_fingerprint,
+)
 from loopx.benchmark_adapters import (  # noqa: E402
     skillsbench_codex_runtime as codex_runtime,
     skillsbench_dockerfile_runtime as dockerfile_runtime,
@@ -168,6 +173,7 @@ from loopx.benchmark_core.loop_protocol import (  # noqa: E402
     LOOPX_PRODUCT_MODE_ROUTE,
     LOOPX_TURN_AGENT_CLI_ROUTE,
     RAW_CODEX_AUTONOMOUS_MAX5_ROUTE,
+    SCORED_GOAL_PROOF_SOURCE,
     build_benchmark_loop_controller_trace,
     build_blind_loop_continuation_prompt,
     build_blind_loop_initial_prompt,
@@ -2871,6 +2877,10 @@ def _public_runner_prerequisites(value: Any) -> dict[str, Any]:
         "runner_interruption_kind",
         "runner_interruption_status",
         "reduce_only_prerequisites_source",
+        "matched_instruction_channel",
+        "matched_task_packet_fingerprint",
+        "official_verifier_closeout_contract",
+        "scored_goal_proof_source",
     ):
         raw = value.get(field)
         if isinstance(raw, str) and raw:
@@ -3031,6 +3041,12 @@ def _public_runner_prerequisites(value: Any) -> dict[str, Any]:
         "runner_interruption_compact_closeout_expected",
         "runner_interruption_raw_material_recorded",
         "reduce_only_prerequisites_artifact_read",
+        "symmetric_infra_exclusion",
+        "independent_goal_best_of_retry_replacement",
+        "independent_goal_fresh_thread_per_attempt",
+        "goal_get_present",
+        "turn_id_present",
+        "matched_task_packet_raw_text_recorded",
     ):
         if isinstance(value.get(field), bool):
             compact[field] = value[field]
@@ -3155,6 +3171,8 @@ def _public_runner_prerequisites(value: Any) -> dict[str, Any]:
         "benchmark_egress_proxy_endpoint_port",
         "benchmark_egress_no_proxy_entry_count",
         "host_local_acp_proxy_endpoint_loopback_port",
+        "matched_token_budget",
+        "independent_goal_attempt_budget",
     ):
         if isinstance(value.get(field), int) and not isinstance(value.get(field), bool):
             compact[field] = value[field]
@@ -5363,6 +5381,12 @@ def _apply_codex_cli_goal_countability_guard_attribution(
         )
         or ""
     )[:120]
+    persistent_goal_proof_present = bool(
+        runner_prerequisites.get("goal_get_present") is True
+        and runner_prerequisites.get("turn_id_present") is True
+        and runner_prerequisites.get("scored_goal_proof_source")
+        == SCORED_GOAL_PROOF_SOURCE
+    )
 
     missing_task_activity = task_facing_count <= 0 or request_count <= 0
     completed_task_attempt_countable = (
@@ -5384,7 +5408,7 @@ def _apply_codex_cli_goal_countability_guard_attribution(
             or goal_stage in terminal_goal_failure_stages
         )
     )
-    if not (missing_task_activity or goal_failed):
+    if not (missing_task_activity or goal_failed) and persistent_goal_proof_present:
         compact["codex_cli_goal_countability_contract"] = {
             "schema_version": "skillsbench_codex_cli_goal_countability_contract_v0",
             "required": True,
@@ -5400,12 +5424,15 @@ def _apply_codex_cli_goal_countability_guard_attribution(
             "request_count": request_count,
             "task_facing_activity_count": task_facing_count,
             "operation_trace_status": operation_trace_status,
+            "persistent_goal_proof_present": True,
             "raw_material_recorded": False,
         }
         return False
 
     label = "skillsbench_codex_cli_goal_uncountable_no_task_activity"
-    if goal_stage == "auth_refresh_token_revoked":
+    if not persistent_goal_proof_present:
+        label = "skillsbench_codex_cli_goal_persistent_proof_missing"
+    elif goal_stage == "auth_refresh_token_revoked":
         label = "skillsbench_codex_cli_goal_uncountable_auth_refresh_token_revoked"
     elif goal_stage == "goal_active_timeout":
         label = "skillsbench_codex_cli_goal_uncountable_goal_active_timeout"
@@ -5474,6 +5501,7 @@ def _apply_codex_cli_goal_countability_guard_attribution(
         "request_count": request_count,
         "task_facing_activity_count": task_facing_count,
         "operation_trace_status": operation_trace_status,
+        "persistent_goal_proof_present": persistent_goal_proof_present,
         "raw_material_recorded": False,
     }
     runner_failure = compact.setdefault("runner_failure", {})
@@ -5487,6 +5515,7 @@ def _apply_codex_cli_goal_countability_guard_attribution(
             "goal_stage": goal_stage,
             "request_count": request_count,
             "task_facing_activity_count": task_facing_count,
+            "persistent_goal_proof_present": persistent_goal_proof_present,
             "raw_material_recorded": False,
         }
     attempt_accounting = compact.get("attempt_accounting")
@@ -9336,6 +9365,17 @@ def build_plan(args: argparse.Namespace) -> dict[str, Any]:
         },
         "runner_prerequisites": {
             "schema_version": "skillsbench_runner_prerequisites_v0",
+            "matched_instruction_channel": "",
+            "matched_token_budget": 0,
+            "official_verifier_closeout_contract": (
+                "skillsbench_benchflow_official_result_v1"
+            ),
+            "symmetric_infra_exclusion": False,
+            "independent_goal_best_of_retry_replacement": (
+                independent_goal_attempt_budget > 1
+            ),
+            "independent_goal_attempt_budget": independent_goal_attempt_budget,
+            "independent_goal_fresh_thread_per_attempt": True,
             "benchmark_canonical_lifecycle": benchmark_canonical_lifecycle,
             "benchflow_setup_stall_timeout_enabled": (
                 _effective_build_stall_timeout_sec(args) > 0
@@ -9898,6 +9938,33 @@ def _public_runner_config(plan: dict[str, Any]) -> dict[str, Any]:
     if app_server_observability:
         config["app_server_goal_worker_observability"] = app_server_observability
     return config
+
+
+def _skillsbench_matched_pair_contract(
+    plan: dict[str, Any],
+) -> dict[str, Any]:
+    route = str(plan.get("route") or "")
+    if route not in {
+        CODEX_CLI_GOAL_BASELINE_ROUTE,
+        LOOPX_GOAL_START_PRODUCT_MODE_ROUTE,
+    }:
+        return {}
+    prerequisites = _public_runner_prerequisites(
+        plan.get("runner_prerequisites")
+    )
+    runner_config = (
+        dict(plan["runner_config"])
+        if isinstance(plan.get("runner_config"), dict)
+        else _public_runner_config(plan)
+    )
+    return build_skillsbench_matched_pair_contract(
+        route=route,
+        runner_config=runner_config,
+        runner_prerequisites=prerequisites,
+        task_packet_fingerprint=str(
+            prerequisites.get("matched_task_packet_fingerprint") or ""
+        ),
+    )
 
 
 def _app_server_goal_worker_observability(
@@ -10505,6 +10572,32 @@ def _final_result_reward_value(result_json: dict[str, Any]) -> float | None:
     if isinstance(value, (int, float)) and not isinstance(value, bool):
         return float(value)
     return None
+
+
+def _record_matched_task_packet_fingerprint(
+    *,
+    plan: dict[str, Any] | None,
+    trace: dict[str, Any],
+    instruction: str,
+) -> None:
+    if not isinstance(plan, dict):
+        return
+    route = str(plan.get("route") or "")
+    if route not in {
+        CODEX_CLI_GOAL_BASELINE_ROUTE,
+        LOOPX_GOAL_START_PRODUCT_MODE_ROUTE,
+    }:
+        return
+    fingerprint = skillsbench_task_packet_fingerprint(
+        benchmark_id=str(plan.get("benchmark_id") or ""),
+        case_ids=[str(plan.get("task_id") or "")],
+        instruction=instruction,
+    )
+    trace["matched_task_packet_fingerprint"] = fingerprint
+    trace["matched_task_packet_raw_text_recorded"] = False
+    prerequisites = plan.setdefault("runner_prerequisites", {})
+    prerequisites["matched_task_packet_fingerprint"] = fingerprint
+    prerequisites["matched_task_packet_raw_text_recorded"] = False
 
 
 def _last_decision_sent_agent_prompt(last_decision: str) -> bool:
@@ -11276,6 +11369,7 @@ def _merge_host_local_acp_relay_trace_summary(
     codex_cli_goal_first_action_count = 0
     codex_cli_goal_bridge_request_count = 0
     codex_cli_goal_task_facing_success_count = 0
+    codex_cli_scored_goal_proof_present = False
     codex_cli_goal_recovery_summary = new_codex_cli_goal_recovery_summary()
     codex_cli_goal_stages: list[str] = []
     codex_cli_goal_reasoning_efforts: list[str] = []
@@ -11553,6 +11647,10 @@ def _merge_host_local_acp_relay_trace_summary(
                 codex_cli_goal_terminal_count += 1
             if goal_trace.get("first_action_observed") is True:
                 codex_cli_goal_first_action_count += 1
+            codex_cli_scored_goal_proof_present = bool(
+                codex_cli_scored_goal_proof_present
+                or skillsbench_scored_goal_trace_satisfied(goal_trace)
+            )
             bridge_requests = goal_trace.get("bridge_request_count")
             if isinstance(bridge_requests, int) and not isinstance(
                 bridge_requests, bool
@@ -11853,6 +11951,13 @@ def _merge_host_local_acp_relay_trace_summary(
         else ""
     )
     trace["codex_cli_goal_tui_raw_material_recorded"] = raw_material_recorded
+    trace["goal_get_present"] = codex_cli_scored_goal_proof_present
+    trace["turn_id_present"] = codex_cli_scored_goal_proof_present
+    trace["scored_goal_proof_source"] = (
+        SCORED_GOAL_PROOF_SOURCE
+        if codex_cli_scored_goal_proof_present
+        else ""
+    )
     loopx_turn_summary.apply(trace)
     prerequisites["remote_command_file_bridge_solver_trace_dir_present"] = (
         trace_dir.exists()
@@ -12050,6 +12155,13 @@ def _merge_host_local_acp_relay_trace_summary(
     )
     prerequisites["codex_cli_goal_tui_raw_material_recorded"] = (
         raw_material_recorded
+    )
+    prerequisites["goal_get_present"] = codex_cli_scored_goal_proof_present
+    prerequisites["turn_id_present"] = codex_cli_scored_goal_proof_present
+    prerequisites["scored_goal_proof_source"] = (
+        SCORED_GOAL_PROOF_SOURCE
+        if codex_cli_scored_goal_proof_present
+        else ""
     )
     if consumed_by_solver:
         prerequisites["remote_command_file_bridge_consumption_status"] = (
@@ -13163,6 +13275,11 @@ def _build_blind_loop_user(
             instruction: str,
             round_result: RoundResult | None = None,
         ) -> str | None:
+            _record_matched_task_packet_fingerprint(
+                plan=plan,
+                trace=trace,
+                instruction=instruction,
+            )
             _inc_counter(trace, "heartbeat_count")
             trace["max_round_observed"] = max(int(trace.get("max_round_observed", -1)), round)
             reward = _record_round_reward(
@@ -13820,6 +13937,11 @@ def _build_product_mode_user(
             instruction: str,
             round_result: RoundResult | None = None,
         ) -> str | None:
+            _record_matched_task_packet_fingerprint(
+                plan=plan,
+                trace=trace,
+                instruction=instruction,
+            )
             _inc_counter(trace, "heartbeat_count")
             trace["max_round_observed"] = max(int(trace.get("max_round_observed", -1)), round)
             reward = _record_round_reward(
@@ -15766,6 +15888,12 @@ def reduce_result(
     runner_config = _public_runner_config(plan)
     if runner_config:
         compact["runner_config"] = runner_config
+    matched_pair_contract = _skillsbench_matched_pair_contract(plan)
+    if matched_pair_contract:
+        compact["matched_pair_contract"] = matched_pair_contract
+        scored_goal_proof = matched_pair_contract.get("scored_goal_proof")
+        if isinstance(scored_goal_proof, dict):
+            compact["scored_goal_proof"] = scored_goal_proof
     app_server_observability = _app_server_goal_worker_observability(
         plan,
         controller_trace,
@@ -16714,6 +16842,12 @@ def build_runner_failure_compact(
     runner_config = _public_runner_config(plan)
     if runner_config:
         reduced["runner_config"] = runner_config
+    matched_pair_contract = _skillsbench_matched_pair_contract(plan)
+    if matched_pair_contract:
+        reduced["matched_pair_contract"] = matched_pair_contract
+        scored_goal_proof = matched_pair_contract.get("scored_goal_proof")
+        if isinstance(scored_goal_proof, dict):
+            reduced["scored_goal_proof"] = scored_goal_proof
     app_server_observability = _app_server_goal_worker_observability(
         plan,
         controller_trace,

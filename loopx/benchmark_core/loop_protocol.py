@@ -15,6 +15,8 @@ MAX5_BLIND_LOOP_NO_FEEDBACK_PROTOCOL_ID = "max5_blind_loop_no_feedback"
 PRODUCT_MODE_MAX5_NO_FEEDBACK_PROTOCOL_ID = "product_mode_max5_no_feedback"
 PACKET_ONLY_OBSERVATION_PROTOCOL_ID = "packet_only_observation"
 MATCHED_PAIR_CONTRACT_SCHEMA_VERSION = "skillsbench_matched_pair_contract_v0"
+SCORED_GOAL_PROOF_SCHEMA_VERSION = "skillsbench_scored_goal_proof_v0"
+SCORED_GOAL_PROOF_SOURCE = "codex_app_server_thread_goal_get_turn_start"
 
 BLIND_LOOP_DEFAULT_MAX_ROUNDS = 5
 CODEX_ACP_BLIND_LOOP_BASELINE_ROUTE = "codex-acp-blind-loop-baseline"
@@ -401,9 +403,18 @@ def _compact_pair_value(value: Any) -> str | int:
 
 
 def _goal_baseline_observed(run: dict[str, Any]) -> bool:
+    proof = run.get("scored_goal_proof")
+    if not isinstance(proof, dict):
+        return False
     return bool(
-        run.get("goal_get_present") is True
-        and run.get("turn_id_present") is True
+        proof.get("schema_version") == SCORED_GOAL_PROOF_SCHEMA_VERSION
+        and proof.get("route") == CODEX_CLI_GOAL_BASELINE_ROUTE
+        and proof.get("required") is True
+        and proof.get("satisfied") is True
+        and proof.get("goal_get_present") is True
+        and proof.get("turn_id_present") is True
+        and proof.get("proof_source") == SCORED_GOAL_PROOF_SOURCE
+        and proof.get("tui_marker_only") is False
     )
 
 
