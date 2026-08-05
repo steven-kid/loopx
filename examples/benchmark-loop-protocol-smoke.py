@@ -22,6 +22,8 @@ from loopx.benchmark_core.loop_protocol import (
     PACKET_ONLY_OBSERVATION_PROTOCOL_ID,
     PRODUCT_MODE_MAX5_NO_FEEDBACK_PROTOCOL_ID,
     RAW_CODEX_AUTONOMOUS_MAX5_ROUTE,
+    SCORED_GOAL_PROOF_SCHEMA_VERSION,
+    SCORED_GOAL_PROOF_SOURCE,
     LOOPX_PRODUCT_MODE_ROUTE,
     build_benchmark_loop_contract,
     build_benchmark_loop_controller_trace,
@@ -229,6 +231,16 @@ def main() -> int:
         "product_mode": True,
         "goal_get_present": True,
         "turn_id_present": True,
+        "scored_goal_proof": {
+            "schema_version": SCORED_GOAL_PROOF_SCHEMA_VERSION,
+            "route": CODEX_CLI_GOAL_BASELINE_ROUTE,
+            "required": True,
+            "satisfied": True,
+            "goal_get_present": True,
+            "turn_id_present": True,
+            "proof_source": SCORED_GOAL_PROOF_SOURCE,
+            "tui_marker_only": False,
+        },
         "matched_pair_contract": dict(matched_pair_contract),
         "official_feedback_blinded": True,
         "reward_feedback_forwarded": False,
@@ -326,7 +338,11 @@ def main() -> int:
     ]
 
     missing_goal_baseline = dict(baseline_run)
-    missing_goal_baseline["goal_get_present"] = False
+    missing_goal_baseline["scored_goal_proof"] = {
+        **baseline_run["scored_goal_proof"],
+        "goal_get_present": False,
+        "satisfied": False,
+    }
     missing_goal_pair = classify_product_mode_main_table_pair(
         baseline_run=missing_goal_baseline,
         treatment_run=treatment_run,
@@ -337,8 +353,14 @@ def main() -> int:
     ]
 
     tui_only_baseline = dict(baseline_run)
-    tui_only_baseline["goal_get_present"] = False
-    tui_only_baseline["turn_id_present"] = False
+    tui_only_baseline["scored_goal_proof"] = {
+        **baseline_run["scored_goal_proof"],
+        "goal_get_present": False,
+        "turn_id_present": False,
+        "satisfied": False,
+        "proof_source": "",
+        "tui_marker_only": True,
+    }
     tui_only_baseline["interaction_counters"] = {
         "codex_cli_goal_tui_trace_present": True,
         "codex_cli_goal_tui_goal_active_observed_count": 1,
@@ -349,6 +371,29 @@ def main() -> int:
         treatment_run=treatment_run,
     )
     assert "baseline_persistent_goal_turn_not_observed" in tui_only_pair[
+        "claim_blocker"
+    ]
+
+    wrong_source_baseline = dict(baseline_run)
+    wrong_source_baseline["scored_goal_proof"] = {
+        **baseline_run["scored_goal_proof"],
+        "proof_source": "unrelated_goal_probe",
+    }
+    wrong_source_pair = classify_product_mode_main_table_pair(
+        baseline_run=wrong_source_baseline,
+        treatment_run=treatment_run,
+    )
+    assert "baseline_persistent_goal_turn_not_observed" in wrong_source_pair[
+        "claim_blocker"
+    ]
+
+    top_level_only_baseline = dict(baseline_run)
+    top_level_only_baseline.pop("scored_goal_proof")
+    top_level_only_pair = classify_product_mode_main_table_pair(
+        baseline_run=top_level_only_baseline,
+        treatment_run=treatment_run,
+    )
+    assert "baseline_persistent_goal_turn_not_observed" in top_level_only_pair[
         "claim_blocker"
     ]
 
