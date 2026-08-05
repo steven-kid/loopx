@@ -1,3 +1,5 @@
+// @ts-nocheck
+export function initializeOriginalHome() {
 const setupPrompts = {
   en: `Connect the current project to LoopX: https://github.com/huangruiteng/loopx
 
@@ -546,4 +548,6 @@ if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-mot
   revealTargets.forEach((target) => observer.observe(target));
 } else {
   revealTargets.forEach((target) => target.classList.add("is-visible"));
+}
+
 }

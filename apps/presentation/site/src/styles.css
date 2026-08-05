@@ -475,3 +475,44 @@ footer p { text-align: center; } footer > div { justify-self: end; display: flex
   .terminal-showcase-enhanced .terminal-demo-line { opacity: 1; transform: none; }
   .terminal-playback { display: none; }
 }
+
+
+/* Light mode is opt-in so the default React render remains visually identical to the original dark homepage. */
+body[data-theme="light"] {
+  color: #0f172a;
+  background:
+    radial-gradient(circle at 75% 5%, rgba(37, 99, 235, 0.1), transparent 28rem),
+    linear-gradient(180deg, #ffffff, #f8fafc 34rem, #ffffff);
+}
+body[data-theme="light"] .site-header { background: rgba(255, 255, 255, 0.88); }
+body[data-theme="light"] .desktop-nav,
+body[data-theme="light"] .hero-body,
+body[data-theme="light"] .agent-setup-description,
+body[data-theme="light"] .section-heading > p,
+body[data-theme="light"] .capability-grid p,
+body[data-theme="light"] .evidence-heading p,
+body[data-theme="light"] footer { color: #526078; }
+body[data-theme="light"] .brand,
+body[data-theme="light"] .hero h1,
+body[data-theme="light"] .product-section h2,
+body[data-theme="light"] .capability-section h2,
+body[data-theme="light"] .evidence-section h2,
+body[data-theme="light"] .quickstart-section h2 { color: #0f172a; }
+body[data-theme="light"] .button-secondary,
+body[data-theme="light"] .agent-setup-summary,
+body[data-theme="light"] .control-card,
+body[data-theme="light"] .proof-item,
+body[data-theme="light"] .capability-grid article,
+body[data-theme="light"] .evidence-terminal,
+body[data-theme="light"] .quickstart-section {
+  border-color: #d9e2ef;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.08);
+}
+body[data-theme="light"] .hero { background: linear-gradient(180deg, rgba(255,255,255,0.1), #ffffff), radial-gradient(circle at 73% 44%, rgba(37, 99, 235, 0.08), transparent 31rem); }
+body[data-theme="light"] .hero-grid { opacity: 0.4; background-image: linear-gradient(rgba(37,99,235,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,.08) 1px, transparent 1px); }
+body[data-theme="light"] .button-secondary,
+body[data-theme="light"] .terminal-playback { color: #0f172a; }
+body[data-theme="light"] .evidence-terminal,
+body[data-theme="light"] .terminal-demo-panel { background: #ffffff; }
+body[data-theme="light"] .terminal-demo-line { background: #f8fafc; border-color: #e2e8f0; }

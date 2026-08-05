@@ -86,13 +86,8 @@ async function copyIndexForFrontstage(siteDir) {
 }
 
 async function copyHomepage(siteDir, base) {
-  const sourceHtml = await readFile(resolve(homepageDir, "index.html"), "utf8");
-  const html = sourceHtml.replaceAll("__LOOPX_BASE__", base);
   const assetDir = resolve(siteDir, "site-assets");
   await mkdir(assetDir, { recursive: true });
-  await writeFile(resolve(siteDir, "index.html"), html);
-  await copyFile(resolve(homepageDir, "home.css"), resolve(assetDir, "home.css"));
-  await copyFile(resolve(homepageDir, "home.js"), resolve(assetDir, "home.js"));
   const evidenceDir = resolve(assetDir, "evidence");
   await mkdir(evidenceDir, { recursive: true });
   for (const assetPath of homepageEvidenceAssets) {
@@ -346,10 +341,14 @@ async function main() {
   if (!existsSync(resolve(dashboardDir, "node_modules"))) {
     throw new Error("apps/presentation/dashboard/node_modules is missing; run `npm ci` in apps/presentation/dashboard first");
   }
+  if (!existsSync(resolve(homepageDir, "node_modules"))) {
+    throw new Error("apps/presentation/site/node_modules is missing; run `npm ci` in apps/presentation/site first");
+  }
 
   await rm(outDir, { force: true, recursive: true });
   await mkdir(siteDir, { recursive: true });
 
+  const dashboardBuildDir = resolve(outDir, "dashboard-build");
   run(process.execPath, [resolve(dashboardDir, "node_modules/typescript/bin/tsc"), "--noEmit"], { cwd: dashboardDir });
   run(process.execPath, [
     resolve(dashboardDir, "node_modules/vite/bin/vite.js"),
@@ -357,12 +356,29 @@ async function main() {
     "--base",
     args.base,
     "--outDir",
-    siteDir,
+    dashboardBuildDir,
     "--emptyOutDir",
   ], { cwd: dashboardDir });
 
+  run(process.execPath, [resolve(homepageDir, "node_modules/typescript/bin/tsc"), "--noEmit"], { cwd: homepageDir });
+  run(process.execPath, [
+    resolve(homepageDir, "node_modules/vite/bin/vite.js"),
+    "build",
+    "--base",
+    args.base,
+    "--outDir",
+    siteDir,
+    "--emptyOutDir",
+  ], { cwd: homepageDir });
+
   await removeCopiedLiveStatusFiles(siteDir);
-  await copyIndexForFrontstage(siteDir);
+  await mkdir(resolve(siteDir, "frontstage"), { recursive: true });
+  await copyFile(resolve(dashboardBuildDir, "index.html"), resolve(siteDir, "frontstage", "index.html"));
+  await rm(resolve(siteDir, "assets"), { force: true, recursive: true });
+  await mkdir(resolve(siteDir, "assets"), { recursive: true });
+  for (const entry of await readdir(resolve(dashboardBuildDir, "assets"))) {
+    await copyFile(resolve(dashboardBuildDir, "assets", entry), resolve(siteDir, "assets", entry));
+  }
   await copyHomepage(siteDir, args.base);
   const interactivePages = await copyInteractiveCasePages(siteDir);
 
