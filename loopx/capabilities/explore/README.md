@@ -1430,7 +1430,31 @@ without deleting its prior version. Explicit ordered-prefix archival replay keep
 the same audit boundary; ordinary single/batch writes still reject contradictions.
 Malformed, unsafe, unknown-field or forged canonical records remain rejected.
 
+`explore source-history-reconcile` merges the latest missing registered results;
+it does not restore a complete archival prefix. Preview and execution apply the
+same ordinary-write validation to that subset. Eligible results can be restored
+even when other historical findings contradict their execution. The plan reports
+`blocked_event_count`, a digest of the blocked event ids and `blocked_reasons`;
+warnings also show the reasons in Markdown output. Blocked records remain in the
+unchanged candidate source, do not enter quantitative comparison and do not by
+themselves require deleting registered sink rows. An all-blocked subset reports
+`blocked`; a partial recovery reports `would_reconcile_with_blocked_history` or
+`reconciled_with_blocked_history`. Append a valid correction for the same result
+id to the candidate history and preview again; recovery selects that latest
+record without rewriting its older evidence. Unrelated remote orphans retain
+their existing classification and status suffix.
+
 历史兼容：执行与测量的一致性约束限制新写入，不能阻断旧记录及其后续更正的读取。
 当前 finding 若有归因矛盾，会返回 `measurement_error` 并排除该数量比较；历史仍保留
 生产者的原始声明。正确更正可恢复当前比较，不能删改旧行。显式按顺序恢复归档前缀也
 保留此审计边界；普通单条和批量写入仍拒绝新矛盾，结构损坏、不安全及伪造记录仍拒绝。
+
+`explore source-history-reconcile` 合并已注册且缺失的各结果最新记录，不是恢复完整
+归档前缀。预览与执行对该子集应用相同的普通写入校验；部分旧 finding 归因矛盾不会
+阻断其他合法结果恢复。计划通过 `blocked_event_count`、被阻断事件 id 的摘要和
+`blocked_reasons` 报告原因，Markdown 的 warnings 同时显示这些原因。被阻断记录
+保留在未改动的候选源中，不进入数量比较，也不因此要求删除已注册的 sink 行。
+全部阻断时状态为 `blocked`，部分恢复时为 `would_reconcile_with_blocked_history`
+或 `reconciled_with_blocked_history`。在候选历史中为同一 result id 追加正确更正后
+重新预览；恢复选择该最新记录，不能覆写旧证据。其他远端孤儿仍保留原有分类与状态
+后缀。

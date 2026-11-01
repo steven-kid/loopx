@@ -537,7 +537,8 @@ def validate_explore_result_event(
     return rebuilt
 
 
-def _check_finding_measurement_execution(event: Mapping[str, Any]) -> None:
+def validate_explore_result_event_attribution(event: Mapping[str, Any]) -> None:
+    """Check typed measurement attribution after canonical event validation."""
     if "measurements" in event:
         from .measurements import normalize_measurements
 
@@ -546,7 +547,7 @@ def _check_finding_measurement_execution(event: Mapping[str, Any]) -> None:
 
 def append_explore_result_event(path: Path, event: Mapping[str, Any]) -> dict[str, Any]:
     validated = validate_explore_result_event(event)
-    _check_finding_measurement_execution(validated)
+    validate_explore_result_event_attribution(validated)
     log_path = path.expanduser()
     log_path.parent.mkdir(parents=True, exist_ok=True)
     with exclusive_file_lock(log_path):
@@ -620,7 +621,7 @@ def append_explore_result_events(
     # Its old contradictions remain visible only as archival facts/diagnostics.
     if not require_ordered_prefix:
         for event in validated:
-            _check_finding_measurement_execution(event)
+            validate_explore_result_event_attribution(event)
     requested_ids = [str(event["event_id"]) for event in validated]
     if len(requested_ids) != len(set(requested_ids)):
         raise ValueError("Explore result event batch contains duplicate event ids")
@@ -867,7 +868,7 @@ def _finding_view(event: Mapping[str, Any]) -> dict[str, Any]:
     measured: dict[str, Any] = {}
     if "measurements" in event:
         try:
-            _check_finding_measurement_execution(event)
+            validate_explore_result_event_attribution(event)
         except ValueError as error:
             # Quarantine contradictory historical quantities in the current
             # view, not the append-only history. Runtime failure propagates.
