@@ -92,7 +92,7 @@ def test_historical_read_still_rejects_forged_canonical_records(tmp_path):
         load_explore_result_events_strict(log, goal_id="research")
 
 
-def test_registered_history_preview_executes_without_promoting_legacy_measurements(tmp_path):
+def test_registered_history_recovers_eligible_subset_without_promoting_legacy_measurements(tmp_path):
     from loopx.capabilities.explore.source_history_reconcile import reconcile_explore_source_history
 
     # The real writer at 21367015 produced these bytes, including two old
@@ -109,16 +109,20 @@ def test_registered_history_preview_executes_without_promoting_legacy_measuremen
         registered_result_keys={"research:nodes:question-a", "research:findings:valid",
                                 "research:findings:mixed", "research:findings:mixed-later"})
     preview = reconcile_explore_source_history(**args)
-    assert preview["status"] == "would_reconcile"
-    assert preview["projection_reconciliation"]["recovered_lost_history_count"] == 3
+    assert preview["status"] == "would_reconcile_with_blocked_history"
+    assert preview["projection_reconciliation"]["recovered_lost_history_count"] == 1
+    assert preview["plan"]["blocked_event_count"] == 2
     assert canonical.read_bytes() == prefix
     receipt = reconcile_explore_source_history(**args, execute=True)
-    assert receipt["status"] == "reconciled"
-    assert receipt["writeback"]["appended_event_count"] == 3
+    assert receipt["status"] == "reconciled_with_blocked_history"
+    assert receipt["writeback"]["appended_event_count"] == 1
     assert receipt["writeback"]["readback_verified"] is True
-    assert canonical.read_bytes() == candidate.read_bytes() == original
+    restored = canonical.read_bytes()
+    assert load_explore_result_events_strict(canonical, goal_id="research") == events[:2]
+    assert restored.startswith(prefix)
+    assert candidate.read_bytes() == original
     repeated = reconcile_explore_source_history(**args, execute=True)
-    assert repeated["status"] == "already_reconciled"
+    assert repeated["status"] == "blocked"
     assert repeated["writeback"]["performed"] is False
     projection = build_explore_result_projection(events, goal_id="research")
     assert sum("measurement_error" in row for row in projection["findings"]) == 2
@@ -129,14 +133,14 @@ def test_registered_history_preview_executes_without_promoting_legacy_measuremen
     assert feedback[0]["best"]["value"] == 8
     with pytest.raises(ValueError, match="executed candidate's result"):
         append_explore_result_events(canonical, events[1:], expected_goal_id="research")
-    assert canonical.read_bytes() == original
+    assert canonical.read_bytes() == restored
     corrected = {key: events[2][key] for key in ("goal_id", "title", "node_id", "status",
         "evidence_refs", "execution_observation")}
     correction = build_explore_finding_event(**corrected, finding_id="mixed",
         recorded_at="2026-01-01T04:00:00Z", measurements=[{**events[2]["measurements"][0],
             "value": 7, "evidence_ref": "result:a"}])
     append_explore_result_event(canonical, correction)
-    assert canonical.read_bytes().startswith(original)
+    assert canonical.read_bytes().startswith(restored)
     request["projection"] = build_explore_result_projection(
         load_explore_result_events_strict(canonical, goal_id="research"), goal_id="research")
     group = effect_runtime_result("explore.turn_context", request)["graph"]["measurement_feedback"][0]
